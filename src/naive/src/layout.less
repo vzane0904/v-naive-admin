@@ -1,0 +1,22 @@
+@prefixCls: ~'@{prefix}';
+@import './dark.less';
+@import './light.less';
+@import './tabs.less';
+
+.@{prefixCls}-layout {
+  // background-color: transparent;
+
+  &-scroll-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &-sider-scroll-container {
+    min-width: 0 !important;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden !important;
+  }
+}

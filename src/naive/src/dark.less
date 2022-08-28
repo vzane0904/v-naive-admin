@@ -1,0 +1,29 @@
+// 黑暗主题
+@prefixCls: ~'@{prefix}';
+
+[data-theme='dark'] {
+  .@{prefixCls}-tabs-extra-content {
+    .@{prefixCls}-tabs-extra-fn {
+      border-left: 1px solid #303030;
+    }
+  }
+
+  .@{prefixCls}-dropdown-select,
+  .@{prefixCls}-button-Refresh {
+    color: #8b949e;
+    transition: all 0.3s;
+
+    &:active,
+    &:focus {
+      color: #8b949e;
+    }
+  }
+
+  .hover:hover {
+    color: #fff;
+  }
+
+  svg {
+    outline: none;
+  }
+}

@@ -1,0 +1,28 @@
+@prefixCls: ~'@{prefix}';
+// 亮色主题
+[data-theme='light'] {
+  .@{prefixCls}-tabs-extra-content {
+    .@{prefixCls}-tabs-extra-fn {
+      border-left: 1px solid #d9d9d9;
+    }
+  }
+
+  .@{prefixCls}-dropdown-select,
+  .@{prefixCls}-button-Refresh {
+    color: #00000073;
+    transition: all 0.3s;
+
+    &:active,
+    &:focus {
+      color: #00000073;
+    }
+  }
+
+  .hover:hover {
+    color: #000000d9;
+  }
+
+  svg {
+    outline: none;
+  }
+}

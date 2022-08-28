@@ -1,0 +1,93 @@
+{
+  "editor.formatOnSave": true, // 保存时自动执行eslint
+  "svg.preview.background": "editor",
+  "eslint.validate": ["javascript", "vue", "html"],
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "volar.tsPlugin": true,
+  "volar.tsPluginStatus": false,
+  "npm.packageManager": "pnpm",
+  "files.eol": "\n",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/*.log": true,
+    "**/dist": true,
+    "**/.git": true,
+    "**/.gitignore": true,
+    "**/.svn": true,
+    "**/.idea": true,
+    "**/.vscode": false,
+    "**/*.log*": true,
+    "**/bower_components": true,
+    "**/elehukouben": true,
+    "**/.DS_Store": true,
+    "yarn-error.log": true,
+    "**/.yarn": true,
+    "**/yarn.lock": true,
+    "out": true,
+    "node_modules": true,
+    "CHANGELOG.md": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "[vue]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": false
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
+  "stylelint.enable": true,
+  "i18n-ally.localesPaths": ["src/locales/lang"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sortKeys": true,
+  "i18n-ally.namespace": true,
+  "i18n-ally.pathMatcher": "{locale}/{namespaces}.{ext}",
+  "i18n-ally.enabledParsers": ["ts"],
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.enabledFrameworks": ["vue", "react"],
+  "cSpell.words": [
+    "commitlint",
+    "estree",
+    "ionicons",
+    "mockjs",
+    "nprogress",
+    "pinia",
+    "pnpm",
+    "screenfull",
+    "stylelint",
+    "unplugin",
+    "vfonts",
+    "vicons",
+    "vueuse",
+    "windicss"
+  ],
+  "liveServer.settings.port": 5501
+}
