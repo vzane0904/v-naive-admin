@@ -12,7 +12,7 @@ export default defineComponent({
   props: {
     prefix: {
       type: String,
-      default: 'yc-icon',
+      default: 'naive-icon',
     },
     name: {
       type: String,
@@ -28,6 +28,7 @@ export default defineComponent({
     },
   },
   setup(props) {
+    console.log('cccc', props.name)
     const symbolId = computed(() => `#${props.prefix}-${props.name}`)
     const className = computed(() => `icon text-${props.size}px`)
     return { symbolId, className }

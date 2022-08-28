@@ -1,5 +1,5 @@
 import { defineComponent } from 'vue'
-import { Icon } from '@/components/Icon'
+import Icon from '@/components/Icon/index.vue'
 import { DropdownOption, NButton, NDropdown } from 'naive-ui'
 import useTabs from './utils'
 import { configStore } from '@/pinia/config'
@@ -26,7 +26,7 @@ export const Suffix = defineComponent({
             {isRefresh.value ? null : <Icon name={'shuaxin'} size={18} />}
           </NButton>
         </div>
-        <div class={className.value} class="hover">
+        <div class={[className.value, 'hover']}>
           <NDropdown
             options={options.value}
             trigger={'click'}

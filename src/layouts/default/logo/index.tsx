@@ -1,4 +1,4 @@
-import { SvgIcon } from '@/components/Icon'
+import Svg from '@/components/Svg/index.vue'
 import { themeStore } from '@/pinia/theme'
 // import { NGradientText } from 'naive-ui'
 import { defineComponent } from 'vue'
@@ -22,7 +22,7 @@ export const Logo = defineComponent({
     return () =>
       store.showLogo ? (
         <div class="h-48px flex items-center">
-          <SvgIcon name="资源1" class="mx-10px" style={{ fontSize: '32px' }} />
+          <Svg name="资源1" class="mx-10px" style={{ fontSize: '32px' }} />
           {store.layout === 2 ? tit : !store.siderFold ? tit : null}
           {/* {!store.siderFold && store.layout !== 2 && (
 

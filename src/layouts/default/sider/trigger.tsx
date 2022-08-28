@@ -1,4 +1,4 @@
-import { Icon } from '@/components/Icon'
+import Icon from '@/components/Icon/index.vue'
 import { themeStore } from '@/pinia/theme'
 import { defineComponent } from 'vue'
 export default defineComponent({

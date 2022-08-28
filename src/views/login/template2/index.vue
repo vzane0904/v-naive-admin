@@ -15,7 +15,6 @@ import {
 export default defineComponent({
   name: 'Login2',
   setup() {
-    console.log(1212)
     return () => (
       <div class="loginBox w-1/1 h-1/1 flex">
         <div

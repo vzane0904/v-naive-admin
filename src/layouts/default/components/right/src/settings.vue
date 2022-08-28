@@ -1,5 +1,5 @@
 <script lang="tsx">
-import IconVue from '@/components/Icon/src/icon.vue'
+import Icon from '@/components/Icon/index.vue'
 import { defineComponent, ref } from 'vue'
 import OpenDrawer from './page/openDrawer'
 interface RefType {
@@ -11,7 +11,7 @@ export default defineComponent({
     const refData = ref<RefType>({ active: false })
     return () => (
       <>
-        <IconVue
+        <Icon
           name="setting2"
           class={'mr-10px cursor-pointer'}
           onClick={() => (refData.value.active = true)}

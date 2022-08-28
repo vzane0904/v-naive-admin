@@ -1,10 +1,45 @@
 {
   "id": "2085566",
-  "name": "admin",
-  "font_family": "yc-iconfont",
-  "css_prefix_text": "yc-icon-",
+  "name": "v-naive-admin",
+  "font_family": "naive-iconfont",
+  "css_prefix_text": "naive-icon-",
   "description": "",
   "glyphs": [
+    {
+      "icon_id": "11761426",
+      "name": "夜晚",
+      "font_class": "day",
+      "unicode": "e71f",
+      "unicode_decimal": 59167
+    },
+    {
+      "icon_id": "23943483",
+      "name": "夜间",
+      "font_class": "yejian5",
+      "unicode": "fa5a",
+      "unicode_decimal": 64090
+    },
+    {
+      "icon_id": "24111897",
+      "name": "夜间",
+      "font_class": "yejian6",
+      "unicode": "fc09",
+      "unicode_decimal": 64521
+    },
+    {
+      "icon_id": "25670309",
+      "name": "夜间",
+      "font_class": "yejian7",
+      "unicode": "fdb1",
+      "unicode_decimal": 64945
+    },
+    {
+      "icon_id": "29548768",
+      "name": "Sunny晴-白天",
+      "font_class": "Sunny-qing-baitian",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
     {
       "icon_id": "577402",
       "name": "向右1",
@@ -137,6 +172,13 @@
       "font_class": "qingbaitian",
       "unicode": "e6ed",
       "unicode_decimal": 59117
+    },
+    {
+      "icon_id": "11544174",
+      "name": "晴_白天",
+      "font_class": "ziyuan1",
+      "unicode": "e640",
+      "unicode_decimal": 58944
     },
     {
       "icon_id": "17827594",

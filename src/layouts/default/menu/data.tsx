@@ -1,4 +1,4 @@
-import { Icon } from '@/components/Icon'
+import Icon from '@/components/Icon/index.vue'
 import { MenuType } from '@/type/route'
 import { MenuOption } from 'naive-ui'
 import { LocationQueryRaw, RouterLink } from 'vue-router'

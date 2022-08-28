@@ -2,7 +2,7 @@
 import { NTabPane, NTabs } from 'naive-ui'
 import { defineComponent } from 'vue'
 import { Suffix } from './src/suffix'
-import { Icon } from '@/components/Icon'
+import Icon from '@/components/Icon/index.vue'
 import { useRouter } from 'vue-router'
 import useTabs from './src/utils'
 import { routeStore } from '@/pinia/modules/routeStore'

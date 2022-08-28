@@ -25,3 +25,4 @@ dist-ssr
 # file
 src/config/auto-import.d.ts
 src/config/components.d.ts
+stats.html
