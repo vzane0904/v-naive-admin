@@ -1,7 +1,7 @@
 import { themeStore } from '@/pinia/theme'
 import { TabsThemeVars } from 'naive-ui/lib/tabs/styles'
 
-export const TabsThemeConfig = (): Partial<TabsThemeVars> => {
+const TabsThemeConfig = (): Partial<TabsThemeVars> => {
   const store = themeStore()
   const { theme } = storeToRefs(store)
   return {
@@ -18,3 +18,4 @@ export const TabsThemeConfig = (): Partial<TabsThemeVars> => {
     tabTextColorHoverCard: 'red',
   }
 }
+export default TabsThemeConfig

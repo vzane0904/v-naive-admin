@@ -11,7 +11,7 @@ export const themeStore = defineStore({
     foldBtnPosition: 'top', //折叠菜单按钮位置
     layout: 1, //页面布局模式
     siderWidth: 210, //正常宽度
-    headerHeight: 60, //顶部高度
+    headerHeight: 48, //顶部高度
     footerHeight: 48, //底部高度
     siderFold: false, //是否折叠
     collapsedWidth: 48, //左侧菜单折叠宽度
@@ -19,6 +19,8 @@ export const themeStore = defineStore({
     isFullScreenBtn: true, //是否显示全屏按钮
     language: Locale.ZH_CN,
     isAccordion: true, //手风琴模式
+    showTabs: true, //显示标签页
+    showRefresh: true, //显示刷新按钮
     showSider: true, //显示左侧菜单
     showLogo: true, //显示logo
     showFooter: true, //显示footer

@@ -17,10 +17,13 @@
         display: flex !important;
         justify-content: center !important;
         align-items: center;
+        position: relative;
+        top: 0;
 
         svg {
           position: absolute;
-          right: 2px;
+          right: -17px;
+          top: 2px;
           opacity: 0;
         }
       }
@@ -32,6 +35,13 @@
       svg {
         opacity: 1;
       }
+    }
+  }
+
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  &-tab--active {
+    &:hover {
+      color: #fff !important;
     }
   }
 }

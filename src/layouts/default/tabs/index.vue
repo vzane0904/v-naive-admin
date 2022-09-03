@@ -6,10 +6,10 @@ import Icon from '@/components/Icon/index.vue'
 import { useRouter } from 'vue-router'
 import useTabs from './src/utils'
 import { routeStore } from '@/pinia/modules/routeStore'
-import { TabsThemeConfig } from '@/naive/config/Tabs'
 import { themeStore } from '@/pinia/theme'
 import { refStore } from '@/pinia/ref'
 import { configStore } from '@/pinia/config'
+import { TabsThemeConfig } from '@/naive'
 export default defineComponent({
   name: 'Tabs',
   setup() {
