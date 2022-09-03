@@ -1,4 +1,4 @@
-import { noAddTabs } from '@/config'
+import { baseHome, noAddTabs } from '@/config'
 import { themeStore } from '@/pinia/theme'
 import { useProfileStore } from '@/pinia/user'
 import { NProgressStart } from '@/utils/NProgress'
@@ -11,8 +11,6 @@ export const beforeEach = (
   next: NavigationGuardNext,
 ) => {
   const useStore = useProfileStore()
-  console.log('useStore.token', useStore.token)
-
   if (to.path !== '/login' && !useStore.token) {
     const query = { redirectPath: to.path }
     next({
@@ -34,7 +32,7 @@ export const beforeEach = (
   }
   // 登录后禁止手动跳转到login 必须要点击退出按钮 清空token
   if (to.path === '/login' && useStore.token) {
-    next(false)
+    next(baseHome)
   } else {
     next()
   }

@@ -1,7 +1,7 @@
 import { onLoadGetPermission, permissionMode } from '@/config'
 import { RoleEnum } from '@/enum/route'
 import { App } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { backStaticRoutes, getBackRoutes } from './backRoutes'
 import { getMoveRoutes } from './moveRoutes'
 import { roleStaticRoutes } from './roleRoutes'
@@ -11,7 +11,7 @@ import { beforeEach } from './utils/beforeEach'
 import { createRoutes } from './utils/createRoutes'
 export const router = createRouter({
   history: createWebHistory(),
-  routes: staticRoutes,
+  routes: staticRoutes as RouteRecordRaw[],
   scrollBehavior: () => ({ left: 0, top: 0 }),
   strict: true,
 })

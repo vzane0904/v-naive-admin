@@ -1,8 +1,6 @@
 import type { RouteRecordRaw, RouteMeta } from 'vue-router'
 import { Expand } from '.'
 import { Component } from './component'
-import 'vue-router'
-
 interface Meta extends RouteMeta {
   icon?: any
   title: string
@@ -44,11 +42,8 @@ export interface RouteTypeOf extends Omit<RouteRecordRaw, 'meta'> {
 }
 type RouteType = Expand<RouteTypeOf>
 
-// declare module 'vue-router' {
-//   interface RouteMeta {
-//     // 是可选的
-//     isAdmin?: boolean
-//     // 每个路由都必须声明
-//     requiresAuth: boolean
-//   }
-// }
+declare module 'vue-router' {
+  interface RouteMeta {
+    hidden?: boolean | string | number
+  }
+}
