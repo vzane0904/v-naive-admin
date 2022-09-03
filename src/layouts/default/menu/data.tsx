@@ -1,7 +1,6 @@
 import Icon from '@/components/Icon/index.vue'
-import { MenuType } from '@/type/route'
 import { MenuOption } from 'naive-ui'
-import { LocationQueryRaw, RouterLink } from 'vue-router'
+import { LocationQueryRaw, RouteRecordRaw, RouterLink } from 'vue-router'
 import { CloseCircleOutline } from '@vicons/ionicons5'
 import { MenuMixedOption } from 'naive-ui/lib/menu/src/interface'
 import { useI18n } from '@/locales/useLocal'
@@ -9,7 +8,7 @@ import { isI18n } from '@/config'
 import { h } from 'vue'
 import { isProtocol } from '@/utils'
 const { t } = useI18n()
-const label = function label(item: MenuType) {
+const label = function label(item: RouteRecordRaw) {
   // 外链
   if (isProtocol(item.path)) {
     return h(
@@ -41,18 +40,18 @@ const label = function label(item: MenuType) {
     },
   )
 }
-export const useData = (data: Array<MenuType>) => {
+export const useData = (data: Array<RouteRecordRaw>) => {
   let arr = data
-    .map((item: MenuType) => {
-      if (item.meta.hideMenu) {
+    .map((item: RouteRecordRaw) => {
+      if (item.meta!.hideMenu) {
         return false
       }
       let info: MenuOption = {
         label: () => label(item),
         key: item.path,
         icon: () =>
-          item.meta.icon ? (
-            <Icon name={item.meta.icon}></Icon>
+          item.meta!.icon ? (
+            <Icon name={item.meta!.icon}></Icon>
           ) : (
             <CloseCircleOutline />
           ),

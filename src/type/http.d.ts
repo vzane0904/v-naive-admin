@@ -71,6 +71,3 @@ export interface ErrorInfo {
   success: boolean
   response?: Object
 }
-// export type CustomRequired<T, K extends keyof T> = {
-//   [P in K]: T[P]
-// } & Omit<T, K>
