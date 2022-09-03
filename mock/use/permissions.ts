@@ -81,11 +81,22 @@ export default [
               {
                 path: '/movesystem/moverole1',
                 name: 'role',
-                component: 'system/role',
+                component: 'view',
                 meta: {
                   icon: 'jiaoseguanli1',
                   title: 'move角色管理1',
                 },
+                children: [
+                  {
+                    path: '/movesystem/moverole1/t',
+                    name: 'role',
+                    component: 'system/role',
+                    meta: {
+                      icon: 'jiaoseguanli1',
+                      title: '三级',
+                    },
+                  },
+                ],
               },
               {
                 path: '/movesystem/movemenu1',

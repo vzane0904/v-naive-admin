@@ -38,6 +38,7 @@ export default defineComponent({
         options={useData(originalData.value)}
         collapsed-width={collapsedWidth.value}
         accordion={isAccordion.value}
+        indent={16}
       ></NMenu>
     )
   },

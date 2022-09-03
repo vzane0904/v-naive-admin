@@ -27,6 +27,8 @@ export const themeOverrides = (): GlobalThemeOverrides => {
       peers: {},
     },
     Menu: {
+      borderRadius: '0px',
+
       //白色模式
       color: store.siderColor, //背景
       itemColorActiveInverted: '#0960bd1a', // 激活节点背景颜色

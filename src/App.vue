@@ -64,8 +64,9 @@ const themeOverride = computed(() => {
   return themeOverrides()
 })
 </script>
-<style>
-.Vnaive-config-provider {
+<style lang="less">
+@prefixCls: ~'@{prefix}';
+.@{prefixCls}-config-provider {
   width: 100%;
   height: 100%;
 }

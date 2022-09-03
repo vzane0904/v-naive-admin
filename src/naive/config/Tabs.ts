@@ -5,7 +5,7 @@ export const TabsThemeConfig = (): Partial<TabsThemeVars> => {
   const store = themeStore()
   const { theme } = storeToRefs(store)
   return {
-    tabColor: unref(theme) ? '#0c2135' : '#fff',
+    tabColor: unref(theme) ? '#151515' : '#fff',
     tabBorderColor: unref(theme) ? '#303030' : '#d9d9d9', //边框颜色
     tabTextColorActiveBar: 'red',
     tabTextColorActiveCard: '#fff', //字体颜色
