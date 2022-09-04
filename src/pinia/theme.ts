@@ -8,20 +8,20 @@ export const themeStore = defineStore({
     layout: 1, //页面布局模式
     themeColor: '#409eff', //主题颜色
     headerColor: colorFFF, //顶部颜色
-    silderColor: '#001529', //左侧菜单颜色
-    silderFold: false, //是否折叠
+    siderColor: '#001529', //左侧菜单颜色
+    siderFold: false, //是否折叠
     foldBtnPosition: 'top', //折叠菜单按钮位置
     isAccordion: true, //手风琴模式
-    silderWidth: 210, //正常宽度
+    siderWidth: 210, //正常宽度
     headerHeight: 48, //顶部高度
     footerHeight: 48, //底部高度
     showTabs: true, //显示标签页
     showRefresh: true, //显示刷新按钮
-    showSilder: true, //显示左侧菜单
+    showSider: true, //显示左侧菜单
     showLogo: true, //显示logo
     isFullScreenBtn: true, //是否显示全屏按钮
     showFooter: true, //显示footer
-    showLanGuaGe: true, //多语言切换
+    showLanGuaGe: true, //显示多语言切换
     showTopSet: true, //顶部设置按钮
     language: Locale.ZH_CN,
     progressBar: true, //进度条

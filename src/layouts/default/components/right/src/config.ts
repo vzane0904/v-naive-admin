@@ -3,7 +3,44 @@ import { Locale } from '@/enum/locale'
 import { useProfileStore } from '@/pinia/user'
 import { DropdownOption } from 'naive-ui'
 import { SelectMixedOption } from 'naive-ui/lib/select/src/interface'
-
+export const themeColor = [
+  colorFFF,
+  '#151515',
+  '#009688',
+  '#5172DC',
+  '#018ffb',
+  '#409eff',
+  '#e74c3c',
+  '#24292e',
+  '#394664',
+  '#001529',
+  '#383f45',
+] as const
+export const siderColor = [
+  colorFFF,
+  '#151515',
+  '#009688',
+  '#5172DC',
+  '#018ffb',
+  '#409eff',
+  '#e74c3c',
+  '#24292e',
+  '#394664',
+  '#001529',
+  '#383f45',
+] as const
+export const headerColor = [
+  '#018ffb',
+  '#212121',
+  '#009688',
+  colorFFF,
+  '#5172dc',
+  '#191a23',
+  '#304156',
+  '#28333E',
+  '#344058',
+  '#383f45',
+] as const
 export const LangOptions = [
   {
     label: '简体中文',
@@ -65,49 +102,6 @@ export const UserOptions = [
     },
   },
 ]
-export const ColorData = {
-  // 主题
-  theme: [
-    colorFFF,
-    '#151515',
-    '#009688',
-    '#5172DC',
-    '#018ffb',
-    '#409eff',
-    '#e74c3c',
-    '#24292e',
-    '#394664',
-    '#001529',
-    '#383f45',
-  ],
-  // 左侧菜单
-  siderColar: [
-    colorFFF,
-    '#151515',
-    '#009688',
-    '#5172DC',
-    '#018ffb',
-    '#409eff',
-    '#e74c3c',
-    '#24292e',
-    '#394664',
-    '#001529',
-    '#383f45',
-  ],
-  // 顶部菜单
-  header: [
-    '#018ffb',
-    '#212121',
-    '#009688',
-    colorFFF,
-    '#5172dc',
-    '#191a23',
-    '#304156',
-    '#28333E',
-    '#344058',
-    '#383f45',
-  ],
-}
 export const MenuFold: Array<SelectMixedOption> = [
   {
     label: '不显示',
