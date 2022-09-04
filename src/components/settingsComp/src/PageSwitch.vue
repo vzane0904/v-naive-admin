@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { NSwitch } from 'naive-ui'
 import { defineComponent } from 'vue'
 import { FormItemComp } from './FormItem'
 import { SwitchProps } from './props/props'

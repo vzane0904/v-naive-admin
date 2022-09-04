@@ -1,6 +1,6 @@
 <script lang="tsx">
 import { defineComponent, reactive, ref } from 'vue'
-import { FormInst, NButton, NForm, NFormItem, NInput } from 'naive-ui'
+import { FormInst } from 'naive-ui'
 
 import { retrievePass } from '@/api'
 import { useGetCode } from '../src/useLogin'

@@ -3,15 +3,6 @@ import login2Img from '@/assets/images/login2Img.png'
 import logo from '@/assets/images/title.png'
 import loginLogo from '@/assets/images/login_logo.png'
 import { GlassesOutline, Glasses } from '@vicons/ionicons5'
-import {
-  NButton,
-  NForm,
-  NFormItemRow,
-  NIcon,
-  NInput,
-  NTabPane,
-  NTabs,
-} from 'naive-ui'
 export default defineComponent({
   name: 'Login2',
   setup() {

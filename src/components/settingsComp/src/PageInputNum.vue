@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { NFormItem, NInputNumber } from 'naive-ui'
 import { defineComponent } from 'vue'
 import { InputNumProps } from './props/props'
 

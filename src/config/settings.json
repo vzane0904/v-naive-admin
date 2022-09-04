@@ -1,0 +1,22 @@
+{
+  "layout": 1,
+  "themeColor": "#409eff",
+  "headerColor": "#ffffff",
+  "silderColor": "#001529",
+  "silderFold": false,
+  "foldBtnPosition": "top",
+  "isAccordion": true,
+  "silderWidth": 210,
+  "headerHeight": 48,
+  "footerHeight": 48,
+  "showTabs": true,
+  "showRefresh": true,
+  "showSilder": true,
+  "showLogo": true,
+  "isFullScreenBtn": true,
+  "showFooter": true,
+  "showLanGuaGe": true,
+  "showTopSet": true,
+  "language": "zh_CN",
+  "progressBar": true
+}

@@ -1,6 +1,5 @@
 <script lang="tsx">
 import { getPicValidateCode } from '@/api'
-import { NFormItemRow, NInput } from 'naive-ui'
 
 export default defineComponent({
   name: 'UsePictureCode',

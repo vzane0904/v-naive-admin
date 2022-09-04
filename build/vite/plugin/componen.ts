@@ -8,10 +8,14 @@ export const componentTS = () => {
     dts: 'src/config/components.d.ts',
     // dts: false,
     dirs: ['src/components'],
-    deep: true,
+    deep: false,
     globalNamespaces: [],
     directives: true,
-    include: [/\.vue$/, /\.vue\?vue/],
+    include: [
+      /\.vue$/,
+      /\.vue\?vue/,
+      /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+    ],
     exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
   })
 }

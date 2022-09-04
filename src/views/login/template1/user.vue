@@ -1,6 +1,5 @@
 <script lang="tsx">
 import { defineComponent } from 'vue'
-import { NButton, NForm } from 'naive-ui' //NFormItem, NInput, NSpin
 import Register from './register.vue'
 import Phone from './phone.vue'
 import Reset from './reset.vue'

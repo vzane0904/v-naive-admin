@@ -1,6 +1,11 @@
 import AutoImport from 'unplugin-auto-import/vite'
 export const autoImport = () => {
   return AutoImport({
+    include: [
+      /\.vue$/,
+      /\.vue\?vue/,
+      /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+    ],
     imports: [
       'vue',
       'vue-router',

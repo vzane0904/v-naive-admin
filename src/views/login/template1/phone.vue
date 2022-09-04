@@ -1,6 +1,5 @@
 <script lang="tsx">
 import { defineComponent, reactive, ref } from 'vue'
-import { FormInst, NButton, NForm, NFormItem, NInput } from 'naive-ui'
 import { userPhoneLogin } from '@/api'
 import { useGetCode } from '../src/useLogin'
 import { PhoneRules } from '../src/config'

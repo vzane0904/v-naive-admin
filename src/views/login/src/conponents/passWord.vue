@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { NFormItemRow, NInput } from 'naive-ui'
 export default defineComponent({
   name: 'PassWord',
   props: {

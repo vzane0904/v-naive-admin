@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { NTabPane, NTabs } from 'naive-ui'
 import { defineComponent } from 'vue'
 import { Suffix } from './src/suffix'
 import Icon from '@/components/Icon/index.vue'

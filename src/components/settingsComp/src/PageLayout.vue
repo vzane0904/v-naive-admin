@@ -1,6 +1,5 @@
 <script lang="tsx">
 import { themeStore } from '@/pinia/theme'
-import { NCol, NPopover, NRow } from 'naive-ui'
 import { defineComponent, watch } from 'vue'
 import { LayoutOptions } from './connfig.ts'
 export default defineComponent({

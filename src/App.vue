@@ -19,7 +19,7 @@
   </NConfigProvider>
 </template>
 <script lang="ts" setup>
-import { NConfigProvider, NGlobalStyle, darkTheme } from 'naive-ui'
+import { darkTheme } from 'naive-ui'
 import { themeStore } from '@/pinia/theme'
 import { configStore } from '@/pinia/config'
 import { themeOverrides } from '@/naive'

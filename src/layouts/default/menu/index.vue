@@ -1,6 +1,5 @@
 <script lang="tsx">
 import { defineComponent, watch } from 'vue'
-import { NMenu } from 'naive-ui'
 import { useRoute } from 'vue-router'
 import { useData } from './data'
 import { themeStore } from '@/pinia/theme'

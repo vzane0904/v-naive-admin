@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { NFormItem, NSelect } from 'naive-ui'
 import { defineComponent, toRef } from 'vue'
 import { SelectProps } from './props/props'
 export default defineComponent({

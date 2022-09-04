@@ -19,7 +19,6 @@ import { autoImport } from './autoImport'
 import visualizer from 'rollup-plugin-visualizer'
 
 export const createPlugin = (
-  // eslint-disable-next-line no-undef
   viteEnv: ViteEnv,
   isBuild: boolean,
   command: string,
