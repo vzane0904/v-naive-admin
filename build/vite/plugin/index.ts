@@ -18,7 +18,7 @@ import PkgConfig from 'vite-plugin-package-config'
 import { autoImport } from './autoImport'
 import { naiveDts } from './generateNaiveDts'
 import { buildVisualizer } from './buildVisualizer'
-
+export const autoPath = 'src/type'
 export const createPlugin = (
   viteEnv: ViteEnv,
   isBuild: boolean,

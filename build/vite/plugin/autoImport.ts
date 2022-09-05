@@ -1,4 +1,5 @@
 import AutoImport from 'unplugin-auto-import/vite'
+import { autoPath } from '.'
 export const autoImport = () => {
   return AutoImport({
     include: [
@@ -14,7 +15,7 @@ export const autoImport = () => {
       '@vueuse/core',
       'pinia',
     ],
-    dts: 'src/config/auto-import.d.ts',
+    dts: autoPath + '/auto-import.d.ts',
     eslintrc: {
       enabled: false, // 默认false, true启用。生成一次就可以，避免每次工程启动都生成
       filepath: './.eslintrc-auto-import.json', // 生成json文件

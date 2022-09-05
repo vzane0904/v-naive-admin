@@ -1,6 +1,7 @@
 import { Plugin } from 'vite'
 import path from 'path'
 import fs from 'fs'
+import { autoPath } from '.'
 
 interface Options {
   /**
@@ -103,6 +104,6 @@ export {}
 
 export function naiveDts() {
   return generateNaiveDts({
-    dts: path.resolve(process.cwd(), 'src/config/naive.d.ts'),
+    dts: path.resolve(process.cwd(), autoPath + '/naive.d.ts'),
   })
 }
