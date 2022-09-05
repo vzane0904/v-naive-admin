@@ -28,8 +28,8 @@ export default function useTabs() {
         disabled: tabFun.closeOwn,
       },
       {
-        label: TabsEmnu.clostLeft,
-        key: TabsEmnu.clostLeft,
+        label: TabsEmnu.closeLeft,
+        key: TabsEmnu.closeLeft,
         icon: renderIcon('zuoce'),
         disabled: tabFun.closeLeft,
       },
@@ -65,13 +65,13 @@ export default function useTabs() {
       tabFun.closeOwn = !store.tabs.filter(
         (i) => i.name === store.selectMenu,
       )[0]?.isClose
-      let index = store.tabs.findIndex((i) => i.name === store.selectMenu)
+      const index = store.tabs.findIndex((i) => i.name === store.selectMenu)
       tabFun.closeLeft =
         store.tabs.slice(0, index).filter((i) => i.isClose).length === 0
       tabFun.closeRight =
         store.tabs.slice(index + 1, store.tabs.length).filter((i) => i.isClose)
           .length === 0
-      let fileOther = store.tabs.filter(
+      const fileOther = store.tabs.filter(
         (i) => i.name !== store.selectMenu && i.isClose,
       )
       if (fileOther.length > 0) {
@@ -109,7 +109,7 @@ export default function useTabs() {
     )
   }
   // 关闭左侧
-  const deleteleft = () => {
+  const deleteLeft = () => {
     const index = store.tabs.findIndex((i) => i.name === store.selectMenu)
     const saveNoClose = store.tabs.slice(0, index).filter((i) => !i.isClose)
     store.tabs.splice(0, index, ...saveNoClose)
@@ -131,8 +131,8 @@ export default function useTabs() {
       case TabsEmnu.closeTab:
         closeTabs(store.tabs.filter((i) => store.selectMenu === i.name)[0])
         break
-      case TabsEmnu.clostLeft:
-        deleteleft()
+      case TabsEmnu.closeLeft:
+        deleteLeft()
         break
       case TabsEmnu.closeRight:
         deleteRight()
@@ -152,7 +152,7 @@ export default function useTabs() {
     refreshRoute,
     deleteAll,
     deleteOther,
-    deleteleft,
+    deleteLeft,
     deleteRight,
     rightFun,
     tabFun,

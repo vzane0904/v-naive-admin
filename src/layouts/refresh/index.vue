@@ -2,7 +2,7 @@
 import { baseHome } from '@/config'
 import { configStore } from '@/pinia/config'
 export default defineComponent({
-  name: 'Redirect',
+  name: 'Refresh',
   setup() {
     const router = useRouter()
     const route = useRoute()

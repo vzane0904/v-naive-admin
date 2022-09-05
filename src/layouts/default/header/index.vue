@@ -1,9 +1,10 @@
+<script lang="tsx">
 import { themeStore } from '@/pinia/theme'
-import { Fold } from './fold'
-import { FunArea } from './right'
-import { Logo } from '../logo'
+import Fold from './fold.vue'
+import FunArea from './right.vue'
+import Logo from '../logo/index.vue'
 import { colorFFF } from '@/config'
-export const LayoutHeader = defineComponent({
+export default defineComponent({
   name: 'LayoutHeader',
   setup() {
     const store = themeStore()
@@ -22,3 +23,4 @@ export const LayoutHeader = defineComponent({
     )
   },
 })
+</script>

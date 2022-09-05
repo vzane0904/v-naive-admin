@@ -10,6 +10,7 @@ specifiers:
   '@types/js-cookie': ^3.0.1
   '@types/lodash-es': ^4.17.6
   '@types/mockjs': ^1.0.6
+  '@types/node': ^18.7.15
   '@types/nprogress': ^0.2.0
   '@types/qs': ^6.9.7
   '@typescript-eslint/eslint-plugin': ^5.13.0
@@ -114,6 +115,7 @@ devDependencies:
   '@types/js-cookie': 3.0.1
   '@types/lodash-es': 4.17.6
   '@types/mockjs': 1.0.6
+  '@types/node': 18.7.15
   '@types/nprogress': 0.2.0
   '@types/qs': 6.9.7
   '@typescript-eslint/eslint-plugin': 5.15.0_ctaf7e5oyfhqjfofu2cysegazq
@@ -583,10 +585,10 @@ packages:
       '@commitlint/execute-rule': 16.2.1
       '@commitlint/resolve-extends': 16.2.1
       '@commitlint/types': 16.2.1
-      '@types/node': 17.0.21
+      '@types/node': 18.7.15
       chalk: 4.1.2
       cosmiconfig: 7.0.1
-      cosmiconfig-typescript-loader: 1.0.6_dhztlhmgbqk6rp5sy4wxyzmthi
+      cosmiconfig-typescript-loader: 1.0.6_gyfczjcbzafdhjemewsz4ydhkq
       lodash: 4.17.21
       resolve-from: 5.0.0
       typescript: 4.4.4
@@ -938,7 +940,7 @@ packages:
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 18.7.6
+      '@types/node': 18.7.15
     dev: true
 
   /@types/lodash-es/4.17.6:
@@ -961,16 +963,12 @@ packages:
     resolution: {integrity: sha512-Yu5YlqbYZyqsd6LjO4e8ONJDN9pTSnciHDcRP4teNOh/au2b8helFhgRx+3w8xsTFEnwr9jtfTVJbAx+eYmlHA==}
     dev: true
 
-  /@types/node/17.0.21:
-    resolution: {integrity: sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==}
-    dev: true
-
   /@types/node/17.0.45:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
     dev: false
 
-  /@types/node/18.7.6:
-    resolution: {integrity: sha512-EdxgKRXgYsNITy5mjjXjVE/CS8YENSdhiagGrLqjG0pvA2owgJ6i4l7wy/PFZGC0B1/H20lWKN7ONVDNYDZm7A==}
+  /@types/node/18.7.15:
+    resolution: {integrity: sha512-XnjpaI8Bgc3eBag2Aw4t2Uj/49lLBSStHWfqKvIuXD7FIrZyMLWp8KuAFHAqxMZYTF9l08N1ctUn9YNybZJVmQ==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -992,19 +990,19 @@ packages:
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.7.6
+      '@types/node': 18.7.15
     dev: true
 
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 18.7.6
+      '@types/node': 18.7.15
     dev: true
 
   /@types/svgo/2.6.2:
     resolution: {integrity: sha512-m1SqMc/EDAZ8v0BBX+NmlYytUXtvrMD2/J9LICwnMvAuJwb0GSmACU3XPvcORqE7ghEJA4Mk6NYzpwhQI/biPw==}
     dependencies:
-      '@types/node': 17.0.21
+      '@types/node': 18.7.15
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.15.0_ctaf7e5oyfhqjfofu2cysegazq:
@@ -2242,16 +2240,16 @@ packages:
       vary: 1.1.2
     dev: true
 
-  /cosmiconfig-typescript-loader/1.0.6_dhztlhmgbqk6rp5sy4wxyzmthi:
+  /cosmiconfig-typescript-loader/1.0.6_gyfczjcbzafdhjemewsz4ydhkq:
     resolution: {integrity: sha512-2nEotziYJWtNtoTjKbchj9QrdTT6DBxCvqjNKoDKARw+e2yZmTQCa07uRrykLIZuvSgp69YXLH89UHc0WhdMfQ==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@types/node': '*'
       typescript: '>=3'
     dependencies:
-      '@types/node': 17.0.21
+      '@types/node': 18.7.15
       cosmiconfig: 7.0.1
-      ts-node: 10.7.0_dhztlhmgbqk6rp5sy4wxyzmthi
+      ts-node: 10.7.0_gyfczjcbzafdhjemewsz4ydhkq
       typescript: 4.4.4
     transitivePeerDependencies:
       - '@swc/core'
@@ -6819,7 +6817,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ts-node/10.7.0_dhztlhmgbqk6rp5sy4wxyzmthi:
+  /ts-node/10.7.0_gyfczjcbzafdhjemewsz4ydhkq:
     resolution: {integrity: sha512-TbIGS4xgJoX2i3do417KSaep1uRAW/Lu+WAL2doDHC0D6ummjirVOXU5/7aiZotbQ5p1Zp9tP7U6cYhA0O7M8A==, registry: http://registry.npm.taobao.org/, tarball: http://registry.npm.taobao.org/ts-node/-/ts-node-10.7.0.tgz}
     hasBin: true
     peerDependencies:
@@ -6838,7 +6836,7 @@ packages:
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.2
-      '@types/node': 17.0.21
+      '@types/node': 18.7.15
       acorn: 8.8.0
       acorn-walk: 8.2.0
       arg: 4.1.3

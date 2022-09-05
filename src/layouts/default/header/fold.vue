@@ -1,7 +1,7 @@
+<script lang="tsx">
 import Icon from '@/components/Icon/index.vue'
 import { themeStore } from '@/pinia/theme'
-
-export const Fold = defineComponent({
+export default defineComponent({
   name: 'Fold',
   setup() {
     const store = themeStore()
@@ -18,3 +18,4 @@ export const Fold = defineComponent({
     )
   },
 })
+</script>

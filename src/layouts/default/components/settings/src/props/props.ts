@@ -16,7 +16,7 @@ const basicProps = {
 export const FormItemProps = {
   name: {
     type: String,
-    requied: true,
+    required: true,
   },
 }
 export const SelectProps = {

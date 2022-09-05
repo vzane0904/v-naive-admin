@@ -1,3 +1,4 @@
+<script lang="tsx">
 import Icon from '@/components/Icon/index.vue'
 import { themeStore } from '@/pinia/theme'
 export default defineComponent({
@@ -17,3 +18,4 @@ export default defineComponent({
     )
   },
 })
+</script>

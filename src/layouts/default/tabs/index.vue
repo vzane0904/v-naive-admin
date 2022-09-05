@@ -76,3 +76,18 @@ export default defineComponent({
   },
 })
 </script>
+<style lang="less" scope>
+@prefixCls: ~'@{prefix}';
+.@{prefixCls}-tabs{
+&-nav{
+  height: 100%;
+  .v-x-scroll{
+  height: 100%;
+  }
+  &-scroll-content{
+  height: 100%;
+
+  }
+}
+}
+</style>

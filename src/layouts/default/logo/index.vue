@@ -1,8 +1,8 @@
+<script lang="tsx">
 import Svg from '@/components/Svg/index.vue'
 import { themeStore } from '@/pinia/theme'
 // import { NGradientText } from 'naive-ui'
-
-export const Logo = defineComponent({
+export default defineComponent({
   name: 'Logo',
   setup() {
     const store = themeStore()
@@ -32,3 +32,4 @@ export const Logo = defineComponent({
       )
   },
 })
+</script>

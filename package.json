@@ -55,6 +55,7 @@
     "@types/js-cookie": "^3.0.1",
     "@types/lodash-es": "^4.17.6",
     "@types/mockjs": "^1.0.6",
+    "@types/node": "^18.7.15",
     "@types/nprogress": "^0.2.0",
     "@types/qs": "^6.9.7",
     "@typescript-eslint/eslint-plugin": "^5.13.0",

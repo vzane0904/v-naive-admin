@@ -1,4 +1,4 @@
-import { PageSwitch } from '@/components/settingsComp'
+import { PageSwitch } from '../../../settings'
 import { themeStore } from '@/pinia/theme'
 export default defineComponent({
   name: 'PageShow',

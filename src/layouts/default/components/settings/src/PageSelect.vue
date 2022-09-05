@@ -29,9 +29,3 @@ export default defineComponent({
   },
 })
 </script>
-<style lang="less" scoped>
-@prefixCls: ~'@{prefix}';
-// .@{prefixCls}-form-item{
-//   height: 40px;
-// }
-</style>

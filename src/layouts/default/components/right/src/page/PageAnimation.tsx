@@ -1,4 +1,4 @@
-import { PageSelect, PageSwitch } from '@/components/settingsComp'
+import { PageSelect, PageSwitch } from '../../../settings'
 import { themeStore } from '@/pinia/theme'
 import { AnimationType } from '../config'
 export default defineComponent({

@@ -33,7 +33,7 @@ const redirect = {
     {
       path: '/redirect/:path(.*)',
       name: 'redirect',
-      component: () => import('@/components/config/src/redirect.vue'),
+      component: () => import('@/layouts/refresh/index.vue'),
       meta: {
         title: '刷新中',
       },

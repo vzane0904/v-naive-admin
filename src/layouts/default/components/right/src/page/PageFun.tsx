@@ -1,4 +1,4 @@
-import { PageInputNum, PageSelect, PageSwitch } from '@/components/settingsComp'
+import { PageInputNum, PageSelect, PageSwitch } from '../../../settings'
 import { themeStore } from '@/pinia/theme'
 import { MenuFold } from '../config'
 export default defineComponent({

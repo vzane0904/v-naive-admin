@@ -13,7 +13,7 @@ export const baseHomeOpenMenu = ['/home']
 // 是否每次刷新页面都请求权限接口
 export const onLoadGetPermission = true
 // 路由模式
-export let permissionMode = RoleEnum.MOVE
+export const permissionMode = RoleEnum.MOVE
 // 不添加到tabs中
 export const noAddTabs = ['redirectPath', 'redirect', '404', 'login', 'login1']
 /**
@@ -63,3 +63,22 @@ export const axiosAddTime = [
 export const axiosTokenName = 'X-Access-Token'
 // 白色变量
 export const colorFFF = '#ffffff'
+// 布局配置
+export const LayoutOptions = [
+  {
+    id: 1,
+    name: '左侧菜单模式',
+  },
+  {
+    id: 2,
+    name: '顶部菜单混合模式',
+  },
+  {
+    id: 3,
+    name: '顶部菜单模式',
+  },
+  {
+    id: 4,
+    name: '左侧菜单混合模式',
+  },
+]

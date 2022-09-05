@@ -1,3 +1,4 @@
+<script lang="tsx">
 import {
   Screen,
   Language,
@@ -5,7 +6,7 @@ import {
   Settings,
 } from '@/layouts/default/components/right'
 import { themeStore } from '@/pinia/theme'
-export const FunArea = defineComponent({
+export default defineComponent({
   name: 'FunArea',
   setup() {
     const store = themeStore()
@@ -19,3 +20,4 @@ export const FunArea = defineComponent({
     )
   },
 })
+</script>

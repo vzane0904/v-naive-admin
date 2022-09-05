@@ -53,7 +53,7 @@ export function generateNaiveDts(options: Options): Plugin {
         })
       })
     })
-
+    // .slice(9, 10)
     await Promise.allSettled(componentsDtsPromises).then((results) => {
       results.map((res) => {
         // find export start with N name
@@ -65,7 +65,16 @@ export function generateNaiveDts(options: Options): Plugin {
           res.value.matchAll(
             /export\s*\{\s*[\w_$\s,]*(?<!N)\s+(N[\w_$]+)[\w_$\s,]*\s*\}/g,
           ),
-        ).map((items) => items?.[1] ?? '')
+        ).map((items) => {
+          let name = items[1]
+          if (!name) {
+            return ''
+          }
+          if (name.slice(0, 2) === 'Nx') {
+            name = 'N' + name.slice(2)
+          }
+          return name
+        })
 
         componentsNames.push(...names)
       })

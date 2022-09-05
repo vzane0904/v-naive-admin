@@ -1,9 +1,10 @@
+<script lang="tsx">
 import { colorFFF } from '@/config'
 import { themeStore } from '@/pinia/theme'
-import { Logo } from '../logo'
+import Logo from '../logo/index.vue'
 import MenuLeft from '../menu/index.vue'
-import Trigger from './trigger'
-export const Layoutsider = defineComponent({
+import Trigger from './trigger.vue'
+export default defineComponent({
   name: 'Layoutsider',
   setup() {
     const store = themeStore()
@@ -25,3 +26,4 @@ export const Layoutsider = defineComponent({
       )
   },
 })
+</script>
