@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { defineComponent } from 'vue'
 import { FormItemComp } from './FormItem'
 import { SwitchProps } from './props/props'
 

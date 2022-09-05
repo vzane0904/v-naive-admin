@@ -1,4 +1,3 @@
-import { defineComponent } from 'vue'
 import {
   Screen,
   Language,

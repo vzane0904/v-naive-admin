@@ -1,7 +1,6 @@
 import Svg from '@/components/Svg/index.vue'
 import { themeStore } from '@/pinia/theme'
 // import { NGradientText } from 'naive-ui'
-import { defineComponent } from 'vue'
 
 export const Logo = defineComponent({
   name: 'Logo',

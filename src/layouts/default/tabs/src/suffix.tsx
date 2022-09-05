@@ -1,6 +1,5 @@
-import { defineComponent } from 'vue'
 import Icon from '@/components/Icon/index.vue'
-import { DropdownOption, NButton, NDropdown } from 'naive-ui'
+import { DropdownOption } from 'naive-ui'
 import useTabs from './utils'
 import { configStore } from '@/pinia/config'
 import { themeStore } from '@/pinia/theme'

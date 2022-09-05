@@ -1,8 +1,6 @@
-import { defineComponent } from 'vue'
 import { PageInputNum, PageSelect, PageSwitch } from '@/components/settingsComp'
 import { themeStore } from '@/pinia/theme'
 import { MenuFold } from '../config'
-import { NDivider } from 'naive-ui'
 export default defineComponent({
   name: 'PageFun',
   setup() {

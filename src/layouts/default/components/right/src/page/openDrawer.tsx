@@ -1,5 +1,3 @@
-import { NDivider, NDrawer, NDrawerContent, NSwitch, NButton } from 'naive-ui'
-import { defineComponent, onMounted, ref } from 'vue'
 import PageTheme from './PageTheme'
 import PageFun from './PageFun'
 import PageShow from './PageShow'

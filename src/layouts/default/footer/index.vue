@@ -1,7 +1,5 @@
 <script lang="tsx">
-import { defineComponent } from 'vue'
 import { themeStore } from '@/pinia/theme'
-import { NLayoutFooter } from 'naive-ui'
 // import publicIcon from '@/assets/images/public.png'
 export default defineComponent({
   name: 'LayoutFooter',

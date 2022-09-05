@@ -1,5 +1,3 @@
-import { NLayout } from 'naive-ui'
-import { defineComponent } from 'vue'
 import LayoutContent from '../content/index.vue'
 import { LayoutHeader } from '../header'
 import { Layoutsider } from '../sider'

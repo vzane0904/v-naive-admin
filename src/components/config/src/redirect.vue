@@ -1,8 +1,6 @@
 <script lang="tsx">
 import { baseHome } from '@/config'
 import { configStore } from '@/pinia/config'
-import { defineComponent } from 'vue'
-import { useRouter } from 'vue-router'
 export default defineComponent({
   name: 'Redirect',
   setup() {

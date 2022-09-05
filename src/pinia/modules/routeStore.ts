@@ -12,7 +12,6 @@ export const routeStore = defineStore({
     menuList: [], //菜单
     auth: [], //权限
     selectMenu: baseHome, //首页路径
-    openMenu: <Array<string>>[...baseHomeOpenMenu],
     tabs: <Array<TabsType>>[
       {
         name: baseHome,
@@ -33,7 +32,6 @@ export const routeStore = defineStore({
           'originalData',
           'auth',
           // 'selectMenu',
-          'openMenu',
           'tabs',
           'role',
         ],

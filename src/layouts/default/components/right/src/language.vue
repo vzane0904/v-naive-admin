@@ -1,6 +1,4 @@
 <script lang="tsx">
-import { defineComponent } from 'vue'
-import { NDropdown } from 'naive-ui'
 import Icon from '@/components/Icon/index.vue'
 import { themeStore } from '@/pinia/theme'
 import { LangOptions } from './config'

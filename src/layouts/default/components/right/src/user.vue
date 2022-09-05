@@ -1,6 +1,5 @@
 <script lang="tsx">
 import { DropdownOption } from 'naive-ui'
-import { defineComponent } from 'vue'
 import useImg from '@/assets/images/user.png'
 import { UserOptions } from './config'
 export default defineComponent({

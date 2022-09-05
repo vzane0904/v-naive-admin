@@ -1,7 +1,5 @@
-import { defineComponent } from 'vue'
 import { PageSwitch } from '@/components/settingsComp'
 import { themeStore } from '@/pinia/theme'
-import { NDivider } from 'naive-ui'
 export default defineComponent({
   name: 'PageShow',
   setup() {

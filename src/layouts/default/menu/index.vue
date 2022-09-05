@@ -5,7 +5,6 @@ import { useData } from './data'
 import { themeStore } from '@/pinia/theme'
 import { routeStore } from '@/pinia/modules/routeStore'
 import { colorFFF } from '@/config'
-import { router } from '@/router'
 import { refStore } from '@/pinia/ref'
 export default defineComponent({
   name: 'MenuLeft',
@@ -16,11 +15,7 @@ export default defineComponent({
     const { siderColor, siderFold, collapsedWidth, isAccordion } = storeToRefs(
       themeStore(),
     )
-    const current = router.currentRoute
     const currentRoute = useRoute()
-    onMounted(() => {
-      refState.setMenuSelect(current.value.path)
-    })
     watch(
       () => currentRoute.matched,
       (val) => (selectMenu.value = val.slice(-1)[0].path),

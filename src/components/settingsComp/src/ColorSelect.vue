@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { defineComponent } from 'vue'
 import { ColorProps } from './props/props'
 import Icon from '@/components/Icon/index.vue'
 export default defineComponent({

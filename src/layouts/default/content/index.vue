@@ -10,7 +10,6 @@
 </template>
 <script lang="ts" setup>
 import { themeStore } from '@/pinia/theme'
-import { RouterView } from 'vue-router'
 import LayoutFooter from '../footer/index.vue'
 import Tabs from '../tabs/index.vue'
 import BackTop from '../backTop/index.vue'

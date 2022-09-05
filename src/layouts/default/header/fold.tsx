@@ -1,6 +1,5 @@
 import Icon from '@/components/Icon/index.vue'
 import { themeStore } from '@/pinia/theme'
-import { defineComponent } from 'vue'
 
 export const Fold = defineComponent({
   name: 'Fold',

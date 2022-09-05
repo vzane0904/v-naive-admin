@@ -1,8 +1,6 @@
-import { defineComponent } from 'vue'
 import { PageSelect, PageSwitch } from '@/components/settingsComp'
 import { themeStore } from '@/pinia/theme'
 import { AnimationType } from '../config'
-import { NDivider } from 'naive-ui'
 export default defineComponent({
   name: 'PageAnimation',
   setup() {

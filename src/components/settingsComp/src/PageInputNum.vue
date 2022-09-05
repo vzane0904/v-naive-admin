@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { defineComponent } from 'vue'
 import { InputNumProps } from './props/props'
 
 export default defineComponent({

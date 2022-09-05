@@ -1,8 +1,6 @@
 <script lang="tsx">
-import { defineComponent } from 'vue'
 import { Suffix } from './src/suffix'
 import Icon from '@/components/Icon/index.vue'
-import { useRouter } from 'vue-router'
 import useTabs from './src/utils'
 import { routeStore } from '@/pinia/modules/routeStore'
 import { themeStore } from '@/pinia/theme'
@@ -60,7 +58,7 @@ export default defineComponent({
                             class="ml-10px mt-0px"
                             onClick={(e: Event | undefined) => {
                               closeTabs(item)
-                              let ev: any = e || window.event
+                              const ev: any = e || window.event
                               ev.stopPropagation()
                             }}
                           />

@@ -1,5 +1,3 @@
-import { NFormItem } from 'naive-ui'
-import { defineComponent } from 'vue'
 import { FormItemProps } from './props/props'
 
 export const FormItemComp = defineComponent({

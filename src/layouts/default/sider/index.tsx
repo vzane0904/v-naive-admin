@@ -1,7 +1,5 @@
 import { colorFFF } from '@/config'
 import { themeStore } from '@/pinia/theme'
-import { NLayoutSider } from 'naive-ui'
-import { defineComponent } from 'vue'
 import { Logo } from '../logo'
 import MenuLeft from '../menu/index.vue'
 import Trigger from './trigger'

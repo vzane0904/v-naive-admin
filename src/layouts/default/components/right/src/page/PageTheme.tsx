@@ -1,5 +1,3 @@
-import { defineComponent } from 'vue'
-import { NDivider } from 'naive-ui'
 import { ColorSelect, PageLayout } from '@/components/settingsComp'
 import { themeColor, headerColor, siderColor } from '../config'
 import { themeStore } from '@/pinia/theme'

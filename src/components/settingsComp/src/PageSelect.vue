@@ -1,12 +1,11 @@
 <script lang="tsx">
-import { defineComponent, toRef } from 'vue'
 import { SelectProps } from './props/props'
 export default defineComponent({
   name: 'PageSelect',
   props: SelectProps,
   emits: ['update:model'],
   setup(props, { emit }) {
-    let val = toRef(props, 'model')
+    const val = toRef(props, 'model')
     return () => (
       <NFormItem
         label={props.name}

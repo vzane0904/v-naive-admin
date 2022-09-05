@@ -1,6 +1,5 @@
 <script lang="tsx">
 import Icon from '@/components/Icon/index.vue'
-import { defineComponent, ref } from 'vue'
 import OpenDrawer from './page/openDrawer'
 interface RefType {
   active: boolean

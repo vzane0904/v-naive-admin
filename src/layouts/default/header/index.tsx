@@ -1,6 +1,4 @@
-import { defineComponent } from 'vue'
 import { themeStore } from '@/pinia/theme'
-import { NLayoutHeader } from 'naive-ui'
 import { Fold } from './fold'
 import { FunArea } from './right'
 import { Logo } from '../logo'
