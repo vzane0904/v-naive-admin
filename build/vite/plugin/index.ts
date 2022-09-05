@@ -16,8 +16,8 @@ import { importImgs } from './importImgs'
 import OptimizationPersist from 'vite-plugin-optimize-persist'
 import PkgConfig from 'vite-plugin-package-config'
 import { autoImport } from './autoImport'
-import visualizer from 'rollup-plugin-visualizer'
 import { naiveDts } from './generateNaiveDts'
+import { buildVisualizer } from './buildVisualizer'
 
 export const createPlugin = (
   viteEnv: ViteEnv,
@@ -59,14 +59,6 @@ export const createPlugin = (
   vitePlugins.push(PkgConfig())
   vitePlugins.push(OptimizationPersist())
   // rollup打包分析插件
-  if (isBuild && VITE_APP_ANALYSIS) {
-    vitePlugins.push(
-      visualizer({
-        open: true,
-        gzipSize: true,
-        brotliSize: true,
-      }),
-    )
-  }
+  isBuild && VITE_APP_ANALYSIS && vitePlugins.push(buildVisualizer())
   return vitePlugins
 }

@@ -1,11 +1,6 @@
-module.exports = {
+const { defineConfig } = require('eslint-define-config')
+module.exports = defineConfig({
   root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-    es6: true,
-  },
   // parser: '@typescript-eslint/parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -16,6 +11,20 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+  },
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+    es6: true,
+    // 解决 defineProps and defineEmits generate no-undef warnings
+    'vue/setup-compiler-macros': true,
+  },
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineComponent: 'readonly',
+    defineExpose: 'readonly',
   },
   extends: [
     'eslint:recommended',
@@ -75,6 +84,15 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 'off',
     'vue/attribute-hyphenation': 'off',
     'vue/require-default-prop': 'off',
+    // 优先使用驼峰，element 组件除外
+    'vue/component-name-in-template-casing': [
+      'error',
+      'PascalCase',
+      {
+        ignores: ['/^n-/', '/^router-/'],
+        registeredComponentsOnly: false,
+      },
+    ],
     'vue/html-self-closing': [
       'error',
       {
@@ -212,7 +230,7 @@ module.exports = {
     'block-scoped-var': 0, //块语句中使用var
     'brace-style': [1, '1tbs'], //大括号风格
     'callback-return': 1, //避免多次调用回调什么的
-    camelcase: 2, //强制驼峰法命名
+    camelcase: ['error', { properties: 'always' }], //强制驼峰法命名
     'comma-style': [2, 'last'], //逗号风格，换行时在行首还是行尾
     'computed-property-spacing': [0, 'never'], //是否允许计算后的键名什么的
     'consistent-return': 0, //return 后面是否允许省略
@@ -242,7 +260,13 @@ module.exports = {
     'one-var': 0, //连续声明
     'operator-assignment': [0, 'always'], //赋值运算符 += -=什么的
     'padded-blocks': 0, //块语句内行首行尾是否要空行
-    'prefer-const': 0, //首选const
+    'prefer-const': [
+      'error',
+      {
+        destructuring: 'any',
+        ignoreReadBeforeAssign: false,
+      },
+    ], //首选const
     'prefer-spread': 0, //首选展开运算
     'prefer-reflect': 0, //首选Reflect的方法
     radix: 2, //parseInt必须指定第二个参数
@@ -266,10 +290,5 @@ module.exports = {
     'wrap-regex': 0, //正则表达式字面量用小括号包起来
     yoda: [2, 'never'], //禁止尤达条件
   },
-  globals: {
-    defineProps: 'readonly',
-    defineEmits: 'readonly',
-    defineComponent: 'readonly',
-    defineExpose: 'readonly',
-  },
-}
+
+})

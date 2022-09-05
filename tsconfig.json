@@ -12,7 +12,7 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "lib": ["ES2018.Promise", "dom", "esnext"],
-    "types": ["vite/client"],
+    "types": ["vite/client", "naive-ui/volar"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
