@@ -16,8 +16,10 @@ export const router = createRouter({
   strict: true,
 })
 export async function setRoute(app: App<Element>) {
+  // @ts-ignore
   if (permissionMode === RoleEnum.ROLE) {
     roleStaticRoutes()
+    // @ts-ignore
   } else if (permissionMode === RoleEnum.BACK) {
     backStaticRoutes()
   }
@@ -25,6 +27,7 @@ export async function setRoute(app: App<Element>) {
   app.use(router)
   if (onLoadGetPermission && permissionMode === RoleEnum.MOVE) {
     await getMoveRoutes()
+    // @ts-ignore
   } else if (permissionMode === RoleEnum.BACK) {
     await backStaticRoutes()
     getBackRoutes()

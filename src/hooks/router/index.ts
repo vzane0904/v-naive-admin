@@ -1,10 +1,11 @@
 import { logError, logWarn } from '@/utils/log'
 import { Router } from 'vue-router'
+import { router as rootRouter } from '@/router'
 const handleError = (e: Error) => logError(e)
-export const useGo = (_router: Router) => {
+export const useGo = (_router?: Router) => {
   let router = _router
   if (!router) {
-    router = useRouter()
+    router = rootRouter
   }
   const { push, replace } = router
   const go = (option: string, isReplace = false) => {

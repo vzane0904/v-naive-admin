@@ -1,5 +1,7 @@
 import { colorFFF } from '@/config'
 import { Locale } from '@/enum/locale'
+import { useGo } from '@/hooks/router'
+import { routeStore } from '@/pinia/modules/routeStore'
 import { useProfileStore } from '@/pinia/user'
 import { DropdownOption } from 'naive-ui'
 import { SelectMixedOption } from 'naive-ui/lib/select/src/interface'
@@ -98,7 +100,11 @@ export const UserOptions = [
     fn: (key: string | number, option: DropdownOption) => {
       console.log(key, option)
       const useStore = useProfileStore()
+      const router = routeStore()
       useStore.token = ''
+      const go = useGo()
+      go('/login')
+      router.$reset()
     },
   },
 ]

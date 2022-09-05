@@ -9,7 +9,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "pnpm install || yarn install && pnpm run prepare",
+    "bootstrap": "pnpm install && pnpm run prepare",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",

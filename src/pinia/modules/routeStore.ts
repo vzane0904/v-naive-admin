@@ -1,4 +1,4 @@
-import { baseHome, baseHomeOpenMenu } from '@/config'
+import { baseHome } from '@/config'
 import { RouteType } from '@/type/route'
 import { defineStore } from 'pinia'
 import { TabsType } from '../type/user'

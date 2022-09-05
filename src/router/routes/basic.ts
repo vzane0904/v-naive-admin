@@ -11,15 +11,6 @@ const login: Array<RouteRecordRaw> = [
       title: 'login',
     },
   },
-  // {
-  //   path: '/login1',
-  //   name: 'login1',
-  //   component: () => import('@/views/login/template2/index.vue'),
-  //   meta: {
-  //     icon: 'ion:grid-outline',
-  //     title: 'login1',
-  //   },
-  // },
 ]
 const redirect = {
   path: '/redirect',

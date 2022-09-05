@@ -8,8 +8,6 @@ export const isFooter = true
 export const isI18n = false
 // basic home path
 export const baseHome = '/movefid'
-// 如果默认首页地址是多级菜单的 需要额外的配置
-export const baseHomeOpenMenu = ['/home']
 // 是否每次刷新页面都请求权限接口
 export const onLoadGetPermission = true
 // 路由模式
@@ -47,7 +45,7 @@ export const carryToken = true
 /**
  *  过滤掉哪些url不需要 token
  **/
-export const filterRequestUrl: Array<string> = ['/login', '/1']
+export const filterRequestUrl: Array<string> = ['/login']
 // 接口默认携带请求时间time字段
 export const axiosTimeName = '_t'
 /**
