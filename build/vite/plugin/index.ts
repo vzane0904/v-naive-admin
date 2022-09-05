@@ -17,6 +17,7 @@ import OptimizationPersist from 'vite-plugin-optimize-persist'
 import PkgConfig from 'vite-plugin-package-config'
 import { autoImport } from './autoImport'
 import visualizer from 'rollup-plugin-visualizer'
+import { naiveDts } from './generateNaiveDts'
 
 export const createPlugin = (
   viteEnv: ViteEnv,
@@ -29,6 +30,8 @@ export const createPlugin = (
     WindiCSS(),
     viteCompression(),
   ]
+  // 把 naive components 声明到全局
+  vitePlugins.push(naiveDts())
   // autoImport  unplugin-auto-import/vite
   vitePlugins.push(autoImport())
   // componentTS  unplugin-vue-components/vite
