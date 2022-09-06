@@ -8,7 +8,7 @@ export const UserNameRules: FormRules = {
         if (!value) {
           return new Error('请输入用户名')
         } else if (!grade.one.test(value)) {
-          return new Error('用户名长度6-12位(字母/数字)')
+          return new Error('用户名长度5-12位(字母/数字)')
         }
         return true
       },

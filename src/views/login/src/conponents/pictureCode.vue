@@ -14,8 +14,8 @@ export default defineComponent({
     const picCode = ref<string>('')
     const getPicCode = async () => {
       picCode.value = ''
-      let { data } = await getPicValidateCode()
-      picCode.value = data.img
+      const { img } = await getPicValidateCode()
+      picCode.value = img
     }
     onMounted(() => {
       getPicCode()

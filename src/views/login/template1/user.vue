@@ -18,12 +18,12 @@ export default defineComponent({
   },
   setup() {
     const formValue: IUseNameLogin = reactive({
-      userName: 'Aa12121', //Mm1212121
-      password: 'Aa12121!', //!aA121212a
-      pictureCode: 'a', //1111
+      userName: 'Admin',
+      password: 'Pass123456!',
+      pictureCode: 'code',
     })
     const model = ref<TargetContext>('user')
-    let { ElRef, validate } = useNameLogin(formValue)
+    const { ElRef, validate } = useNameLogin(formValue)
     const form = () => (
       <>
         <h1 class="mb-12px text-size-30px">

@@ -14,13 +14,12 @@ export const useNameLogin = function (formValue: IUseNameLogin) {
         if (callBack) {
           await callBack()
         }
-        let { success, msg, data } = await userNameLogin(formValue)
+        const { success, msg, data } = await userNameLogin(formValue)
         if (success) {
           const useStore = useProfileStore()
           useStore.$patch({
             token: data.token,
           })
-          // Aa121212!
           if (route.query.redirectPath && route.query.redirectPath !== '/404') {
             router.push(route.query.redirectPath as string)
           } else {

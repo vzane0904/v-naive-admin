@@ -9,7 +9,7 @@ export const componentTS = () => {
     dts: autoPath + '/components.d.ts',
     // dts: false,
     dirs: ['src/components'],
-    deep: false,
+    deep: true,
     globalNamespaces: [],
     directives: true,
     include: [

@@ -36,16 +36,6 @@ import loginBoxBg from '@/assets/images/login-box-bg.svg'
 import logo from '@/assets/images/logo.png'
 import User from './user.vue'
 const title = import.meta.env.VITE_APP_TITLE
-console.log(useRoute().query)
-console.log(useRoute().params)
-const pro = defineProps({
-  type: String,
-  name: String,
-  keys: String,
-})
-console.log(pro.type)
-console.log(pro.name)
-console.log(pro.keys)
 </script>
 <style lang="less" scoped>
 .login {
