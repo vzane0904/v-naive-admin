@@ -16,7 +16,7 @@ export const RenderComponent = (componentName: string): Component => {
   } else if (permissionMode === RoleEnum.MOVE) {
     return () => eval(`import("../../views/${componentName}.vue")`) // 后台返回数据
   } else if (permissionMode === RoleEnum.BACK) {
-    let item = bacoRoutersMap.get(componentName)
+    const item = bacoRoutersMap.get(componentName)
     if (item) {
       return bacoRoutersMap.get(componentName)
     }
@@ -33,6 +33,7 @@ export const transformRoute = (
 
   return routeList
     .map((item: RouteType) => {
+      // @ts-ignore
       if (permissionMode === RoleEnum.ROLE) {
         let next = false
         if (!item.meta.roles) {
@@ -51,7 +52,7 @@ export const transformRoute = (
           return
         }
       }
-      let info = DeepCopy(item)
+      const info = DeepCopy(item)
       info.name = item.path
       info.component = RenderComponent(item.component)
       // info.props = (route: RouteLocationNormalized) => ({
@@ -73,7 +74,7 @@ export const transformRoute = (
 export const addTabs = (to: RouteLocationNormalized) => {
   const store = routeStore()
   let isExistence: Array<TabsType>
-  let { name, path } = to
+  const { name, path } = to
   isExistence = store.tabs.filter((i) => i.name === name && i.path === path)
   if (isExistence.length === 0) {
     //不存在

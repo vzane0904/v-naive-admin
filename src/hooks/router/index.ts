@@ -2,6 +2,12 @@ import { logError, logWarn } from '@/utils/log'
 import { Router } from 'vue-router'
 import { router as rootRouter } from '@/router'
 const handleError = (e: Error) => logError(e)
+/**
+ * @useGo 路由跳转
+ * @push String
+ * @replace String
+ * @returns ()=>Function
+ * **/
 export const useGo = (_router?: Router) => {
   let router = _router
   if (!router) {
@@ -19,15 +25,25 @@ export const useGo = (_router?: Router) => {
   }
   return go
 }
+/**
+ * @useRefresh 刷新
+ * @refresh String
+ * @returns ()=>Function
+ * **/
 export const useRefresh = (_router: Router) => {
   let router = _router
   if (!router) {
     router = useRouter()
   }
-  const { push, currentRoute } = router
+  const { replace, currentRoute } = router
   const { path } = unref(currentRoute.value)
   const refresh = () => {
-    push(path)
+    replace(path)
   }
   return refresh
 }
+/**
+ * @useRouter 获取路由实例
+ * @returns Router
+ * **/
+export const useCustomizeRouter = () => rootRouter

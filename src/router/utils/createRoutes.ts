@@ -13,7 +13,7 @@ export const createRoutes = () => {
     roInfo = transformRoute(store.originalData)
   } else {
     //角色
-    let item = transformRoute(roleRoutesMap)
+    const item = transformRoute(roleRoutesMap)
     if (item) {
       roInfo = store.originalData = item
     }
@@ -26,7 +26,7 @@ export const createRoutes = () => {
       store.routesName.push(item.name)
     } else {
       routeName = item.path.slice(0) + 'Parent'
-      let view = {
+      const view = {
         name: routeName,
         path: '',
         redirect: item.path, //重定向

@@ -11,4 +11,4 @@ export enum RoleEnum {
   ROLE = 'ROLE',
   MOVE = 'MOVE',
 }
-export type roleModel = RoleEnum.BACK | RoleEnum.MOVE | RoleEnum.ROLE
+export type roleModel = `${RoleEnum}`

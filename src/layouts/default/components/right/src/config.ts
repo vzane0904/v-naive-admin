@@ -1,6 +1,6 @@
 import { colorFFF } from '@/config'
 import { Locale } from '@/enum/locale'
-import { useGo } from '@/hooks/router'
+import { useGo, useCustomizeRouter } from '@/hooks/router'
 import { routeStore } from '@/pinia/modules/routeStore'
 import { useProfileStore } from '@/pinia/user'
 import { DropdownOption } from 'naive-ui'
@@ -99,12 +99,16 @@ export const UserOptions = [
     key: '退出登录',
     fn: (key: string | number, option: DropdownOption) => {
       console.log(key, option)
-      const useStore = useProfileStore()
+      const profileStore = useProfileStore()
       const router = routeStore()
-      useStore.token = ''
       const go = useGo()
-      go('/login')
+      const routerCurrent = useCustomizeRouter()
+      for (const item of unref(router.routesName)) {
+        routerCurrent.removeRoute(item)
+      }
+      profileStore.$reset()
       router.$reset()
+      go('/login')
     },
   },
 ]

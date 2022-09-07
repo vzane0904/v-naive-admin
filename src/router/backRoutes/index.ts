@@ -6,9 +6,7 @@ const modules = import.meta.globEager('./**/*.ts')
 export const bacoRoutersMap = new Map()
 export const getBackRoutes = async function () {
   try {
-    let {
-      data: { route, allAuth },
-    } = await oldbackpermissions()
+    const { route, allAuth } = await oldbackpermissions()
     removeRoute()
     const routeStoreValue = routeStore()
     routeStoreValue.$patch({
