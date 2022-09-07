@@ -13,7 +13,7 @@ export default defineComponent({
     })
     setTimeout(() => {
       if (route.params.path) {
-        router.go(-1)
+        router.replace('/' + route.params.path)
       } else {
         router.push(baseHome)
       }

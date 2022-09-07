@@ -90,11 +90,8 @@ export default function useTabs() {
     }
     store.tabs.splice(index, 1)
   }
-  const refreshRoute = () => {
-    console.log(useRoute(), router.currentRoute.value.path)
-
+  const refreshRoute = () =>
     router.push(`/redirect${router.currentRoute.value.path}`)
-  }
   // 关闭全部 OK
   const deleteAll = () => {
     if (store.tabs.filter((i) => i.name === store.selectMenu)[0].isClose) {
