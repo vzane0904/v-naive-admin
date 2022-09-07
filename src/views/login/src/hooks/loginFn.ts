@@ -1,6 +1,7 @@
 import { userNameLogin } from '@/api'
 import { baseHome } from '@/config'
 import { useProfileStore } from '@/pinia/user'
+import { mountNewData } from '@/router/utils/mountRouter'
 import { Fn } from '@vueuse/core'
 import { FormInst } from 'naive-ui'
 import { IUseNameLogin } from '../type'
@@ -14,19 +15,16 @@ export const useNameLogin = function (formValue: IUseNameLogin) {
         if (callBack) {
           await callBack()
         }
-        const { success, msg, data } = await userNameLogin(formValue)
-        if (success) {
-          const useStore = useProfileStore()
-          useStore.$patch({
-            token: data.token,
-          })
-          if (route.query.redirectPath && route.query.redirectPath !== '/404') {
-            router.push(route.query.redirectPath as string)
-          } else {
-            router.push(baseHome)
-          }
+        const { token } = await userNameLogin(formValue)
+        const useStore = useProfileStore()
+        useStore.$patch({
+          token: token,
+        })
+        await mountNewData()
+        if (route.query.redirectPath && route.query.redirectPath !== '/404') {
+          router.push(route.query.redirectPath as string)
         } else {
-          console.log(msg)
+          router.push(baseHome)
         }
       } else {
         if (error) {

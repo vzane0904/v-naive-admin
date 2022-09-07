@@ -5,9 +5,7 @@ import { removeRoute } from '../utils/remove'
 export const getMoveRoutes = async function () {
   try {
     const store = routeStore()
-    let {
-      data: { allAuth, route },
-    } = await permissions()
+    const { allAuth, route } = await permissions()
     await removeRoute()
     store.$patch({
       originalData: route,
