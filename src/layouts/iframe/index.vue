@@ -1,10 +1,9 @@
 <template>
-  <div>iframe</div>
+  <iframe class="w-full h-full" frameborder="0" :src="path"></iframe>
 </template>
 
 <script lang="ts" setup>
-// console.log('query', useRoute().query)
-// console.log('params', useRoute().params)
+const path = useRoute().query.path as string
 </script>
 
 <style lang="less" scoped></style>

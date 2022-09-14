@@ -109,6 +109,7 @@ const themeOverrides = (): GlobalThemeOverrides => {
       peers: {
         Dropdown: {
           padding: '0',
+          borderRadius: '0',
           // 深色
           color: store.layout === 3 ? store.headerColor : store.siderColor, //反转背景颜色
           optionColorActive: 'rgba(255,255,255,.2)', //折叠状态下激活背景颜色

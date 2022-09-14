@@ -1,3 +1,3 @@
-<template><div>首页</div></template>
+<template>1-1-1</template>
 <script lang="ts" setup></script>
 <style scoped></style>

@@ -1,9 +1,5 @@
 import { RequestEnum } from '@/enum/axios'
 import { RoleEnum } from '@/enum/route'
-// tabs显示
-export const isTabs = true
-// footer显示
-export const isFooter = true
 // 是否启用多语言
 export const isI18n = false
 // basic home path
@@ -75,8 +71,8 @@ export const LayoutOptions = [
     id: 3,
     name: '顶部菜单模式',
   },
-  {
-    id: 4,
-    name: '左侧菜单混合模式',
-  },
+  // {
+  //   id: 4,
+  //   name: '左侧菜单混合模式',
+  // },
 ]

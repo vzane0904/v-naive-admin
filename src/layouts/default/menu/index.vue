@@ -22,11 +22,10 @@ export default defineComponent({
     } = storeToRefs(themeStore())
     const currentRoute = useRoute()
     const isInverted = computed(() => {
-      if (layout.value === 1) {
-        return siderColor.value === colorFFF
-      } else if (layout.value === 3) {
+      if (layout.value === 3) {
         return headerColor.value === colorFFF
       }
+      return siderColor.value === colorFFF
     })
     watch(
       () => currentRoute.matched,

@@ -27,26 +27,3 @@ export const register = (params: any) =>
 // 找回密码
 export const retrievePass = (params: any) =>
   http.post(`${baseUrl}/sys/retrievePass`, params)
-// hooks
-// export const useApi = (fn: Function, ...args: any[]) => {
-//   const data = ref([])
-//   const loading = ref(false)
-//   const err = ref(null)
-//   async function update() {
-//     loading.value = true
-//     try {
-//       const { data } = await fn(...args)
-//       data.value = data
-//     } catch (error) {
-//       // err.value = error
-//     } finally {
-//       loading.value = false
-//     }
-//   }
-//   return {
-//     data,
-//     loading,
-//     err,
-//     update,
-//   }
-// }
