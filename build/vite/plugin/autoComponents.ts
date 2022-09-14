@@ -15,7 +15,7 @@ export const componentTS = () => {
     include: [
       /\.vue$/,
       /\.vue\?vue/,
-      /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+      /\.[tj]s[x]?$/, // .ts, .tsx, .js, .jsx
     ],
     exclude: [/[\\/]node_modules[\\/]/, /[\\/]\.git[\\/]/, /[\\/]\.nuxt[\\/]/],
   })

@@ -1,16 +1,22 @@
 import { colorFFF } from '@/config'
-import { Locale } from '@/enum/locale'
+import { Locale, LocaleType } from '@/enum/locale'
+import {
+  headerColor,
+  siderColor,
+  themeColor,
+} from '@/layouts/default/components/right/src/config'
+import { Position } from '@/type/config'
 import { defineStore } from 'pinia'
 export const themeStore = defineStore({
   id: 'themeStore',
   state: () => ({
     theme: false, //主题 darkTheme | light
-    layout: 1, //页面布局模式
-    themeColor: '#409eff', //主题颜色
-    headerColor: colorFFF, //顶部颜色
-    siderColor: '#001529', //左侧菜单颜色
+    layout: 1 as 1 | 2 | 3, //页面布局模式
+    themeColor: '#409eff' as typeof themeColor[number], //主题颜色
+    headerColor: colorFFF as typeof headerColor[number], //顶部颜色
+    siderColor: '#001529' as typeof siderColor[number], //左侧菜单颜色
     siderFold: false, //是否折叠
-    foldBtnPosition: 'top', //折叠菜单按钮位置
+    foldBtnPosition: 'top' as Position, //折叠菜单按钮位置
     isAccordion: true, //手风琴模式
     siderWidth: 210, //正常宽度
     headerHeight: 48, //顶部高度
@@ -23,7 +29,7 @@ export const themeStore = defineStore({
     showFooter: true, //显示footer
     showLanGuaGe: true, //显示多语言切换
     showTopSet: true, //顶部设置按钮
-    language: Locale.ZH_CN,
+    language: Locale.ZH_CN as LocaleType,
     progressBar: true, //进度条
 
     isFullScreen: false, //是否全屏

@@ -14,6 +14,8 @@
     "lib": ["ES2018.Promise", "dom", "esnext"],
     "types": ["vite/client", "naive-ui/volar", "node"],
     "typeRoots": ["./node_modules/@types"],
+    "outDir": "./dist",
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
@@ -26,9 +28,7 @@
       "@utils/*": ["./src/utils/*"],
       "@type/*": ["./src/type/*"],
       "@public/*": ["./public/*"]
-    },
-
-    "outDir": "./dist"
+    }
   },
   "include": [
     "src/**/*.js",

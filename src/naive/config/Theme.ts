@@ -19,9 +19,8 @@ const themeOverrides = (): GlobalThemeOverrides => {
     },
     Menu: {
       borderRadius: '0px',
-
       //白色模式
-      color: store.siderColor, //背景
+      color: store.layout === 3 ? store.headerColor : store.siderColor, //背景
       itemColorActiveInverted: '#0960bd1a', // 激活节点背景颜色
       itemTextColorActiveInverted: '#0960bd', // 激活节点字体颜色
       itemIconColorActiveInverted: '#0960bd', //激活图标颜色
@@ -46,7 +45,7 @@ const themeOverrides = (): GlobalThemeOverrides => {
       itemIconColorCollapsedInverted: '#000000d9',
       // borderRadius: '0px',
       //深色模式
-      colorInverted: store.siderColor, //背景
+      colorInverted: store.layout === 3 ? store.headerColor : store.siderColor, //背景
       /*正常状态*/
       itemTextColor: '#ffffffb3', //一级菜单字体颜色
       itemIconColor: '#ffffffb3', //一级菜单图标颜色
@@ -75,24 +74,61 @@ const themeOverrides = (): GlobalThemeOverrides => {
       arrowColorChildActive: colorFFF, //父节点箭头颜色
       // 折叠状态
       itemIconColorCollapsed: '#ffffffb3', //背景颜色
+      // itemColorActiveCollapsed: '#0960bd0d',
+      // itemColorActiveCollapsedInverted: '#0960bd0d',
+      // 顶部菜单-白色背景
+      itemIconColorHorizontalInverted: '#000000d9', //正常图标颜色
+      itemTextColorHorizontalInverted: '#000000d9', //正常字体颜色
+      itemTextColorActiveHorizontalInverted: '#0960bd', //激活时字体颜色
+      itemIconColorActiveHorizontalInverted: '#0960bd', //激活时图标颜色
+      itemIconColorHoverHorizontalInverted: '#0960bd', //鼠标移入
+      itemTextColorHoverHorizontalInverted: '#0960bd', //鼠标移入
+      itemIconColorActiveHoverHorizontalInverted: '#0960bd', //激活时移入图标颜色
+      itemTextColorActiveHoverHorizontalInverted: '#0960bd', //激活时移入图标颜色
+      // 激活菜单为多级时 父节点配置
+      itemIconColorChildActiveHorizontalInverted: '#0960bd', //父节点icon颜色
+      itemTextColorChildActiveHorizontalInverted: '#0960bd', //父节点文本颜色
+      itemTextColorChildActiveHoverHorizontalInverted: '#0960bd', //选中子节点 鼠标hover父节点时字体颜色
+      itemIconColorChildActiveHoverHorizontalInverted: '#0960bd', //选中子节点 鼠标hover父节点时图标颜色
+      arrowColorChildActiveHoverInverted: '#0960bd', //选中子节点 鼠标hover父节点时箭头颜色
+      // 深色背景
+      itemIconColorHorizontal: '#ffffffb3', //正常图标颜色
+      itemTextColorHorizontal: '#ffffffb3', //正常字体颜色
+      itemTextColorActiveHorizontal: colorFFF, //激活时字体颜色
+      itemIconColorActiveHorizontal: colorFFF, //激活时图标颜色
+      itemIconColorHoverHorizontal: colorFFF, //鼠标移入
+      itemTextColorHoverHorizontal: colorFFF, //鼠标移入
+      itemIconColorActiveHoverHorizontal: colorFFF, //激活时移入图标颜色
+      itemTextColorActiveHoverHorizontal: colorFFF, //激活时移入图标颜色
+      // 激活菜单为多级时 父节点配置
+      itemIconColorChildActiveHorizontal: colorFFF, //父节点icon颜色
+      itemTextColorChildActiveHorizontal: colorFFF, //父节点文本颜色
+      itemTextColorChildActiveHoverHorizontal: colorFFF, //选中子节点 鼠标hover父节点时字体颜色
+      itemIconColorChildActiveHoverHorizontal: colorFFF, //选中子节点 鼠标hover父节点时图标颜色
+      // arrowColorChildActiveHover: colorFFF, //选中子节点 鼠标hover父节点时箭头颜色
       peers: {
         Dropdown: {
           padding: '0',
-          color: store.siderColor, //反转背景颜色
+          // 深色
+          color: store.layout === 3 ? store.headerColor : store.siderColor, //反转背景颜色
           optionColorActive: 'rgba(255,255,255,.2)', //折叠状态下激活背景颜色
           optionColorHover: 'rgba(255,255,255,.2)', //鼠标移入背景颜色
           optionTextColorHover: colorFFF, //鼠标移入文字颜色
           optionTextColorActive: colorFFF, //折叠状态下激活节点字体颜色
           optionTextColor: '#ffffffb3',
           prefixColor: '#ffffffb3', //图标颜色
+          suffixColor: '#ffffffb3', //箭头颜色
+          optionTextColorChildActive: '#fff',
           // 白色 浅颜色
-          colorInverted: store.siderColor, //反转背景颜色
+          colorInverted:
+            store.layout === 3 ? store.headerColor : store.siderColor, //反转背景颜色
           optionColorActiveInverted: '#0960bd1a', //折叠状态下整体背景颜色
           optionColorHoverInverted: '#0960bd1a', //鼠标移入背景颜色
           optionTextColorHoverInverted: '#0960bd', //鼠标移入文字颜色
           optionTextColorActiveInverted: '#0960bd', //折叠状态下激活节点字体颜色
           optionTextColorInverted: '#000000d9', //字体颜色
           prefixColorInverted: '#000000d9', //图标颜色
+          optionTextColorChildActiveInverted: '#0960bd',
         },
       },
     },

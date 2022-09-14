@@ -1,4 +1,8 @@
 /// <reference types="vite/client" />
+import { Recordable } from 'vite-plugin-mock'
+import 'vue'
+export {}
+
 declare module '*.vue' {
   import { DefineComponent } from 'vue'
   const component: DefineComponent<{}, {}, {}, any>
@@ -22,4 +26,15 @@ declare interface ViteEnv {
   VITE_APP_PREFIXCLS: string
   VITE_APP_MOCK: boolean
   VITE_APP_ANALYSIS: boolean
+}
+declare global {
+  const __APP_INFO__: {
+    pkg: {
+      name: string
+      version: string
+      dependencies: Recordable<string>
+      devDependencies: Recordable<string>
+    }
+    lastBuildTime: string
+  }
 }

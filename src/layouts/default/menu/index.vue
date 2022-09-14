@@ -12,10 +12,22 @@ export default defineComponent({
     const { selectMenu, originalData } = storeToRefs(routeStore())
     const refState = refStore()
     const { menuRef } = storeToRefs(refState)
-    const { siderColor, siderFold, collapsedWidth, isAccordion } = storeToRefs(
-      themeStore(),
-    )
+    const {
+      siderColor,
+      siderFold,
+      collapsedWidth,
+      isAccordion,
+      layout,
+      headerColor,
+    } = storeToRefs(themeStore())
     const currentRoute = useRoute()
+    const isInverted = computed(() => {
+      if (layout.value === 1) {
+        return siderColor.value === colorFFF
+      } else if (layout.value === 3) {
+        return headerColor.value === colorFFF
+      }
+    })
     watch(
       () => currentRoute.matched,
       (val) => (selectMenu.value = val.slice(-1)[0].path),
@@ -26,13 +38,14 @@ export default defineComponent({
     return () => (
       <NMenu
         ref={menuRef}
-        inverted={siderColor.value === colorFFF}
+        inverted={isInverted.value}
         collapsed={siderFold.value}
         value={selectMenu.value}
         options={useData(originalData.value)}
         collapsed-width={collapsedWidth.value}
         accordion={isAccordion.value}
         indent={16}
+        mode={layout.value === 3 ? 'horizontal' : 'vertical'}
       ></NMenu>
     )
   },

@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 import viteCompression from 'vite-plugin-compression'
 // import { autoImport } from './autoImport'
-import { componentTS } from './componen'
+import { componentTS } from './autoComponents'
 // import { theme } from "./theme"
 import { icons } from './icons'
 import { html } from './html'
@@ -24,7 +24,7 @@ export const createPlugin = (
   isBuild: boolean,
   command: string,
 ) => {
-  let { VITE_APP_TITLE, VITE_APP_MOCK, VITE_APP_ANALYSIS } = viteEnv
+  const { VITE_APP_TITLE, VITE_APP_MOCK, VITE_APP_ANALYSIS } = viteEnv
   const vitePlugins: (Plugin | Plugin[])[] = [
     vue(),
     WindiCSS(),
@@ -59,6 +59,7 @@ export const createPlugin = (
   vitePlugins.push(PkgConfig())
   vitePlugins.push(OptimizationPersist())
   // rollup打包分析插件
-  isBuild && VITE_APP_ANALYSIS && vitePlugins.push(buildVisualizer())
+  // eslint-disable-next-line no-unused-expressions
+  VITE_APP_ANALYSIS && isBuild && vitePlugins.push(buildVisualizer())
   return vitePlugins
 }

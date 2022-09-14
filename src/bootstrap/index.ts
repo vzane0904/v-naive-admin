@@ -1,5 +1,4 @@
 import { App } from 'vue'
-import 'default-passive-events'
 import { setupPinia } from '@/pinia'
 import { setRoute } from '@/router'
 import { getFullScreen } from '@/utils/fullScreen'
