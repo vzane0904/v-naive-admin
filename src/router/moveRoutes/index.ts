@@ -3,7 +3,10 @@ import { routeStore } from '@/pinia/modules/routeStore'
 import { createRoutes } from '../utils/createRoutes'
 import { removeRoute } from '../utils/remove'
 const modules = import.meta.globEager('./**/*.ts')
+const router404Components = () => import('@/layouts/error/router404.vue')
+export const errSymbol = Symbol('router404Components')
 export const moveRoutersMap = new Map()
+moveRoutersMap.set(errSymbol, router404Components)
 export const getMoveRoutes = async function () {
   try {
     const { route, allAuth } = await oldbackpermissions()

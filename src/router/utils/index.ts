@@ -5,7 +5,7 @@ import { Component } from '@/type/component'
 import { RouteType } from '@/type/route'
 import { DeepCopy } from '@/utils'
 import { RouteLocationNormalized } from 'vue-router'
-import { moveRoutersMap } from '../moveRoutes'
+import { errSymbol, moveRoutersMap } from '../moveRoutes'
 
 export const RenderComponent = (componentName: string): Component => {
   if (componentName === 'view') {
@@ -21,9 +21,12 @@ export const RenderComponent = (componentName: string): Component => {
       return moveRoutersMap.get(componentName)
     }
     console.warn(`找不到${componentName}文件`)
+    // 找不到时使用通用页面
+    return moveRoutersMap.get(errSymbol)
   } else if (permissionMode === RoleEnum.BACK) {
     return () => eval(`import("../../views/${componentName}.vue")`) // 后台返回数据
   }
+  //
   // @ts-ignore
   if (permissionMode === RoleEnum.ROLE) {
     return componentName
