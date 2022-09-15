@@ -8,7 +8,8 @@
 import Login1 from './template1/index.vue'
 import Login2 from './template2/index.vue'
 import Theme from './src/conponents/Theme.vue'
-const loginTemplate = ref(1)
+import { configStore } from '@/pinia/modules/config'
+const { loginTemplate } = storeToRefs(configStore())
 </script>
 
 <style lang="scss" scoped></style>

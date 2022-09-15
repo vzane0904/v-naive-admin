@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "528254",
+      "name": "切换退出",
+      "font_class": "qiehuantuichu",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
       "icon_id": "11761426",
       "name": "夜晚",
       "font_class": "day",
