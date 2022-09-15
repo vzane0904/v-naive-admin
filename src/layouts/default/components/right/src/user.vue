@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { DropdownOption } from 'naive-ui'
 import useImg from '@/assets/images/user.png'
-import { UserOptions } from './config'
+import { userOptions } from './config'
 export default defineComponent({
   name: 'User',
   setup() {
@@ -10,7 +10,7 @@ export default defineComponent({
       <>
         <div class={'mr-14px h-1/1 flex items-center cursor-pointer'}>
           <NDropdown
-            options={UserOptions}
+            options={userOptions}
             class={'inp-out'}
             on-select={(key: string | number, option: DropdownOption) => {
               option.fn(key, option)

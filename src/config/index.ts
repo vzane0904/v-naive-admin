@@ -1,10 +1,18 @@
 import { RequestEnum } from '@/enum/axios'
 import { RoleEnum } from '@/enum/route'
-// 是否启用多语言
+import { SelectMixedOption } from 'naive-ui/lib/select/src/interface'
+import { Locale } from '@/enum/locale'
+/**
+ * @names 是否启用多语言
+ * **/
 export const isI18n = false
-// basic home path
+/**
+ * @names basic home path
+ * **/
 export const baseHome = '/home'
-// 是否每次刷新页面都请求权限接口
+/**
+ * @names 是否每次刷新页面都请求权限接口
+ * **/
 export const onLoadGetPermission = true
 /**
 * @name 路由模式 => 使用方式
@@ -40,7 +48,9 @@ export const carryToken = true
  *  过滤掉哪些url不需要 token
  **/
 export const filterRequestUrl: Array<string> = ['/login']
-// 接口默认携带请求时间time字段
+/**
+ * @names 接口默认携带请求时间time字段
+ * **/
 export const axiosTimeName = '_t'
 /**
  *  设置对应的请求参数中放入时间戳
@@ -51,11 +61,17 @@ export const axiosAddTime = [
   RequestEnum.HEAD,
   RequestEnum.OPTIONS,
 ]
-// 自定义token字段
+/**
+ * @names 自定义token字段
+ * **/
 export const axiosTokenName = 'X-Access-Token'
-// 白色变量
+/**
+ * @names 白色变量
+ * **/
 export const colorFFF = '#ffffff'
-// 布局配置
+/**
+ * @names 布局配置
+ * **/
 export const LayoutOptions = [
   {
     id: 1,
@@ -73,4 +89,113 @@ export const LayoutOptions = [
   //   id: 4,
   //   name: '左侧菜单混合模式',
   // },
+]
+/**
+ * @names 主题颜色
+ * @Tips 不建议更改颜色
+ * **/
+export const themeColor = [
+  colorFFF,
+  '#151515',
+  '#009688',
+  '#5172DC',
+  '#018ffb',
+  '#409eff',
+  '#e74c3c',
+  '#24292e',
+  '#394664',
+  '#001529',
+  '#383f45',
+] as const
+/**
+ * @names 左侧菜单颜色
+ * @Tips 不建议更改颜色
+ * **/
+export const siderColor = [
+  colorFFF,
+  '#151515',
+  '#009688',
+  '#5172DC',
+  '#018ffb',
+  '#409eff',
+  '#e74c3c',
+  '#24292e',
+  '#394664',
+  '#001529',
+  '#383f45',
+] as const
+/**
+ * @names 顶部菜单颜色
+ * @Tips 不建议更改颜色
+ * **/
+export const headerColor = [
+  '#018ffb',
+  '#212121',
+  '#009688',
+  colorFFF,
+  '#5172dc',
+  '#191a23',
+  '#304156',
+  '#28333E',
+  '#344058',
+  '#383f45',
+] as const
+/**
+ * @names 多语言
+ * **/
+export const LangOptions = [
+  {
+    label: '简体中文',
+    key: Locale.ZH_CN,
+  },
+  {
+    label: '中国台湾(繁体)',
+    key: Locale.ZH_TW,
+  },
+  // {
+  //   label: '香港',
+  //   key: Locale.ZH_HK,
+  // },
+  {
+    label: 'English',
+    key: Locale.EN,
+  },
+  {
+    label: '俄罗斯语',
+    key: Locale.RU,
+  },
+]
+/**
+ * @names 控制折叠左侧菜单按钮位置
+ * **/
+export const MenuFold: Array<SelectMixedOption> = [
+  {
+    label: '不显示',
+    value: 'none',
+  },
+  {
+    label: '顶部',
+    value: 'top',
+  },
+  {
+    label: '底部',
+    value: 'bottom',
+  },
+]
+/**
+ * @names 切换路由动态 暂不支持
+ * **/
+export const AnimationType = [
+  {
+    label: '动画1',
+    value: '动画1',
+  },
+  {
+    label: '动画2',
+    value: '动画2',
+  },
+  {
+    label: '动画3',
+    value: '动画3',
+  },
 ]

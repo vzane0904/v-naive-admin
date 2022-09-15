@@ -1,6 +1,6 @@
 import { PageInputNum, PageSelect, PageSwitch } from '../../../settings'
 import { themeStore } from '@/pinia/modules/theme'
-import { MenuFold } from '../config'
+import { MenuFold } from '@/config'
 export default defineComponent({
   name: 'PageFun',
   setup() {

@@ -1,9 +1,5 @@
 import { LocaleType } from '@/enum/locale'
-import {
-  themeColor,
-  headerColor,
-  siderColor,
-} from '@/layouts/default/components/right/src/config'
+import { themeColor, headerColor, siderColor } from '@/config'
 export type Position = 'top' | 'none' | 'bottom'
 export interface ProjectConfig {
   layout: 1 | 2 | 3 | 4

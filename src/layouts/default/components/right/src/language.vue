@@ -1,7 +1,7 @@
 <script lang="tsx">
 import Icon from '@/components/Icon/index.vue'
 import { themeStore } from '@/pinia/modules/theme'
-import { LangOptions } from './config'
+import { LangOptions } from '@/config'
 import { useI18n } from '@/locales/useLocal'
 export default defineComponent({
   name: 'Language',

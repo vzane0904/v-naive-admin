@@ -1,10 +1,6 @@
 import { colorFFF } from '@/config'
 import { Locale, LocaleType } from '@/enum/locale'
-import {
-  headerColor,
-  siderColor,
-  themeColor,
-} from '@/layouts/default/components/right/src/config'
+import { headerColor, siderColor, themeColor } from '@/config'
 import { Position } from '@/type/config'
 import { defineStore } from 'pinia'
 export const themeStore = defineStore({
