@@ -1,3 +1,3 @@
-<template>1-1-1</template>
+<template><Content> 1-1-1 </Content></template>
 <script lang="ts" setup></script>
 <style scoped></style>

@@ -1,16 +1,7 @@
 <template>
-  <div>菜单管理</div>
+  <Content> 菜单管理 </Content>
 </template>
 
-<script lang="ts">
-import config from '/package.json'
-export default defineComponent({
-  setup() {
-    console.log(config)
-
-    return {}
-  },
-})
-</script>
+<script lang="ts"></script>
 
 <style scoped></style>

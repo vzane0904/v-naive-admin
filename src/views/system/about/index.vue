@@ -1,6 +1,4 @@
-<template>
-  <div>关于xx</div>
-</template>
+<template><Content> 关于xx </Content></template>
 
 <script lang="ts">
 // import config from '/package.json'

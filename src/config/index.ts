@@ -3,13 +3,18 @@ import { RoleEnum } from '@/enum/route'
 // 是否启用多语言
 export const isI18n = false
 // basic home path
-export const baseHome = '/movefid'
+export const baseHome = '/home'
 // 是否每次刷新页面都请求权限接口
 export const onLoadGetPermission = true
-// 路由模式
-export const permissionMode = RoleEnum.MOVE
+/**
+* @name 路由模式 => 使用方式
+  1. 正常路由信息，返回path、和组件名称, 不返回组件地址 会返回当前组件定义的变量 MOVE
+  2. 角色控制,根据角色判断能否进入,需要在路由中配置好,可以数组形式存在 ROLE
+  3. 动态路由,返回信息具体 BACK
+**/
+export const permissionMode = RoleEnum.BACK
 // 不添加到tabs中
-export const noAddTabs = ['redirectPath', 'redirect', '404', 'login', 'login1']
+export const noAddTabs = ['redirectPath', 'redirect', '404', 'login']
 /**
  * @retryErrorCode:  请求异常时，哪些状态码可以直接重试不需要在配置是否重试重试次数等
  * @ params [401, 404,500]
@@ -31,13 +36,6 @@ export const RETRY_OPENRETRY = true
  * @retryErrorCode:  是否携带token
  **/
 export const carryToken = true
-
-/**
-* @name 路由使用方式
-  1. 正常路由信息，返回path、和组件名称,不返回组件地址 BACK
-  2. 角色控制,根据角色判断能否进入,需要在路由中配置好,可以数组形式存在 ROLE
-  3. 动态路由,返回信息拿到渲染 move
-**/
 /**
  *  过滤掉哪些url不需要 token
  **/

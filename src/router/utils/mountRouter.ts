@@ -1,7 +1,7 @@
 import { onLoadGetPermission, permissionMode } from '@/config'
 import { RoleEnum } from '@/enum/route'
-import { backStaticRoutes, getBackRoutes } from '../backRoutes'
-import { getMoveRoutes } from '../moveRoutes'
+import { getBackRoutes } from '../backRoutes'
+import { getMoveRoutes, moveStaticRoutes } from '../moveRoutes'
 import { roleStaticRoutes } from '../roleRoutes'
 import { createRoutes } from './createRoutes'
 /**
@@ -13,8 +13,8 @@ export const mountRouter = () => {
   if (permissionMode === RoleEnum.ROLE) {
     roleStaticRoutes()
     // @ts-ignore
-  } else if (permissionMode === RoleEnum.BACK) {
-    backStaticRoutes()
+  } else if (permissionMode === RoleEnum.MOVE) {
+    moveStaticRoutes()
   }
   createRoutes()
 }
@@ -23,11 +23,12 @@ export const mountRouter = () => {
  @returns undefined
 **/
 export const mountNewData = async () => {
+  // @ts-ignore
   if (onLoadGetPermission && permissionMode === RoleEnum.MOVE) {
-    await getMoveRoutes()
+    await moveStaticRoutes()
+    getMoveRoutes()
     // @ts-ignore
   } else if (permissionMode === RoleEnum.BACK) {
-    await backStaticRoutes()
-    getBackRoutes()
+    await getBackRoutes()
   }
 }

@@ -5,7 +5,7 @@ import { Component } from '@/type/component'
 import { RouteType } from '@/type/route'
 import { DeepCopy } from '@/utils'
 import { RouteLocationNormalized } from 'vue-router'
-import { bacoRoutersMap } from '../backRoutes'
+import { moveRoutersMap } from '../moveRoutes'
 
 export const RenderComponent = (componentName: string): Component => {
   if (componentName === 'view') {
@@ -14,15 +14,17 @@ export const RenderComponent = (componentName: string): Component => {
     return () => import(`@/layouts/iframe/index.vue`)
   } else if (componentName === 'routerView') {
     return () => import(`@/layouts/routerView/index.vue`)
+    // @ts-ignore
   } else if (permissionMode === RoleEnum.MOVE) {
-    return () => eval(`import("../../views/${componentName}.vue")`) // 后台返回数据
-  } else if (permissionMode === RoleEnum.BACK) {
-    const item = bacoRoutersMap.get(componentName)
+    const item = moveRoutersMap.get(componentName)
     if (item) {
-      return bacoRoutersMap.get(componentName)
+      return moveRoutersMap.get(componentName)
     }
     console.warn(`找不到${componentName}文件`)
+  } else if (permissionMode === RoleEnum.BACK) {
+    return () => eval(`import("../../views/${componentName}.vue")`) // 后台返回数据
   }
+  // @ts-ignore
   if (permissionMode === RoleEnum.ROLE) {
     return componentName
   }
