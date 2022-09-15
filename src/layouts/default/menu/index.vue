@@ -2,10 +2,10 @@
 import { defineComponent, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useData } from './data'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import { routeStore } from '@/pinia/modules/routeStore'
 import { colorFFF } from '@/config'
-import { refStore } from '@/pinia/ref'
+import { refStore } from '@/pinia/modules/ref'
 export default defineComponent({
   name: 'MenuLeft',
   setup() {

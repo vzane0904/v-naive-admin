@@ -1,6 +1,6 @@
 <script lang="tsx">
 import { baseHome } from '@/config'
-import { configStore } from '@/pinia/config'
+import { configStore } from '@/pinia/modules/config'
 export default defineComponent({
   name: 'Refresh',
   setup() {

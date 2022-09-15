@@ -22,8 +22,8 @@
 </template>
 <script lang="ts" setup>
 import { darkTheme } from 'naive-ui'
-import { themeStore } from '@/pinia/theme'
-import { configStore } from '@/pinia/config'
+import { themeStore } from '@/pinia/modules/theme'
+import { configStore } from '@/pinia/modules/config'
 import { themeOverrides } from '@/naive'
 import {
   zhCN,

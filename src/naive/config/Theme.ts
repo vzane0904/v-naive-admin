@@ -1,5 +1,5 @@
 import { colorFFF } from '@/config'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import { GlobalThemeOverrides } from 'naive-ui'
 
 const themeOverrides = (): GlobalThemeOverrides => {

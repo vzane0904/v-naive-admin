@@ -11,7 +11,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import { CSSProperties } from 'vue'
 const { theme } = storeToRefs(themeStore())
 const railStyle = ({

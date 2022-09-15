@@ -1,8 +1,8 @@
 import Icon from '@/components/Icon/index.vue'
 import { DropdownOption } from 'naive-ui'
 import useTabs from './utils'
-import { configStore } from '@/pinia/config'
-import { themeStore } from '@/pinia/theme'
+import { configStore } from '@/pinia/modules/config'
+import { themeStore } from '@/pinia/modules/theme'
 export const Suffix = defineComponent({
   name: 'Suffix',
   setup() {

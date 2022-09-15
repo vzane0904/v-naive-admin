@@ -1,5 +1,5 @@
 import { LocaleType } from '@/enum/locale'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import { computed } from 'vue'
 import { i18n } from '.'
 // type MyPick<T, K extends keyof T> = {

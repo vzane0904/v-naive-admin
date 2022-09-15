@@ -52,9 +52,7 @@ export default defineComponent({
           onClick={(e: MouseEvent) => {
             e.preventDefault()
             validate(
-              async () => {
-                console.log(112)
-              },
+              async () => {},
               async () => {},
             )
           }}

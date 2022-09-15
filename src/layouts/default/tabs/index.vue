@@ -3,9 +3,9 @@ import { Suffix } from './src/suffix'
 import Icon from '@/components/Icon/index.vue'
 import useTabs from './src/utils'
 import { routeStore } from '@/pinia/modules/routeStore'
-import { themeStore } from '@/pinia/theme'
-import { refStore } from '@/pinia/ref'
-import { configStore } from '@/pinia/config'
+import { themeStore } from '@/pinia/modules/theme'
+import { refStore } from '@/pinia/modules/ref'
+import { configStore } from '@/pinia/modules/config'
 import { TabsThemeConfig } from '@/naive'
 export default defineComponent({
   name: 'Tabs',

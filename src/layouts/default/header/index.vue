@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import Fold from './fold.vue'
 import FunArea from './right.vue'
 import Logo from '../logo/index.vue'

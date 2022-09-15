@@ -1,4 +1,4 @@
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import { TabsThemeVars } from 'naive-ui/lib/tabs/styles'
 
 const TabsThemeConfig = (): Partial<TabsThemeVars> => {

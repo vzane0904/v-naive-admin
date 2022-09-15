@@ -1,5 +1,5 @@
 import { PageSwitch } from '../../../settings'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 export default defineComponent({
   name: 'PageShow',
   setup() {

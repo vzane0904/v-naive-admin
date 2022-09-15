@@ -1,5 +1,5 @@
 <script lang="tsx">
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 // import publicIcon from '@/assets/images/public.png'
 export default defineComponent({
   name: 'LayoutFooter',

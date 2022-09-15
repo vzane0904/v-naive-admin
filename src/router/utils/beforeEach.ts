@@ -1,6 +1,6 @@
 import { baseHome, noAddTabs } from '@/config'
-import { themeStore } from '@/pinia/theme'
-import { useProfileStore } from '@/pinia/user'
+import { themeStore } from '@/pinia/modules/theme'
+import { useProfileStore } from '@/pinia/modules/user'
 import { NProgressStart } from '@/utils/NProgress'
 import { RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
 import { addTabs } from '.'

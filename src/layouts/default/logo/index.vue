@@ -1,7 +1,7 @@
 <script lang="tsx">
 import Svg from '@/components/Svg/index.vue'
 import { colorFFF } from '@/config'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 export default defineComponent({
   name: 'Logo',
   setup() {

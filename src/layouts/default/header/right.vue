@@ -5,7 +5,7 @@ import {
   User,
   Settings,
 } from '@/layouts/default/components/right'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 export default defineComponent({
   name: 'FunArea',
   setup() {

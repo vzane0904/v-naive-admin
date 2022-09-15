@@ -1,6 +1,6 @@
 import { ColorSelect, PageLayout } from '../../../settings'
 import { themeColor, headerColor, siderColor } from '../config'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 export default defineComponent({
   name: 'PageTheme',
   setup() {

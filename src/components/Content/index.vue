@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts" name="Content">
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 const { theme } = storeToRefs(themeStore())
 const bg = computed(() => {
   return { 'background-color': theme.value ? '#3a3b3c4d' : '#fff' }

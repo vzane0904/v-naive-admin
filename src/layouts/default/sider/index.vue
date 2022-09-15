@@ -1,6 +1,6 @@
 <script lang="tsx">
 import { colorFFF } from '@/config'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import Logo from '../logo/index.vue'
 import MenuLeft from '../menu/index.vue'
 import Trigger from './trigger.vue'

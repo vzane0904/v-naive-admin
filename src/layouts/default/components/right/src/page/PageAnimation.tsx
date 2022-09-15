@@ -1,5 +1,5 @@
 import { PageSelect, PageSwitch } from '../../../settings'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import { AnimationType } from '../config'
 export default defineComponent({
   name: 'PageAnimation',

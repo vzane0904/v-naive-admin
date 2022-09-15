@@ -1,8 +1,9 @@
 import { baseHome } from '@/config'
+import { removeRoute } from '@/router/utils/remove'
 import { RouteType } from '@/type/route'
 import { defineStore } from 'pinia'
 import { TabsType } from '../type/user'
-import { useProfileStore } from '../user'
+import { useProfileStore } from './user'
 
 export const routeStore = defineStore({
   id: 'routeStore',
@@ -27,10 +28,11 @@ export const routeStore = defineStore({
   actions: {
     reset() {
       const user = useProfileStore()
+      removeRoute()
       user.$reset()
       setTimeout(() => {
         this.$reset()
-      }, 0)
+      }, 100)
     },
   },
   persist: {
@@ -41,8 +43,7 @@ export const routeStore = defineStore({
         paths: [
           'originalData',
           'auth',
-          // 'selectMenu',
-          'tabs',
+          // 'tabs',
           'role',
         ],
       },

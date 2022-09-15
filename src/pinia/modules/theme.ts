@@ -31,13 +31,12 @@ export const themeStore = defineStore({
     showTopSet: true, //顶部设置按钮
     language: Locale.ZH_CN as LocaleType,
     progressBar: true, //进度条
-
     isFullScreen: false, //是否全屏
     collapsedWidth: 48, //左侧菜单折叠宽度
     switchLoading: true, //切换显示loading
     toggleAnimation: true, //切换页面显示动画
     animationType: '动画1', //动画类型
-  }), //存放数据
+  }),
   getters: {},
   actions: {},
   persist: {

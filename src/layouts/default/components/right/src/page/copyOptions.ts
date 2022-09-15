@@ -1,4 +1,4 @@
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import { ProjectConfig } from '@/type/config'
 
 export const useOptions = () => {

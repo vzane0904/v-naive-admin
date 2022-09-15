@@ -1,6 +1,6 @@
 <script lang="tsx">
 import { LayoutOptions } from '@/config'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 export default defineComponent({
   name: 'PageLayout',
   setup() {

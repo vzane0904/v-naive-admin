@@ -1,4 +1,4 @@
-import { useProfileStore } from '@/pinia/user'
+import { useProfileStore } from '@/pinia/modules/user'
 import { App } from 'vue'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { staticRoutes } from './routes/basic'
