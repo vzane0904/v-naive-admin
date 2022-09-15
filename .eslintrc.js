@@ -35,6 +35,7 @@ module.exports = defineConfig({
     'plugin:vue/vue3-recommended',
     'prettier',
     './.eslintrc-auto-import.json',
+    'plugin:prettier/recommended',
   ],
   rules: {
     'vue/no-multiple-template-root': 'off',
@@ -290,5 +291,4 @@ module.exports = defineConfig({
     'wrap-regex': 0, //正则表达式字面量用小括号包起来
     yoda: [2, 'never'], //禁止尤达条件
   },
-
 })
