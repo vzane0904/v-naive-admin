@@ -19,7 +19,8 @@ const label = function label(item: RouteRecordRaw) {
         rel: 'noopenner noreferrer',
       },
       {
-        default: () => (isI18n ? t(item.name) : item.meta.title),
+        default: () =>
+          isI18n ? t(item.name as string) : (item.meta!.title as string),
       },
     )
   }
@@ -32,21 +33,22 @@ const label = function label(item: RouteRecordRaw) {
           : item.path.slice(0, 1) === '/'
           ? item.path
           : '/' + item.path,
-        query: item.meta.query as LocationQueryRaw,
+        query: item.meta!.query as LocationQueryRaw,
       },
     },
     {
-      default: () => (isI18n ? t(item.name) : item.meta.title),
+      default: () => (isI18n ? t(item.name as string) : item.meta!.title),
     },
   )
 }
 export const useData = (data: Array<RouteRecordRaw>) => {
-  let arr = data
+  const arr = data
+    .sort((a, b) => a.meta!.orderNo! - b.meta!.orderNo!)
     .map((item: RouteRecordRaw) => {
       if (item.meta!.hideMenu) {
         return false
       }
-      let info: MenuOption = {
+      const info: MenuOption = {
         label: () => label(item),
         key: item.path,
         icon: () =>
@@ -57,7 +59,7 @@ export const useData = (data: Array<RouteRecordRaw>) => {
           ),
       }
       if (item.children) {
-        let list = useData(item.children)
+        const list = useData(item.children)
         if (list.length) {
           info.children = useData(item.children)
         }

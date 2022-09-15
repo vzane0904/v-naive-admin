@@ -9,6 +9,8 @@ export const backData = [
       title: '首页',
       query: {},
       params: {},
+
+      orderNo: 1,
     },
   },
   // 权限管理
@@ -19,6 +21,7 @@ export const backData = [
     meta: {
       icon: 'zhuye3',
       title: '权限管理',
+      orderNo: 1,
     },
     children: [
       {
@@ -28,6 +31,7 @@ export const backData = [
         meta: {
           icon: 'jiaoseguanli1',
           title: '前端权限',
+          orderNo: 2,
         },
       },
       {
@@ -37,6 +41,7 @@ export const backData = [
         meta: {
           icon: 'jiaoseguanli1',
           title: '后台权限',
+          orderNo: 1,
         },
       },
     ],

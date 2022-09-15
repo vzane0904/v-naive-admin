@@ -9,6 +9,7 @@ import { roleRoutesMap } from '../roleRoutes'
 export const createRoutes = () => {
   let roInfo: Array<RouteType> = []
   const store = routeStore()
+  // @ts-ignore
   if (permissionMode === RoleEnum.MOVE || permissionMode === RoleEnum.BACK) {
     roInfo = transformRoute(store.originalData)
   } else {

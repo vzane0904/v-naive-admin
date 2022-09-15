@@ -6,6 +6,10 @@ import { RouteType } from '@/type/route'
 import { DeepCopy } from '@/utils'
 import { RouteLocationNormalized } from 'vue-router'
 import { errSymbol, moveRoutersMap } from '../moveRoutes'
+/**
+ * @name 组件转换
+ * @returns Vue Components
+ * **/
 
 export const RenderComponent = (componentName: string): Component => {
   if (componentName === 'view') {
@@ -23,10 +27,10 @@ export const RenderComponent = (componentName: string): Component => {
     console.warn(`找不到${componentName}文件`)
     // 找不到时使用通用页面
     return moveRoutersMap.get(errSymbol)
+    // @ts-ignore
   } else if (permissionMode === RoleEnum.BACK) {
     return () => eval(`import("../../views/${componentName}.vue")`) // 后台返回数据
   }
-  //
   // @ts-ignore
   if (permissionMode === RoleEnum.ROLE) {
     return componentName
@@ -36,9 +40,10 @@ export const transformRoute = (
   routeList: Array<RouteType>,
 ): Array<RouteType> => {
   const store = routeStore()
-
   return routeList
     .map((item: RouteType) => {
+      item.meta.orderNo = isNaN(item.meta.orderNo!) ? 99 : item.meta.orderNo
+      // 处理路由权限
       // @ts-ignore
       if (permissionMode === RoleEnum.ROLE) {
         let next = false
@@ -61,16 +66,13 @@ export const transformRoute = (
       const info = DeepCopy(item)
       info.name = item.path
       info.component = RenderComponent(item.component)
-      // 路由配置表配置参数默认使用props传递
-      // info.props = () => ({
-      //   routeQuery: item.meta.query || {},
-      // })
       if (item.children) {
         info.children = transformRoute(item.children)
       }
       return info
     })
     .filter((i) => i)
+    .sort((a: RouteType, b: RouteType) => a.meta.orderNo! - b.meta.orderNo!)
 }
 export const addTabs = (to: RouteLocationNormalized) => {
   const store = routeStore()

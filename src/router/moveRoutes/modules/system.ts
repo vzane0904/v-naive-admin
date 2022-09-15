@@ -12,6 +12,9 @@ export default {
   functionMsgComponent: () => import('@/views/function/msg/index.vue'),
   functionFullScreenComponent: () =>
     import('@/views/function/fullScreen/index.vue'),
+  // 多级菜单
+  levelMenu1Menu1Component: () => import('@/views/level/menu1/menu1/index.vue'),
+  levelMenu2Component: () => import('@/views/level/menu2.vue'),
   // 系统管理
   systemAccountComponent: () => import('@/views/system/account/index.vue'),
   systemRoleComponent: () => import('@/views/system/role/index.vue'),
@@ -21,7 +24,4 @@ export default {
     import('@/views/system/changePassword/index.vue'),
   // 关于
   aboutComponent: () => import('@/views/system/about/index.vue'),
-  // 多级菜单
-  levelMenu1Menu1Component: () => import('@/views/level/menu1/menu1/index.vue'),
-  levelMenu2Component: () => import('@/views/level/menu2.vue'),
 }

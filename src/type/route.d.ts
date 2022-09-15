@@ -9,8 +9,6 @@ interface MenuType {
   paramPath?: string
   disabled?: boolean
   children?: MenuType[]
-  orderNo?: number
-  roles?: []
   meta: RouteMeta
   component: Component | string
   components?: Component
@@ -30,5 +28,6 @@ declare module 'vue-router' {
     transitionName?: string // 指定该路由切换的动画名
     iframeSrc?: string
     requiresAuth?: boolean
+    orderNo?: number
   }
 }
