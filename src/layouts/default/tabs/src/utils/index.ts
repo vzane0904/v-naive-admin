@@ -4,7 +4,7 @@ import { router } from '@/router'
 import { DropdownOption } from 'naive-ui'
 import { computed, effect, reactive } from 'vue'
 import { renderIcon } from '../config'
-import { TabsEmnu } from '../type'
+import { TabsEmnu } from '@/config'
 export default function useTabs() {
   const store = routeStore()
   const tabFun = reactive({
