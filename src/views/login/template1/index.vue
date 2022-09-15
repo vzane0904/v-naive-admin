@@ -5,7 +5,9 @@
         class="leftHeaderText flex justify-center animate__animated animate__bounceInLeft w-7/10 h-3/10"
       >
         <img :src="logo" alt="" srcset="" class="w-48px h-48px" />
-        <p class="m-0 text-size-24px mt-8px ml-14px text-center text-white">
+        <p
+          class="m-0 mt-18px text-size-30px mt-8px ml-14px text-center text-white"
+        >
           <b>{{ title }}</b>
         </p>
       </div>
@@ -44,6 +46,14 @@ const title = import.meta.env.VITE_APP_TITLE
     background-size: auto 100%;
     background-position: 100%;
     background-repeat: no-repeat;
+  }
+}
+[data-theme='dark'] {
+  .login {
+    background-color: #293146;
+    .bg {
+      background-image: url(@/assets/images/login-bg-dark.svg) !important;
+    }
   }
 }
 </style>

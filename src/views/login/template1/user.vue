@@ -5,16 +5,18 @@ import Phone from './phone.vue'
 import Reset from './reset.vue'
 import { userRules } from '../src/config'
 import { IUseNameLogin, TargetContext } from '../src/type'
-import userName from '../src/conponents/userName.vue'
-import userPassWord from '../src/conponents/passWord.vue'
-import userPictureCode from '../src/conponents/pictureCode.vue'
+import userName from '../src/components/userName.vue'
+import userPassWord from '../src/components/passWord.vue'
+import userPictureCode from '../src/components/pictureCode.vue'
 import { useNameLogin } from '../src/hooks/loginFn'
+import SwitchTemplate from '../src/components/switchTemplate.vue'
 export default defineComponent({
   name: 'User',
   components: {
     userName,
     userPassWord,
     userPictureCode,
+    SwitchTemplate,
   },
   setup() {
     const formValue: IUseNameLogin = reactive({
@@ -67,11 +69,9 @@ export default defineComponent({
             注册
           </NButton>
         </div>
+        <SwitchTemplate />
       </>
     )
-    onMounted(() => {
-      // getPicCode()
-    })
     return () => (
       <>
         {(() => {

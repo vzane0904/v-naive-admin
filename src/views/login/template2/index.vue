@@ -3,9 +3,12 @@ import login2Img from '@/assets/images/login2Img.png'
 import logo from '@/assets/images/title.png'
 import loginLogo from '@/assets/images/login_logo.png'
 import { GlassesOutline, Glasses } from '@vicons/ionicons5'
+import SwitchTemplate from '../src/components/switchTemplate.vue'
 export default defineComponent({
   name: 'Login2',
+  components: { SwitchTemplate },
   setup() {
+    const { pkg } = __APP_INFO__
     return () => (
       <div class="loginBox w-1/1 h-1/1 flex">
         <div
@@ -22,7 +25,7 @@ export default defineComponent({
             class="edition absolute top-3 -right-25px px-30px py-4px  text-cool-gray-50 transform rotate-45 select-none"
             style={{ backgroundColor: '#fec12f' }}
           >
-            V 1.0.0
+            V {pkg.version}
           </div>
           <div class="contentBox">
             <img src={loginLogo} alt="" class="w-400px h-36px" />
@@ -79,6 +82,7 @@ export default defineComponent({
                   </NButton>
                 </NTabPane>
               </NTabs>
+              <SwitchTemplate />
             </div>
           </div>
         </div>

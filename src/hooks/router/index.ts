@@ -14,14 +14,14 @@ export const useGo = (_router?: Router) => {
     router = rootRouter
   }
   const { push, replace } = router
-  const go = (name: string, query = {}, isReplace = false) => {
-    if (!name) {
+  const go = (path: string, query = {}, isReplace = false) => {
+    if (!path) {
       return logWarn('Path不可为空')
     }
     if (isReplace) {
-      return replace(name).catch(handleError)
+      return replace(path).catch(handleError)
     }
-    push({ name, query }).catch(handleError)
+    push({ path, query }).catch(handleError)
   }
   return go
 }

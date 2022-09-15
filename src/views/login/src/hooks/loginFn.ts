@@ -2,9 +2,11 @@ import { userNameLogin } from '@/api'
 import { baseHome } from '@/config'
 import { useProfileStore } from '@/pinia/modules/user'
 import { mountNewData } from '@/router/utils/mountRouter'
+import { createNotification } from '@/utils/message'
 import { Fn } from '@vueuse/core'
 import { FormInst } from 'naive-ui'
 import { IUseNameLogin } from '../type'
+import moment from 'moment'
 export const useNameLogin = function (formValue: IUseNameLogin) {
   const route = useRoute()
   const router = useRouter()
@@ -27,11 +29,14 @@ export const useNameLogin = function (formValue: IUseNameLogin) {
         } else {
           router.push(baseHome)
         }
-      } else {
-        if (error) {
-          await error()
-        }
-        console.log('errors', errors)
+        createNotification({
+          title: '登录成功',
+          description: moment().format('YYYY-MM-DD HH:mm:ss'),
+          content: `欢迎回来: ${useName}`,
+          type: 'success',
+        })
+      } else if (error) {
+        await error()
       }
     })
   }

@@ -5,6 +5,7 @@
       size="large"
       :rail-style="railStyle"
       :rubber-band="false"
+      :class="`${loginTemplate > 1 && 'mr-60px'}`"
     >
       <template #checked>
         <Icon name="Sunny-qing-baitian" />
@@ -17,8 +18,10 @@
 </template>
 <script lang="ts" setup>
 import { themeStore } from '@/pinia/modules/theme'
+import { configStore } from '@/pinia/modules/config'
 import { CSSProperties } from 'vue'
 const { theme } = storeToRefs(themeStore())
+const { loginTemplate } = storeToRefs(configStore())
 const railStyle = ({
   focused,
   checked,
@@ -43,4 +46,10 @@ const railStyle = ({
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="less" scoped>
+@prefixCls: ~'@{prefix}';
+
+::v-deep(.@{prefixCls}-switch__rail) {
+  box-shadow: none !important;
+}
+</style>

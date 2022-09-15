@@ -6,7 +6,6 @@ specifiers:
   '@babel/plugin-syntax-dynamic-import': ^7.8.3
   '@commitlint/cli': ^16.2.3
   '@commitlint/config-conventional': ^16.2.1
-  '@types/axios': ^0.14.0
   '@types/js-cookie': ^3.0.1
   '@types/lodash-es': ^4.17.6
   '@types/mockjs': ^1.0.6
@@ -41,6 +40,7 @@ specifiers:
   lint-staged: ^12.3.6
   lodash-es: ^4.17.21
   mockjs: ^1.1.0
+  moment: ^2.29.4
   monaco-editor: ^0.33.0
   mrm: ^3.0.10
   naive-ui: ^2.32.1
@@ -94,6 +94,7 @@ dependencies:
   clipboard: 2.0.11
   lodash-es: 4.17.21
   mockjs: 1.1.0
+  moment: 2.29.4
   monaco-editor: 0.33.0
   naive-ui: 2.32.1_vue@3.2.31
   nprogress: 0.2.0
@@ -113,7 +114,6 @@ devDependencies:
   '@babel/plugin-syntax-dynamic-import': 7.8.3_@babel+core@7.17.7
   '@commitlint/cli': 16.2.3
   '@commitlint/config-conventional': 16.2.1
-  '@types/axios': 0.14.0
   '@types/js-cookie': 3.0.1
   '@types/lodash-es': 4.17.6
   '@types/mockjs': 1.0.6
@@ -918,15 +918,6 @@ packages:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==, registry: http://registry.npm.taobao.org/, tarball: http://registry.npm.taobao.org/@tsconfig/node16/-/node16-1.0.2.tgz}
     dev: true
 
-  /@types/axios/0.14.0:
-    resolution: {integrity: sha512-KqQnQbdYE54D7oa/UmYVMZKq7CO4l8DEENzOKc4aBRwxCXSlJXGz83flFx5L7AWrOQnmuN3kVsRdt+GZPPjiVQ==, registry: http://registry.npm.taobao.org/, tarball: http://registry.npm.taobao.org/@types/axios/-/axios-0.14.0.tgz}
-    deprecated: This is a stub types definition for axios (https://github.com/mzabriskie/axios). axios provides its own type definitions, so you don't need @types/axios installed!
-    dependencies:
-      axios: 0.26.1
-    transitivePeerDependencies:
-      - debug
-    dev: true
-
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
     dev: true
@@ -1656,6 +1647,7 @@ packages:
       follow-redirects: 1.14.9
     transitivePeerDependencies:
       - debug
+    dev: false
 
   /babel-code-frame/6.26.0:
     resolution: {integrity: sha1-Y/1D99weO7fONZR9uP42mj9Yx0s=}
@@ -2213,8 +2205,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      JSONStream: 1.3.5
       is-text-path: 1.0.1
+      JSONStream: 1.3.5
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -3446,6 +3438,7 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
+    dev: false
 
   /for-in/1.0.2:
     resolution: {integrity: sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=}
@@ -4896,6 +4889,10 @@ packages:
     hasBin: true
     dependencies:
       commander: 9.0.0
+
+  /moment/2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
+    dev: false
 
   /monaco-editor/0.33.0:
     resolution: {integrity: sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==}

@@ -28,8 +28,8 @@ export const routeStore = defineStore({
   actions: {
     reset() {
       const user = useProfileStore()
-      removeRoute()
       user.$reset()
+      removeRoute()
       setTimeout(() => {
         this.$reset()
       }, 100)

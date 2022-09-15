@@ -36,7 +36,7 @@ const SmsCode: FormRules = {
   smsCode: [
     {
       required: true,
-      message: '请输入六位验证码',
+      message: '请输入手机验证码',
       min: 6,
       max: 6,
       trigger: ['input', 'blur'],
@@ -52,10 +52,6 @@ const PictureRules: FormRules = {
           return new Error('请输入图片验证码')
         }
         return true
-
-        // else if (!/^(?=.*[a-zA-Z\d])[a-zA-Z\d]{2,10}$/.test(value)) {
-        //   return new Error('图片验证码长度最小')
-        // }
       },
       trigger: ['input', 'blur'],
     },

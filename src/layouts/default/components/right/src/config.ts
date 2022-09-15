@@ -1,5 +1,6 @@
 import { useGo } from '@/hooks/router'
 import { routeStore } from '@/pinia/modules/routeStore'
+import { createModal } from '@/utils/message'
 import { DropdownOption } from 'naive-ui'
 
 export const userOptions = [
@@ -35,10 +36,20 @@ export const userOptions = [
     label: '退出登录',
     key: '退出登录',
     fn: (_key: string | number, _option: DropdownOption) => {
-      const routerS = routeStore()
-      routerS.reset()
-      const go = useGo()
-      go('/login')
+      createModal({
+        title: '温馨提示',
+        type: 'warning',
+        content: '是否确认退出系统?',
+        positiveText: '确定',
+        negativeText: '取消',
+        maskClosable: false,
+        onPositiveClick: () => {
+          const go = useGo()
+          go('/login')
+          const routerS = routeStore()
+          routerS.reset()
+        },
+      })
     },
   },
 ]
