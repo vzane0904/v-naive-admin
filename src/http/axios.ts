@@ -5,6 +5,8 @@ import {
   RETRY_COUNTCODE,
 } from '@/config'
 import { RequestEnum } from '@/enum/axios'
+import { useGo } from '@/hooks/router'
+import { routeStore } from '@/pinia/modules/routeStore'
 import { SetOptional } from '@/type'
 import { ErrorInfo, RequestOptions, TConversion } from '@/type/http'
 import { createNotification } from '@/utils/message'
@@ -61,6 +63,7 @@ export class VAxios {
       async (error: AxiosError) => {
         createNotification({
           title: '系统异常',
+          description: error.response!.status as unknown as string,
           content: error.message,
           type: 'error',
         })
@@ -102,6 +105,19 @@ export class VAxios {
          * 4.兜底处理
          **/
         // 1、
+        if (error.response!.status === 401) {
+          createNotification({
+            title: '系统异常',
+            description: '401',
+            content: '登录过期，即将重新登陆',
+            type: 'error',
+          })
+          const routerS = routeStore()
+          routerS.reset()
+          const go = useGo()
+          go('/login')
+          return Promise.reject(error)
+        }
         if (axios.isCancel(error)) {
           const err: ErrorInfo = {
             status: 4004,
@@ -153,6 +169,7 @@ export class VAxios {
           // createErrorMsg({ title: '系统异常', content: '请求超时' })
           createNotification({
             title: '系统异常',
+            description: error.response!.status as unknown as string,
             content: '请求超时',
             type: 'error',
           })

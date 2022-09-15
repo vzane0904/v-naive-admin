@@ -2,6 +2,7 @@ import { baseHome } from '@/config'
 import { RouteType } from '@/type/route'
 import { defineStore } from 'pinia'
 import { TabsType } from '../type/user'
+import { useProfileStore } from '../user'
 
 export const routeStore = defineStore({
   id: 'routeStore',
@@ -23,6 +24,15 @@ export const routeStore = defineStore({
     tabsActive: baseHome,
     role: ['admin', 'int'],
   }),
+  actions: {
+    reset() {
+      const user = useProfileStore()
+      user.$reset()
+      setTimeout(() => {
+        this.$reset()
+      }, 0)
+    },
+  },
   persist: {
     enabled: true,
     strategies: [
