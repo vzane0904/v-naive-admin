@@ -4,6 +4,7 @@ import {
   Language,
   User,
   Settings,
+  FixedSettings,
 } from '@/layouts/default/components/right'
 import { themeStore } from '@/pinia/modules/theme'
 export default defineComponent({
@@ -15,7 +16,7 @@ export default defineComponent({
         {store.isFullScreenBtn ? <Screen /> : <div></div>}
         {store.showLanGuaGe ? <Language /> : <div></div>}
         <User />
-        {store.showTopSet ? <Settings /> : <div></div>}
+        {store.showTopSet ? <Settings /> : <FixedSettings />}
       </>
     )
   },

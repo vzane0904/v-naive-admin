@@ -30,5 +30,7 @@ export const mountNewData = async () => {
     // @ts-ignore
   } else if (permissionMode === RoleEnum.BACK) {
     await getBackRoutes()
+  } else if (permissionMode === RoleEnum.ROLE) {
+    await createRoutes()
   }
 }

@@ -1,5 +1,6 @@
 import { useGo } from '@/hooks/router'
 import { routeStore } from '@/pinia/modules/routeStore'
+import { logError } from '@/utils/log'
 import { createModal } from '@/utils/message'
 import { DropdownOption } from 'naive-ui'
 
@@ -43,11 +44,15 @@ export const userOptions = [
         positiveText: '确定',
         negativeText: '取消',
         maskClosable: false,
-        onPositiveClick: () => {
-          const go = useGo()
-          go('/login')
-          const routerS = routeStore()
-          routerS.reset()
+        onPositiveClick: async () => {
+          try {
+            const go = useGo()
+            await go('/login')
+            const routerS = routeStore()
+            routerS.reset()
+          } catch (error) {
+            logError(error as Error)
+          }
         },
       })
     },
