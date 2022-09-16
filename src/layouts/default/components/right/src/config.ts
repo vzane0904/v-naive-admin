@@ -1,6 +1,4 @@
-import { useGo } from '@/hooks/router'
-import { routeStore } from '@/pinia/modules/routeStore'
-import { useProfileStore } from '@/pinia/modules/user'
+import { useLogOut } from '@/hooks/useLogin'
 import { logError } from '@/utils/log'
 import { createModal } from '@/utils/message'
 import { DropdownOption } from 'naive-ui'
@@ -47,19 +45,11 @@ export const userOptions = [
         maskClosable: false,
         onPositiveClick: async () => {
           example.loading = true
-          return new Promise(async (resolve) => {
-            try {
-              const { token } = storeToRefs(useProfileStore())
-              token.value = ''
-              const go = useGo()
-              await go('/login')
-              const routerS = routeStore()
-              await routerS.reset()
-              resolve(true)
-            } catch (error) {
-              logError(error as Error)
-            }
-          })
+          try {
+            useLogOut()
+          } catch (error) {
+            logError(error as Error)
+          }
         },
       })
     },

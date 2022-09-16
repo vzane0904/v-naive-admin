@@ -6,9 +6,11 @@ import PageAnimation from './PageAnimation.vue'
 import { themeStore } from '@/pinia/modules/theme'
 import { colorFFF } from '@/config'
 import { useClipboard } from '@vueuse/core'
-import { createModal } from '@/utils/message'
+import { createModal, createMsg } from '@/utils/message'
 import { useOptions } from './copyOptions'
 import { configStore } from '@/pinia/modules/config'
+import { useLogOut } from '@/hooks/useLogin'
+import { logError } from '@/utils/log'
 export default defineComponent({
   name: 'OpenDrawer',
   emits: ['refCallBack'],
@@ -90,10 +92,30 @@ export default defineComponent({
               >
                 拷贝
               </NButton>
-              <NButton type="warning" class={'mb-10px'}>
+              <NButton
+                type="warning"
+                class={'mb-10px'}
+                onClick={() => {
+                  store.$reset()
+                  createMsg('重置成功', { type: 'success' })
+                }}
+              >
                 重置
               </NButton>
-              <NButton type="error" class={'mb-10px'}>
+              <NButton
+                type="error"
+                class={'mb-10px'}
+                onClick={async () => {
+                  store.$reset()
+                  try {
+                    await useLogOut()
+                    const { openSettingDrawer } = storeToRefs(configStore())
+                    openSettingDrawer.value = false
+                  } catch (error) {
+                    logError(error as Error)
+                  }
+                }}
+              >
                 清空并返回登录页
               </NButton>
             </div>
