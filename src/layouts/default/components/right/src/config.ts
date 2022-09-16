@@ -44,12 +44,15 @@ export const userOptions = [
         negativeText: '取消',
         maskClosable: false,
         onPositiveClick: async () => {
-          example.loading = true
-          try {
-            useLogOut()
-          } catch (error) {
-            logError(error as Error)
-          }
+          return new Promise(async (resolve) => {
+            example.loading = true
+            try {
+              await useLogOut()
+              resolve(true)
+            } catch (error) {
+              logError(error as Error)
+            }
+          })
         },
       })
     },

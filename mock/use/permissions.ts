@@ -56,7 +56,7 @@ export default [
   },
   // 用户名登录
   {
-    url: `${baseUrl}/sys/login/uasrName`,
+    url: `${baseUrl}/sys/login/userName`,
     method: 'post',
     timeout: 200,
     response: () =>

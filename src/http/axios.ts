@@ -105,7 +105,7 @@ export class VAxios {
          * 4.兜底处理
          **/
         // 1、
-        if (error.response!.status === 401) {
+        if (error.response?.status === 401) {
           createNotification({
             title: '系统异常',
             description: '401',
