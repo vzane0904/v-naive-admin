@@ -13,9 +13,9 @@ export default defineComponent({
           <NDropdown
             options={userOptions}
             class={'inp-out'}
-            on-select={(key: string | number, option: DropdownOption) => {
-              option.fn(key, option)
-            }}
+            on-select={(key: string | number, option: DropdownOption) =>
+              (option as any).fn(key, option)
+            }
           >
             <div class={'flex justify-center items-center  h-1/1'}>
               <img src={useImg} class={'w-26px h-26px rounded-1/1 mr-10px'} />

@@ -9,6 +9,7 @@ export const moveData = [
       title: 'move首页',
       query: {},
       params: {},
+      orderNo: 1,
     },
   },
   // 权限管理
@@ -19,6 +20,7 @@ export const moveData = [
     meta: {
       icon: 'zhuye3',
       title: 'move权限管理',
+      orderNo: 2,
     },
     children: [
       {
@@ -49,6 +51,7 @@ export const moveData = [
     meta: {
       icon: 'setting1',
       title: 'move功能',
+      orderNo: 3,
     },
     children: [
       {
@@ -106,6 +109,7 @@ export const moveData = [
     meta: {
       icon: 'setting1',
       title: '外部页面',
+      orderNo: 5,
     },
     children: [
       {
@@ -151,6 +155,7 @@ export const moveData = [
     meta: {
       icon: 'setting1',
       title: 'move多级菜单',
+      orderNo: 4,
     },
     children: [
       {
@@ -203,6 +208,7 @@ export const moveData = [
     meta: {
       icon: 'setting1',
       title: 'move系统管理',
+      orderNo: 6,
     },
     children: [
       {
@@ -248,6 +254,49 @@ export const moveData = [
         meta: {
           icon: 'jiaoseguanli1',
           title: '修改密码',
+        },
+      },
+    ],
+  },
+  // 错误页
+  {
+    path: '/errPage',
+    name: 'errPage',
+    component: 'view',
+    meta: {
+      icon: 'zhuye3',
+      title: '错误页',
+      orderNo: 7,
+    },
+    children: [
+      {
+        path: '/errPage/403',
+        name: '403',
+        component: '403',
+        meta: {
+          icon: 'jiaoseguanli1',
+          title: '403',
+          orderNo: 1,
+        },
+      },
+      {
+        path: '/errPage/404',
+        name: '404',
+        component: '404',
+        meta: {
+          icon: 'jiaoseguanli1',
+          title: '404',
+          orderNo: 2,
+        },
+      },
+      {
+        path: '/errPage/500',
+        name: '500',
+        component: '500',
+        meta: {
+          icon: 'jiaoseguanli1',
+          title: '500',
+          orderNo: 3,
         },
       },
     ],

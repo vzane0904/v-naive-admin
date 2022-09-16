@@ -262,6 +262,49 @@ const route: Array<RouteType> = [
       },
     ],
   },
+  // 系统管理
+  {
+    path: '/errPage',
+    name: 'errPage',
+    component: 'view',
+    meta: {
+      icon: 'setting1',
+      title: '错误页',
+      roles: ['admin'],
+    },
+    children: [
+      {
+        path: '/errPage/403',
+        name: '403',
+        component: () => import('@/views/errPage/403/index.vue'),
+        meta: {
+          icon: 'jiaoseguanli1',
+          title: '403',
+          roles: ['admin'],
+        },
+      },
+      {
+        path: '/errPage/404',
+        name: 'account',
+        component: () => import('@/views/errPage/404/index.vue'),
+        meta: {
+          icon: 'jiaoseguanli1',
+          title: '404',
+          roles: ['admin'],
+        },
+      },
+      {
+        path: '/errPage/500',
+        name: '500',
+        component: () => import('@/views/errPage/500/index.vue'),
+        meta: {
+          icon: 'jiaoseguanli1',
+          title: '500',
+          roles: ['admin'],
+        },
+      },
+    ],
+  },
   // 关于
   {
     path: '/about',

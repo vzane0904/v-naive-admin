@@ -1,3 +1,4 @@
+<script lang="tsx">
 import { PageSwitch } from '../../../settings'
 import { themeStore } from '@/pinia/modules/theme'
 export default defineComponent({
@@ -35,3 +36,6 @@ export default defineComponent({
     )
   },
 })
+</script>
+
+<style lang="less" scoped></style>

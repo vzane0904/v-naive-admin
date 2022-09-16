@@ -1,7 +1,8 @@
-import PageTheme from './PageTheme'
-import PageFun from './PageFun'
-import PageShow from './PageShow'
-import PageAnimation from './PageAnimation'
+<script lang="tsx">
+import PageTheme from './PageTheme.vue'
+import PageFun from './PageFun.vue'
+import PageShow from './PageShow.vue'
+import PageAnimation from './PageAnimation.vue'
 import { themeStore } from '@/pinia/modules/theme'
 import { colorFFF } from '@/config'
 import { useClipboard } from '@vueuse/core'
@@ -101,3 +102,6 @@ export default defineComponent({
     )
   },
 })
+</script>
+
+<style lang="less" scoped></style>

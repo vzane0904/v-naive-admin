@@ -14,12 +14,15 @@ export const useGo = (_router?: Router) => {
     router = rootRouter
   }
   const { push, replace } = router
-  const go = (path: string, query = {}, isReplace = false) => {
+  const go = (path: string, query: any = {}, isReplace = false) => {
     if (!path) {
       return logWarn('Path不可为空')
     }
     if (isReplace) {
       return replace(path).catch(handleError)
+    }
+    if (path === '/login' && !query.redirectPath) {
+      Reflect.set(query, 'redirectPath', router?.currentRoute.value.fullPath)
     }
     push({ path, query }).catch(handleError)
   }

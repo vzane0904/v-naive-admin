@@ -1,13 +1,13 @@
 import { colorFFF } from '@/config'
 import { Locale, LocaleType } from '@/enum/locale'
 import { headerColor, siderColor, themeColor } from '@/config'
-import { Position } from '@/type/config'
+import { Layout, Position } from '@/type/config'
 import { defineStore } from 'pinia'
 export const themeStore = defineStore({
   id: 'themeStore',
   state: () => ({
     theme: false, //主题 darkTheme | light
-    layout: 1 as 1 | 2 | 3, //页面布局模式
+    layout: 1 as Layout, //页面布局模式
     themeColor: '#409eff' as typeof themeColor[number], //主题颜色
     headerColor: colorFFF as typeof headerColor[number], //顶部颜色
     siderColor: '#001529' as typeof siderColor[number], //左侧菜单颜色

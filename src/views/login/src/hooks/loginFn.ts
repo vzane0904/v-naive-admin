@@ -24,17 +24,20 @@ export const useNameLogin = function (formValue: IUseNameLogin) {
           useName,
         })
         await mountNewData()
+        const create = () =>
+          createNotification({
+            title: '登录成功',
+            description: moment().format('YYYY-MM-DD HH:mm:ss'),
+            content: `欢迎回来: ${useName}`,
+            type: 'success',
+          })
         if (route.query.redirectPath && route.query.redirectPath !== '/404') {
-          router.push(route.query.redirectPath as string)
+          router
+            .push(route.query.redirectPath as string)
+            .finally(() => create())
         } else {
-          router.push(baseHome)
+          router.push(baseHome).finally(() => create())
         }
-        createNotification({
-          title: '登录成功',
-          description: moment().format('YYYY-MM-DD HH:mm:ss'),
-          content: `欢迎回来: ${useName}`,
-          type: 'success',
-        })
       } else if (error) {
         await error()
       }

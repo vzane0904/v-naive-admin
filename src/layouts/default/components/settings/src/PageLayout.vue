@@ -1,6 +1,7 @@
 <script lang="tsx">
 import { LayoutOptions } from '@/config'
 import { themeStore } from '@/pinia/modules/theme'
+import { Layout } from '@/type/config'
 export default defineComponent({
   name: 'PageLayout',
   setup() {
@@ -26,7 +27,7 @@ export default defineComponent({
                         `box${item.id}`,
                         store.layout === item.id ? 'active' : '',
                       ]}
-                      onClick={() => (store.layout = item.id)}
+                      onClick={() => (store.layout = item.id as Layout)}
                     ></div>
                   ),
                   default: () => <div>{item.name}</div>,

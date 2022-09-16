@@ -1,4 +1,6 @@
-import { PageSelect, PageSwitch } from '../../../settings'
+<script lang="tsx">
+import { PageSelect } from '../../../settings'
+import PageSwitch from '../../../settings/src/PageSwitch.vue'
 import { themeStore } from '@/pinia/modules/theme'
 import { AnimationType } from '@/config'
 export default defineComponent({
@@ -29,3 +31,6 @@ export default defineComponent({
     )
   },
 })
+</script>
+
+<style lang="less" scoped></style>

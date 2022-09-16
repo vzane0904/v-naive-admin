@@ -1,3 +1,4 @@
+<script lang="tsx">
 import { PageInputNum, PageSelect, PageSwitch } from '../../../settings'
 import { themeStore } from '@/pinia/modules/theme'
 import { MenuFold } from '@/config'
@@ -34,3 +35,4 @@ export default defineComponent({
     )
   },
 })
+</script>

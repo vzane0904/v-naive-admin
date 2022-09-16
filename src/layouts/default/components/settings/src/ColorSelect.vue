@@ -39,6 +39,3 @@ div {
   color: red;
 }
 </style>
-<!-- <div class={'colorBox flex flex-j-sb'}>
-      <div class={'pointer'}  style={ 'background-color': 'item' }></div>
-    </div> -->
