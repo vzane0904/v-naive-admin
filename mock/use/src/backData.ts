@@ -1,3 +1,5 @@
+import { MenuIcon } from 'mock/config/icon'
+
 export const backData = [
   // 首页
   {
@@ -5,7 +7,7 @@ export const backData = [
     name: 'home',
     component: 'home',
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.home,
       title: '首页',
       query: {},
       params: {},
@@ -19,7 +21,7 @@ export const backData = [
     name: 'permission',
     component: 'view',
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.permission,
       title: '权限管理',
       orderNo: 2,
     },
@@ -29,7 +31,7 @@ export const backData = [
         name: 'web',
         component: '/permission/web/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.permissionWeb,
           title: '前端权限',
           orderNo: 2,
         },
@@ -39,7 +41,7 @@ export const backData = [
         name: 'back',
         component: '/permission/back/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.permissionBack,
           title: '后台权限',
           orderNo: 1,
         },
@@ -52,7 +54,7 @@ export const backData = [
     name: 'function',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.function,
       title: '功能',
       orderNo: 3,
     },
@@ -62,7 +64,7 @@ export const backData = [
         name: 'http',
         component: 'function/http/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.functionHttp,
           title: 'Http',
         },
       },
@@ -71,7 +73,7 @@ export const backData = [
         name: 'sessionTimeout',
         component: 'function/sessionTimeout/index',
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionSessionTimeout,
           title: '登录过期',
         },
       },
@@ -80,7 +82,7 @@ export const backData = [
         name: 'copy',
         component: 'function/copy/index',
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionCopy,
           title: '剪切板',
         },
       },
@@ -89,7 +91,7 @@ export const backData = [
         name: 'msg',
         component: 'function/msg/index',
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionMsg,
           title: '消息提示',
         },
       },
@@ -98,7 +100,7 @@ export const backData = [
         name: 'fullScreen',
         component: 'function/fullScreen/index',
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionFullScreen,
           title: '全屏',
         },
       },
@@ -106,21 +108,21 @@ export const backData = [
   },
   // 外部页面
   {
-    path: '/frame',
-    name: 'frame',
+    path: '/iframe',
+    name: 'iframe',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.iframe,
       title: '外部页面',
       orderNo: 4,
     },
     children: [
       {
         path: '/frame/doc',
-        name: 'iframe',
+        name: 'doc',
         component: 'iframe',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.iframeDoc,
           title: '项目文档(内嵌)',
           query: {
             path: 'http://doc.mmxxn.cn/',
@@ -129,10 +131,10 @@ export const backData = [
       },
       {
         path: '/frame/naive',
-        name: 'iframe',
+        name: 'naive',
         component: 'iframe',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.iframeNaive,
           title: 'Naive UI文档(内嵌)',
           query: {
             path: 'https://www.naiveui.com/zh-CN/light',
@@ -144,7 +146,7 @@ export const backData = [
         name: 'docMmxxn',
         component: 'iframe',
         meta: {
-          icon: 'zhuye3',
+          icon: MenuIcon.iframeNaive,
           title: '项目文档(外链)',
         },
       },
@@ -156,7 +158,7 @@ export const backData = [
     name: 'level',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.level,
       title: '多级菜单',
       orderNo: 5,
     },
@@ -166,7 +168,7 @@ export const backData = [
         name: 'menu1',
         component: 'routerView',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.levelMenu1,
           title: 'Menu1',
         },
         children: [
@@ -175,7 +177,7 @@ export const backData = [
             name: 'menu1Menu1',
             component: 'routerView',
             meta: {
-              icon: 'jiaoseguanli1',
+              icon: MenuIcon.levelMenu1,
               title: 'Menu1-1',
             },
             children: [
@@ -184,7 +186,7 @@ export const backData = [
                 name: 'menu1Menu1Menu1',
                 component: 'level/menu1/menu1/index',
                 meta: {
-                  icon: 'jiaoseguanli1',
+                  icon: MenuIcon.levelMenu1,
                   title: 'Menu1-1-1',
                 },
               },
@@ -197,7 +199,7 @@ export const backData = [
         name: 'menu2',
         component: 'level/menu2',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.levelMenu2,
           title: 'Menu2',
         },
       },
@@ -209,7 +211,7 @@ export const backData = [
     name: 'system',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.system,
       title: '系统管理',
       orderNo: 6,
     },
@@ -219,7 +221,7 @@ export const backData = [
         name: 'account',
         component: 'system/account/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemAccount,
           title: '账号管理',
         },
       },
@@ -228,7 +230,7 @@ export const backData = [
         name: 'role',
         component: 'system/role/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemRole,
           title: '角色管理',
         },
       },
@@ -237,7 +239,7 @@ export const backData = [
         name: 'menu',
         component: 'system/menu/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemMenu,
           title: '菜单管理',
         },
       },
@@ -246,7 +248,7 @@ export const backData = [
         name: 'dept',
         component: 'system/dept/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemDept,
           title: '部门管理',
         },
       },
@@ -255,7 +257,7 @@ export const backData = [
         name: 'changePassword',
         component: 'system/changePassword/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemChangePassword,
           title: '修改密码',
         },
       },
@@ -267,7 +269,7 @@ export const backData = [
     name: 'errPage',
     component: 'view',
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.errPage,
       title: '错误页',
       orderNo: 7,
     },
@@ -277,7 +279,7 @@ export const backData = [
         name: '403',
         component: '/errPage/403/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.errPage403,
           title: '403',
           orderNo: 1,
         },
@@ -287,7 +289,7 @@ export const backData = [
         name: '404',
         component: '/errPage/404/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.errPage404,
           title: '404',
           orderNo: 2,
         },
@@ -297,7 +299,7 @@ export const backData = [
         name: '500',
         component: '/errPage/500/index',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.errPage500,
           title: '500',
           orderNo: 3,
         },
@@ -310,7 +312,7 @@ export const backData = [
     name: 'about',
     component: 'system/about/index',
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.about,
       title: '关于',
     },
   },

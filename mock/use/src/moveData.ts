@@ -1,3 +1,5 @@
+import { MenuIcon } from 'mock/config/icon'
+
 export const moveData = [
   // 首页
   {
@@ -5,7 +7,7 @@ export const moveData = [
     name: 'home',
     component: 'homeComponent',
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.home,
       title: 'move首页',
       query: {},
       params: {},
@@ -18,7 +20,7 @@ export const moveData = [
     name: 'permission',
     component: 'view',
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.permission,
       title: 'move权限管理',
       orderNo: 2,
     },
@@ -28,7 +30,7 @@ export const moveData = [
         name: 'web',
         component: 'permissionWebComponent',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.permissionWeb,
           title: '前端权限',
         },
       },
@@ -37,7 +39,7 @@ export const moveData = [
         name: 'permissionBack',
         component: 'permissionBackComponent',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.permissionBack,
           title: '后台权限',
         },
       },
@@ -49,7 +51,7 @@ export const moveData = [
     name: 'function',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.function,
       title: 'move功能',
       orderNo: 3,
     },
@@ -59,7 +61,7 @@ export const moveData = [
         name: 'http',
         component: 'functionHttpComponent',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.functionHttp,
           title: 'Http',
         },
       },
@@ -68,7 +70,7 @@ export const moveData = [
         name: 'sessionTimeout',
         component: 'functionSessionTimeoutComponent',
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionSessionTimeout,
           title: '登录过期',
         },
       },
@@ -77,7 +79,7 @@ export const moveData = [
         name: 'copy',
         component: 'functionCopyComponent',
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionCopy,
           title: '剪切板',
         },
       },
@@ -86,7 +88,7 @@ export const moveData = [
         name: 'msg',
         component: 'functionMsgComponent',
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionMsg,
           title: '消息提示',
         },
       },
@@ -95,7 +97,7 @@ export const moveData = [
         name: 'fullScreen',
         component: 'functionFullScreenComponent',
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionFullScreen,
           title: '全屏',
         },
       },
@@ -103,21 +105,21 @@ export const moveData = [
   },
   // 外部页面
   {
-    path: '/frame',
-    name: 'frame',
+    path: '/iframe',
+    name: 'iframe',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.iframe,
       title: '外部页面',
       orderNo: 5,
     },
     children: [
       {
-        path: '/frame/doc',
-        name: 'iframe',
+        path: '/iframe/doc',
+        name: 'doc',
         component: 'iframe',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.iframeDoc,
           title: '项目文档(内嵌)',
           query: {
             path: 'http://doc.mmxxn.cn/',
@@ -128,11 +130,11 @@ export const moveData = [
         },
       },
       {
-        path: '/frame/naive',
-        name: 'iframe',
+        path: '/iframe/naive',
+        name: 'naive',
         component: 'iframe',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.iframeNaive,
           title: 'Naive UI文档(内嵌)',
           query: {
             path: 'https://www.naiveui.com/zh-CN/light',
@@ -147,7 +149,7 @@ export const moveData = [
         name: 'docMmxxn',
         component: 'iframe',
         meta: {
-          icon: 'zhuye3',
+          icon: MenuIcon.iframeNaive,
           title: '项目文档(外链)',
         },
       },
@@ -159,7 +161,7 @@ export const moveData = [
     name: 'level',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.level,
       title: 'move多级菜单',
       orderNo: 4,
     },
@@ -169,7 +171,7 @@ export const moveData = [
         name: 'menu1',
         component: 'routerView',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.levelMenu1,
           title: 'Menu1',
         },
         children: [
@@ -178,7 +180,7 @@ export const moveData = [
             name: 'menu1Menu1',
             component: 'routerView',
             meta: {
-              icon: 'jiaoseguanli1',
+              icon: MenuIcon.levelMenu1,
               title: 'Menu1-1',
             },
             children: [
@@ -187,7 +189,7 @@ export const moveData = [
                 name: 'menu1Menu1Menu1',
                 component: 'levelMenu1Menu1Component',
                 meta: {
-                  icon: 'jiaoseguanli1',
+                  icon: MenuIcon.levelMenu1,
                   title: 'Menu1-1-1',
                 },
               },
@@ -200,7 +202,7 @@ export const moveData = [
         name: 'menu2',
         component: 'levelMenu2Component',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.levelMenu2,
           title: 'Menu2',
         },
       },
@@ -212,7 +214,7 @@ export const moveData = [
     name: 'system',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.system,
       title: 'move系统管理',
       orderNo: 6,
     },
@@ -222,7 +224,7 @@ export const moveData = [
         name: 'account',
         component: 'systemAccountComponent',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemAccount,
           title: '账号管理',
         },
       },
@@ -231,7 +233,7 @@ export const moveData = [
         name: 'role',
         component: 'systemRoleComponent',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemRole,
           title: '角色管理',
         },
       },
@@ -240,7 +242,7 @@ export const moveData = [
         name: 'menu',
         component: 'systemMenuComponent',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemMenu,
           title: '菜单管理',
         },
       },
@@ -249,7 +251,7 @@ export const moveData = [
         name: 'dept',
         component: 'systemDeptComponent',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemDept,
           title: '部门管理',
         },
       },
@@ -258,7 +260,7 @@ export const moveData = [
         name: 'changePassword',
         component: 'systemChangePasswordComponent',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemChangePassword,
           title: '修改密码',
         },
       },
@@ -270,7 +272,7 @@ export const moveData = [
     name: 'errPage',
     component: 'view',
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.errPage,
       title: '错误页',
       orderNo: 7,
     },
@@ -280,7 +282,7 @@ export const moveData = [
         name: '403',
         component: '403',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.errPage403,
           title: '403',
           orderNo: 1,
         },
@@ -290,7 +292,7 @@ export const moveData = [
         name: '404',
         component: '404',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.errPage404,
           title: '404',
           orderNo: 2,
         },
@@ -300,7 +302,7 @@ export const moveData = [
         name: '500',
         component: '500',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.errPage500,
           title: '500',
           orderNo: 3,
         },
@@ -313,7 +315,7 @@ export const moveData = [
     name: 'about',
     component: 'aboutComponent',
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.about,
       title: 'move关于',
     },
   },

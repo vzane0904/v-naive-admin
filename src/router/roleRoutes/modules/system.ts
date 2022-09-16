@@ -1,4 +1,5 @@
 import { RouteType } from '@/type/route'
+import { MenuIcon } from '../../../../mock/config/icon'
 
 const route: Array<RouteType> = [
   // 权限管理
@@ -7,7 +8,7 @@ const route: Array<RouteType> = [
     name: 'permission',
     component: 'view',
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.home,
       title: '权限管理',
       roles: ['admin'],
     },
@@ -17,7 +18,7 @@ const route: Array<RouteType> = [
         name: 'web',
         component: () => import('@/views/permission/web/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.permissionWeb,
           title: '前端权限',
           roles: ['admin'],
           orderNo: 1,
@@ -28,7 +29,7 @@ const route: Array<RouteType> = [
         name: 'back',
         component: () => import('@/views/permission/back/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.permissionBack,
           title: '后台权限',
           roles: ['admin'],
           orderNo: 2,
@@ -42,7 +43,7 @@ const route: Array<RouteType> = [
     name: 'function',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.function,
       title: '功能',
       roles: ['admin'],
     },
@@ -52,7 +53,7 @@ const route: Array<RouteType> = [
         name: 'http',
         component: () => import('@/views/function/http/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.functionHttp,
           title: 'Http',
           roles: ['admin'],
         },
@@ -62,7 +63,7 @@ const route: Array<RouteType> = [
         name: 'sessionTimeout',
         component: () => import('@/views/function/sessionTimeout/index.vue'),
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionSessionTimeout,
           title: '登录过期',
           roles: ['admin'],
         },
@@ -72,7 +73,7 @@ const route: Array<RouteType> = [
         name: 'copy',
         component: () => import('@/views/function/copy/index.vue'),
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionCopy,
           title: '剪切板',
           roles: ['admin'],
         },
@@ -82,7 +83,7 @@ const route: Array<RouteType> = [
         name: 'msg',
         component: () => import('@/views/function/msg/index.vue'),
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionMsg,
           title: '消息提示',
           roles: ['admin'],
         },
@@ -92,7 +93,7 @@ const route: Array<RouteType> = [
         name: 'fullScreen',
         component: () => import('@/views/function/fullScreen/index.vue'),
         meta: {
-          icon: '_caidanguanli',
+          icon: MenuIcon.functionFullScreen,
           title: '全屏',
           roles: ['admin'],
         },
@@ -105,7 +106,7 @@ const route: Array<RouteType> = [
     name: 'frame',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.iframe,
       title: '外部页面',
       roles: ['admin'],
     },
@@ -115,7 +116,7 @@ const route: Array<RouteType> = [
         name: 'iframe',
         component: 'iframe',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.iframeDoc,
           title: '项目文档(内嵌)',
           roles: ['admin'],
           query: {
@@ -128,7 +129,7 @@ const route: Array<RouteType> = [
         name: 'iframe',
         component: 'iframe',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.iframeNaive,
           title: 'Naive UI文档(内嵌)',
           query: {
             path: 'https://www.naiveui.com/zh-CN/light',
@@ -140,7 +141,7 @@ const route: Array<RouteType> = [
         name: 'docMmxxn',
         component: 'iframe',
         meta: {
-          icon: 'zhuye3',
+          icon: MenuIcon.iframeNaive,
           title: '项目文档(外链)',
           roles: ['admin'],
         },
@@ -153,7 +154,7 @@ const route: Array<RouteType> = [
     name: 'level',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.level,
       title: '多级菜单',
     },
     children: [
@@ -162,7 +163,7 @@ const route: Array<RouteType> = [
         name: 'menu1',
         component: 'routerView',
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.levelMenu1,
           title: 'Menu1',
         },
         children: [
@@ -171,7 +172,7 @@ const route: Array<RouteType> = [
             name: 'menu1Menu1',
             component: 'routerView',
             meta: {
-              icon: 'jiaoseguanli1',
+              icon: MenuIcon.levelMenu1,
               title: 'Menu1-1',
             },
             children: [
@@ -180,7 +181,7 @@ const route: Array<RouteType> = [
                 name: 'menu1Menu1Menu1',
                 component: () => import('@/views/level/menu1/menu1/index.vue'),
                 meta: {
-                  icon: 'jiaoseguanli1',
+                  icon: MenuIcon.levelMenu1,
                   title: 'Menu1-1-1',
                 },
               },
@@ -193,7 +194,7 @@ const route: Array<RouteType> = [
         name: 'menu2',
         component: () => import('@/views/level/menu2.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.levelMenu2,
           title: 'Menu2',
         },
       },
@@ -205,7 +206,7 @@ const route: Array<RouteType> = [
     name: 'system',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.system,
       title: '系统管理',
       roles: ['admin'],
     },
@@ -215,7 +216,7 @@ const route: Array<RouteType> = [
         name: 'account',
         component: () => import('@/views/system/account/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemAccount,
           title: '账号管理',
           roles: ['admin'],
         },
@@ -225,7 +226,7 @@ const route: Array<RouteType> = [
         name: 'role',
         component: () => import('@/views/system/role/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemRole,
           title: '角色管理',
           roles: ['admin'],
         },
@@ -235,7 +236,7 @@ const route: Array<RouteType> = [
         name: 'menu',
         component: () => import('@/views/system/menu/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemMenu,
           title: '菜单管理',
           roles: ['admin'],
         },
@@ -245,7 +246,7 @@ const route: Array<RouteType> = [
         name: 'dept',
         component: () => import('@/views/system/dept/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemDept,
           title: '部门管理',
           roles: ['admin'],
         },
@@ -255,27 +256,27 @@ const route: Array<RouteType> = [
         name: 'changePassword',
         component: () => import('@/views/system/changePassword/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.systemChangePassword,
           title: '修改密码',
           roles: ['admin'],
         },
       },
     ],
   },
-  // 系统管理
+  // 错误页
   {
     path: '/errPage',
     name: 'errPage',
     component: 'view',
     meta: {
-      icon: 'setting1',
+      icon: MenuIcon.errPage,
       title: '错误页',
       roles: ['admin'],
     },
     children: [
       {
         path: '/errPage/403',
-        name: '403',
+        name: MenuIcon.errPage403,
         component: () => import('@/views/errPage/403/index.vue'),
         meta: {
           icon: 'jiaoseguanli1',
@@ -288,7 +289,7 @@ const route: Array<RouteType> = [
         name: 'account',
         component: () => import('@/views/errPage/404/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.errPage404,
           title: '404',
           roles: ['admin'],
         },
@@ -298,7 +299,7 @@ const route: Array<RouteType> = [
         name: '500',
         component: () => import('@/views/errPage/500/index.vue'),
         meta: {
-          icon: 'jiaoseguanli1',
+          icon: MenuIcon.errPage500,
           title: '500',
           roles: ['admin'],
         },
@@ -311,7 +312,7 @@ const route: Array<RouteType> = [
     name: 'about',
     component: () => import('@/views/system/about/index.vue'),
     meta: {
-      icon: 'zhuye3',
+      icon: MenuIcon.about,
       title: '关于',
       roles: ['admin'],
     },

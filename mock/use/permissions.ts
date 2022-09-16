@@ -6,7 +6,7 @@ import { moveAllAuth, moveData } from './src/moveData'
 export default [
   // Back
   {
-    url: `${baseUrl}/users/permissions`,
+    url: `${baseUrl}/users/back/permissions`,
     method: 'post',
     timeout: 2000,
     response: () =>
@@ -17,7 +17,7 @@ export default [
   },
   // Move
   {
-    url: `${baseUrl}/users/oldbackpermissions`,
+    url: `${baseUrl}/users/move/permissions`,
     method: 'post',
     timeout: 2000,
     response: () =>

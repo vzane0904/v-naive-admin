@@ -1,6 +1,4 @@
 import { http } from '@/http'
 import { baseUrl } from '.'
-enum Api {
-  permissions401 = 'err/401',
-}
+import { Api } from './Api'
 export const get401 = () => http.get(`${baseUrl}/${Api.permissions401}`)

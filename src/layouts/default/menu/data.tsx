@@ -59,7 +59,7 @@ export const useData = (data: Array<RouteRecordRaw>) => {
         key: item.path,
         icon: () =>
           item.meta!.icon ? (
-            <Icon name={item.meta!.icon}></Icon>
+            <Icon name={item.meta!.icon} size={18}></Icon>
           ) : (
             <CloseCircleOutline />
           ),

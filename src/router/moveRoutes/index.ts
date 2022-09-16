@@ -1,4 +1,4 @@
-import { oldbackpermissions } from '@/api'
+import { movePermissions } from '@/api'
 import { routeStore } from '@/pinia/modules/routeStore'
 import { createRoutes } from '../utils/createRoutes'
 import { removeRoute } from '../utils/remove'
@@ -9,7 +9,7 @@ export const moveRoutersMap = new Map()
 moveRoutersMap.set(errSymbol, router404Components)
 export const getMoveRoutes = async function () {
   try {
-    const { route, allAuth } = await oldbackpermissions()
+    const { route, allAuth } = await movePermissions()
     removeRoute()
     const routeStoreValue = routeStore()
     routeStoreValue.$patch({
