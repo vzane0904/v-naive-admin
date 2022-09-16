@@ -19,6 +19,7 @@ export default defineComponent({
     SwitchTemplate,
   },
   setup() {
+    const loading = ref(false)
     const formValue: IUseNameLogin = reactive({
       userName: 'Admin',
       password: 'Pass123456!',
@@ -51,7 +52,9 @@ export default defineComponent({
         <NButton
           type="info"
           class={'w-1/1 mb-10px'}
+          loading={loading.value}
           onClick={(e: MouseEvent) => {
+            loading.value = true
             e.preventDefault()
             validate(
               async () => {},

@@ -23,14 +23,21 @@ export const mountRouter = () => {
  @returns undefined
 **/
 export const mountNewData = async () => {
-  // @ts-ignore
-  if (onLoadGetPermission && permissionMode === RoleEnum.MOVE) {
-    await moveStaticRoutes()
-    getMoveRoutes()
+  return new Promise(async (resolve) => {
     // @ts-ignore
-  } else if (permissionMode === RoleEnum.BACK) {
-    await getBackRoutes()
-  } else if (permissionMode === RoleEnum.ROLE) {
-    await createRoutes()
-  }
+    if (onLoadGetPermission && permissionMode === RoleEnum.MOVE) {
+      await moveStaticRoutes()
+      await getMoveRoutes()
+      resolve(true)
+      // @ts-ignore
+    } else if (permissionMode === RoleEnum.BACK) {
+      await getBackRoutes()
+      resolve(true)
+      // @ts-ignore
+    } else if (permissionMode === RoleEnum.ROLE) {
+      await roleStaticRoutes()
+      await createRoutes()
+      resolve(true)
+    }
+  })
 }

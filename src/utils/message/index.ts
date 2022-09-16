@@ -9,20 +9,20 @@ export const useNotification = (): NotificationApiInjection =>
 /**
  * @content 内容
  * @options MessageOptions
- * @returns undefined
+ * @returns useMessage
  **/
 export const createMsg = (content: string, options?: MessageOptions) => {
   const customOptions: MessageOptions = {
     type: 'success',
   }
   const merge: MessageOptions = Object.assign(customOptions, options)
-  useMessage().create(content, merge)
+  return useMessage().create(content, merge)
 }
 
 /**
  * @createModal 创建 Modal
  * @options DialogOptions
- * @returns undefined
+ * @returns useDialog
  **/
 export const createModal = (options: DialogOptions) => {
   const customOptions: DialogOptions = {
@@ -30,12 +30,12 @@ export const createModal = (options: DialogOptions) => {
     positiveText: '确定',
   }
   const merge = Object.assign(customOptions, options)
-  useDialog().create(merge)
+  return useDialog().create(merge)
 }
 /**
  * @createModal 创建通知
  * @options DialogOptions
- * @returns undefined
+ * @returns useNotification
  **/
 export const createNotification = (options: NotificationOptions) => {
   const customOptions: NotificationOptions = {
@@ -47,5 +47,5 @@ export const createNotification = (options: NotificationOptions) => {
     keepAliveOnHover: true,
   }
   const merge = Object.assign(customOptions, options)
-  useNotification().create(merge)
+  return useNotification().create(merge)
 }

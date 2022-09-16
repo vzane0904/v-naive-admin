@@ -1,5 +1,6 @@
 import { useGo } from '@/hooks/router'
 import { routeStore } from '@/pinia/modules/routeStore'
+import { useProfileStore } from '@/pinia/modules/user'
 import { logError } from '@/utils/log'
 import { createModal } from '@/utils/message'
 import { DropdownOption } from 'naive-ui'
@@ -37,7 +38,7 @@ export const userOptions = [
     label: '退出登录',
     key: '退出登录',
     fn: (_key: string | number, _option: DropdownOption) => {
-      createModal({
+      const example = createModal({
         title: '温馨提示',
         type: 'warning',
         content: '是否确认退出系统?',
@@ -45,14 +46,20 @@ export const userOptions = [
         negativeText: '取消',
         maskClosable: false,
         onPositiveClick: async () => {
-          try {
-            const go = useGo()
-            await go('/login')
-            const routerS = routeStore()
-            routerS.reset()
-          } catch (error) {
-            logError(error as Error)
-          }
+          example.loading = true
+          return new Promise(async (resolve) => {
+            try {
+              const { token } = storeToRefs(useProfileStore())
+              token.value = ''
+              const go = useGo()
+              await go('/login')
+              const routerS = routeStore()
+              await routerS.reset()
+              resolve(true)
+            } catch (error) {
+              logError(error as Error)
+            }
+          })
         },
       })
     },

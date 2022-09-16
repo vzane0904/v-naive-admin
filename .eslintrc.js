@@ -290,5 +290,6 @@ module.exports = defineConfig({
     'wrap-iife': [2, 'inside'], //立即执行函数表达式的小括号风格
     'wrap-regex': 0, //正则表达式字面量用小括号包起来
     yoda: [2, 'never'], //禁止尤达条件
+    'no-async-promise-executor': 0,
   },
 })

@@ -27,12 +27,15 @@ export const routeStore = defineStore({
   }),
   actions: {
     reset() {
-      const user = useProfileStore()
-      user.$reset()
-      removeRoute()
-      setTimeout(() => {
-        this.$reset()
-      }, 100)
+      return new Promise((resolve) => {
+        const user = useProfileStore()
+        removeRoute()
+        setTimeout(() => {
+          user.$reset()
+          this.$reset()
+          resolve(true)
+        }, 100)
+      })
     },
   },
   persist: {
