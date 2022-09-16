@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import Content from '../default/content/index.vue'
-const path = useRoute().query.path as string
+const path = computed(() => useRoute().params.path as string)
+console.log(useRoute())
 </script>
 
 <style lang="less" scoped></style>

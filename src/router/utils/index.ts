@@ -82,10 +82,12 @@ export const addTabs = (to: RouteLocationNormalized) => {
   ) {
     //不存在
     store.tabs.push({
-      name: to.name as string,
-      path: to.path,
+      name: name as string,
+      path: path,
       isClose: true,
       title: to.meta.title as string,
+      query: to.query,
+      params: to.params,
     })
   }
 }

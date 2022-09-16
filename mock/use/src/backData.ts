@@ -140,7 +140,7 @@ export const backData = [
         },
       },
       {
-        path: 'https://doc.mmxxn.cn/',
+        path: 'http://doc.mmxxn.cn/',
         name: 'docMmxxn',
         component: 'iframe',
         meta: {

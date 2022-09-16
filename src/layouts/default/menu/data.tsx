@@ -1,6 +1,11 @@
 import Icon from '@/components/Icon/index.vue'
 import { MenuOption } from 'naive-ui'
-import { LocationQueryRaw, RouteRecordRaw, RouterLink } from 'vue-router'
+import {
+  LocationQueryRaw,
+  RouteParamsRaw,
+  RouteRecordRaw,
+  RouterLink,
+} from 'vue-router'
 import { CloseCircleOutline } from '@vicons/ionicons5'
 import { MenuMixedOption } from 'naive-ui/lib/menu/src/interface'
 import { useI18n } from '@/locales/useLocal'
@@ -34,6 +39,7 @@ const label = function label(item: RouteRecordRaw) {
           ? item.path
           : '/' + item.path,
         query: item.meta!.query as LocationQueryRaw,
+        params: item.meta!.params as RouteParamsRaw,
       },
     },
     {

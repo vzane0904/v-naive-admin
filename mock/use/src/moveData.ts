@@ -122,6 +122,9 @@ export const moveData = [
           query: {
             path: 'http://doc.mmxxn.cn/',
           },
+          params: {
+            path: 'http://doc.mmxxn.cn/',
+          },
         },
       },
       {
@@ -134,10 +137,13 @@ export const moveData = [
           query: {
             path: 'https://www.naiveui.com/zh-CN/light',
           },
+          params: {
+            path: 'https://www.naiveui.com/zh-CN/light',
+          },
         },
       },
       {
-        path: 'https://doc.mmxxn.cn/',
+        path: 'http://doc.mmxxn.cn/',
         name: 'docMmxxn',
         component: 'iframe',
         meta: {
