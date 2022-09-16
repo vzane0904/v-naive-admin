@@ -1,13 +1,10 @@
 <script lang="tsx">
 import Icon from '@/components/Icon/index.vue'
-import OpenDrawer from './page/openDrawer.vue'
-interface RefType {
-  active: boolean
-}
+import { configStore } from '@/pinia/modules/config'
 export default defineComponent({
   name: 'FixedSettings',
   setup() {
-    const refData = ref<RefType>({ active: false })
+    const { openSettingDrawer } = storeToRefs(configStore())
     return () => (
       <>
         <div class=" fixed right-0 top-1/2 z-10">
@@ -16,10 +13,9 @@ export default defineComponent({
               name="setting2"
               class={'cursor-pointer'}
               size={20}
-              onClick={() => (refData.value.active = true)}
+              onClick={() => (openSettingDrawer.value = true)}
             />
           </NButton>
-          <OpenDrawer onRefCallBack={(v: RefType) => (refData.value = v)} />
         </div>
       </>
     )

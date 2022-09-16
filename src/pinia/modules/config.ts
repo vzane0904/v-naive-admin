@@ -5,5 +5,6 @@ export const configStore = defineStore({
     prefix: import.meta.env.VITE_APP_PREFIXCLS as string, //前缀
     isRefresh: false,
     loginTemplate: 1,
+    openSettingDrawer: false,
   }),
 })

@@ -1,11 +1,13 @@
 <template>
   <Content>
-    <iframe class="w-full h-full" frameborder="0" :src="path"></iframe>
+    <iframe class="w-full h-full" frameborder="0" :src="src"></iframe>
   </Content>
 </template>
 
 <script lang="ts" setup>
-const path = computed(() => useRoute().params.path as string)
+const src = computed(
+  () => (useRoute().params.path as string) || (useRoute().query.path as string),
+)
 console.log(useRoute())
 </script>
 

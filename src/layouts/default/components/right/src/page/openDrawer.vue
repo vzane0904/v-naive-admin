@@ -8,15 +8,16 @@ import { colorFFF } from '@/config'
 import { useClipboard } from '@vueuse/core'
 import { createModal } from '@/utils/message'
 import { useOptions } from './copyOptions'
+import { configStore } from '@/pinia/modules/config'
 export default defineComponent({
   name: 'OpenDrawer',
   emits: ['refCallBack'],
-  setup(_props, { emit }) {
-    const active = ref<boolean>(false)
+  setup() {
+    // const active = ref<boolean>(false)
     const store = themeStore()
-    onMounted(() => emit('refCallBack', { active }))
+    const { openSettingDrawer } = storeToRefs(configStore())
+    // onMounted(() => emit('refCallBack', { active }))
     const source = useOptions()
-    // text
     const { copy, copied, isSupported } = useClipboard({ source })
     watch(
       () => store.theme,
@@ -53,7 +54,7 @@ export default defineComponent({
     })
     return () => (
       <>
-        <NDrawer v-model:show={active.value} width={'330px'}>
+        <NDrawer v-model:show={openSettingDrawer.value} width={'330px'}>
           <NDrawerContent
             closable={true}
             v-slots={{

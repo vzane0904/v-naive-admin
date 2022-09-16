@@ -3,6 +3,7 @@ import { DropdownOption } from 'naive-ui'
 import useImg from '@/assets/images/user.png'
 import { userOptions } from './config'
 import { useProfileStore } from '@/pinia/modules/user'
+import OpenDrawer from './page/openDrawer.vue'
 export default defineComponent({
   name: 'User',
   setup() {
@@ -22,6 +23,7 @@ export default defineComponent({
               <span>{useName.value}</span>
             </div>
           </NDropdown>
+          <OpenDrawer />
         </div>
       </>
     )
