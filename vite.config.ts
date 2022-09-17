@@ -55,6 +55,7 @@ export default ({ command, mode }: ConfigEnv) => {
         'nprogress',
         '@vicons/ionicons5',
         '@vueuse/core',
+        'moment',
         // 'default-passive-events',
         'lodash-es',
         'screenfull',

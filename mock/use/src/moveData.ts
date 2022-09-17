@@ -1,4 +1,4 @@
-import { MenuIcon } from 'mock/config/icon'
+import { MenuIcon } from '../../config/icon'
 
 export const moveData = [
   // 首页
