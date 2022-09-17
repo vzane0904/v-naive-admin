@@ -24,7 +24,12 @@ export const createPlugin = (
   isBuild: boolean,
   command: string,
 ) => {
-  const { VITE_APP_TITLE, VITE_APP_MOCK, VITE_APP_ANALYSIS } = viteEnv
+  const {
+    VITE_APP_TITLE,
+    VITE_APP_MOCK,
+    VITE_APP_ANALYSIS,
+    VITE_APP_PROD_MOCK,
+  } = viteEnv
   const vitePlugins: (Plugin | Plugin[])[] = [
     vue(),
     WindiCSS(),
@@ -46,7 +51,7 @@ export const createPlugin = (
   vitePlugins.push(html(VITE_APP_TITLE) as unknown as Plugin)
   // vite-plugin-mock
   // eslint-disable-next-line no-unused-expressions
-  VITE_APP_MOCK && vitePlugins.push(mock(isBuild, command))
+  VITE_APP_MOCK && vitePlugins.push(mock(isBuild, command, VITE_APP_PROD_MOCK))
   // restart vite-plugin-restart
   // vitePlugins.push(restart())
   // jsx插件
