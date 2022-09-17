@@ -34,7 +34,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import loginBoxBg from '@/assets/images/login-box-bg.svg'
+import loginBoxBg from '@/assets/svg/login-box-bg.svg'
 import logo from '@/assets/images/logo.png'
 import User from './user.vue'
 const title = import.meta.env.VITE_APP_TITLE
@@ -42,7 +42,7 @@ const title = import.meta.env.VITE_APP_TITLE
 <style lang="less" scoped>
 .login {
   .bg {
-    background-image: url(@/assets/images/login-bg.svg);
+    background-image: url(@/assets/svg/login-bg.svg);
     background-size: auto 100%;
     background-position: 100%;
     background-repeat: no-repeat;
