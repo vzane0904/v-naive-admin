@@ -14,7 +14,7 @@ export const beforeEach = (
   if (to.path !== '/login' && !useStore.token) {
     const query = { redirectPath: to.path }
     next({
-      name: 'login',
+      path: '/login',
       query: to.path === '/404' || !to.path ? {} : query,
     })
   }
