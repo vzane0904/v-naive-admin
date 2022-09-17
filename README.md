@@ -89,6 +89,8 @@ Test account: Admin / Pass123456!
 
 🔳 Encapsulate common components
 
+🔳 Vue-i18n project has completed plug-in configuration, and has not completed variable compilation
+
 😭 Bug It must be necessary
 
 🟡 To be supplemented...

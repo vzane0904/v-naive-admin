@@ -11,40 +11,43 @@ export const useNameLogin = function (formValue: IUseNameLogin) {
   const route = useRoute()
   const router = useRouter()
   const ElRef = ref<FormInst | null>(null)
-  const validate = (callBack?: Fn | null, error?: Fn | null) => {
+  const loginGO = async () => {
+    const { token, useName } = await userNameLogin(formValue)
+    const useStore = useProfileStore()
+    useStore.$patch({
+      token: token,
+      useName,
+    })
+    await mountNewData()
+    const create = () =>
+      createNotification({
+        title: '登录成功',
+        description: moment().format('YYYY-MM-DD HH:mm:ss'),
+        content: `欢迎回来: ${useName}`,
+        type: 'success',
+      })
+    if (route.query.redirectPath && route.query.redirectPath !== '/404') {
+      router.push(route.query.redirectPath as string).finally(() => create())
+    } else {
+      router.push(baseHome).finally(() => create())
+    }
+  }
+  const loginValidate = (callBack?: Fn | null, error?: Fn | null) => {
     ElRef.value?.validate(async (errors: any) => {
       if (!errors) {
         if (callBack) {
           await callBack()
-        }
-        const { token, useName } = await userNameLogin(formValue)
-        const useStore = useProfileStore()
-        useStore.$patch({
-          token: token,
-          useName,
-        })
-        await mountNewData()
-        const create = () =>
-          createNotification({
-            title: '登录成功',
-            description: moment().format('YYYY-MM-DD HH:mm:ss'),
-            content: `欢迎回来: ${useName}`,
-            type: 'success',
-          })
-        if (route.query.redirectPath && route.query.redirectPath !== '/404') {
-          router
-            .push(route.query.redirectPath as string)
-            .finally(() => create())
-        } else {
-          router.push(baseHome).finally(() => create())
+          loginGO()
         }
       } else if (error) {
         await error()
       }
     })
   }
+
   return {
     ElRef,
-    validate,
+    loginValidate,
+    loginGO,
   }
 }

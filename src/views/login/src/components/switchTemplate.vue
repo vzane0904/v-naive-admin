@@ -5,6 +5,7 @@
       :type="loginTemplate === index + 1 ? 'success' : 'info'"
       v-for="(item, index) in TagList"
       :key="item"
+      class="cursor-pointer"
       @click="check(index)"
     >
       {{ item }}

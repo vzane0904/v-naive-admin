@@ -6,7 +6,7 @@
 
 <script>
 export default defineComponent({
-  name: 'Svg',
+  name: 'SvgIcon',
   props: {
     prefix: {
       type: String,
@@ -26,7 +26,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    console.log(1212)
     const symbolId = computed(() => `#${props.prefix}-${props.name}`)
     const svgClass = computed(
       () => `svg-icon ${props.className} text-${props.size}px`,

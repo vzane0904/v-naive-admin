@@ -1,7 +1,7 @@
 <script lang="tsx">
-import Svg from '@/components/Svg/index.vue'
 import { colorFFF } from '@/config'
 import { themeStore } from '@/pinia/modules/theme'
+import SvgIcon from '@/components/SvgIcon/index.vue'
 export default defineComponent({
   name: 'Logo',
   setup() {
@@ -26,7 +26,11 @@ export default defineComponent({
     return () =>
       showLogo.value ? (
         <div class="h-48px flex items-center" style={border.value}>
-          <Svg name="logo-icon" class="mx-10px" style={{ fontSize: '32px' }} />
+          <SvgIcon
+            name="logo-icon"
+            class="mx-10px"
+            style={{ fontSize: '32px' }}
+          />
           {layout.value === 2 || !siderFold.value ? (
             <strong
               style={{

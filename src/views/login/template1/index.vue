@@ -3,12 +3,7 @@
     <div class="bg flex flex-col py-50px w-1/2">
       <div
         class="leftHeaderText flex justify-center animate__animated animate__bounceInLeft w-7/10 h-3/10"
-      >
-        <Svg name="logo-icon" :size="40" class="mt-6px" />
-        <p class="m-0 mt-16px text-size-30px ml-14px text-center text-white">
-          <b>{{ title }}</b>
-        </p>
-      </div>
+      ></div>
       <div
         class="leftLogo flex flex-col animate__animated animate__bounceInLeft w-86/100 justify-center items-center"
       >
@@ -16,6 +11,11 @@
         <br />
         <br />
         <p class="m-0 text-size-24px text-white">
+          <SvgIcon
+            name="logo-icon"
+            :size="40"
+            class="relative top-6px mr-20px"
+          />
           <b>开箱即用的中后台管理系统</b>
         </p>
       </div>
@@ -34,8 +34,6 @@
 <script setup lang="ts">
 import loginBoxBg from '@/assets/svg/login-box-bg.svg'
 import User from './user.vue'
-import Svg from '@/components/Svg/index.vue'
-const title = import.meta.env.VITE_APP_TITLE
 </script>
 <style lang="less" scoped>
 .login {

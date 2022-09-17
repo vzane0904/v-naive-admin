@@ -12,7 +12,7 @@ export default defineComponent({
     return () => (
       <NFormItemRow path="password">
         <NInput
-          // type="password"
+          type="password"
           value={props.value}
           onInput={(ev) => emit('update:value', ev)}
           show-password-on="click"

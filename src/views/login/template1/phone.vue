@@ -3,6 +3,7 @@ import { defineComponent, reactive, ref } from 'vue'
 import { userPhoneLogin } from '@/api'
 import { useGetCode } from '../src/useLogin'
 import { PhoneRules } from '../src/config'
+import { FormInst } from 'naive-ui'
 export default defineComponent({
   name: 'Phone',
   emits: ['gx'],
@@ -49,7 +50,7 @@ export default defineComponent({
               if (!errors) {
                 console.log('ok')
                 try {
-                  let { success, msg } = await userPhoneLogin(formValue)
+                  const { success, msg } = await userPhoneLogin(formValue)
                   if (success) {
                     console.log('登录成功')
                   } else {
