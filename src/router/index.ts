@@ -1,33 +1,24 @@
-import { onLoadGetPermission, permissionMode } from '@/config'
-import { RoleEnum } from '@/enum/route'
+import { useProfileStore } from '@/pinia/modules/user'
 import { App } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
-import { backStaticRoutes, getBackRoutes } from './backRoutes'
-import { getMoveRoutes } from './moveRoutes'
-import { roleStaticRoutes } from './roleRoutes'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { staticRoutes } from './routes/basic'
 import { afterEach } from './utils/afterEach'
 import { beforeEach } from './utils/beforeEach'
-import { createRoutes } from './utils/createRoutes'
+import { mountNewData, mountRouter } from './utils/mountRouter'
 export const router = createRouter({
   history: createWebHistory(),
-  routes: staticRoutes,
+  routes: staticRoutes as RouteRecordRaw[],
   scrollBehavior: () => ({ left: 0, top: 0 }),
   strict: true,
 })
 export async function setRoute(app: App<Element>) {
-  if (permissionMode === RoleEnum.ROLE) {
-    roleStaticRoutes()
-  } else if (permissionMode === RoleEnum.BACK) {
-    backStaticRoutes()
+  const { token } = storeToRefs(useProfileStore())
+  if (unref(token)) {
+    mountRouter()
   }
-  createRoutes()
   app.use(router)
-  if (onLoadGetPermission && permissionMode === RoleEnum.MOVE) {
-    await getMoveRoutes()
-  } else if (permissionMode === RoleEnum.BACK) {
-    await backStaticRoutes()
-    getBackRoutes()
+  if (unref(token)) {
+    mountNewData()
   }
 }
 router.beforeEach(async (to, from, next) => beforeEach(to, from, next))

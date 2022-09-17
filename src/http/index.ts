@@ -7,7 +7,7 @@ import {
 import { AxiosErrorTip, ContentTypeEnum, ignoreTip } from '@/enum/axios'
 import { RequestOptions } from '@/type/http'
 import _ from 'lodash-es'
-import { Vaxios } from './axios'
+import { VAxios } from './axios'
 export const data: RequestOptions = {
   timeout: 1000 * 10, // 10ms 超时
   baseUrl: '',
@@ -20,7 +20,7 @@ export const data: RequestOptions = {
     // 是否返回原生响应头 比如：需要获取响应头时使用该属性
     isReturnNativeResponse: false,
     // 消息提示类型
-    errorMessageModal: AxiosErrorTip.MESSAGE,
+    errorMessageModal: AxiosErrorTip.MODAL,
     // 重复信息提示
     ignoreMsg: ignoreTip,
     //  是否加入时间戳
@@ -37,9 +37,11 @@ export const data: RequestOptions = {
     openRetry: RETRY_OPENRETRY,
     // 当前重试次数
     retryCount: 0,
+    // 是否转换请求结果直接拿到data
+    isConversionRequestResult: true,
   },
 }
 const createHttp = (request?: RequestOptions) => {
-  return new Vaxios(_.merge(data, request))
+  return new VAxios(_.merge(data, request))
 }
 export const http = createHttp()

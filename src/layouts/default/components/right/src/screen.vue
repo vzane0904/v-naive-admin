@@ -1,8 +1,7 @@
 <script lang="tsx">
 import Icon from '@/components/Icon/index.vue'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import { openFullScreen } from '@/utils/fullScreen'
-import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'Screen',

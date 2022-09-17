@@ -1,32 +1,9 @@
-import { colorFFF } from '@/config'
-import { Locale } from '@/enum/locale'
-import { useProfileStore } from '@/pinia/user'
+import { useLogOut } from '@/hooks/useLogin'
+import { logError } from '@/utils/log'
+import { createModal } from '@/utils/message'
 import { DropdownOption } from 'naive-ui'
-import { SelectMixedOption } from 'naive-ui/lib/select/src/interface'
 
-export const LangOptions = [
-  {
-    label: '简体中文',
-    key: Locale.ZH_CN,
-  },
-  {
-    label: '中国台湾(繁体)',
-    key: Locale.ZH_TW,
-  },
-  // {
-  //   label: '香港',
-  //   key: Locale.ZH_HK,
-  // },
-  {
-    label: 'English',
-    key: Locale.EN,
-  },
-  {
-    label: '俄罗斯语',
-    key: Locale.RU,
-  },
-]
-export const UserOptions = [
+export const userOptions = [
   {
     label: '切换租户',
     key: '切换租户',
@@ -48,7 +25,7 @@ export const UserOptions = [
     label: '修改密码',
     key: '修改密码',
     fn: () => {
-      console.log(1212)
+      console.log('修改密码')
     },
   },
   {
@@ -58,81 +35,26 @@ export const UserOptions = [
   {
     label: '退出登录',
     key: '退出登录',
-    fn: (key: string | number, option: DropdownOption) => {
-      console.log(key, option)
-      const useStore = useProfileStore()
-      useStore.token = ''
+    fn: (_key: string | number, _option: DropdownOption) => {
+      const example = createModal({
+        title: '温馨提示',
+        type: 'warning',
+        content: '是否确认退出系统?',
+        positiveText: '确定',
+        negativeText: '取消',
+        maskClosable: false,
+        onPositiveClick: async () => {
+          return new Promise(async (resolve) => {
+            example.loading = true
+            try {
+              await useLogOut()
+              resolve(true)
+            } catch (error) {
+              logError(error as Error)
+            }
+          })
+        },
+      })
     },
-  },
-]
-export const ColorData = {
-  // 主题
-  theme: [
-    colorFFF,
-    '#151515',
-    '#009688',
-    '#5172DC',
-    '#018ffb',
-    '#409eff',
-    '#e74c3c',
-    '#24292e',
-    '#394664',
-    '#001529',
-    '#383f45',
-  ],
-  // 左侧菜单
-  siderColar: [
-    colorFFF,
-    '#151515',
-    '#009688',
-    '#5172DC',
-    '#018ffb',
-    '#409eff',
-    '#e74c3c',
-    '#24292e',
-    '#394664',
-    '#001529',
-    '#383f45',
-  ],
-  // 顶部菜单
-  header: [
-    '#018ffb',
-    '#212121',
-    '#009688',
-    colorFFF,
-    '#5172dc',
-    '#191a23',
-    '#304156',
-    '#28333E',
-    '#344058',
-    '#383f45',
-  ],
-}
-export const MenuFold: Array<SelectMixedOption> = [
-  {
-    label: '不显示',
-    value: 'none',
-  },
-  {
-    label: '顶部',
-    value: 'top',
-  },
-  {
-    label: '底部',
-    value: 'bottom',
-  },
-]
-export const AnimationType = [
-  {
-    label: '动画1',
-    value: '动画1',
-  },
-  {
-    label: '动画2',
-    value: '动画2',
-  },
-  {
-    label: '动画3',
-    value: '动画3',
   },
 ]

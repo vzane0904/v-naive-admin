@@ -1,8 +1,8 @@
 @font-face {
   font-family: "naive-iconfont"; /* Project id 2085566 */
-  src: url('iconfont.woff2?t=1661693836424') format('woff2'),
-       url('iconfont.woff?t=1661693836424') format('woff'),
-       url('iconfont.ttf?t=1661693836424') format('truetype');
+  src: url('iconfont.woff2?t=1663341238551') format('woff2'),
+       url('iconfont.woff?t=1663341238551') format('woff'),
+       url('iconfont.ttf?t=1663341238551') format('truetype');
 }
 
 .naive-iconfont {
@@ -11,6 +11,126 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.naive-icon-html5:before {
+  content: "\e64a";
+}
+
+.naive-icon-houtaiguanli:before {
+  content: "\e847";
+}
+
+.naive-icon-wendang:before {
+  content: "\e7a3";
+}
+
+.naive-icon-folder:before {
+  content: "\e6eb";
+}
+
+.naive-icon-icon-test1:before {
+  content: "\e654";
+}
+
+.naive-icon-icon-test2:before {
+  content: "\e655";
+}
+
+.naive-icon-icon-test3:before {
+  content: "\e656";
+}
+
+.naive-icon-kaifa:before {
+  content: "\e6ae";
+}
+
+.naive-icon-wendang1:before {
+  content: "\e74d";
+}
+
+.naive-icon-WEBqianduan:before {
+  content: "\e652";
+}
+
+.naive-icon-http:before {
+  content: "\e657";
+}
+
+.naive-icon-jichugongneng:before {
+  content: "\e659";
+}
+
+.naive-icon-wodeguanzhu:before {
+  content: "\e65b";
+}
+
+.naive-icon-tuichudenglu:before {
+  content: "\e65c";
+}
+
+.naive-icon-zizhanghaoguanli:before {
+  content: "\e65d";
+}
+
+.naive-icon-tuichudenglu1:before {
+  content: "\e65e";
+}
+
+.naive-icon-gongneng:before {
+  content: "\e747";
+}
+
+.naive-icon-level:before {
+  content: "\e661";
+}
+
+.naive-icon-cuowuyemian:before {
+  content: "\e662";
+}
+
+.naive-icon-wode-woshituanchang:before {
+  content: "\e665";
+}
+
+.naive-icon-copy-full:before {
+  content: "\ea32";
+}
+
+.naive-icon-404:before {
+  content: "\e666";
+}
+
+.naive-icon-houtaitubiao-17:before {
+  content: "\e667";
+}
+
+.naive-icon-waibulianjie:before {
+  content: "\e808";
+}
+
+.naive-icon-a-kuozhanicon_huaban1fuben42:before {
+  content: "\e668";
+}
+
+.naive-icon-bumenguanli:before {
+  content: "\e6aa";
+}
+
+.naive-icon-he_86zhanghaoguanli:before {
+  content: "\e720";
+}
+
+.naive-icon-bumenguanli1:before {
+  content: "\e669";
+}
+
+.naive-icon-a-huaban2fuben6:before {
+  content: "\e66a";
+}
+
+.naive-icon-qiehuantuichu:before {
+  content: "\e649";
 }
 
 .naive-icon-day:before {

@@ -1,8 +1,6 @@
-import { NLayout } from 'naive-ui'
-import { defineComponent } from 'vue'
 import LayoutContent from '../content/index.vue'
-import { LayoutHeader } from '../header'
-import { Layoutsider } from '../sider'
+import LayoutHeader from '../header/index.vue'
+import Layoutsider from '../sider/index.vue'
 export const LayoutOne = defineComponent({
   name: 'LayoutOne',
   setup() {

@@ -1,6 +1,4 @@
-import { themeStore } from '@/pinia/theme'
-import { NLayout } from 'naive-ui'
-import { defineComponent } from 'vue'
+import { themeStore } from '@/pinia/modules/theme'
 import { LayoutOne, LayoutThr, LayoutTwo } from './hock'
 export default defineComponent({
   name: 'ViewComponent',

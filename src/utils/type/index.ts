@@ -17,7 +17,7 @@ type LocaleType =
  * @result [string、number、boolean、undefined、null、symbol、bigint、function、object、array、date、regexp、math ...   ]
  **/
 const toTye = function toTye(target: any) {
-  let reg = /^\[object ([\w\W]+)\]$/,
+  const reg = /^\[object ([\w\W]+)\]$/,
     objOrFun = /^(object|function)$/,
     type = typeof target
   return objOrFun.test(type)

@@ -3,4 +3,6 @@ export interface TabsType {
   path: string
   isClose?: boolean
   title: string
+  query: Object
+  params: Object
 }

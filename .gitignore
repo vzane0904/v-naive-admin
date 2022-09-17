@@ -23,6 +23,7 @@ dist-ssr
 *.sw?
 .eslintignore
 # file
-src/config/auto-import.d.ts
-src/config/components.d.ts
+auto-import.d.ts
+components.d.ts
+naive.d.ts
 stats.html

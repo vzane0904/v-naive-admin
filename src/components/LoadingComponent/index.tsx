@@ -1,5 +1,3 @@
-import { defineComponent } from 'vue'
-
 export const LoadingComponent = defineComponent({
   name: 'LoadingComponent',
   setup() {

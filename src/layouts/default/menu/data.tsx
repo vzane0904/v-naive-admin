@@ -1,7 +1,11 @@
 import Icon from '@/components/Icon/index.vue'
-import { MenuType } from '@/type/route'
 import { MenuOption } from 'naive-ui'
-import { LocationQueryRaw, RouterLink } from 'vue-router'
+import {
+  LocationQueryRaw,
+  RouteParamsRaw,
+  RouteRecordRaw,
+  RouterLink,
+} from 'vue-router'
 import { CloseCircleOutline } from '@vicons/ionicons5'
 import { MenuMixedOption } from 'naive-ui/lib/menu/src/interface'
 import { useI18n } from '@/locales/useLocal'
@@ -9,7 +13,7 @@ import { isI18n } from '@/config'
 import { h } from 'vue'
 import { isProtocol } from '@/utils'
 const { t } = useI18n()
-const label = function label(item: MenuType) {
+const label = function label(item: RouteRecordRaw) {
   // 外链
   if (isProtocol(item.path)) {
     return h(
@@ -20,7 +24,8 @@ const label = function label(item: MenuType) {
         rel: 'noopenner noreferrer',
       },
       {
-        default: () => (isI18n ? t(item.name) : item.meta.title),
+        default: () =>
+          isI18n ? t(item.name as string) : (item.meta!.title as string),
       },
     )
   }
@@ -33,32 +38,34 @@ const label = function label(item: MenuType) {
           : item.path.slice(0, 1) === '/'
           ? item.path
           : '/' + item.path,
-        query: item.meta.query as LocationQueryRaw,
+        query: item.meta!.query as LocationQueryRaw,
+        params: item.meta!.params as RouteParamsRaw,
       },
     },
     {
-      default: () => (isI18n ? t(item.name) : item.meta.title),
+      default: () => (isI18n ? t(item.name as string) : item.meta!.title),
     },
   )
 }
-export const useData = (data: Array<MenuType>) => {
-  let arr = data
-    .map((item: MenuType) => {
-      if (item.meta.hideMenu) {
+export const useData = (data: Array<RouteRecordRaw>) => {
+  const arr = data
+    .sort((a, b) => a.meta!.orderNo! - b.meta!.orderNo!)
+    .map((item: RouteRecordRaw) => {
+      if (item.meta!.hideMenu) {
         return false
       }
-      let info: MenuOption = {
+      const info: MenuOption = {
         label: () => label(item),
         key: item.path,
         icon: () =>
-          item.meta.icon ? (
-            <Icon name={item.meta.icon}></Icon>
+          item.meta!.icon ? (
+            <Icon name={item.meta!.icon} size={18}></Icon>
           ) : (
             <CloseCircleOutline />
           ),
       }
       if (item.children) {
-        let list = useData(item.children)
+        const list = useData(item.children)
         if (list.length) {
           info.children = useData(item.children)
         }

@@ -1,246 +1,29 @@
-import { baseUrl, resultData } from '../index'
+import { baseUrl, resultData } from '../config/index'
 import Mock from 'mockjs'
 import { uuid } from '@/utils/utils'
+import { backAllAuth, backData } from './src/backData'
+import { moveAllAuth, moveData } from './src/moveData'
 export default [
-  // move
+  // Back
   {
-    url: `${baseUrl}/users/permissions`,
+    url: `${baseUrl}/users/back/permissions`,
     method: 'post',
     timeout: 2000,
     response: () =>
       resultData({
-        route: [
-          {
-            path: '/movefid',
-            name: 'movefid',
-            component: 'home',
-            meta: {
-              icon: 'zhuye3',
-              title: 'move关于',
-              query: { name: 'movefid query', age: 20 },
-              params: { name: 'params query', age: 20 },
-            },
-          },
-          {
-            path: 'https://www.baidu.com/',
-            name: 'baidu',
-            component: 'iframe',
-            meta: {
-              icon: 'zhuye3',
-              title: 'move外部链接',
-            },
-          },
-          {
-            path: '/InsideIframe',
-            name: 'Inside',
-            component: 'iframe',
-            meta: {
-              icon: 'zhuye3',
-              title: 'move内部链接',
-            },
-          },
-          {
-            path: '/movesystem',
-            name: 'movesystem',
-            component: 'view',
-            meta: {
-              icon: 'setting1',
-              title: 'move系统管理',
-            },
-            children: [
-              {
-                path: '/movesystem/moverole',
-                name: 'role',
-                component: 'system/role',
-                meta: {
-                  icon: 'jiaoseguanli1',
-                  title: 'move角色管理',
-                },
-              },
-              {
-                path: '/movesystem/movemenu',
-                name: 'movemenu',
-                component: 'system/menu',
-                meta: {
-                  icon: '_caidanguanli',
-                  title: 'move菜单管理',
-                  requiresAuth: true,
-                },
-              },
-            ],
-          },
-          {
-            path: '/movesystem1',
-            name: 'movesystem1',
-            component: 'view',
-            meta: {
-              icon: 'setting1',
-              title: 'move系统管理1',
-            },
-            children: [
-              {
-                path: '/movesystem/moverole1',
-                name: 'role',
-                component: 'system/role',
-                meta: {
-                  icon: 'jiaoseguanli1',
-                  title: 'move角色管理1',
-                },
-              },
-              {
-                path: '/movesystem/movemenu1',
-                name: 'movemenu1',
-                component: 'system/menu',
-                meta: {
-                  icon: '_caidanguanli',
-                  title: 'move菜单管理1',
-                  requiresAuth: true,
-                },
-              },
-            ],
-          },
-        ],
-        allAuth: [{ name: '按钮权限', id: 1 }],
+        route: backData,
+        allAuth: backAllAuth,
       }),
   },
-  // 切换新权限
+  // Move
   {
-    url: `${baseUrl}/users/newpermissions`,
+    url: `${baseUrl}/users/move/permissions`,
     method: 'post',
     timeout: 2000,
     response: () =>
       resultData({
-        route: [
-          {
-            parentId: 0,
-            id: '1-1',
-            path: '/111111111',
-            redirect: '',
-            component: 'system/homePage/index',
-            meta: {
-              icon: '1111',
-              title: '1111111111111',
-              keepAlive: false,
-              hideMenu: false,
-            },
-          },
-        ],
-        allAuth: [
-          { name: '按钮权限', id: 1 },
-          { name: '按钮权限2', id: 2 },
-        ],
-      }),
-  },
-  // back
-  {
-    url: `${baseUrl}/users/oldbackpermissions`,
-    method: 'post',
-    timeout: 2000,
-    response: () =>
-      resultData({
-        route: [
-          {
-            path: '/backhome',
-            name: 'backhome',
-            component: 'homePageComponent',
-            meta: {
-              icon: 'zhuye3',
-              title: 'Back首页',
-            },
-          },
-          {
-            path: 'https://www.baidu.com/',
-            name: 'baidu',
-            component: 'iframe',
-            meta: {
-              icon: 'zhuye3',
-              title: '外部链接',
-            },
-          },
-          {
-            path: '/InsideIframe',
-            name: 'Inside',
-            component: 'iframe',
-            meta: {
-              icon: 'zhuye3',
-              title: '内部链接',
-            },
-          },
-          {
-            path: '/backhome1',
-            name: 'backhome1',
-            component: 'homePageComponent11',
-            meta: {
-              icon: 'zhuye3',
-              title: 'Back首页1',
-            },
-          },
-          {
-            path: '/backfid',
-            name: 'backfid',
-            component: 'fldComponent',
-            meta: {
-              icon: 'zhuye3',
-              title: 'Back关于',
-            },
-          },
-          {
-            path: '/backsystem',
-            name: 'backsystem',
-            component: 'view',
-            meta: {
-              icon: 'setting1',
-              title: 'Back系统管理',
-            },
-            children: [
-              {
-                path: '/backsystem/backrole',
-                name: 'backrole',
-                component: 'roleComponent',
-                meta: {
-                  icon: 'jiaoseguanli1',
-                  title: 'Back角色管理',
-                },
-              },
-              {
-                path: '/backsystem/backmenu',
-                name: 'backmenu',
-                component: 'menuComponent',
-                meta: {
-                  icon: '_caidanguanli',
-                  title: 'Back菜单管理',
-                  requiresAuth: true,
-                },
-              },
-            ],
-          },
-        ],
-        allAuth: [{ name: '按钮权限', id: 1 }],
-      }),
-  },
-  // ????
-  {
-    url: `${baseUrl}/users/newbackpermissions`,
-    method: 'post',
-    timeout: 2000,
-    response: () =>
-      resultData({
-        route: [
-          {
-            parentId: 0,
-            id: '1-1',
-            path: '/newBack',
-            redirect: '',
-            component: 'newBack',
-            meta: {
-              icon: 'newBack',
-              title: 'newBack',
-              keepAlive: false,
-              hideMenu: false,
-            },
-          },
-        ],
-        allAuth: [{ name: '按钮权限', id: 1 }],
+        route: moveData,
+        allAuth: moveAllAuth,
       }),
   },
   // 图片验证码
@@ -273,7 +56,7 @@ export default [
   },
   // 用户名登录
   {
-    url: `${baseUrl}/sys/login/uasrName`,
+    url: `${baseUrl}/sys/login/userName`,
     method: 'post',
     timeout: 200,
     response: () =>

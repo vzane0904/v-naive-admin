@@ -1,14 +1,24 @@
 <template>
-  <Theme />
-  <login1 v-if="loginTemplate === 1" />
-  <login2 v-if="loginTemplate === 2" />
+  <div class="absolute flex -right-25px w-170px justify-between z-10">
+    <Theme />
+    <Version />
+  </div>
+  <Login1 v-if="loginTemplate === 1" />
+  <Login2 v-if="loginTemplate === 2" />
 </template>
 
 <script setup lang="ts">
-import login1 from './template1/index.vue'
-import login2 from './template2/index.vue'
-import Theme from './src/conponents/Theme.vue'
-const loginTemplate = ref(1)
+import Login1 from './template1/index.vue'
+import Login2 from './template2/index.vue'
+import Theme from './src/components/Theme.vue'
+import Version from './src/components/version.vue'
+import { configStore } from '@/pinia/modules/config'
+const { loginTemplate } = storeToRefs(configStore())
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="less" scoped>
+@prefixCls: ~'@{prefix}';
+:v-deep(.@{prefixCls}-switch__rail) {
+  box-shadow: none !important;
+}
+</style>

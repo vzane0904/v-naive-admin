@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import { defineComponent, computed } from 'vue'
-
 export default defineComponent({
   name: 'Icon',
   props: {
@@ -28,7 +26,6 @@ export default defineComponent({
     },
   },
   setup(props) {
-    console.log('cccc', props.name)
     const symbolId = computed(() => `#${props.prefix}-${props.name}`)
     const className = computed(() => `icon text-${props.size}px`)
     return { symbolId, className }

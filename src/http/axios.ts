@@ -5,11 +5,12 @@ import {
   RETRY_COUNTCODE,
 } from '@/config'
 import { RequestEnum } from '@/enum/axios'
-import { Expand, SetOptional } from '@/type'
-import { ErrorInfo, RequestOptions, resultType } from '@/type/http'
-import { createErrorMsg } from '@/utils/message'
+import { useGo } from '@/hooks/router'
+import { routeStore } from '@/pinia/modules/routeStore'
+import { SetOptional } from '@/type'
+import { ErrorInfo, RequestOptions, TConversion } from '@/type/http'
+import { createNotification } from '@/utils/message'
 import { uuid } from '@/utils/utils'
-type Type<T> = Expand<resultType<T>>
 import axios, {
   AxiosError,
   AxiosInstance,
@@ -19,7 +20,7 @@ import axios, {
 import { addCancel } from './addCancel'
 import { cancelPending, deletePending } from './cancel'
 import { TipMsg } from './Tips'
-export class Vaxios {
+export class VAxios {
   private requestOptions: RequestOptions
   private AxiosInstance: AxiosInstance
   constructor(requestOptions: RequestOptions) {
@@ -60,7 +61,12 @@ export class Vaxios {
         return request
       },
       async (error: AxiosError) => {
-        createErrorMsg({ title: '请求异常', content: error.message })
+        createNotification({
+          title: '系统异常',
+          description: error.response!.status as unknown as string,
+          content: error.message,
+          type: 'error',
+        })
         return Promise.reject(error)
       },
     )
@@ -75,6 +81,19 @@ export class Vaxios {
           //是否需要对原生头处理
           return response
         }
+        // 直接获取到data
+        if (config.requestOptions.isConversionRequestResult) {
+          const { success, message } = response.data
+          if (!success) {
+            createNotification({
+              title: '请求错误',
+              content: message,
+              type: 'error',
+            })
+            // console.log('请求异常', message)
+          }
+          return response.data.data
+        }
         return response.data
       },
       // eslint-disable-next-line complexity
@@ -86,6 +105,19 @@ export class Vaxios {
          * 4.兜底处理
          **/
         // 1、
+        if (error.response?.status === 401) {
+          createNotification({
+            title: '系统异常',
+            description: '401',
+            content: '登录过期，即将重新登陆',
+            type: 'error',
+          })
+          const routerS = routeStore()
+          routerS.reset()
+          const go = useGo()
+          go('/login')
+          return Promise.reject(error)
+        }
         if (axios.isCancel(error)) {
           const err: ErrorInfo = {
             status: 4004,
@@ -134,7 +166,13 @@ export class Vaxios {
             statusText: '请求超时',
             success: false,
           }
-          createErrorMsg({ title: '系统异常', content: '请求超时' })
+          // createErrorMsg({ title: '系统异常', content: '请求超时' })
+          createNotification({
+            title: '系统异常',
+            description: error.response!.status as unknown as string,
+            content: '请求超时',
+            type: 'error',
+          })
           deletePending(config)
           return Promise.reject(ignore)
         } else if (error.config) {
@@ -170,11 +208,11 @@ export class Vaxios {
    * @params {}
    * @config RequestOptions
    **/
-  get<T = any>(
+  get<T = any, conversion extends boolean = true>(
     url: string,
     params?: Record<string, Object>,
     config?: RequestOptions,
-  ): Promise<Type<T>> {
+  ): Promise<TConversion<conversion, T>> {
     return this.require({ url, method: 'get', params, ...config })
   }
 
@@ -183,11 +221,11 @@ export class Vaxios {
    * @params {}
    * @config RequestOptions
    **/
-  head<T = any>(
+  head<T = any, conversion extends boolean = true>(
     url: string,
     params?: Record<string, Object>,
     config?: RequestOptions,
-  ): Promise<Type<T>> {
+  ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
       method: 'head',
@@ -200,11 +238,11 @@ export class Vaxios {
    * @params {}
    * @config RequestOptions
    **/
-  options<T = any>(
+  options<T = any, conversion extends boolean = true>(
     url: string,
     params?: Record<string, Object>,
     config?: RequestOptions,
-  ): Promise<Type<T>> {
+  ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
       method: 'options',
@@ -217,11 +255,11 @@ export class Vaxios {
    * @params {}
    * @config RequestOptions
    **/
-  delete<T = any>(
+  delete<T = any, conversion extends boolean = true>(
     url: string,
     params?: Record<string, Object>,
     config?: RequestOptions,
-  ): Promise<Type<T>> {
+  ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
       method: 'delete',
@@ -234,11 +272,11 @@ export class Vaxios {
    * @params {}
    * @config RequestOptions
    **/
-  post<T = any>(
+  post<T = any, conversion extends boolean = true>(
     url: string,
     data?: Record<string, any>,
     config?: RequestOptions,
-  ): Promise<Type<T>> {
+  ): Promise<TConversion<conversion, T>> {
     return this.require({ url, method: 'post', data, ...config })
   }
   /**
@@ -246,11 +284,11 @@ export class Vaxios {
    * @params {}
    * @config RequestOptions
    **/
-  put<T = any>(
+  put<T = any, conversion extends boolean = true>(
     url: string,
     data?: Record<string, any>,
     config?: RequestOptions,
-  ): Promise<Type<T>> {
+  ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
       method: 'put',
@@ -263,11 +301,11 @@ export class Vaxios {
    * @params {}
    * @config RequestOptions
    **/
-  patch<T = any>(
+  patch<T = any, conversion extends boolean = true>(
     url: string,
     data?: Record<string, any>,
     config?: RequestOptions,
-  ): Promise<Type<T>> {
+  ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
       method: 'patch',
@@ -280,11 +318,11 @@ export class Vaxios {
    * @params {}
    * @config RequestOptions
    **/
-  uploadFile<T = FormData>(
+  uploadFile<T = FormData, conversion extends boolean = true>(
     url: string,
     data?: FormData,
     config?: RequestOptions,
-  ): Promise<Type<T>> {
+  ): Promise<TConversion<conversion, T>> {
     return this.require({
       url,
       method: 'post',

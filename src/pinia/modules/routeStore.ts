@@ -1,7 +1,9 @@
-import { baseHome, baseHomeOpenMenu } from '@/config'
+import { baseHome } from '@/config'
+import { removeRoute } from '@/router/utils/remove'
 import { RouteType } from '@/type/route'
 import { defineStore } from 'pinia'
 import { TabsType } from '../type/user'
+import { useProfileStore } from './user'
 
 export const routeStore = defineStore({
   id: 'routeStore',
@@ -12,7 +14,6 @@ export const routeStore = defineStore({
     menuList: [], //菜单
     auth: [], //权限
     selectMenu: baseHome, //首页路径
-    openMenu: <Array<string>>[...baseHomeOpenMenu],
     tabs: <Array<TabsType>>[
       {
         name: baseHome,
@@ -24,6 +25,19 @@ export const routeStore = defineStore({
     tabsActive: baseHome,
     role: ['admin', 'int'],
   }),
+  actions: {
+    reset() {
+      return new Promise((resolve) => {
+        const user = useProfileStore()
+        removeRoute()
+        setTimeout(() => {
+          user.$reset()
+          this.$reset()
+          resolve(true)
+        }, 100)
+      })
+    },
+  },
   persist: {
     enabled: true,
     strategies: [
@@ -32,9 +46,7 @@ export const routeStore = defineStore({
         paths: [
           'originalData',
           'auth',
-          // 'selectMenu',
-          'openMenu',
-          'tabs',
+          // 'tabs',
           'role',
         ],
       },

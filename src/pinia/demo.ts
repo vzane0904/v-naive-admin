@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 export const demoStore = defineStore({
-  id: 'demoStorea', //唯一
+  id: 'demoStore', //唯一
   state: () => ({
     count: 0,
   }), //存放数据
