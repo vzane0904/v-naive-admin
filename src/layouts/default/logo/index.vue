@@ -26,7 +26,7 @@ export default defineComponent({
     return () =>
       showLogo.value ? (
         <div class="h-48px flex items-center" style={border.value}>
-          <Svg name="资源1" class="mx-10px" style={{ fontSize: '32px' }} />
+          <Svg name="logo-icon" class="mx-10px" style={{ fontSize: '32px' }} />
           {layout.value === 2 || !siderFold.value ? (
             <strong
               style={{

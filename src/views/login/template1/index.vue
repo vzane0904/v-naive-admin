@@ -4,7 +4,7 @@
       <div
         class="leftHeaderText flex justify-center animate__animated animate__bounceInLeft w-7/10 h-3/10"
       >
-        <img :src="logo" alt="" srcset="" class="w-48px h-48px" />
+        <Svg name="logo-icon" :size="40" class="mt-6px" />
         <p class="m-0 mt-16px text-size-30px ml-14px text-center text-white">
           <b>{{ title }}</b>
         </p>
@@ -33,8 +33,8 @@
 </template>
 <script setup lang="ts">
 import loginBoxBg from '@/assets/svg/login-box-bg.svg'
-import logo from '@/assets/images/logo.png'
 import User from './user.vue'
+import Svg from '@/components/Svg/index.vue'
 const title = import.meta.env.VITE_APP_TITLE
 </script>
 <style lang="less" scoped>
