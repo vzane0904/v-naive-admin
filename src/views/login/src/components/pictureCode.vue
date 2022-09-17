@@ -13,9 +13,13 @@ export default defineComponent({
   setup(props, { emit }) {
     const picCode = ref<string>('')
     const getPicCode = async () => {
-      picCode.value = ''
-      const { img } = await getPicValidateCode()
-      picCode.value = img
+      try {
+        picCode.value = ''
+        const { img } = await getPicValidateCode()
+        picCode.value = img
+      } catch (error) {
+        picCode.value = 'null'
+      }
     }
     onMounted(() => {
       getPicCode()

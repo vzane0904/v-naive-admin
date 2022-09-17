@@ -50,8 +50,7 @@ export const createPlugin = (
   // title  vite-plugin-html
   vitePlugins.push(html(VITE_APP_TITLE) as unknown as Plugin)
   // vite-plugin-mock
-  // eslint-disable-next-line no-unused-expressions
-  VITE_APP_MOCK && vitePlugins.push(mock(isBuild, command, VITE_APP_PROD_MOCK))
+  vitePlugins.push(mock(VITE_APP_MOCK, VITE_APP_PROD_MOCK, isBuild, command))
   // restart vite-plugin-restart
   // vitePlugins.push(restart())
   // jsx插件
