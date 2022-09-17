@@ -1,11 +1,10 @@
 <template>
-  <div class="absolute right-0 top-0 z-10 mt-12px mr-12px">
+  <div class="mt-12px mr-12px">
     <NSwitch
       v-model:value="theme"
       size="large"
       :rail-style="railStyle"
       :rubber-band="false"
-      :class="`${loginTemplate > 1 && 'mr-60px'}`"
     >
       <template #checked>
         <Icon name="Sunny-qing-baitian" />
@@ -18,10 +17,8 @@
 </template>
 <script lang="ts" setup>
 import { themeStore } from '@/pinia/modules/theme'
-import { configStore } from '@/pinia/modules/config'
 import { CSSProperties } from 'vue'
 const { theme } = storeToRefs(themeStore())
-const { loginTemplate } = storeToRefs(configStore())
 const railStyle = ({
   focused,
   checked,

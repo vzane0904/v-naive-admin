@@ -1,5 +1,8 @@
 <template>
-  <Theme />
+  <div class="absolute flex -right-25px w-170px justify-between z-10">
+    <Theme />
+    <Version />
+  </div>
   <Login1 v-if="loginTemplate === 1" />
   <Login2 v-if="loginTemplate === 2" />
 </template>
@@ -8,6 +11,7 @@
 import Login1 from './template1/index.vue'
 import Login2 from './template2/index.vue'
 import Theme from './src/components/Theme.vue'
+import Version from './src/components/version.vue'
 import { configStore } from '@/pinia/modules/config'
 const { loginTemplate } = storeToRefs(configStore())
 </script>

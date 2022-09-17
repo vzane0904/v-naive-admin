@@ -8,7 +8,6 @@ export default defineComponent({
   name: 'Login2',
   components: { SwitchTemplate },
   setup() {
-    const { pkg } = __APP_INFO__
     return () => (
       <div class="loginBox w-1/1 h-1/1 flex">
         <div
@@ -21,12 +20,6 @@ export default defineComponent({
           <img src={login2Img} alt="" />
         </div>
         <div class="loginInfoBox w-1/3 flex items-center justify-center relative overflow-hidden">
-          <div
-            class="edition absolute top-3 -right-25px px-30px py-4px  text-cool-gray-50 transform rotate-45 select-none"
-            style={{ backgroundColor: '#fec12f' }}
-          >
-            V {pkg.version}
-          </div>
           <div class="contentBox">
             <img src={loginLogo} alt="" class="w-400px h-36px" />
             <div>
