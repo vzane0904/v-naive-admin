@@ -1,16 +1,17 @@
-import { MenuIcon } from '../../config/icon'
+import { MenuIcon } from '../icon'
 
-export const moveData = [
+export const backData = [
   // 首页
   {
     path: '/home',
     name: 'home',
-    component: 'homeComponent',
+    component: 'home',
     meta: {
       icon: MenuIcon.home,
-      title: 'move首页',
+      title: '首页',
       query: {},
       params: {},
+
       orderNo: 1,
     },
   },
@@ -21,26 +22,28 @@ export const moveData = [
     component: 'view',
     meta: {
       icon: MenuIcon.permission,
-      title: 'move权限管理',
+      title: '权限管理',
       orderNo: 2,
     },
     children: [
       {
         path: '/permission/web',
         name: 'web',
-        component: 'permissionWebComponent',
+        component: '/permission/web/index',
         meta: {
           icon: MenuIcon.permissionWeb,
           title: '前端权限',
+          orderNo: 2,
         },
       },
       {
         path: '/permission/back',
-        name: 'permissionBack',
-        component: 'permissionBackComponent',
+        name: 'back',
+        component: '/permission/back/index',
         meta: {
           icon: MenuIcon.permissionBack,
           title: '后台权限',
+          orderNo: 1,
         },
       },
     ],
@@ -52,14 +55,14 @@ export const moveData = [
     component: 'view',
     meta: {
       icon: MenuIcon.function,
-      title: 'move功能',
+      title: '功能',
       orderNo: 3,
     },
     children: [
       {
         path: '/function/http',
         name: 'http',
-        component: 'functionHttpComponent',
+        component: 'function/http/index',
         meta: {
           icon: MenuIcon.functionHttp,
           title: 'Http',
@@ -68,7 +71,7 @@ export const moveData = [
       {
         path: '/function/session-timeout',
         name: 'sessionTimeout',
-        component: 'functionSessionTimeoutComponent',
+        component: 'function/sessionTimeout/index',
         meta: {
           icon: MenuIcon.functionSessionTimeout,
           title: '登录过期',
@@ -77,7 +80,7 @@ export const moveData = [
       {
         path: '/function/copy',
         name: 'copy',
-        component: 'functionCopyComponent',
+        component: 'function/copy/index',
         meta: {
           icon: MenuIcon.functionCopy,
           title: '剪切板',
@@ -86,7 +89,7 @@ export const moveData = [
       {
         path: '/function/msg',
         name: 'msg',
-        component: 'functionMsgComponent',
+        component: 'function/msg/index',
         meta: {
           icon: MenuIcon.functionMsg,
           title: '消息提示',
@@ -95,7 +98,7 @@ export const moveData = [
       {
         path: '/function/full-screen',
         name: 'fullScreen',
-        component: 'functionFullScreenComponent',
+        component: 'function/fullScreen/index',
         meta: {
           icon: MenuIcon.functionFullScreen,
           title: '全屏',
@@ -111,11 +114,11 @@ export const moveData = [
     meta: {
       icon: MenuIcon.iframe,
       title: '外部页面',
-      orderNo: 5,
+      orderNo: 4,
     },
     children: [
       {
-        path: '/iframe/doc',
+        path: '/frame/doc',
         name: 'doc',
         component: 'iframe',
         meta: {
@@ -124,22 +127,16 @@ export const moveData = [
           query: {
             path: 'http://doc.mmxxn.cn/',
           },
-          params: {
-            path: 'http://doc.mmxxn.cn/',
-          },
         },
       },
       {
-        path: '/iframe/naive',
+        path: '/frame/naive',
         name: 'naive',
         component: 'iframe',
         meta: {
           icon: MenuIcon.iframeNaive,
           title: 'Naive UI文档(内嵌)',
           query: {
-            path: 'https://www.naiveui.com/zh-CN/light',
-          },
-          params: {
             path: 'https://www.naiveui.com/zh-CN/light',
           },
         },
@@ -162,8 +159,8 @@ export const moveData = [
     component: 'view',
     meta: {
       icon: MenuIcon.level,
-      title: 'move多级菜单',
-      orderNo: 4,
+      title: '多级菜单',
+      orderNo: 5,
     },
     children: [
       {
@@ -187,7 +184,7 @@ export const moveData = [
               {
                 path: '/level/menu1/menu1/menu1',
                 name: 'menu1Menu1Menu1',
-                component: 'levelMenu1Menu1Component',
+                component: 'level/menu1/menu1/index',
                 meta: {
                   icon: MenuIcon.levelMenu1,
                   title: 'Menu1-1-1',
@@ -200,7 +197,7 @@ export const moveData = [
       {
         path: '/level/menu2',
         name: 'menu2',
-        component: 'levelMenu2Component',
+        component: 'level/menu2',
         meta: {
           icon: MenuIcon.levelMenu2,
           title: 'Menu2',
@@ -215,14 +212,14 @@ export const moveData = [
     component: 'view',
     meta: {
       icon: MenuIcon.system,
-      title: 'move系统管理',
+      title: '系统管理',
       orderNo: 6,
     },
     children: [
       {
         path: '/system/account',
         name: 'account',
-        component: 'systemAccountComponent',
+        component: 'system/account/index',
         meta: {
           icon: MenuIcon.systemAccount,
           title: '账号管理',
@@ -231,7 +228,7 @@ export const moveData = [
       {
         path: '/system/role',
         name: 'role',
-        component: 'systemRoleComponent',
+        component: 'system/role/index',
         meta: {
           icon: MenuIcon.systemRole,
           title: '角色管理',
@@ -240,7 +237,7 @@ export const moveData = [
       {
         path: '/system/menu',
         name: 'menu',
-        component: 'systemMenuComponent',
+        component: 'system/menu/index',
         meta: {
           icon: MenuIcon.systemMenu,
           title: '菜单管理',
@@ -249,7 +246,7 @@ export const moveData = [
       {
         path: '/system/dept',
         name: 'dept',
-        component: 'systemDeptComponent',
+        component: 'system/dept/index',
         meta: {
           icon: MenuIcon.systemDept,
           title: '部门管理',
@@ -258,7 +255,7 @@ export const moveData = [
       {
         path: '/system/changePassword',
         name: 'changePassword',
-        component: 'systemChangePasswordComponent',
+        component: 'system/changePassword/index',
         meta: {
           icon: MenuIcon.systemChangePassword,
           title: '修改密码',
@@ -280,7 +277,7 @@ export const moveData = [
       {
         path: '/errPage/403',
         name: '403',
-        component: '403',
+        component: '/errPage/403/index',
         meta: {
           icon: MenuIcon.errPage403,
           title: '403',
@@ -290,7 +287,7 @@ export const moveData = [
       {
         path: '/errPage/404',
         name: '404',
-        component: '404',
+        component: '/errPage/404/index',
         meta: {
           icon: MenuIcon.errPage404,
           title: '404',
@@ -300,7 +297,7 @@ export const moveData = [
       {
         path: '/errPage/500',
         name: '500',
-        component: '500',
+        component: '/errPage/500/index',
         meta: {
           icon: MenuIcon.errPage500,
           title: '500',
@@ -313,11 +310,11 @@ export const moveData = [
   {
     path: '/about',
     name: 'about',
-    component: 'aboutComponent',
+    component: 'system/about/index',
     meta: {
       icon: MenuIcon.about,
-      title: 'move关于',
+      title: '关于',
     },
   },
 ]
-export const moveAllAuth = [{ name: '按钮权限', id: 1 }]
+export const backAllAuth = [{ name: '按钮权限', id: 1 }]

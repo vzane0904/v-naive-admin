@@ -1,8 +1,8 @@
 import { baseUrl, resultData } from '../config/index'
 import Mock from 'mockjs'
 import { uuid } from '@/utils/utils'
-import { backAllAuth, backData } from './src/backData'
-import { moveAllAuth, moveData } from './src/moveData'
+import { backAllAuth, backData } from '../config/data/backData'
+import { moveAllAuth, moveData } from '../config/data/moveData'
 export default [
   // Back
   {
