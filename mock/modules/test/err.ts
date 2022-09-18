@@ -1,4 +1,4 @@
-import { baseUrl, resultData } from '../config/index'
+import { baseUrl, resultData } from '../../config/index'
 const err = 'err'
 export default [
   {
