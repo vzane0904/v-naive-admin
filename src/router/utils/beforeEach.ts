@@ -1,6 +1,6 @@
-import { noAddTabs } from '@/config'
-import { themeStore } from '@/pinia/theme'
-import { useProfileStore } from '@/pinia/user'
+import { baseHome, noAddTabs } from '@/config'
+import { themeStore } from '@/pinia/modules/theme'
+import { useProfileStore } from '@/pinia/modules/user'
 import { NProgressStart } from '@/utils/NProgress'
 import { RouteLocationNormalized, NavigationGuardNext } from 'vue-router'
 import { addTabs } from '.'
@@ -11,12 +11,10 @@ export const beforeEach = (
   next: NavigationGuardNext,
 ) => {
   const useStore = useProfileStore()
-  console.log('useStore.token', useStore.token)
-
   if (to.path !== '/login' && !useStore.token) {
     const query = { redirectPath: to.path }
     next({
-      name: 'login',
+      path: '/login',
       query: to.path === '/404' || !to.path ? {} : query,
     })
   }
@@ -34,7 +32,7 @@ export const beforeEach = (
   }
   // 登录后禁止手动跳转到login 必须要点击退出按钮 清空token
   if (to.path === '/login' && useStore.token) {
-    next(false)
+    next(baseHome)
   } else {
     next()
   }

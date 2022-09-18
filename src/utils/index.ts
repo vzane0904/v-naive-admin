@@ -4,7 +4,7 @@ export const isHttps = (target: string) => /^https:\/\//.test(target)
  *@params isProtocol is https www ？
  **/
 export const isProtocol = (target: string) =>
-  /^(https:\/\/|https:\/\/|www.)/.test(target)
+  /^(https:\/\/|http:\/\/|www.)/.test(target)
 /**
  *@params DeepCopy 递归深拷贝
  **/

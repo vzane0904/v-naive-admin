@@ -1,22 +1,17 @@
 <script lang="tsx">
-import IconVue from '@/components/Icon/src/icon.vue'
-import { defineComponent, ref } from 'vue'
-import OpenDrawer from './page/openDrawer'
-interface RefType {
-  active: boolean
-}
+import Icon from '@/components/Icon/index.vue'
+import { configStore } from '@/pinia/modules/config'
 export default defineComponent({
   name: 'Settings',
   setup() {
-    const refData = ref<RefType>({ active: false })
+    const { openSettingDrawer } = storeToRefs(configStore())
     return () => (
       <>
-        <IconVue
+        <Icon
           name="setting2"
           class={'mr-10px cursor-pointer'}
-          onClick={() => (refData.value.active = true)}
+          onClick={() => (openSettingDrawer.value = true)}
         />
-        <OpenDrawer onRefCallBack={(v: RefType) => (refData.value = v)} />
       </>
     )
   },

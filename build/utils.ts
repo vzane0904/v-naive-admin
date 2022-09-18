@@ -3,7 +3,7 @@ const booleanStr = ['true', 'false']
 const transBoolean = (value: string): Boolean => value === booleanStr[0]
 const transNum = (value: string): Number => Number(value)
 export const wrapperEnv = (envConf: Record<any>): ViteEnv => {
-  let env: any = {}
+  const env: any = {}
   for (const envName of Object.keys(envConf)) {
     if (envName === 'VITE_APP_PORT') {
       env[envName] = transNum(envConf[envName])
@@ -20,6 +20,7 @@ export const wrapperEnv = (envConf: Record<any>): ViteEnv => {
         'VITE_APP_OPEN',
         'VITE_APP_MOCK',
         'VITE_APP_ANALYSIS',
+        'VITE_APP_PROD_MOCK',
       ].includes(envName)
     ) {
       env[envName] = transBoolean(envConf[envName])

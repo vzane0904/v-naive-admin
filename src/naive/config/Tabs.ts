@@ -1,11 +1,11 @@
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import { TabsThemeVars } from 'naive-ui/lib/tabs/styles'
 
-export const TabsThemeConfig = (): Partial<TabsThemeVars> => {
+const TabsThemeConfig = (): Partial<TabsThemeVars> => {
   const store = themeStore()
   const { theme } = storeToRefs(store)
   return {
-    tabColor: unref(theme) ? '#0c2135' : '#fff',
+    tabColor: unref(theme) ? '#151515' : '#fff',
     tabBorderColor: unref(theme) ? '#303030' : '#d9d9d9', //边框颜色
     tabTextColorActiveBar: 'red',
     tabTextColorActiveCard: '#fff', //字体颜色
@@ -18,3 +18,4 @@ export const TabsThemeConfig = (): Partial<TabsThemeVars> => {
     tabTextColorHoverCard: 'red',
   }
 }
+export default TabsThemeConfig

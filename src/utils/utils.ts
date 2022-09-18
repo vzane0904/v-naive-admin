@@ -78,9 +78,9 @@ export const colorToRGB = (color: string | any[], opt = '1') => {
     color = color[0] + color[0] + color[1] + color[1] + color[2] + color[2]
   }
   if (/^[0-9a-fA-F]{6}$/.test(color)) {
-    color1 = parseInt(color.substr(0, 2), 16)
-    color2 = parseInt(color.substr(2, 2), 16)
-    color3 = parseInt(color.substr(4, 2), 16)
+    color1 = parseInt(color.slice(0, 2), 16)
+    color2 = parseInt(color.slice(2, 4), 16)
+    color3 = parseInt(color.slice(4, 6), 16)
     return 'rgba(' + color1 + ',' + color2 + ',' + color3 + ',' + opt + ')'
   }
 }

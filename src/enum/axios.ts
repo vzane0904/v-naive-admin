@@ -39,9 +39,10 @@ export enum ContentTypeEnum {
   FORM_DATA = 'multipart/form-data;charset=UTF-8',
 }
 export enum AxiosErrorTip {
-  MESSAGE = 'MESSAGE',
-  MODAL = 'MODAL',
-  NONE = 'NONE',
+  MESSAGE = 'Message',
+  MODAL = 'Modal',
+  Notification = 'Notification',
+  NONE = 'None',
 }
 /**
  *  如果有重复提示信息

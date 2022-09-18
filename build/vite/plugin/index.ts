@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import WindiCSS from 'vite-plugin-windicss'
 import viteCompression from 'vite-plugin-compression'
 // import { autoImport } from './autoImport'
-import { componentTS } from './componen'
+import { componentTS } from './autoComponents'
 // import { theme } from "./theme"
 import { icons } from './icons'
 import { html } from './html'
@@ -16,20 +16,27 @@ import { importImgs } from './importImgs'
 import OptimizationPersist from 'vite-plugin-optimize-persist'
 import PkgConfig from 'vite-plugin-package-config'
 import { autoImport } from './autoImport'
-import visualizer from 'rollup-plugin-visualizer'
-
+import { naiveDts } from './generateNaiveDts'
+import { buildVisualizer } from './buildVisualizer'
+export const autoPath = 'src/type'
 export const createPlugin = (
-  // eslint-disable-next-line no-undef
   viteEnv: ViteEnv,
   isBuild: boolean,
   command: string,
 ) => {
-  let { VITE_APP_TITLE, VITE_APP_MOCK, VITE_APP_ANALYSIS } = viteEnv
+  const {
+    VITE_APP_TITLE,
+    VITE_APP_MOCK,
+    VITE_APP_ANALYSIS,
+    VITE_APP_PROD_MOCK,
+  } = viteEnv
   const vitePlugins: (Plugin | Plugin[])[] = [
     vue(),
     WindiCSS(),
     viteCompression(),
   ]
+  // 把 naive components 声明到全局
+  vitePlugins.push(naiveDts())
   // autoImport  unplugin-auto-import/vite
   vitePlugins.push(autoImport())
   // componentTS  unplugin-vue-components/vite
@@ -43,8 +50,7 @@ export const createPlugin = (
   // title  vite-plugin-html
   vitePlugins.push(html(VITE_APP_TITLE) as unknown as Plugin)
   // vite-plugin-mock
-  // eslint-disable-next-line no-unused-expressions
-  VITE_APP_MOCK && vitePlugins.push(mock(isBuild, command))
+  vitePlugins.push(mock(VITE_APP_MOCK, VITE_APP_PROD_MOCK, isBuild, command))
   // restart vite-plugin-restart
   // vitePlugins.push(restart())
   // jsx插件
@@ -57,14 +63,7 @@ export const createPlugin = (
   vitePlugins.push(PkgConfig())
   vitePlugins.push(OptimizationPersist())
   // rollup打包分析插件
-  if (isBuild && VITE_APP_ANALYSIS) {
-    vitePlugins.push(
-      visualizer({
-        open: true,
-        gzipSize: true,
-        brotliSize: true,
-      }),
-    )
-  }
+  // eslint-disable-next-line no-unused-expressions
+  VITE_APP_ANALYSIS && isBuild && vitePlugins.push(buildVisualizer())
   return vitePlugins
 }

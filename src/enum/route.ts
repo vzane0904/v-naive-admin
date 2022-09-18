@@ -5,11 +5,10 @@
       - 缺点: 对于查找某个路由页面比较麻烦，需要先看接口返回的路由变量名称，通过名称在去查找
   2.ROLE模式 router/roleRoutes/* 自定义路由，通过角色去判断路由是否能访问
   2.MOVE模式 后端完全返回，前端做动态处理
-
 */
 export enum RoleEnum {
   BACK = 'BACK',
   ROLE = 'ROLE',
   MOVE = 'MOVE',
 }
-export type roleModel = RoleEnum.BACK | RoleEnum.MOVE | RoleEnum.ROLE
+export type roleModel = `${RoleEnum}`

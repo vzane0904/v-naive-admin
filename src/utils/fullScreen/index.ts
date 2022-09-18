@@ -1,5 +1,5 @@
 // import { themeStore } from '@/pinia/theme'
-import { themeStore } from '@/pinia/theme'
+import { themeStore } from '@/pinia/modules/theme'
 import screenfull from 'screenfull'
 
 // 获取是否全屏状态

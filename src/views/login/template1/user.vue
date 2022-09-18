@@ -1,45 +1,27 @@
 <script lang="tsx">
 import { defineComponent } from 'vue'
-import { NButton, NForm } from 'naive-ui' //NFormItem, NInput, NSpin
 import Register from './register.vue'
 import Phone from './phone.vue'
 import Reset from './reset.vue'
-import { userRules } from '../src/config'
-import { IUseNameLogin, TargetContext } from '../src/type'
-import userName from '../src/conponents/userName.vue'
-import userPassWord from '../src/conponents/passWord.vue'
-import userPictureCode from '../src/conponents/pictureCode.vue'
-import { useNameLogin } from '../src/hooks/loginFn'
+import SwitchTemplate from '../src/components/switchTemplate.vue'
+import UserNameLogin from '../src/components/userNameLogin.vue'
+import { TargetContext } from '../src/type'
 export default defineComponent({
   name: 'User',
   components: {
-    userName,
-    userPassWord,
-    userPictureCode,
+    SwitchTemplate,
+    UserNameLogin,
   },
   setup() {
-    const formValue: IUseNameLogin = reactive({
-      userName: 'Aa12121', //Mm1212121
-      password: 'Aa12121!', //!aA121212a
-      pictureCode: 'a', //1111
-    })
+    const loading = ref(false)
     const model = ref<TargetContext>('user')
-    let { ElRef, validate } = useNameLogin(formValue)
+    const ElRef = ref<Element>()
     const form = () => (
       <>
         <h1 class="mb-12px text-size-30px">
           <b>登录</b>
         </h1>
-        <NForm
-          ref={ElRef}
-          model={formValue}
-          rules={userRules}
-          label-placement="left"
-        >
-          <userName v-model:value={formValue.userName} />
-          <userPassWord v-model:value={formValue.password} />
-          <userPictureCode v-model:value={formValue.pictureCode} />
-        </NForm>
+        <UserNameLogin ref={ElRef} />
         <div class="flex justify-between">
           <div></div>
           <a class={'cursor-pointer'} onClick={() => (model.value = 'reset')}>
@@ -50,13 +32,18 @@ export default defineComponent({
         <NButton
           type="info"
           class={'w-1/1 mb-10px'}
+          loading={loading.value}
           onClick={(e: MouseEvent) => {
+            loading.value = true
             e.preventDefault()
-            validate(
-              async () => {
-                console.log(112)
+            ;(ElRef.value as any).subMit(
+              () => {
+                console.log('ok')
               },
-              async () => {},
+              () => {
+                console.log('err')
+                loading.value = false
+              },
             )
           }}
         >
@@ -70,11 +57,9 @@ export default defineComponent({
             注册
           </NButton>
         </div>
+        <SwitchTemplate />
       </>
     )
-    onMounted(() => {
-      // getPicCode()
-    })
     return () => (
       <>
         {(() => {

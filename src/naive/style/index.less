@@ -1,0 +1,33 @@
+@import url('animate.css');
+@import url('./init.css');
+@import './light.less';
+@import './dark.less';
+@import './layout.less';
+@import './tabs.less';
+@import './menu.less';
+@prefixCls: ~'@{prefix}';
+
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  // border: 1px solid rosybrown;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  /* stylelint-disable-next-line value-keyword-case */
+  fill: currentColor;
+  overflow: hidden;
+}
+
+.none-hover:hover {
+  color: rgba(#ddd, #ddd, #ddd, 0%);
+}

@@ -3,12 +3,7 @@
     <div class="bg flex flex-col py-50px w-1/2">
       <div
         class="leftHeaderText flex justify-center animate__animated animate__bounceInLeft w-7/10 h-3/10"
-      >
-        <img :src="logo" alt="" srcset="" class="w-48px h-48px" />
-        <p class="m-0 text-size-24px mt-8px ml-14px text-center text-white">
-          <b>{{ title }}</b>
-        </p>
-      </div>
+      ></div>
       <div
         class="leftLogo flex flex-col animate__animated animate__bounceInLeft w-86/100 justify-center items-center"
       >
@@ -16,6 +11,11 @@
         <br />
         <br />
         <p class="m-0 text-size-24px text-white">
+          <SvgIcon
+            name="logo-icon"
+            :size="40"
+            class="relative top-6px mr-20px"
+          />
           <b>开箱即用的中后台管理系统</b>
         </p>
       </div>
@@ -32,28 +32,24 @@
   </div>
 </template>
 <script setup lang="ts">
-import loginBoxBg from '@/assets/images/login-box-bg.svg'
-import logo from '@/assets/images/logo.png'
+import loginBoxBg from '@/assets/svg/login-box-bg.svg'
 import User from './user.vue'
-const title = import.meta.env.VITE_APP_TITLE
-console.log(useRoute().query)
-console.log(useRoute().params)
-const pro = defineProps({
-  type: String,
-  name: String,
-  keys: String,
-})
-console.log(pro.type)
-console.log(pro.name)
-console.log(pro.keys)
 </script>
 <style lang="less" scoped>
 .login {
   .bg {
-    background-image: url(@/assets/images/login-bg.svg);
+    background-image: url(@/assets/svg/login-bg.svg);
     background-size: auto 100%;
     background-position: 100%;
     background-repeat: no-repeat;
+  }
+}
+[data-theme='dark'] {
+  .login {
+    background-color: #293146;
+    .bg {
+      background-image: url(@/assets/svg/login-bg-dark.svg) !important;
+    }
   }
 }
 </style>

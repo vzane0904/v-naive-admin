@@ -1,19 +1,16 @@
 <template>
-  <div class="h-1">
-    <div :style="bg">
-      <slot></slot>
-    </div>
+  <div class="h-full m-16px p-10px" :style="bg">
+    <slot></slot>
   </div>
   <!-- <slot> </slot> -->
 </template>
 
 <script setup lang="ts" name="Content">
-import { themeStore } from '@/pinia/theme'
-
-const store = themeStore()
-const { theme } = storeToRefs(store)
-const bg = ref(theme ? 'background-color: #151515"' : '')
-// style="background-color: #151515"
+import { themeStore } from '@/pinia/modules/theme'
+const { theme } = storeToRefs(themeStore())
+const bg = computed(() => {
+  return { 'background-color': theme.value ? '#3a3b3c4d' : '#fff' }
+})
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="less" scoped></style>

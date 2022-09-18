@@ -5,19 +5,10 @@ const login: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/login/template1/index.vue'),
+    component: () => import('@/views/login/index.vue'),
     meta: {
       icon: 'ion:grid-outline',
       title: 'login',
-    },
-  },
-  {
-    path: '/login1',
-    name: 'login1',
-    component: () => import('@/views/login/template2/index.vue'),
-    meta: {
-      icon: 'ion:grid-outline',
-      title: 'login1',
     },
   },
 ]
@@ -33,7 +24,7 @@ const redirect = {
     {
       path: '/redirect/:path(.*)',
       name: 'redirect',
-      component: () => import('@/components/config/src/redirect.vue'),
+      component: () => import('@/layouts/refresh/index.vue'),
       meta: {
         title: '刷新中',
       },

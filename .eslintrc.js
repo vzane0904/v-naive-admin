@@ -1,11 +1,6 @@
-module.exports = {
+const { defineConfig } = require('eslint-define-config')
+module.exports = defineConfig({
   root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-    es6: true,
-  },
   // parser: '@typescript-eslint/parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -17,6 +12,20 @@ module.exports = {
       jsx: true,
     },
   },
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+    es6: true,
+    // 解决 defineProps and defineEmits generate no-undef warnings
+    'vue/setup-compiler-macros': true,
+  },
+  globals: {
+    defineProps: 'readonly',
+    defineEmits: 'readonly',
+    defineComponent: 'readonly',
+    defineExpose: 'readonly',
+  },
   extends: [
     'eslint:recommended',
     '@vue/typescript/recommended',
@@ -26,6 +35,7 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'prettier',
     './.eslintrc-auto-import.json',
+    'plugin:prettier/recommended',
   ],
   rules: {
     'vue/no-multiple-template-root': 'off',
@@ -75,6 +85,15 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 'off',
     'vue/attribute-hyphenation': 'off',
     'vue/require-default-prop': 'off',
+    // 优先使用驼峰，element 组件除外
+    'vue/component-name-in-template-casing': [
+      'error',
+      'PascalCase',
+      {
+        ignores: ['/^n-/', '/^router-/'],
+        registeredComponentsOnly: false,
+      },
+    ],
     'vue/html-self-closing': [
       'error',
       {
@@ -183,7 +202,7 @@ module.exports = {
     'no-trailing-spaces': 1, //一行结束后面不要有空格
     'no-this-before-super': 0, //在调用super()之前不能使用this或super
     'no-throw-literal': 2, //禁止抛出字面量错误 throw "error";
-    // 'no-undef': 0, //不能有未定义的变量(ts eslint里有校验了，原来的关掉)
+    'no-undef': 0, //不能有未定义的变量(ts eslint里有校验了，原来的关掉)
     'no-unexpected-multiline': 2, //避免多行表达式
     'no-underscore-dangle': 1, //标识符不能以_开头或结尾
     'no-unneeded-ternary': 2, //禁止不必要的嵌套 var isYes = answer === 1 ? true : false;
@@ -212,7 +231,7 @@ module.exports = {
     'block-scoped-var': 0, //块语句中使用var
     'brace-style': [1, '1tbs'], //大括号风格
     'callback-return': 1, //避免多次调用回调什么的
-    camelcase: 2, //强制驼峰法命名
+    camelcase: ['error', { properties: 'always' }], //强制驼峰法命名
     'comma-style': [2, 'last'], //逗号风格，换行时在行首还是行尾
     'computed-property-spacing': [0, 'never'], //是否允许计算后的键名什么的
     'consistent-return': 0, //return 后面是否允许省略
@@ -242,7 +261,13 @@ module.exports = {
     'one-var': 0, //连续声明
     'operator-assignment': [0, 'always'], //赋值运算符 += -=什么的
     'padded-blocks': 0, //块语句内行首行尾是否要空行
-    'prefer-const': 0, //首选const
+    'prefer-const': [
+      'error',
+      {
+        destructuring: 'any',
+        ignoreReadBeforeAssign: false,
+      },
+    ], //首选const
     'prefer-spread': 0, //首选展开运算
     'prefer-reflect': 0, //首选Reflect的方法
     radix: 2, //parseInt必须指定第二个参数
@@ -265,11 +290,6 @@ module.exports = {
     'wrap-iife': [2, 'inside'], //立即执行函数表达式的小括号风格
     'wrap-regex': 0, //正则表达式字面量用小括号包起来
     yoda: [2, 'never'], //禁止尤达条件
+    'no-async-promise-executor': 0,
   },
-  globals: {
-    defineProps: 'readonly',
-    defineEmits: 'readonly',
-    defineComponent: 'readonly',
-    defineExpose: 'readonly',
-  },
-}
+})

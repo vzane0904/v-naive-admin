@@ -5,7 +5,7 @@ type ProxyTargetItem = Record<string, ProxyOptions>
 const isHttps = (target: string) => /^https:\/\//.test(target)
 
 export const createProxy = (list: ProxyList) => {
-  let proxyList: ProxyTargetItem = {}
+  const proxyList: ProxyTargetItem = {}
 
   for (const [prefix, target] of list) {
     proxyList[prefix] = {

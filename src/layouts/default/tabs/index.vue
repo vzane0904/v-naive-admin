@@ -1,15 +1,12 @@
 <script lang="tsx">
-import { NTabPane, NTabs } from 'naive-ui'
-import { defineComponent } from 'vue'
 import { Suffix } from './src/suffix'
-import { Icon } from '@/components/Icon'
-import { useRouter } from 'vue-router'
+import Icon from '@/components/Icon/index.vue'
 import useTabs from './src/utils'
 import { routeStore } from '@/pinia/modules/routeStore'
-import { TabsThemeConfig } from '@/naive/config/Tabs'
-import { themeStore } from '@/pinia/theme'
-import { refStore } from '@/pinia/ref'
-import { configStore } from '@/pinia/config'
+import { themeStore } from '@/pinia/modules/theme'
+import { refStore } from '@/pinia/modules/ref'
+import { configStore } from '@/pinia/modules/config'
+import { TabsThemeConfig } from '@/naive'
 export default defineComponent({
   name: 'Tabs',
   setup() {
@@ -61,7 +58,7 @@ export default defineComponent({
                             class="ml-10px mt-0px"
                             onClick={(e: Event | undefined) => {
                               closeTabs(item)
-                              let ev: any = e || window.event
+                              const ev: any = e || window.event
                               ev.stopPropagation()
                             }}
                           />
@@ -79,3 +76,18 @@ export default defineComponent({
   },
 })
 </script>
+<style lang="less" scope>
+@prefixCls: ~'@{prefix}';
+.@{prefixCls}-tabs{
+&-nav{
+  height: 100%;
+  .v-x-scroll{
+  height: 100%;
+  }
+  &-scroll-content{
+  height: 100%;
+
+  }
+}
+}
+</style>

@@ -1,12 +1,9 @@
-import { themeStore } from '@/pinia/theme'
-import { NLayout } from 'naive-ui'
-import { defineComponent, onMounted } from 'vue'
+import { themeStore } from '@/pinia/modules/theme'
 import { LayoutOne, LayoutThr, LayoutTwo } from './hock'
 export default defineComponent({
   name: 'ViewComponent',
   setup() {
     const theme = themeStore()
-    onMounted(async () => {})
     return () => (
       <>
         <NLayout class={['flex-1']}>

@@ -1,24 +1,19 @@
 <template>
-  <NLayoutContent class="flex-1">
-    <Tabs />
-    <div class="flex-1 m-10px p-10px">
+  <NLayoutContent :class="`flex-1`">
+    <Tabs v-if="showTabs" />
+    <div :class="`flex-1 ${fixCLass}-layout-scroll-container-box`">
       <RouterView />
     </div>
+    <BackTop />
     <LayoutFooter />
   </NLayoutContent>
 </template>
-<script lang="ts">
-import { NLayoutContent } from 'naive-ui'
-import { RouterView } from 'vue-router'
+<script lang="ts" setup>
+import { themeStore } from '@/pinia/modules/theme'
 import LayoutFooter from '../footer/index.vue'
 import Tabs from '../tabs/index.vue'
-import { defineComponent } from 'vue'
-export default defineComponent({
-  components: {
-    NLayoutContent,
-    RouterView,
-    LayoutFooter,
-    Tabs,
-  },
-})
+import BackTop from '../backTop/index.vue'
+import { getEnv } from '@/hooks/useEnv'
+const { showTabs } = storeToRefs(themeStore())
+const fixCLass = getEnv('VITE_APP_PREFIXCLS')
 </script>
