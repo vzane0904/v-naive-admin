@@ -63,6 +63,7 @@ specifiers:
   stylelint-config-standard: ^25.0.0
   stylelint-order: ^5.0.0
   stylelint-prettier: ^2.0.0
+  terser: ^5.15.0
   typescript: 4.4.4
   unplugin-auto-import: ^0.11.2
   unplugin-vue-components: ^0.22.4
@@ -157,6 +158,7 @@ devDependencies:
   stylelint-config-standard: 25.0.0_stylelint@14.6.0
   stylelint-order: 5.0.0_stylelint@14.6.0
   stylelint-prettier: 2.0.0_pv7kb6gd5zgqil5l5bpryiohj4
+  terser: 5.15.0
   typescript: 4.4.4
   unplugin-auto-import: 0.11.2_fb67kztvup474hcmw7tam6pmbm
   unplugin-vue-components: 0.22.4_wydb63bqnydaq3c7veycratium
@@ -178,7 +180,7 @@ packages:
     resolution: {integrity: sha512-hoyByceqwKirw7w3Z7gnIIZC3Wx3J484Y3L/cMpXFbr7d9ZQj2mODrirNzcJa+SM3UlpWXYvKV4RlRpFXlWgXg==}
     engines: {node: '>=6.0.0'}
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.4
+      '@jridgewell/trace-mapping': 0.3.15
     dev: true
 
   /@antfu/utils/0.5.0:
@@ -801,17 +803,38 @@ packages:
       '@intlify/shared': 9.1.9
     dev: false
 
+  /@jridgewell/gen-mapping/0.3.2:
+    resolution: {integrity: sha512-mh65xKQAzI6iBcFzwv28KVWSmCkdRBWoOh+bYQGW3+6OZvbbN3TqMGo5hqYxQniRcH9F2VZIoJCm4pa3BPDK/A==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      '@jridgewell/set-array': 1.1.2
+      '@jridgewell/sourcemap-codec': 1.4.11
+      '@jridgewell/trace-mapping': 0.3.15
+    dev: true
+
   /@jridgewell/resolve-uri/3.0.5:
     resolution: {integrity: sha512-VPeQ7+wH0itvQxnG+lIzWgkysKIr3L9sslimFW55rHMdGu/qCQ5z5h9zq4gI8uBtqkpHhsF4Z/OwExufUCThew==}
     engines: {node: '>=6.0.0'}
+    dev: true
+
+  /@jridgewell/set-array/1.1.2:
+    resolution: {integrity: sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==}
+    engines: {node: '>=6.0.0'}
+    dev: true
+
+  /@jridgewell/source-map/0.3.2:
+    resolution: {integrity: sha512-m7O9o2uR8k2ObDysZYzdfhb08VuEml5oWGiosa1VdaPZ/A6QyPkAJuwN0Q1lhULOf6B7MtQmHENS743hWtCrgw==}
+    dependencies:
+      '@jridgewell/gen-mapping': 0.3.2
+      '@jridgewell/trace-mapping': 0.3.15
     dev: true
 
   /@jridgewell/sourcemap-codec/1.4.11:
     resolution: {integrity: sha512-Fg32GrJo61m+VqYSdRSjRXMjQ06j8YIYfcTqndLYVAaHmroZHLJZCydsWBOTDqXS2v+mjxohBWEMfg97GXmYQg==}
     dev: true
 
-  /@jridgewell/trace-mapping/0.3.4:
-    resolution: {integrity: sha512-vFv9ttIedivx0ux3QSjhgtCVjPZd5l46ZOMDSCwnH1yUO2e964gO8LZGyv2QkqcgR6TnBU1v+1IFqmeoG+0UJQ==}
+  /@jridgewell/trace-mapping/0.3.15:
+    resolution: {integrity: sha512-oWZNOULl+UbhsgB51uuZzglikfIKSUBO/M9W2OfEjn7cmqoAiCgmv9lyACTUacZwBz0ITnJ2NqjU8Tx0DHL88g==}
     dependencies:
       '@jridgewell/resolve-uri': 3.0.5
       '@jridgewell/sourcemap-codec': 1.4.11
@@ -1381,7 +1404,7 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.31
-      vue-demi: 0.12.4_vue@3.2.31
+      vue-demi: 0.13.11_vue@3.2.31
 
   /@windicss/config/1.8.3:
     resolution: {integrity: sha512-1fvfZhRD7WfV/Xh6uIAYKIdbQWrwEgSdkFlHiLPzMDS44KjwNZILDzLAz9Y2W5H2K4MLGgGMnzGS89ECyjc0Ww==}
@@ -2205,8 +2228,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      is-text-path: 1.0.1
       JSONStream: 1.3.5
+      is-text-path: 1.0.1
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -3837,7 +3860,7 @@ packages:
       he: 1.2.0
       param-case: 3.0.4
       relateurl: 0.2.7
-      terser: 5.12.1
+      terser: 5.15.0
     dev: true
 
   /html-tags/3.1.0:
@@ -6294,7 +6317,7 @@ packages:
     dev: true
 
   /source-map/0.5.7:
-    resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==, registry: http://registry.npm.taobao.org/, tarball: http://registry.npm.taobao.org/source-map/-/source-map-0.5.7.tgz}
+    resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -6736,14 +6759,14 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /terser/5.12.1:
-    resolution: {integrity: sha512-NXbs+7nisos5E+yXwAD+y7zrcTkMqb0dEJxIGtSKPdCBzopf7ni4odPul2aechpV7EXNvOudYOX2bb5tln1jbQ==}
+  /terser/5.15.0:
+    resolution: {integrity: sha512-L1BJiXVmheAQQy+as0oF3Pwtlo4s3Wi1X2zNZ2NxOB4wx9bdS9Vk67XQENLFdLYGCK/Z2di53mTj/hBafR+dTA==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
+      '@jridgewell/source-map': 0.3.2
       acorn: 8.8.0
       commander: 2.20.3
-      source-map: 0.7.3
       source-map-support: 0.5.21
     dev: true
 
@@ -7561,7 +7584,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.31
-    dev: false
 
   /vue-eslint-parser/8.3.0_eslint@8.11.0:
     resolution: {integrity: sha512-dzHGG3+sYwSf6zFBa0Gi9ZDshD7+ad14DGOdTLjruRVgZXe2J+DcZ9iUhyR48z5g1PqRa20yt3Njna/veLJL/g==}
