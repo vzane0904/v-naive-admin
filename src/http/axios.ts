@@ -112,13 +112,13 @@ export class VAxios {
             content: '登录过期，即将重新登陆',
             type: 'error',
           })
-          const routerS = routeStore()
-          routerS.reset()
-          const go = useGo()
-          go('/login')
+          const router = routeStore()
+          await router.reset(() => {
+            const go = useGo()
+            go('/login')
+          })
           return Promise.reject(error)
-        }
-        if (axios.isCancel(error)) {
+        } else if (axios.isCancel(error)) {
           const err: ErrorInfo = {
             status: 4004,
             statusText: error.message || 'error',
