@@ -107,7 +107,7 @@ export default ({ command, mode }: ConfigEnv) => {
     define: {
       __APP_INFO__: JSON.stringify(APP_INFO),
     },
-    base: './',
+    base: '/',
     server: {
       open: VITE_APP_OPEN,
       host: true,
