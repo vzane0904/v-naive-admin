@@ -113,9 +113,9 @@ export class VAxios {
             type: 'error',
           })
           const router = routeStore()
-          await router.reset(() => {
+          await router.reset(async () => {
             const go = useGo()
-            go('/login')
+            await go('/login')
           })
           return Promise.reject(error)
         } else if (axios.isCancel(error)) {
