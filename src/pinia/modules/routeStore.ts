@@ -26,14 +26,15 @@ export const routeStore = defineStore({
     role: ['admin', 'int'],
   }),
   actions: {
-    reset() {
+    reset(callBack: () => void = () => {}) {
       return new Promise((resolve) => {
         const user = useProfileStore()
         removeRoute()
         setTimeout(() => {
           user.$reset()
-          this.$reset()
           resolve(true)
+          callBack()
+          this.$reset()
         }, 100)
       })
     },

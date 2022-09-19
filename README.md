@@ -1,7 +1,5 @@
 <div align="center"> <a href="https://github.com/zane0904/v-naive-admin"> <img alt="VNaive" style="height:240px;"  src="./src/assets/svg/logo.svg"> </a> <br> <br>
 
-[![license](https://img.shields.io/github/license/anncwb/vue-vben-admin.svg)](LICENSE)
-
 <p align="center">
     <a href="https://github.com/vuejs/core">
         <img src="https://img.shields.io/badge/Vue3.2.31-brightgreen.svg">
@@ -125,11 +123,17 @@ Open the project in Gitpod (a free online development environment for GitHub) an
 git clone https://github.com/zane0904/v-naive-admin.git
 ```
 
+- Initialize git commitizen
+
+```bash
+cd ./v-naive-admin
+
+pnpm install -g commitizen
+```
+
 - Installation Dependencies
 
 ```bash
-cd v-naive-admin
-
 pnpm install
 
 ```
@@ -170,6 +174,7 @@ You are very welcome to join [Mention one Issue](https://github.com/zane0904/v-n
 
 - reference resources [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) standard ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
 
+- Using git cz instead of git commit, the project has built-in husky, which will check the code specification when submitting the code
 - `feat` Add new functions
 - `fix` Fix the problem / BUG
 - `refactor` restructure
