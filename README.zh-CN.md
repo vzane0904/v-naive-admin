@@ -1,7 +1,5 @@
 <div align="center"> <a href="https://github.com/zane0904/v-naive-admin"> <img alt="VNaive" style="height:240px;"  src="./src/assets/svg/logo.svg"> </a> <br> <br>
 
-[![license](https://img.shields.io/github/license/anncwb/vue-vben-admin.svg)](LICENSE)
-
 <p align="center">
     <a href="https://github.com/vuejs/core">
         <img src="https://img.shields.io/badge/Vue3.2.31-brightgreen.svg">
@@ -125,13 +123,18 @@ V-Naive-Admin 是一个免费开源的中后台模版,使用了最新的`vue3 vi
 git clone https://github.com/zane0904/v-naive-admin.git
 ```
 
+- 初始化 git commitizen
+
+```bash
+cd ./v-naive-admin
+
+pnpm install -g commitizen
+```
+
 - 安装依赖
 
 ```bash
-cd v-naive-admin
-
-pnpm install
-
+pnpm run bootstrap
 ```
 
 - 运行
@@ -170,6 +173,7 @@ pnpm build
 
 - 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
 
+- 使用 Git cz 代替 git commit 项目内置了 husky 在提交代码时会进行代码规范检查
 - `feat` 增加新功能
 - `fix` 修复问题/BUG
 - `refactor` 重构
