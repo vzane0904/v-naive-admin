@@ -38,6 +38,7 @@ module.exports = defineConfig({
     'plugin:prettier/recommended',
   ],
   rules: {
+    'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
     'vue/no-multiple-template-root': 'off',
     'vue/script-setup-uses-vars': 'error',
     '@typescript-eslint/ban-ts-ignore': 'off',
@@ -84,6 +85,12 @@ module.exports = defineConfig({
     'vue/multiline-html-element-content-newline': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'vue/attribute-hyphenation': 'off',
+    'vue/no-mutating-props': 'error' /* 直接修改组件prop报错 */,
+    'vue/no-async-in-computed-properties':
+      'error' /* 禁止在计算属性中使用async */,
+    'vue/no-use-v-if-with-v-for':
+      'error' /* 不允许在同一个标签或组件上使用v-for和v-if */,
+    'vue/require-v-for-key': 'error' /** v-for上dom需要设置key */,
     'vue/require-default-prop': 'off',
     // 优先使用驼峰，element 组件除外
     'vue/component-name-in-template-casing': [

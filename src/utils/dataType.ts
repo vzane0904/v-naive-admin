@@ -6,8 +6,7 @@
 // 是否类数组 isArrayLike
 // isNumeric检测是否为数字
 const result = {},
-  toString = result.toString,
-  hasOwn = result.hasOwnProperty
+  toString = result.toString
 /**
  * @name 检测空对象
  **/
@@ -56,28 +55,11 @@ export const toType = function toType(target: any) {
     : type
 }
 /**
- * @name 是否是纯粹对象
- * 检测是否为“纯粹对象/标准普通”对象:obj.__proto__===Object.prototype
- **/
-export const isPlanObject = function isPlanObject(target: Object) {
-  let proto, Ctor
-  if (!target || toString.call(target) !== '[object Object]') {
-    return false
-  }
-  proto = Object.getPrototypeOf(target)
-  if (!proto) {
-    //匹配 Object.create(null)的情况
-    return true
-  }
-  Ctor = hasOwn.call(proto, 'constructor') && proto.constructor
-  return typeof Ctor === 'function' && Ctor === Object
-}
-/**
  * @name 是否是类数组
  * 判断的不算是很严谨,如有需要可扩展
  **/
 export const isArrayLike = function isArrayLike(target: any) {
-  let length = target && 'target' in target,
+  const length = target && 'target' in target,
     type = toType(target)
   return (
     length === 0 ||
