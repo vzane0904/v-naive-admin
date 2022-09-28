@@ -74,9 +74,9 @@ const themeOverrides = (): GlobalThemeOverrides => {
       arrowColorChildActiveHover: colorFFF, //选中子节点 鼠标hover父节点时箭头颜色
       arrowColorChildActive: colorFFF, //父节点箭头颜色
       // 折叠状态
-      itemIconColorCollapsed: '#ffffffb3', //背景颜色
-      itemColorActiveCollapsed: '#0960bd0d',
-      itemColorActiveCollapsedInverted: '#0960bd0d',
+      itemIconColorCollapsed: '#ffffffb3', //图标颜色
+      itemColorActiveCollapsedInverted: '#0960bd0d', //白色背景
+      itemColorActiveCollapsed: '#0960bd0d', //深色背景
       // 顶部菜单-白色背景
       itemIconColorHorizontalInverted: '#000000d9', //正常图标颜色
       itemTextColorHorizontalInverted: '#000000d9', //正常字体颜色
@@ -139,6 +139,14 @@ const themeOverrides = (): GlobalThemeOverrides => {
       peers: {
         InternalSelection: {},
       },
+    },
+    Typography: {
+      headerMargin1: '0',
+      headerMargin2: '0',
+      headerMargin3: '0',
+      headerMargin4: '0',
+      headerMargin5: '0',
+      headerMargin6: '0',
     },
     // ...
   }

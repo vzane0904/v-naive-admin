@@ -1,16 +1,20 @@
 <template>
-  <div class="h-full m-16px p-10px" :style="bg">
-    <slot></slot>
+  <div class="h-full flex flex-col">
+    <div v-if="slots.header" class="111 px-24px py-16px" :style="bg">
+      <slot name="header"></slot>
+    </div>
+    <div class="flex-1 m-16px p-10px" :style="bg">
+      <slot></slot>
+    </div>
   </div>
   <!-- <slot> </slot> -->
 </template>
 
 <script setup lang="ts" name="Content">
-import { themeStore } from '@/pinia/modules/theme'
-const { theme } = storeToRefs(themeStore())
-const bg = computed(() => {
-  return { 'background-color': theme.value ? '#3a3b3c4d' : '#fff' }
-})
+import { useConfig } from '@/hooks/useConfig'
+const slots = useSlots()
+const { getConfig } = useConfig()
+const { bg } = getConfig('bg')
 </script>
 
 <style lang="less" scoped></style>
