@@ -9,12 +9,13 @@ export default defineComponent({
   name: 'LayoutHeader',
   setup() {
     const store = themeStore()
+    const w = computed(() => `w-${store.siderWidth}px`)
     return () => (
       <NLayoutHeader
         inverted={store.headerColor !== colorFFF}
         class={[`h-${store.headerHeight}px`, 'flex', 'items-center']}
       >
-        {store.layout > 1 ? <Logo class={'w-197px'} /> : <div></div>}
+        {store.layout > 1 ? <Logo class={w.value} /> : <div></div>}
         {store.foldBtnPosition === 'top' && store.layout !== 3 ? (
           <Fold />
         ) : null}

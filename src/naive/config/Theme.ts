@@ -38,6 +38,7 @@ const themeOverrides = (): GlobalThemeOverrides => {
       itemTextColorActiveHoverInverted: '#0960bd', //文本颜色
       // 激活菜单为多级时 父节点配置
       itemIconColorChildActiveInverted: '#0960bd', //父节点icon颜色
+      itemIconColorChildActiveHoverInverted: '#0960bd', // 父节点鼠标移入icon
       itemTextColorChildActiveInverted: '#0960bd', //父节点文本颜色
       arrowColorChildActiveInverted: '#0960bd', //父节点箭头颜色
       // 折叠状态
@@ -74,8 +75,8 @@ const themeOverrides = (): GlobalThemeOverrides => {
       arrowColorChildActive: colorFFF, //父节点箭头颜色
       // 折叠状态
       itemIconColorCollapsed: '#ffffffb3', //背景颜色
-      // itemColorActiveCollapsed: '#0960bd0d',
-      // itemColorActiveCollapsedInverted: '#0960bd0d',
+      itemColorActiveCollapsed: '#0960bd0d',
+      itemColorActiveCollapsedInverted: '#0960bd0d',
       // 顶部菜单-白色背景
       itemIconColorHorizontalInverted: '#000000d9', //正常图标颜色
       itemTextColorHorizontalInverted: '#000000d9', //正常字体颜色

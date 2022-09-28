@@ -11,4 +11,17 @@
     width: 100%;
     flex: 1;
   }
+
+  &--collapsed {
+    .@{prefixCls}-menu-item-content--selected::after,
+    .@{prefixCls}-menu-item-content--child-active::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3px;
+      height: 100%;
+      content: '';
+      background-color: #0960bd;
+    }
+  }
 }
