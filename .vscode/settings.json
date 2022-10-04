@@ -86,6 +86,7 @@
     "sider",
     "stylelint",
     "unplugin",
+    "unref",
     "vfonts",
     "vicons",
     "vueuse",

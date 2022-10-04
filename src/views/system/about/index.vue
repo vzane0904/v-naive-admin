@@ -12,22 +12,96 @@
         </h5>
       </div>
     </template>
-    <Content>11</Content>
   </Content>
+  <Content>
+    <Description @register="adminInfoRegister" />
+  </Content>
+  <Content>
+    <Description @register="devRegister" />
+  </Content>
+  <Content>
+    <Description @register="ProdRegister" />
+  </Content>
+  <div></div>
 </template>
 
-<script lang="ts">
-import { useConfig } from '@/hooks/useConfig'
-
-// import config from '/package.json'
-export default defineComponent({
-  setup() {
-    const { getConfig } = useConfig()
-    const { bg } = getConfig('bg')
-    console.log(__APP_INFO__)
-
-    return { bg }
+<script lang="ts" setup>
+import { IInfoSchema } from '@/components/Descriptions/src/type'
+import { Description, useDescription } from '@components/Descriptions'
+import moment from 'moment'
+import { renderLink, renderTag } from './src/rednder'
+const {
+  pkg: { devDependencies, dependencies, version },
+  lastBuildTime,
+} = __APP_INFO__
+const [adminInfoRegister] = useDescription({
+  title: '项目信息',
+  schema: [
+    {
+      label: '版本',
+      field: 'version',
+      render: (val) => renderTag('v' + val, 'primary'),
+    },
+    {
+      label: '最后编译时间',
+      field: 'lastBuildTime',
+      render: (val) => moment(val).format('YYYY-MM-DD HH:mm:ss'),
+    },
+    {
+      label: '文档地址',
+      field: 'docsUrl',
+      render: () => renderLink('文档地址', 'http://doc.mmxxn.cn/'),
+    },
+    {
+      label: '预览地址',
+      field: 'previewUrl',
+      render: () => renderLink('预览地址', 'https://mmxxn.cn/'),
+    },
+    {
+      label: 'Github',
+      field: 'github',
+      render: () =>
+        renderLink('github', 'https://github.com/zane0904/v-naive-admin'),
+    },
+  ],
+  data: {
+    id: 1,
+    version: version,
+    lastBuildTime: lastBuildTime,
+    docsUrl: 'http://doc.mmxxn.cn/',
+    previewUrl: '预览地址',
+    github: 'Github',
   },
+  column: 2,
+  bordered: true,
+})
+const getJson = (obj: object) => {
+  const keys = Object.keys(obj)
+  const targetSchema: IInfoSchema[] = []
+  const targetData = { id: 1 }
+  keys.forEach((item) => {
+    targetSchema.push({ label: item, field: item })
+    Reflect.set(targetData, item, Reflect.get(obj, item))
+  })
+  return { targetSchema, targetData }
+}
+const { targetSchema: proTargetSchema, targetData: proTargetData } =
+  getJson(dependencies)
+const [ProdRegister] = useDescription({
+  title: '生产环境依赖',
+  schema: proTargetSchema,
+  data: proTargetData,
+  bordered: true,
+  columns: 3,
+})
+const { targetSchema: devTargetSchema, targetData: devTargetData } =
+  getJson(devDependencies)
+const [devRegister] = useDescription({
+  title: '开发环境依赖',
+  schema: devTargetSchema,
+  data: devTargetData,
+  bordered: true,
+  columns: 3,
 })
 </script>
 

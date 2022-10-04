@@ -2,14 +2,16 @@
 
 ### 升级说明
 
-### ✨ Features
-
 - src/config/settings.ts 配置项联动 pinia 数据
+- 封装 Descriptions useDescription
+- about Components
+- 修复左侧菜单样式(折叠 / 展开 / 白色 / 深色)
+
+### ✨ Features
 
 ### 🐛 Bug Fixes
 
 - 修复 getEnv 方法返回数据类型
--
 
 ## 1.0.1(2022-9.27)
 

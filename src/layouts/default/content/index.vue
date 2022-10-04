@@ -1,7 +1,9 @@
 <template>
   <NLayoutContent :class="`flex-1`">
     <Tabs v-if="showTabs" />
-    <div :class="`flex-1 ${fixCLass}-layout-scroll-container-box`">
+    <div
+      :class="`flex-1 ${fixCLass}-layout-scroll-container-box overflow-auto`"
+    >
       <RouterView />
     </div>
     <BackTop />
