@@ -4,7 +4,7 @@
   "author": {
     "name": "naive-admin",
     "email": "zane0904@88.com",
-    "url": "https://github.com/zane0904/v-naive-admin"
+    "url": "https://github.com/vzane0904/v-naive-admin"
   },
   "description": "",
   "main": "index.js",
@@ -114,13 +114,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zane0904/v-naive-admin"
+    "url": "https://github.com/vzane0904/v-naive-admin"
   },
   "engines": {
     "node": "^12 || >=14"
   },
   "bugs": {
-    "url": "https://github.com/zane0904/v-naive-admin/issues"
+    "url": "https://github.com/vzane0904/v-naive-admin/issues"
   },
   "lint-staged": {
     "*.{ts,tsx,vue,jx}": [

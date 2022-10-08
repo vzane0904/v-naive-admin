@@ -61,7 +61,7 @@ const [adminInfoRegister] = useDescription({
       label: 'Github',
       field: 'github',
       render: () =>
-        renderLink('github', 'https://github.com/zane0904/v-naive-admin'),
+        renderLink('github', 'https://github.com/vzane0904/v-naive-admin'),
     },
   ],
   data: {
