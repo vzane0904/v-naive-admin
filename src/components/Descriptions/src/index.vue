@@ -70,3 +70,10 @@ export default defineComponent({
   },
 })
 </script>
+<style scoped lang="less">
+@prefixCls: ~'@{prefix}';
+
+.@{prefixCls}-divider:not(.@{prefixCls}-divider--vertical) {
+  margin: 0 0 5px;
+}
+</style>
