@@ -190,7 +190,10 @@ You are very welcome to join [Mention one Issue](https://github.com/zane0904/v-n
 
 ## Browser support
 
-The `Chrome 80+` browser is recommended for local development
+- `Chrome >= 87`
+- `Firefox >= 78`
+- `Safari >= 13`
+- `Edge >= 88`
 
 Support modern browsers, not IE
 

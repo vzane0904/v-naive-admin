@@ -189,7 +189,10 @@ pnpm build
 
 ## 浏览器支持
 
-本地开发推荐使用`Chrome 80+` 浏览器
+- `Chrome >= 87`
+- `Firefox >= 78`
+- `Safari >= 13`
+- `Edge >= 88`
 
 支持现代浏览器, 不支持 IE
 
