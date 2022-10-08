@@ -2,6 +2,7 @@
 
 ### 升级说明
 
+- Vite2 升级 Vite3
 - src/config/settings.ts 配置项联动 pinia 数据
 - 封装 Descriptions useDescription
 - about Components
@@ -12,6 +13,7 @@
 ### 🐛 Bug Fixes
 
 - 修复 getEnv 方法返回数据类型
+- 修复主题样式
 
 ## 1.0.1(2022-9.27)
 

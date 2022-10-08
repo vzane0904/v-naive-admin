@@ -27,7 +27,7 @@
 
 ## brief introduction
 
-V-Naive Admin is a free and open source middle and back office template. The latest mainstream technologies such as' vue3 vite2 TypeScript 'have been used to develop the out of the box front-end solution for the middle and back ends. I am writing an open source project for the first time, and I am also in a learning stage. The code may not be written gracefully. If you have better suggestions for my code and hope you can put forward a valuable button, I will humbly learn. Thank you.
+V-Naive Admin is a free and open source middle and back office template. The latest mainstream technologies such as' vue3 Vite 3 TypeScript 'have been used to develop the out of the box front-end solution for the middle and back ends. I am writing an open source project for the first time, and I am also in a learning stage. The code may not be written gracefully. If you have better suggestions for my code and hope you can put forward a valuable button, I will humbly learn. Thank you.
 
 ## security
 
