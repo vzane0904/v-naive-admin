@@ -1,4 +1,18 @@
 import { createHtmlPlugin } from 'vite-plugin-html'
+
+const getDiv = () => {
+  const divArr = []
+  for (let i = 1; i < 10; i++) {
+    divArr.push({
+      tag: 'div',
+      attrs: {
+        class: `div0${i}`,
+      },
+    })
+  }
+  return divArr
+}
+// const loadingName = ['circular', 'verticalBar', 'leftCircular', 'diamond']
 export const html = (title: string) => {
   return createHtmlPlugin({
     minify: true,
@@ -27,6 +41,23 @@ export const html = (title: string) => {
           attrs: {
             id: 'app',
           },
+          children: [
+            {
+              tag: 'div',
+              attrs: {
+                id: 'rootLoading',
+              },
+              children: [
+                {
+                  tag: 'div',
+                  attrs: {
+                    class: 'diamond',
+                  },
+                  children: getDiv(),
+                },
+              ],
+            },
+          ],
         },
       ],
     },
