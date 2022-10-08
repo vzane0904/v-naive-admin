@@ -106,14 +106,30 @@ export default defineComponent({
                 type="error"
                 class={'mb-10px'}
                 onClick={async () => {
-                  store.$reset()
-                  try {
-                    await useLogOut()
-                    const { openSettingDrawer } = storeToRefs(configStore())
-                    openSettingDrawer.value = false
-                  } catch (error) {
-                    logError(error as Error)
-                  }
+                  const example = createModal({
+                    title: '温馨提示',
+                    type: 'warning',
+                    content: '是否清除当前所有配置并退出系统?',
+                    positiveText: '确定',
+                    negativeText: '取消',
+                    maskClosable: false,
+                    onPositiveClick: async () => {
+                      return new Promise(async (resolve) => {
+                        example.loading = true
+                        store.$reset()
+                        try {
+                          await useLogOut()
+                          const { openSettingDrawer } = storeToRefs(
+                            configStore(),
+                          )
+                          resolve(true)
+                          openSettingDrawer.value = false
+                        } catch (error) {
+                          logError(error as Error)
+                        }
+                      })
+                    },
+                  })
                 }}
               >
                 清空并返回登录页
