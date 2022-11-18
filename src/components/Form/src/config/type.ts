@@ -1,5 +1,3 @@
-import { NumberFormatProps } from 'vue-i18n'
+import { FormProps } from 'naive-ui'
 
-export interface IFormProps {
-  props: NumberFormatProps
-}
+export type IFormProps = FormProps

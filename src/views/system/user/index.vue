@@ -12,6 +12,7 @@
       />
     </div>
     <AddModal v-model:showModal="showModal" @refresh="run" />
+    <Form />
   </Content>
 </template>
 
@@ -22,6 +23,7 @@ import { DataTableColumns, useDialog } from 'naive-ui'
 import AddModal from './src/addModal.vue'
 import { NButton } from 'naive-ui'
 import { createNotification } from '@/utils/message'
+import { Form } from '@/components/Form/index'
 const dialog = useDialog()
 type TList = {
   state: number
