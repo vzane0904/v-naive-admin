@@ -9,7 +9,6 @@ export default defineComponent({
   },
   emits: ['update:value'],
   setup(props, { emit }) {
-    console.log()
     return () => (
       <NFormItemRow path="userName">
         <NInput

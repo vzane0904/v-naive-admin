@@ -1,5 +1,6 @@
 <script lang="tsx">
 import { defineComponent, reactive, ref } from 'vue'
+import PictureCode from '../src/components/pictureCode.vue'
 import {
   FormInst,
   FormItemInst,
@@ -10,16 +11,20 @@ import {
   NFormItem,
   NInput,
 } from 'naive-ui'
-import { PasswordRules, UserNameRules } from '../src/config'
-// import { register } from '@/api'
+import { EmailRules, PasswordRules, UserNameRules } from '../src/config'
+import { useHttp } from '@/hooks/useHttp'
+import { Api } from '@/api/Api'
 export default defineComponent({
   name: 'Register',
   emits: ['gx'],
   setup(props, { emit }) {
     const formValue = reactive({
-      userName: '',
-      password: '',
-      reenteredPassword: '',
+      userName: '111111',
+      password: '111111A',
+      reenteredPassword: '111111A',
+      picCode: '1',
+      pictureToken: '',
+      email: '111111A@qq.com',
     })
     function validatePasswordStartWith(
       rule: FormItemRule,
@@ -34,10 +39,11 @@ export default defineComponent({
     function validatePasswordSame(rule: FormItemRule, value: string): boolean {
       return value === formValue.password
     }
-    const rPasswordFormItemRef = ref<FormItemInst | null>(null)
+    const passwordFormItemRef = ref<FormItemInst | null>(null)
     const rules: FormRules = {
       ...UserNameRules,
       ...PasswordRules,
+      ...EmailRules,
       reenteredPassword: [
         {
           required: true,
@@ -55,10 +61,17 @@ export default defineComponent({
           trigger: ['blur', 'password-input', 'change'],
         },
       ],
+      picCode: [
+        {
+          required: true,
+          message: '请输入图片验证码',
+          trigger: ['blur', 'password-input', 'change'],
+        },
+      ],
     }
     const handlePasswordInput = function () {
       if (formValue.reenteredPassword) {
-        rPasswordFormItemRef.value?.validate({ trigger: 'password-input' })
+        passwordFormItemRef.value?.validate({ trigger: 'password-input' })
       }
     }
     const formRef = ref<FormInst | null>(null)
@@ -88,12 +101,21 @@ export default defineComponent({
               onInput={handlePasswordInput}
             />
           </NFormItem>
-          <NFormItem ref={rPasswordFormItemRef} first path="reenteredPassword">
+          <NFormItem ref={passwordFormItemRef} first path="reenteredPassword">
             <NInput
               placeholder="二次确认密码"
               v-model:value={formValue.reenteredPassword}
               type="password"
               show-password-on="click"
+            />
+          </NFormItem>
+          <NFormItem path="email">
+            <NInput placeholder="请输入邮箱" v-model:value={formValue.email} />
+          </NFormItem>
+          <NFormItem>
+            <PictureCode
+              v-model:value={formValue.picCode}
+              v-model:pictureToken={formValue.pictureToken}
             />
           </NFormItem>
         </NForm>
@@ -106,6 +128,19 @@ export default defineComponent({
               if (!errors) {
                 console.log('ok')
                 try {
+                  // const { run } = useHttp({
+                  //   Api: '',
+                  //   params: { a: 1 },
+                  // })
+                  // run()
+                  useHttp({
+                    Api: Api.useRegister,
+                    methods: 'get',
+                    data: {},
+                    headers: {
+                      name: 'xx',
+                    },
+                  })
                   // let { data: _a, success, msg } = await register('')
                   // if (success) {
                   //   console.log('注册成功')

@@ -6,5 +6,6 @@ export interface Params {
 export interface IUseNameLogin {
   userName: string
   password: string
-  pictureCode: string
+  picCode: string
+  picId: string
 }

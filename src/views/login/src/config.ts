@@ -1,4 +1,4 @@
-import { grade, phoneReg } from '@/utils/regExp'
+import { emailReg, grade, phoneReg } from '@/utils/regExp'
 import { FormItemRule, FormRules } from 'naive-ui'
 export const UserNameRules: FormRules = {
   userName: [
@@ -23,8 +23,24 @@ export const PasswordRules: FormRules = {
       validator(rule: FormItemRule, value: string) {
         if (!value) {
           return new Error('请输入密码')
-        } else if (!grade.rour.test(value)) {
+        } else if (!grade.two.test(value)) {
           return new Error('密码必须包含：大小写字母，数字，字符($@!%*#&.)')
+        }
+        return true
+      },
+      trigger: ['input', 'blur'],
+    },
+  ],
+}
+export const EmailRules: FormRules = {
+  email: [
+    {
+      required: true,
+      validator(rule: FormItemRule, value: string) {
+        if (!value) {
+          return new Error('请输入邮箱')
+        } else if (!emailReg.test(value)) {
+          return new Error('邮箱不符合规则')
         }
         return true
       },
@@ -44,7 +60,7 @@ const SmsCode: FormRules = {
   ],
 }
 const PictureRules: FormRules = {
-  pictureCode: [
+  picCode: [
     {
       required: true,
       validator(rule: FormItemRule, value: string) {

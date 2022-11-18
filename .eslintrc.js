@@ -38,6 +38,14 @@ module.exports = defineConfig({
     'plugin:prettier/recommended',
   ],
   rules: {
+    'vue/v-slot-style': [
+      'error',
+      {
+        atComponent: 'v-slot',
+        default: 'v-slot',
+        named: 'longform',
+      },
+    ],
     'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
     'vue/no-multiple-template-root': 'off',
     'vue/script-setup-uses-vars': 'error',
@@ -153,7 +161,7 @@ module.exports = defineConfig({
     'no-extend-native': 2, //禁止扩展native对象
     'no-extra-bind': 2, //禁止不必要的函数绑定
     'no-extra-boolean-cast': 2, //禁止不必要的bool转换
-    'no-extra-semi': 2, //禁止多余的冒号
+    'no-extra-semi': 1, //禁止多余的冒号
     'no-fallthrough': 1, //禁止switch穿透
     'no-floating-decimal': 2, //禁止省略浮点数中的0 .5 3.
     'no-func-assign': 2, //禁止重复的函数声明

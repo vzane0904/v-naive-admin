@@ -7,7 +7,10 @@
   >
     <UserName v-model:value="formValue.userName" />
     <PassWord v-model:value="formValue.password" />
-    <PictureCode v-model:value="formValue.pictureCode" />
+    <PictureCode
+      v-model:value="formValue.picCode"
+      v-model:picId="formValue.picId"
+    />
   </NForm>
 </template>
 <script setup lang="ts" name="UserNameLogin">
@@ -20,10 +23,11 @@ import PictureCode from './pictureCode.vue'
 import { Fn } from '@vueuse/core'
 const formValue: IUseNameLogin = reactive({
   userName: 'Admin',
-  password: 'Pass123456!',
-  pictureCode: 'code',
+  password: 'A123456',
+  picCode: '',
+  picId: '',
 })
-const { ElRef, loginValidate } = useNameLogin(formValue)
+const { ElRef, loginValidate, loading } = useNameLogin(formValue)
 const subMit = (
   callback: (params: IUseNameLogin) => {},
   err: Fn = () => {},
@@ -35,5 +39,6 @@ const subMit = (
 }
 defineExpose({
   subMit,
+  loading,
 })
 </script>

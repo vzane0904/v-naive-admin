@@ -6,10 +6,10 @@
       :rail-style="railStyle"
       :rubber-band="false"
     >
-      <template #checked>
+      <template v-slot:checked>
         <Icon name="Sunny-qing-baitian" />
       </template>
-      <template #unchecked>
+      <template v-slot:unchecked>
         <Icon name="day" />
       </template>
     </NSwitch>

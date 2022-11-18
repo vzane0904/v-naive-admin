@@ -219,7 +219,7 @@ export const backData = [
       {
         path: '/system/account',
         name: 'account',
-        component: 'system/account/index',
+        component: 'system/user/index',
         meta: {
           icon: MenuIcon.systemAccount,
           title: '账号管理',

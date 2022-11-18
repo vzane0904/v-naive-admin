@@ -24,6 +24,4 @@ export interface IDescExample {
   setDescProps(descProps: IDescriptionProps): void
 }
 
-export type IRregister = (descExample: IDescExample) => void
-
-export type UseDescReturnType = [IRregister, IDescExample]
+export type UseDescReturnType = [IRregister<IDescExample>, IDescExample]

@@ -23,33 +23,33 @@
       <n-button strong secondary round type="warning"> Warning </n-button>
       <n-button strong secondary round type="error"> Error </n-button>
       <n-button strong secondary circle>
-        <template #icon>
-          <n-icon><cash-icon /></n-icon>
+        <template v-slot:icon>
+          <n-icon><CashIcon /></n-icon>
         </template>
       </n-button>
       <n-button strong secondary circle type="primary">
-        <template #icon>
-          <n-icon><cash-icon /></n-icon>
+        <template v-slot:icon>
+          <n-icon><CashIcon /></n-icon>
         </template>
       </n-button>
       <n-button strong secondary circle type="info">
-        <template #icon>
-          <n-icon><cash-icon /></n-icon>
+        <template v-slot:icon>
+          <n-icon><CashIcon /></n-icon>
         </template>
       </n-button>
       <n-button strong secondary circle type="success">
-        <template #icon>
-          <n-icon><cash-icon /></n-icon>
+        <template v-slot:icon>
+          <n-icon><CashIcon /></n-icon>
         </template>
       </n-button>
       <n-button strong secondary circle type="warning">
-        <template #icon>
-          <n-icon><cash-icon /></n-icon>
+        <template v-slot:icon>
+          <n-icon><CashIcon /></n-icon>
         </template>
       </n-button>
       <n-button strong secondary circle type="error">
-        <template #icon>
-          <n-icon><cash-icon /></n-icon>
+        <template v-slot:icon>
+          <n-icon><CashIcon /></n-icon>
         </template>
       </n-button>
     </n-space>
