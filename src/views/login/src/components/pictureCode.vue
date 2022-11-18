@@ -1,5 +1,7 @@
 <script lang="tsx">
-import { getPicValidateCode } from '@/api'
+// import { getPicValidateCode } from '@/api'
+import { BaseApi } from '@/api/Api'
+import { useHttp } from '@/hooks/useHttp'
 
 export default defineComponent({
   name: 'UsePictureCode',
@@ -8,24 +10,24 @@ export default defineComponent({
       type: [String],
       default: '',
     },
+    picId: {
+      type: [String],
+      default: '',
+    },
   },
-  emits: ['update:value'],
-  setup(props, { emit }) {
-    const picCode = ref<string>('')
-    const getPicCode = async () => {
-      try {
-        picCode.value = ''
-        const { img } = await getPicValidateCode()
-        picCode.value = img
-      } catch (error) {
-        picCode.value = 'null'
-      }
-    }
-    onMounted(() => {
-      getPicCode()
+  emits: ['update:value', 'update:picId'],
+  setup(props, { emit, expose }) {
+    const { run, data } = useHttp({
+      Api: BaseApi.picCode,
+      methods: 'GET',
     })
+    watch(data, () => emit('update:picId', unref(data).picId))
+    onMounted(async () => {
+      await run()
+    })
+    expose({ run })
     return () => (
-      <NFormItemRow path="pictureCode">
+      <NFormItemRow path="picCode">
         <NInput
           class="w-100px"
           value={props.value}
@@ -34,15 +36,10 @@ export default defineComponent({
           placeholder="图片验证码"
         />
         <div class="w-130px h-1/1 ml-10px">
-          {picCode.value ? (
-            <img
-              src={picCode.value}
-              alt=""
-              class={['cursor-pointer', 'w-1/1 h-1/1']}
-              onClick={() => getPicCode()}
-            />
+          {data.value?.svg ? (
+            <div v-html={data.value?.svg || ''} onClick={() => run()}></div>
           ) : (
-            <n-skeleton sharp={false} size="medium" />
+            <n-skeleton sharp={false} size="medium" onClick={() => run()} />
           )}
         </div>
       </NFormItemRow>

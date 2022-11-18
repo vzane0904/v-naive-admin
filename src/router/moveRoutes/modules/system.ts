@@ -16,7 +16,7 @@ export default {
   levelMenu1Menu1Component: () => import('@/views/level/menu1/menu1/index.vue'),
   levelMenu2Component: () => import('@/views/level/menu2.vue'),
   // 系统管理
-  systemAccountComponent: () => import('@/views/system/account/index.vue'),
+  systemAccountComponent: () => import('@/views/system/user/index.vue'),
   systemRoleComponent: () => import('@/views/system/role/index.vue'),
   systemMenuComponent: () => import('@/views/system/menu/index.vue'),
   systemDeptComponent: () => import('@/views/system/dept/index.vue'),

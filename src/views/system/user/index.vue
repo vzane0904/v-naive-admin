@@ -1,9 +1,9 @@
 <template>
   <Content>
-    <template v-slot:header> 角色管理 </template>
+    <template v-slot:header> 用户管理 </template>
     <div>
       <NButton @click="run">刷新</NButton>
-      <NButton @click="showModal = true">新增角色</NButton>
+      <NButton @click="showModal = true">新增用户</NButton>
       <NDataTable
         :loading="loading"
         :columns="columns"
@@ -19,7 +19,7 @@
 import { Api } from '@/api/Api'
 import { useHttp } from '@/hooks/useHttp'
 import { DataTableColumns, useDialog } from 'naive-ui'
-import AddModal from './src/AddModal.vue'
+import AddModal from './src/addModal.vue'
 import { NButton } from 'naive-ui'
 import { createNotification } from '@/utils/message'
 const dialog = useDialog()
@@ -34,15 +34,10 @@ const tableData = reactive({
   count: 0,
 })
 const { run, data, loading } = useHttp({
-  Api: Api.getRoleList,
+  Api: Api.getUserList,
   methods: 'get',
 })
-const del = (row: {
-  no?: number
-  title?: string
-  length?: string
-  id?: any
-}) => {
+const del = (row: { title?: string; length?: string; id?: any }) => {
   dialog.warning({
     title: '删除',
     content: '确定删除当前数据吗？',
@@ -50,14 +45,14 @@ const del = (row: {
     negativeText: '取消',
     onPositiveClick: async () => {
       const { run: sendDel, err: delUserErr } = useHttp({
-        Api: Api.deleteRole + row.id,
+        Api: Api.deleteUser + row.id,
         methods: 'delete',
       })
       await sendDel()
       if (!delUserErr.value) {
         createNotification({
           title: '成功',
-          content: '删除角色成功',
+          content: '删除用户成功',
         })
         run()
       }
@@ -71,16 +66,16 @@ const columns: DataTableColumns<TList> = [
     key: 'id',
   },
   {
-    title: '角色名称',
+    title: '名称',
     key: 'name',
   },
   {
-    title: '角色标识',
-    key: 'label',
+    title: '用户名',
+    key: 'userName',
   },
   {
-    title: '备注',
-    key: 'remark',
+    title: '手机号',
+    key: 'phone',
   },
   {
     title: '状态',
@@ -94,13 +89,22 @@ const columns: DataTableColumns<TList> = [
     },
   },
   {
+    title: '邮箱',
+    key: 'email',
+  },
+  {
     title: '创建时间',
     key: 'createDate',
   },
   {
     title: '操作',
     key: 'actions',
-    render(row) {
+    render(row: {
+      no?: number | undefined
+      title?: string | undefined
+      length?: string | undefined
+      id?: any
+    }) {
       return (
         <NButton strong tertiary onClick={() => del(row)}>
           删除

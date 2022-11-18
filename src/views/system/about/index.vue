@@ -1,6 +1,6 @@
 <template>
   <Content>
-    <template #header>
+    <template v-slot:header>
       <div>
         <NH2>关于</NH2>
         <h5>
@@ -96,13 +96,14 @@ const [ProdRegister] = useDescription({
 })
 const { targetSchema: devTargetSchema, targetData: devTargetData } =
   getJson(devDependencies)
-const [devRegister] = useDescription({
+const [devRegister, re] = useDescription({
   title: '开发环境依赖',
   schema: devTargetSchema,
   data: devTargetData,
   bordered: true,
   columns: 3,
 })
+console.log(re)
 </script>
 
 <style scoped></style>

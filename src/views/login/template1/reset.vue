@@ -52,7 +52,7 @@ export default defineComponent({
               if (!errors) {
                 console.log('ok')
                 try {
-                  let { success, msg } = await retrievePass(formValue)
+                  const { success, msg } = await retrievePass(formValue)
                   if (success) {
                     console.log('重置密码成功')
                   } else {
