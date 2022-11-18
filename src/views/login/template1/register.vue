@@ -19,12 +19,12 @@ export default defineComponent({
   emits: ['gx'],
   setup(props, { emit }) {
     const formValue = reactive({
-      userName: '111111',
-      password: '111111A',
-      reenteredPassword: '111111A',
-      picCode: '1',
+      userName: '',
+      password: '',
+      reenteredPassword: '',
+      picCode: '',
       pictureToken: '',
-      email: '111111A@qq.com',
+      email: '',
     })
     function validatePasswordStartWith(
       rule: FormItemRule,

@@ -96,14 +96,13 @@ const [ProdRegister] = useDescription({
 })
 const { targetSchema: devTargetSchema, targetData: devTargetData } =
   getJson(devDependencies)
-const [devRegister, re] = useDescription({
+const [devRegister] = useDescription({
   title: '开发环境依赖',
   schema: devTargetSchema,
   data: devTargetData,
   bordered: true,
   columns: 3,
 })
-console.log(re)
 </script>
 
 <style scoped></style>

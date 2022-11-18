@@ -80,7 +80,7 @@ export default defineComponent({
               if (!errors) {
                 const data: any = await loginGO()
                 if (!data) {
-                  picRef.value!.run()
+                  ;(picRef.value as any).run()
                   formValue.picCode = ''
                 }
               }
