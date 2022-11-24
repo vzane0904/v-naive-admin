@@ -1,8 +1,8 @@
 @font-face {
   font-family: "naive-iconfont"; /* Project id 2085566 */
-  src: url('iconfont.woff2?t=1663341238551') format('woff2'),
-       url('iconfont.woff?t=1663341238551') format('woff'),
-       url('iconfont.ttf?t=1663341238551') format('truetype');
+  src: url('iconfont.woff2?t=1669133845309') format('woff2'),
+       url('iconfont.woff?t=1669133845309') format('woff'),
+       url('iconfont.ttf?t=1669133845309') format('truetype');
 }
 
 .naive-iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.naive-icon-colum-height:before {
+  content: "\eafe";
 }
 
 .naive-icon-html5:before {

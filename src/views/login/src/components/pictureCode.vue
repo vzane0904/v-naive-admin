@@ -1,5 +1,4 @@
 <script lang="tsx">
-// import { getPicValidateCode } from '@/api'
 import { BaseApi } from '@/api/Api'
 import { useHttp } from '@/hooks/useHttp'
 

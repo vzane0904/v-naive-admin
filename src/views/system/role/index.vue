@@ -1,17 +1,15 @@
 <template>
   <Content>
     <template v-slot:header> 角色管理 </template>
-    <div>
-      <NButton @click="run">刷新</NButton>
-      <NButton @click="showModal = true">新增角色</NButton>
-      <NDataTable
-        :loading="loading"
-        :columns="columns"
-        :data="tableData.list"
-        :bordered="false"
-      />
-    </div>
-    <AddModal v-model:showModal="showModal" @refresh="run" />
+    <BasicTable @register="register">
+      <!-- <template v-slot:title>
+        <div>title插槽</div>
+      </template> -->
+      <template v-slot:toolbar>
+        <NButton type="info" @click="showModal = true">新增角色</NButton>
+      </template>
+    </BasicTable>
+    <AddModal v-model:showModal="showModal" @refresh="methods.reload" />
   </Content>
 </template>
 
@@ -22,6 +20,8 @@ import { DataTableColumns, useDialog } from 'naive-ui'
 import AddModal from './src/AddModal.vue'
 import { NButton } from 'naive-ui'
 import { createNotification } from '@/utils/message'
+import { useTable, BasicTable } from '@/components/Table'
+import { getRoleList } from '@/api'
 const dialog = useDialog()
 type TList = {
   state: number
@@ -29,14 +29,6 @@ type TList = {
   length: string
 }
 const showModal = ref(false)
-const tableData = reactive({
-  list: [],
-  count: 0,
-})
-const { run, data, loading } = useHttp({
-  Api: Api.getRoleList,
-  methods: 'get',
-})
 const del = (row: {
   no?: number
   title?: string
@@ -59,7 +51,8 @@ const del = (row: {
           title: '成功',
           content: '删除角色成功',
         })
-        run()
+        // eslint-disable-next-line no-use-before-define
+        methods.reload()
       }
     },
     onNegativeClick: () => {},
@@ -109,14 +102,23 @@ const columns: DataTableColumns<TList> = [
     },
   },
 ]
-
-watch(data, () => {
-  tableData.list = unref(data).list
-  tableData.count = unref(data).count
+const { register, methods } = useTable({
+  columns,
+  // title: () => 'xxxx',
+  api: getRoleList,
+  immediate: true,
+  additionalParams: { name: 'xxx' },
+  pageSetting: {
+    // pageIndexField: 'xx',
+    // pageSizeField: 'aa',
+  },
+  dataTableProps: {
+    size: 'medium',
+    loading: false,
+    bordered: false,
+  },
 })
-onMounted(async () => {
-  await run()
-})
+onMounted(async () => {})
 </script>
 
 <style scoped></style>

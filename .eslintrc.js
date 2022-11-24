@@ -210,7 +210,7 @@ module.exports = defineConfig({
     'no-sequences': 0, //禁止使用逗号运算符
     // 'no-shadow': 2, //外部作用域中的变量不能与它所包含的作用域中的变量或参数同名
     'no-shadow-restricted-names': 2, //严格模式中规定的限制标识符不能作为声明时的变量名使用
-    'no-spaced-func': 2, //函数调用时 函数名与()之间不能有空格
+    'no-spaced-func': 0, //函数调用时 函数名与()之间不能有空格
     'no-sparse-arrays': 2, //禁止稀疏数组， [1,,2]
     'no-sync': 0, //nodejs 禁止同步方法
     'no-ternary': 0, //禁止使用三目运算符

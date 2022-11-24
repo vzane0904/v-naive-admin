@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "19668957",
+      "name": "高度",
+      "font_class": "colum-height",
+      "unicode": "eafe",
+      "unicode_decimal": 60158
+    },
+    {
       "icon_id": "1423",
       "name": "html5",
       "font_class": "html5",
