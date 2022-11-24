@@ -1,29 +1,26 @@
 <template>
   <Content>
     <template v-slot:header> 用户管理 </template>
-    <div>
-      <NButton @click="run">刷新</NButton>
-      <NButton @click="showModal = true">新增用户</NButton>
-      <NDataTable
-        :loading="loading"
-        :columns="columns"
-        :data="tableData.list"
-        :bordered="false"
-      />
-    </div>
-    <AddModal v-model:showModal="showModal" @refresh="run" />
-    <Form />
+    <BasicTable :columns="columns" @register="register">
+      <!-- <template v-slot:title>
+        <div>title插槽</div>
+      </template> -->
+      <template v-slot:toolbar>
+        <NButton type="info" @click="showModal = true">新增用户</NButton>
+      </template>
+    </BasicTable>
+    <AddModal v-model:showModal="showModal" @refresh="methods.reload" />
   </Content>
 </template>
-
 <script lang="tsx" setup>
 import { Api } from '@/api/Api'
 import { useHttp } from '@/hooks/useHttp'
 import { DataTableColumns, useDialog } from 'naive-ui'
 import AddModal from './src/addModal.vue'
-import { NButton } from 'naive-ui'
 import { createNotification } from '@/utils/message'
-import { Form } from '@/components/Form/index'
+import { BasicTable, useTable } from '@/components/Table'
+import { getUserList } from '@/api'
+
 const dialog = useDialog()
 type TList = {
   state: number
@@ -31,37 +28,7 @@ type TList = {
   length: string
 }
 const showModal = ref(false)
-const tableData = reactive({
-  list: [],
-  count: 0,
-})
-const { run, data, loading } = useHttp({
-  Api: Api.getUserList,
-  methods: 'get',
-})
-const del = (row: { title?: string; length?: string; id?: any }) => {
-  dialog.warning({
-    title: '删除',
-    content: '确定删除当前数据吗？',
-    positiveText: '确定',
-    negativeText: '取消',
-    onPositiveClick: async () => {
-      const { run: sendDel, err: delUserErr } = useHttp({
-        Api: Api.deleteUser + row.id,
-        methods: 'delete',
-      })
-      await sendDel()
-      if (!delUserErr.value) {
-        createNotification({
-          title: '成功',
-          content: '删除用户成功',
-        })
-        run()
-      }
-    },
-    onNegativeClick: () => {},
-  })
-}
+
 const columns: DataTableColumns<TList> = [
   {
     title: 'id',
@@ -101,6 +68,7 @@ const columns: DataTableColumns<TList> = [
   {
     title: '操作',
     key: 'actions',
+    width: 150,
     render(row: {
       no?: number | undefined
       title?: string | undefined
@@ -108,6 +76,7 @@ const columns: DataTableColumns<TList> = [
       id?: any
     }) {
       return (
+        // eslint-disable-next-line no-use-before-define
         <NButton strong tertiary onClick={() => del(row)}>
           删除
         </NButton>
@@ -115,14 +84,63 @@ const columns: DataTableColumns<TList> = [
     },
   },
 ]
+const { register, methods } = useTable({
+  columns,
+  // title: () => 'xxxx',
+  api: getUserList,
+  immediate: true,
+  additionalParams: { name: 'xxx' },
+  pageSetting: {
+    // pageIndexField: 'xx',
+    // pageSizeField: 'aa',
+  },
+  data: [],
+  // afterFetch: (value) => {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve(value)
+  //     }, 2000)
+  //   })
+  // },
+  // beforeFetch: (val) => {
+  //   return new Promise((resolve) => {
+  //     console.log('val', val)
 
-watch(data, () => {
-  tableData.list = unref(data).list
-  tableData.count = unref(data).count
+  //     setTimeout(() => {
+  //       resolve({ ...val, name: '测试返回结果' })
+  //     }, 2000)
+  //   })
+  // },
+  dataTableProps: {
+    size: 'medium',
+    loading: false,
+    bordered: false,
+  },
 })
-onMounted(async () => {
-  await run()
-})
+const del = (row: { title?: string; length?: string; id?: any }) => {
+  dialog.warning({
+    title: '删除',
+    content: '确定删除当前数据吗？',
+    positiveText: '确定',
+    negativeText: '取消',
+    onPositiveClick: async () => {
+      const { run: sendDel, err: delUserErr } = useHttp({
+        Api: Api.deleteUser + row.id,
+        methods: 'delete',
+      })
+      await sendDel()
+      if (!delUserErr.value) {
+        createNotification({
+          title: '成功',
+          content: '删除用户成功',
+        })
+        methods.reload()
+      }
+    },
+    onNegativeClick: () => {},
+  })
+}
+onMounted(async () => {})
 </script>
 
 <style scoped></style>

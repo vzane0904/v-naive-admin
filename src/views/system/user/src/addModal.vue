@@ -2,7 +2,7 @@
   <Modal
     @register="register"
     @ok="handleValidateButtonClick"
-    @close="$emit('update:showModal', false)"
+    @close="close"
     style="width: 50%"
   >
     <div>
@@ -58,7 +58,7 @@ import { Modal, useModal } from '@/components/Modal/index'
 import { useHttp } from '@/hooks/useHttp'
 import { createNotification } from '@/utils/message'
 import { FormInst, FormRules } from 'naive-ui'
-const model = reactive({
+const initialState = {
   name: '',
   userName: '',
   password: '',
@@ -66,7 +66,8 @@ const model = reactive({
   phone: '',
   state: 1,
   roleIdList: [],
-})
+}
+const model = reactive({ ...initialState })
 const emit = defineEmits(['update:showModal', 'refresh'])
 const props = withDefaults(
   defineProps<{
@@ -116,11 +117,13 @@ const rules: FormRules = {
     message: '请选择绑定角色',
   },
 }
+// 新增接口
 const { run, err } = useHttp({
   Api: Api.addUser,
   methods: 'post',
   data: model,
 })
+// 弹框
 const [register, setModal] = useModal({
   title: '新增用户',
   show: props.showModal,
@@ -128,10 +131,12 @@ const [register, setModal] = useModal({
     closeOnEsc: true,
   },
 })
+// 获取角色
 const { run: getRole, data: roleList } = useHttp({
   Api: Api.getRoleList,
   methods: 'get',
 })
+// 提交
 const handleValidateButtonClick = () => {
   formRef.value?.validate(async (errors) => {
     if (!errors) {
@@ -160,6 +165,10 @@ const handleValidateButtonClick = () => {
     }
   })
 }
+const close = function close() {
+  Object.assign(model, initialState)
+  emit('update:showModal', false)
+}
 watch(
   () => props.showModal,
   (v) => {
@@ -168,8 +177,6 @@ watch(
     })
     if (v) {
       getRole()
-    } else {
-      console.log(formRef.value)
     }
   },
 )

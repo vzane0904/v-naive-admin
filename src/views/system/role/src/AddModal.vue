@@ -2,7 +2,7 @@
   <Modal
     @register="register"
     @ok="handleValidateButtonClick"
-    @close="$emit('update:showModal', false)"
+    @close="close"
     style="width: 50%"
   >
     <div>
@@ -49,12 +49,15 @@ import { Modal, useModal } from '@/components/Modal/index'
 import { useHttp } from '@/hooks/useHttp'
 import { createNotification } from '@/utils/message'
 import { FormInst, FormRules } from 'naive-ui'
-const model = reactive({
-  name: '昵称1',
+const initialState = {
+  name: '',
   label: '',
   remark: '',
   state: 1,
   menuIdList: [],
+}
+const model = reactive({
+  ...initialState,
 })
 const emit = defineEmits(['update:showModal', 'refresh'])
 const props = withDefaults(
@@ -136,6 +139,10 @@ const handleValidateButtonClick = () => {
       console.log('验证失败')
     }
   })
+}
+const close = function close() {
+  Object.assign(model, initialState)
+  emit('update:showModal', false)
 }
 watch(
   () => props.showModal,
