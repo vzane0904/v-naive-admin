@@ -59,13 +59,16 @@ const initialState = {
 const model = reactive({
   ...initialState,
 })
-const emit = defineEmits(['update:showModal', 'refresh'])
+const emit = defineEmits(['update:showModal', 'refresh', 'update:type'])
 const props = withDefaults(
   defineProps<{
     showModal?: boolean
+    type?: 'add' | 'edit'
+    info?: Object
   }>(),
   {
     showModal: false,
+    type: 'add',
   },
 )
 const formRef = ref<FormInst | null>(null)
@@ -94,6 +97,7 @@ const rules: FormRules = {
     message: '请选择绑定菜单',
   },
 }
+// 新增角色
 const { run, err } = useHttp({
   Api: Api.addRole,
   methods: 'post',
@@ -143,6 +147,7 @@ const handleValidateButtonClick = () => {
 const close = function close() {
   Object.assign(model, initialState)
   emit('update:showModal', false)
+  emit('update:type', 'add')
 }
 watch(
   () => props.showModal,
@@ -151,7 +156,13 @@ watch(
       show: props.showModal,
     })
     if (v) {
+      setModal.setModalProps({
+        title: props.type === 'add' ? '新增角色' : '修改角色',
+      })
       getRole()
+    }
+    if (props.type === 'edit') {
+      Object.assign(model, props.info)
     }
   },
 )

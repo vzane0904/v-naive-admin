@@ -17,7 +17,12 @@
               placeholder="请输入登录用户名"
             />
           </n-form-item-gi>
-          <n-form-item-gi :span="12" label="密码" path="password">
+          <n-form-item-gi
+            v-if="type === 'add'"
+            :span="12"
+            label="密码"
+            path="password"
+          >
             <n-input
               v-model:value="model.password"
               placeholder="请输入登录密码"
@@ -58,6 +63,7 @@ import { Modal, useModal } from '@/components/Modal/index'
 import { useHttp } from '@/hooks/useHttp'
 import { createNotification } from '@/utils/message'
 import { FormInst, FormRules } from 'naive-ui'
+import { IUserList } from '../type'
 const initialState = {
   name: '',
   userName: '',
@@ -68,13 +74,16 @@ const initialState = {
   roleIdList: [],
 }
 const model = reactive({ ...initialState })
-const emit = defineEmits(['update:showModal', 'refresh'])
+const emit = defineEmits(['update:showModal', 'refresh', 'update:type'])
 const props = withDefaults(
   defineProps<{
     showModal?: boolean
+    type?: 'add' | 'edit'
+    info?: IUserList | null
   }>(),
   {
     showModal: false,
+    type: 'add',
   },
 )
 const formRef = ref<FormInst | null>(null)
@@ -117,12 +126,6 @@ const rules: FormRules = {
     message: '请选择绑定角色',
   },
 }
-// 新增接口
-const { run, err } = useHttp({
-  Api: Api.addUser,
-  methods: 'post',
-  data: model,
-})
 // 弹框
 const [register, setModal] = useModal({
   title: '新增用户',
@@ -136,29 +139,81 @@ const { run: getRole, data: roleList } = useHttp({
   Api: Api.getRoleList,
   methods: 'get',
 })
+// 新增用户
+const addUser = async function () {
+  // 新增接口
+  const { run, err } = useHttp({
+    Api: Api.addUser,
+    methods: 'post',
+    data: model,
+  })
+  setModal.setModalProps({
+    props: {
+      loading: true,
+    },
+  })
+  await run()
+  if (!err.value) {
+    createNotification({
+      title: '成功',
+      content: '新增用户成功',
+    })
+    emit('update:showModal', false)
+    emit('refresh')
+  }
+  setModal.setModalProps({
+    props: {
+      loading: false,
+    },
+  })
+}
+// 更新角色
+const updateUser = async function () {
+  // 新增接口
+  const params = {
+    id: props.info!.id,
+    roleIdList: model.roleIdList,
+    name: model.name,
+    userName: model.userName,
+    email: model.email,
+    phone: model.phone,
+    state: model.state,
+  }
+
+  const { run, err } = useHttp({
+    Api: Api.updateUser,
+    methods: 'patch',
+    data: params,
+  })
+  setModal.setModalProps({
+    props: {
+      loading: true,
+    },
+  })
+  await run()
+  if (!err.value) {
+    createNotification({
+      title: '成功',
+      content: '修改用户信息成功',
+    })
+    emit('update:showModal', false)
+    emit('refresh')
+  }
+  setModal.setModalProps({
+    props: {
+      loading: false,
+    },
+  })
+}
 // 提交
 const handleValidateButtonClick = () => {
   formRef.value?.validate(async (errors) => {
     if (!errors) {
-      await run()
-      setModal.setModalProps({
-        props: {
-          loading: true,
-        },
-      })
-      if (!err.value) {
-        createNotification({
-          title: '成功',
-          content: '新增用户成功',
-        })
-        emit('update:showModal', false)
-        emit('refresh')
+      if (props.type === 'add') {
+        addUser()
+      } else {
+        updateUser()
       }
-      setModal.setModalProps({
-        props: {
-          loading: false,
-        },
-      })
     } else {
       console.log(errors)
       console.log('验证失败')
@@ -168,6 +223,7 @@ const handleValidateButtonClick = () => {
 const close = function close() {
   Object.assign(model, initialState)
   emit('update:showModal', false)
+  emit('update:type', 'add')
 }
 watch(
   () => props.showModal,
@@ -176,7 +232,13 @@ watch(
       show: props.showModal,
     })
     if (v) {
+      setModal.setModalProps({
+        title: props.type === 'add' ? '新增角色' : '修改角色',
+      })
       getRole()
+    }
+    if (props.type === 'edit') {
+      Object.assign(model, props.info)
     }
   },
 )

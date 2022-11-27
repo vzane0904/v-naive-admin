@@ -7,7 +7,8 @@ export enum Api {
   // 用户相关
   getUserList = `${userPrefix}/list`, //获取用户列表
   addUser = `${userPrefix}/add`, // 新增用户
-  deleteUser = `${userPrefix}/del/`, // 删除当前用户 拼接ID
+  deleteUser = `${userPrefix}/del/`, // 删除当前用户 /后边 拼接ID
+  updateUser = `${userPrefix}/update`, // 更新用户信息
   // 角色相关
   getRoleList = `${rolePrefix}/list`, // 获取角色列表
   addRole = `${rolePrefix}/add`, // 获取角色列表
