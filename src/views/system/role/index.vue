@@ -1,6 +1,6 @@
 <template>
   <Content>
-    <template v-slot:header> 角色管理 </template>
+    <template v-slot:header> 角色管理{{ modelType }} </template>
     <BasicTable @register="register">
       <!-- <template v-slot:title>
         <div>title插槽</div>
@@ -9,7 +9,12 @@
         <NButton type="info" @click="showModal = true">新增角色</NButton>
       </template>
     </BasicTable>
-    <AddModal v-model:showModal="showModal" @refresh="methods.reload" />
+    <AddModal
+      v-model:showModal="showModal"
+      v-model:type="modelType"
+      :info="editInfo"
+      @refresh="methods.reload"
+    />
   </Content>
 </template>
 
@@ -28,6 +33,8 @@ type TList = {
   title: string
   length: string
 }
+const editInfo = ref({})
+const modelType = ref<'add' | 'edit'>('add')
 const showModal = ref(false)
 const del = (row: {
   no?: number
@@ -57,6 +64,12 @@ const del = (row: {
     },
     onNegativeClick: () => {},
   })
+}
+const edit = function (val: TList) {
+  console.log(val)
+  modelType.value = 'edit'
+  editInfo.value = val
+  showModal.value = true
 }
 const columns: DataTableColumns<TList> = [
   {
@@ -95,9 +108,14 @@ const columns: DataTableColumns<TList> = [
     key: 'actions',
     render(row) {
       return (
-        <NButton strong tertiary onClick={() => del(row)}>
-          删除
-        </NButton>
+        <>
+          <NButton strong tertiary onClick={() => del(row)}>
+            删除
+          </NButton>
+          <NButton strong tertiary onClick={() => edit(row)}>
+            修改
+          </NButton>
+        </>
       )
     },
   },
