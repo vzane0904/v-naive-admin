@@ -30,7 +30,7 @@ export interface BasicTableProps {
   pagination?: PaginationProps
 }
 export interface ITableExample {
-  setTableProps(desc: BasicTableProps): BasicTableProps //设置表格参数
+  setTableProps(desc: Partial<BasicTableProps>): BasicTableProps //设置表格参数
   setLoading(value: Boolean): void
   reload(): void // 刷新表格
   getDataSource: <T = Record<string, any>>() => T[] // 获取数据

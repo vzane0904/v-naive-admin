@@ -2,6 +2,7 @@ const prefix = '/api'
 const system = `${prefix}/system` //系统设置相关的前缀
 const userPrefix = `${system}/user` // 用户相关前缀
 const rolePrefix = `${system}/role` // 角色相关前缀
+const menuPrefix = `${system}/menu` // 角色相关前缀
 export enum Api {
   userNameLogin = `${prefix}/login/userName`, //用户名登录
   // 用户相关
@@ -13,6 +14,8 @@ export enum Api {
   getRoleList = `${rolePrefix}/list`, // 获取角色列表
   addRole = `${rolePrefix}/add`, // 获取角色列表
   deleteRole = `${rolePrefix}/delete/`, // 获取角色列表 拼接ID
+  // 菜单相关
+  APiMenuList = `${menuPrefix}/list`, // 获取菜单列表
   // ------------------------------------------------------------------------------------------------------------------------------------------
   useRegister = '/not/sys/register', //用户名注册
   permissions = '/users/back/permissions',
