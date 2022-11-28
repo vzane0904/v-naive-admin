@@ -155,7 +155,6 @@ export default defineComponent({
               },
             }}
             loading={false}
-            flex-height
           />
         </div>
       </NSpin>

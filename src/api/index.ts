@@ -24,3 +24,6 @@ export const getRoleList = (params: any) => http.get(Api.getRoleList, params)
 // 用户列表
 export const getUserList = (params: Record<string, Object> | undefined) =>
   http.get(Api.getUserList, params)
+// 菜单列表
+export const getMenuList = (params: Record<string, Object> | undefined) =>
+  http.get(Api.APiMenuList, params)

@@ -8,8 +8,11 @@ const config: Partial<BasicTableProps> = {
     showHeader: true,
   },
   dataTableProps: {
+    flexHeight: true,
     size: 'medium',
     remote: true,
+    bordered: true,
+    bottomBordered: true,
   },
   pageSetting: {
     listField: 'list',
