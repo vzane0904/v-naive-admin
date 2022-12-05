@@ -19,22 +19,22 @@ export default defineComponent({
     const data = computed(() => unref(propsValue)?.data)
     // 合并attrs 及 use配置项中关于Table的配置
     // 列数据
-    const columns = computed(() => {
-      if (unref(propsValue)?.showIndexColum) {
-        const serialNo = [
-          {
-            title: unref(propsValue)!.showIndexColumText,
-            key: '',
-            width: 80,
-            render(row: any, index: number) {
-              return <div>{index + 1}</div>
-            },
-          },
-        ]
-        return [...serialNo, ...(propsValue.value?.columns || [])]
-      }
-      return propsValue.value?.columns || []
-    })
+    // const columns = computed(() => {
+    //   if (unref(propsValue)?.showIndexColum) {
+    //     const serialNo = [
+    //       {
+    //         title: unref(propsValue)!.showIndexColumText,
+    //         key: '',
+    //         width: 80,
+    //         render(row: any, index: number) {
+    //           return <div>{index + 1}</div>
+    //         },
+    //       },
+    //     ]
+    //     return [...serialNo, ...(propsValue.value?.columns || [])]
+    //   }
+    //   return propsValue.value?.columns || []
+    // })
     const loading = computed(() => unref(propsValue)?.dataTableProps?.loading)
     const setTableProps = (optionsProps: BasicTableProps) => {
       propsValue.value = {
@@ -140,7 +140,7 @@ export default defineComponent({
           {propsValue.value?.dataTableProps?.loading}
           <NDataTable
             {...unref(mergeAttrs)}
-            columns={columns.value}
+            columns={propsValue.value?.columns || []}
             data={data.value}
             pagination={{
               ...pagination.value,

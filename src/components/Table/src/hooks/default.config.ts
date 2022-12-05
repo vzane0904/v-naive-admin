@@ -27,7 +27,5 @@ const config: Partial<BasicTableProps> = {
     showSizePicker: true,
     showQuickJumper: true,
   },
-  showIndexColum: true,
-  showIndexColumText: '序号',
 }
 export default config

@@ -21,11 +21,15 @@
               placeholder="请输入备注"
             />
           </n-form-item-gi>
-          <n-form-item-gi :span="12" label="关联菜单" path="menuIdList">
-            <n-select
-              v-model:value="model.menuIdList"
+          <n-form-item-gi :span="12" label="关联菜单" path="permissionList">
+            <NTreeSelect
+              cascade
+              checkable
+              label-field="name"
+              key-field="id"
+              v-model:value="model.permissionList"
               placeholder="Select"
-              :options="roleList?.list"
+              :options="bindMenuList"
               value-field="id"
               multiple
             />
@@ -49,13 +53,15 @@ import { Modal, useModal } from '@/components/Modal/index'
 import { useHttp } from '@/hooks/useHttp'
 import { createNotification } from '@/utils/message'
 import { FormInst, FormRules } from 'naive-ui'
+import { IMenuList } from '../../menu/type'
 const initialState = {
   name: '',
   label: '',
   remark: '',
   state: 1,
-  menuIdList: [],
+  permissionList: [],
 }
+const bindMenuList = ref<IMenuList[]>([])
 const model = reactive({
   ...initialState,
 })
@@ -92,17 +98,12 @@ const rules: FormRules = {
     required: true,
     message: '请设置用户状态',
   },
-  menuIdList: {
+  permissionList: {
     required: false,
     message: '请选择绑定菜单',
   },
 }
-// 新增角色
-const { run, err } = useHttp({
-  Api: Api.addRole,
-  methods: 'post',
-  data: model,
-})
+
 const [register, setModal] = useModal({
   title: '新增角色',
   show: props.showModal,
@@ -110,21 +111,34 @@ const [register, setModal] = useModal({
     closeOnEsc: true,
   },
 })
-const { run: getRole, data: roleList } = useHttp({
-  Api: Api.getRoleList,
-  methods: 'get',
-})
-const handleValidateButtonClick = () => {
-  formRef.value?.validate(async (errors) => {
-    if (!errors) {
-      await run()
-      setModal.setModalProps({
-        props: {
-          loading: true,
-        },
+const sunMit = function () {
+  return new Promise(async (resolve) => {
+    if (props.type === 'edit') {
+      // 新增角色
+      const { run, err } = useHttp({
+        Api: Api.ApiUpdateRole,
+        methods: 'patch',
+        data: model,
       })
-      console.log(err, err.value)
-
+      await run()
+      if (!err.value) {
+        createNotification({
+          title: '成功',
+          content: '修改角色成功',
+        })
+        emit('update:showModal', false)
+        emit('refresh')
+      }
+      resolve(true)
+      console.log('edit', model)
+    } else {
+      // 新增角色
+      const { run, err } = useHttp({
+        Api: Api.addRole,
+        methods: 'post',
+        data: model,
+      })
+      await run()
       if (!err.value) {
         createNotification({
           title: '成功',
@@ -133,6 +147,19 @@ const handleValidateButtonClick = () => {
         emit('update:showModal', false)
         emit('refresh')
       }
+      resolve(true)
+    }
+  })
+}
+const handleValidateButtonClick = () => {
+  formRef.value?.validate(async (errors) => {
+    if (!errors) {
+      setModal.setModalProps({
+        props: {
+          loading: true,
+        },
+      })
+      await sunMit()
       setModal.setModalProps({
         props: {
           loading: false,
@@ -143,6 +170,18 @@ const handleValidateButtonClick = () => {
       console.log('验证失败')
     }
   })
+}
+// 获取权限
+const getMenuList = async function () {
+  const { run, data, err } = useHttp({
+    Api: Api.APiMenuList,
+    methods: 'get',
+  })
+  await run()
+  if (!err.value) {
+    bindMenuList.value = data.value.list
+    console.log(bindMenuList.value)
+  }
 }
 const close = function close() {
   Object.assign(model, initialState)
@@ -159,7 +198,7 @@ watch(
       setModal.setModalProps({
         title: props.type === 'add' ? '新增角色' : '修改角色',
       })
-      getRole()
+      getMenuList()
     }
     if (props.type === 'edit') {
       Object.assign(model, props.info)
