@@ -148,6 +148,9 @@ const themeOverrides = (): GlobalThemeOverrides => {
       headerMargin5: '0',
       headerMargin6: '0',
     },
+    DataTable: {
+      // thColor: '#ebeef5',
+    },
     // ...
   }
 }

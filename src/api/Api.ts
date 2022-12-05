@@ -13,9 +13,13 @@ export enum Api {
   // 角色相关
   getRoleList = `${rolePrefix}/list`, // 获取角色列表
   addRole = `${rolePrefix}/add`, // 获取角色列表
-  deleteRole = `${rolePrefix}/delete/`, // 获取角色列表 拼接ID
+  deleteRole = `${rolePrefix}/delete/`, // 删除角色 拼接ID
+  ApiUpdateRole = `${rolePrefix}/update`, // 更新角色
   // 菜单相关
   APiMenuList = `${menuPrefix}/list`, // 获取菜单列表
+  ApiAddMenu = `${menuPrefix}/add`, // 新增菜单
+  ApiUpdateMenu = `${menuPrefix}/update`, // 修改菜单
+  ApiDelMenu = `${menuPrefix}/delete/`, // 删除菜单 拼接ID
   // ------------------------------------------------------------------------------------------------------------------------------------------
   useRegister = '/not/sys/register', //用户名注册
   permissions = '/users/back/permissions',

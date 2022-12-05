@@ -66,7 +66,6 @@ const del = (row: {
   })
 }
 const edit = function (val: TList) {
-  console.log(val)
   modelType.value = 'edit'
   editInfo.value = val
   showModal.value = true
@@ -75,6 +74,7 @@ const columns: DataTableColumns<TList> = [
   {
     title: 'id',
     key: 'id',
+    width: 80,
   },
   {
     title: '角色名称',
@@ -91,6 +91,7 @@ const columns: DataTableColumns<TList> = [
   {
     title: '状态',
     key: 'state',
+    width: 100,
     render(row) {
       return (
         <NTag bordered={false} type={row.state === 1 ? 'success' : 'error'}>
@@ -106,16 +107,17 @@ const columns: DataTableColumns<TList> = [
   {
     title: '操作',
     key: 'actions',
+    width: 150,
     render(row) {
       return (
-        <>
-          <NButton strong tertiary onClick={() => del(row)}>
-            删除
-          </NButton>
-          <NButton strong tertiary onClick={() => edit(row)}>
+        <div class="flex justify-between">
+          <NButton strong secondary type="info" onClick={() => edit(row)}>
             修改
           </NButton>
-        </>
+          <NButton strong secondary type="error" onClick={() => del(row)}>
+            删除
+          </NButton>
+        </div>
       )
     },
   },
@@ -133,7 +135,8 @@ const { register, methods } = useTable({
   dataTableProps: {
     size: 'medium',
     loading: false,
-    bordered: false,
+    bordered: true,
+    bottomBordered: true,
   },
 })
 onMounted(async () => {})
