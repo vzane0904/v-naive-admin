@@ -27,6 +27,7 @@ import { createNotification } from '@/utils/message'
 import { BasicTable, useTable } from '@/components/Table'
 import { getMenuList } from '@/api'
 import { IMenuList } from './type'
+import Icon from '@/components/Icon/index.vue'
 const userRouter = useRouter()
 const dialog = useDialog()
 const showModal = ref(false)
@@ -66,7 +67,7 @@ const edit = function (val: IMenuList) {
 const columns: DataTableColumns<IMenuList> = [
   {
     title: '名称',
-    key: 'name',
+    key: 'title',
   },
   {
     title: '类型',
@@ -98,7 +99,10 @@ const columns: DataTableColumns<IMenuList> = [
   {
     title: 'icon',
     key: 'icon',
-    width: 80,
+    width: 70,
+    render(row) {
+      return <Icon name={row.icon} size={20} />
+    },
   },
   {
     title: '路由地址',
