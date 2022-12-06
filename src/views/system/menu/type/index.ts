@@ -1,3 +1,5 @@
+import { RouteMeta } from 'vue-router'
+
 export interface IMenuList {
   parentId: string | number
   id?: number
@@ -9,10 +11,11 @@ export interface IMenuList {
   redirect: string
   query: any
   params: any
-  component: string
+  component: string | null
   title: string
   keepAlive: number
   hideMenu: boolean
   hideTab: boolean
   type: number
+  meta?: RouteMeta
 }

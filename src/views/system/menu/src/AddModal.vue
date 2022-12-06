@@ -38,20 +38,31 @@
               clearable
             />
           </n-form-item-gi>
-          <n-form-item-gi :span="24" label="节点名称" path="name">
-            <n-input v-model:value="model.name" placeholder="请输入名称" />
-          </n-form-item-gi>
-          <!-- <n-form-item-gi
+          <!-- 唯一标识 => route.name -->
+          <n-form-item-gi
             :span="24"
-            label="权限标识"
-            path="path"
-            v-if="model.type === 3"
+            v-if="model.type === 1"
+            label="唯一标识"
+            path="name"
           >
             <n-input
-              v-model:value="model.path"
-              placeholder="请输入权限标识名称"
+              v-model:value="model.name"
+              placeholder="请输入名称 route.name"
             />
-          </n-form-item-gi> -->
+          </n-form-item-gi>
+          <!-- 节点名称 => route.name -->
+          <n-form-item-gi
+            v-else-if="model.type === 2"
+            :span="24"
+            label="路由名称"
+            path="name"
+          >
+            <n-input
+              v-model:value="model.name"
+              placeholder="请输入路由名称 route.name"
+            />
+          </n-form-item-gi>
+          <!-- 组件地址 -->
           <n-form-item-gi
             :span="24"
             label="组件地址"
@@ -70,22 +81,47 @@
               key-field="label"
             />
           </n-form-item-gi>
+          <!-- type:2 路由地址  -->
           <n-form-item-gi
             :span="24"
-            :label="
-              model.type === 1
-                ? '目录标识'
-                : model.type === 2
-                ? '路由地址'
-                : '权限标识'
-            "
+            v-if="model.type === 2"
+            label="路由地址"
             path="path"
           >
             <NInput
               v-model:value="model.path"
-              placeholder="router.path 如/test"
+              placeholder="请输入路由地址 如 /test"
             />
           </n-form-item-gi>
+          <!-- type:3 权限标识  -->
+          <n-form-item-gi
+            :span="24"
+            v-else-if="model.type === 3"
+            label="权限标识"
+            path="path"
+          >
+            <NInput v-model:value="model.path" placeholder="如/test" />
+          </n-form-item-gi>
+          <!-- 菜单标题 -->
+          <n-form-item-gi
+            :span="24"
+            label="页面标题"
+            path="title"
+            v-if="model.type !== 3"
+          >
+            <NInput
+              v-model:value="model.title"
+              placeholder="请输入页面标题 title"
+            />
+          </n-form-item-gi>
+          <!-- 权限名称 -->
+          <n-form-item-gi :span="24" label="权限名称" path="title" v-else>
+            <NInput
+              v-model:value="model.title"
+              placeholder="请输入权限名称 title"
+            />
+          </n-form-item-gi>
+          <!-- 重定向 -->
           <n-form-item-gi
             :span="24"
             label="重定向"
@@ -97,7 +133,13 @@
               placeholder="请输入重定向地址"
             />
           </n-form-item-gi>
-          <n-form-item-gi :span="24" label="节点图标" path="icon">
+          <!-- 图标 -->
+          <n-form-item-gi
+            :span="24"
+            label="图标"
+            path="icon"
+            v-if="!model.parentId"
+          >
             <NPopover trigger="click" placement="bottom">
               <template v-slot:trigger>
                 <NInput v-model:value="model.icon" placeholder="请输入icon" />
@@ -118,24 +160,9 @@
               </div>
             </NPopover>
           </n-form-item-gi>
-          <n-form-item-gi :span="24" label="排序号" path="orderNo">
-            <NInputNumber
-              v-model:value="model.orderNo"
-              placeholder="排序号"
-              :min="0"
-              :max="9999"
-            />
-          </n-form-item-gi>
+          <!-- 路由缓存 -->
           <n-form-item-gi
-            :span="24"
-            label="页面标题"
-            path="title"
-            v-if="model.type === 2"
-          >
-            <NInput v-model:value="model.title" placeholder="请输入名称" />
-          </n-form-item-gi>
-          <n-form-item-gi
-            :span="8"
+            :span="6"
             label="路由缓存"
             path="keepAlive"
             v-if="model.type === 2"
@@ -151,15 +178,17 @@
               </n-space>
             </n-radio-group>
           </n-form-item-gi>
-          <n-form-item-gi :span="8" label="是否显示" path="state">
-            <n-switch
-              v-model:value="model.state"
-              :checked-value="1"
-              :unchecked-value="0"
+          <n-form-item-gi :span="6" label="排序" path="orderNo">
+            <NInputNumber
+              v-model:value="model.orderNo"
+              placeholder="排序号"
+              :min="0"
+              :max="9999"
             />
           </n-form-item-gi>
+          <!-- 激活菜单时隐藏tab -->
           <n-form-item-gi
-            :span="8"
+            :span="6"
             label="激活菜单时隐藏tab"
             path="hideTab"
             v-if="model.type === 2"
@@ -170,6 +199,14 @@
               :unchecked-value="false"
             />
           </n-form-item-gi>
+          <n-form-item-gi :span="6" label="是否显示" path="state">
+            <n-switch
+              v-model:value="model.state"
+              :checked-value="1"
+              :unchecked-value="0"
+            />
+          </n-form-item-gi>
+          <!-- query参数 -->
           <n-form-item-gi
             :span="12"
             label="query参数"
@@ -182,6 +219,7 @@
               placeholder="请输入名称"
             /> -->
           </n-form-item-gi>
+          <!-- params参数 -->
           <n-form-item-gi
             :span="12"
             label="params参数"
@@ -216,7 +254,7 @@ const initialState = {
   path: '',
   redirect: '',
   disabled: true,
-  component: '',
+  component: null,
   icon: '',
   title: '',
   hideMenu: false,
@@ -263,7 +301,12 @@ const rules: FormRules = {
   name: {
     required: true,
     trigger: ['blur', 'input'],
-    message: '请输入节点名称',
+    message: '名称或标识为必填项',
+  },
+  title: {
+    required: true,
+    trigger: ['blur', 'input'],
+    message: '请输入页面标题',
   },
   // path: {
   //   required: true,
