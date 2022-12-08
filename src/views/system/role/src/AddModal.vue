@@ -124,7 +124,7 @@ const sunMit = function () {
       if (!err.value) {
         createNotification({
           title: '成功',
-          content: '修改角色成功',
+          content: '角色修改成功',
         })
         emit('update:showModal', false)
         emit('refresh')
@@ -142,7 +142,7 @@ const sunMit = function () {
       if (!err.value) {
         createNotification({
           title: '成功',
-          content: '新增角色成功',
+          content: '角色新增成功',
         })
         emit('update:showModal', false)
         emit('refresh')
@@ -184,7 +184,6 @@ const getMenuList = async function () {
   }
 }
 const close = function close() {
-  Object.assign(model, initialState)
   emit('update:showModal', false)
   emit('update:type', 'add')
 }
@@ -199,6 +198,8 @@ watch(
         title: props.type === 'add' ? '新增角色' : '修改角色',
       })
       getMenuList()
+    } else {
+      Object.assign(model, initialState)
     }
     if (props.type === 'edit') {
       Object.assign(model, props.info)

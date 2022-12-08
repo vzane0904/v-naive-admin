@@ -1,3 +1,4 @@
+<!-- eslint-disable no-use-before-define -->
 <template>
   <Content>
     <template v-slot:header> 角色管理{{ modelType }} </template>
@@ -36,40 +37,6 @@ type TList = {
 const editInfo = ref({})
 const modelType = ref<'add' | 'edit'>('add')
 const showModal = ref(false)
-const del = (row: {
-  no?: number
-  title?: string
-  length?: string
-  id?: any
-}) => {
-  dialog.warning({
-    title: '删除',
-    content: '确定删除当前数据吗？',
-    positiveText: '确定',
-    negativeText: '取消',
-    onPositiveClick: async () => {
-      const { run: sendDel, err: delUserErr } = useHttp({
-        Api: Api.deleteRole + row.id,
-        methods: 'delete',
-      })
-      await sendDel()
-      if (!delUserErr.value) {
-        createNotification({
-          title: '成功',
-          content: '删除角色成功',
-        })
-        // eslint-disable-next-line no-use-before-define
-        methods.reload()
-      }
-    },
-    onNegativeClick: () => {},
-  })
-}
-const edit = function (val: TList) {
-  modelType.value = 'edit'
-  editInfo.value = val
-  showModal.value = true
-}
 const columns: DataTableColumns<TList> = [
   {
     title: 'id',
@@ -94,9 +61,13 @@ const columns: DataTableColumns<TList> = [
     width: 100,
     render(row) {
       return (
-        <NTag bordered={false} type={row.state === 1 ? 'success' : 'error'}>
-          {row.state === 1 ? '正常' : '冻结'}
-        </NTag>
+        <NSwitch
+          value={row.state}
+          checked-value={1}
+          unchecked-value={0}
+          // eslint-disable-next-line no-use-before-define
+          onUpdateValue={(value: boolean) => checkState(row, value)}
+        />
       )
     },
   },
@@ -111,9 +82,11 @@ const columns: DataTableColumns<TList> = [
     render(row) {
       return (
         <div class="flex justify-between">
+          {/* eslint-disable-next-line no-use-before-define */}
           <NButton strong secondary type="info" onClick={() => edit(row)}>
             修改
           </NButton>
+          {/* eslint-disable-next-line no-use-before-define */}
           <NButton strong secondary type="error" onClick={() => del(row)}>
             删除
           </NButton>
@@ -139,6 +112,60 @@ const { register, methods } = useTable({
     bottomBordered: true,
   },
 })
+const del = (row: {
+  no?: number
+  title?: string
+  length?: string
+  id?: any
+}) => {
+  dialog.warning({
+    title: '删除',
+    content: '确定删除当前数据吗？',
+    positiveText: '确定',
+    negativeText: '取消',
+    onPositiveClick: async () => {
+      const { run: sendDel, err: delUserErr } = useHttp({
+        Api: Api.deleteRole + row.id,
+        methods: 'delete',
+      })
+      await sendDel()
+      if (!delUserErr.value) {
+        createNotification({
+          title: '成功',
+          content: '删除角色成功',
+        })
+        methods.reload()
+      }
+    },
+    onNegativeClick: () => {},
+  })
+}
+const edit = function (val: TList) {
+  modelType.value = 'edit'
+  editInfo.value = val
+  showModal.value = true
+}
+
+const checkState = async function (row: TList, value: boolean) {
+  // 新增角色
+  const { run, err } = useHttp({
+    Api: Api.ApiUpdateRole,
+    methods: 'patch',
+    data: {
+      ...row,
+      state: value,
+    },
+  })
+  await methods!.setLoading(true)
+  await run()
+  if (!err.value) {
+    createNotification({
+      title: '成功',
+      content: '角色状态修改成功',
+    })
+    await methods.reload()
+  }
+}
 onMounted(async () => {})
 </script>
 
