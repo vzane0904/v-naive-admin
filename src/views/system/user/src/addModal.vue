@@ -3,14 +3,17 @@
     @register="register"
     @ok="handleValidateButtonClick"
     @close="close"
-    style="width: 50%"
+    style="width: 800px"
   >
     <div>
-      <n-form ref="formRef" :model="model" :rules="rules" label-placement="top">
+      <n-form
+        ref="formRef"
+        :model="model"
+        :rules="rules"
+        label-placement="left"
+        label-width="80"
+      >
         <n-grid :cols="24" :x-gap="24">
-          <n-form-item-gi :span="12" label="名称" path="name">
-            <n-input v-model:value="model.name" placeholder="请输入名称" />
-          </n-form-item-gi>
           <n-form-item-gi :span="12" label="用户名" path="userName">
             <n-input
               v-model:value="model.userName"
@@ -25,31 +28,38 @@
           >
             <n-input
               v-model:value="model.password"
+              type="password"
+              show-password-on="click"
               placeholder="请输入登录密码"
             />
           </n-form-item-gi>
-          <n-form-item-gi :span="12" label="邮箱" path="email">
-            <n-input v-model:value="model.email" placeholder="请输入邮箱" />
-          </n-form-item-gi>
-          <n-form-item-gi :span="12" label="手机号" path="phone">
-            <n-input v-model:value="model.phone" placeholder="请输入手机号" />
-          </n-form-item-gi>
-          <n-form-item-gi :span="12" label="关联角色" path="roleIdList">
+          <n-form-item-gi :span="24" label="关联角色" path="roleIdList">
             <n-select
               v-model:value="model.roleIdList"
-              placeholder="Select"
+              placeholder="请绑定关联角色"
               :options="roleList?.list"
               value-field="id"
               label-field="name"
               multiple
             />
           </n-form-item-gi>
+          <n-form-item-gi :span="12" label="名称" path="name">
+            <n-input v-model:value="model.name" placeholder="请输入名称" />
+          </n-form-item-gi>
+          <n-form-item-gi :span="12" label="手机号" path="phone">
+            <n-input v-model:value="model.phone" placeholder="请输入手机号" />
+          </n-form-item-gi>
+          <n-form-item-gi :span="12" label="邮箱" path="email">
+            <n-input v-model:value="model.email" placeholder="请输入邮箱" />
+          </n-form-item-gi>
+
           <n-form-item-gi :span="12" label="状态" path="state">
-            <n-switch
-              v-model:value="model.state"
-              :checked-value="1"
-              :unchecked-value="0"
-            />
+            <n-radio-group v-model:value="model.state" name="state">
+              <n-space>
+                <NRadio :value="1">启动</NRadio>
+                <NRadio :value="0">冻结</NRadio>
+              </n-space>
+            </n-radio-group>
           </n-form-item-gi>
         </n-grid>
       </n-form>

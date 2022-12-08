@@ -21,8 +21,15 @@
               placeholder="请输入备注"
             />
           </n-form-item-gi>
-          <n-form-item-gi :span="12" label="关联菜单" path="permissionList">
-            <NTreeSelect
+          <n-form-item-gi :span="12" label="状态" path="state">
+            <n-switch
+              v-model:value="model.state"
+              :checked-value="1"
+              :unchecked-value="0"
+            />
+          </n-form-item-gi>
+          <n-form-item-gi :span="24" label="关联菜单" path="permissionList">
+            <!-- <NTreeSelect
               cascade
               checkable
               label-field="name"
@@ -32,14 +39,22 @@
               :options="bindMenuList"
               value-field="id"
               multiple
-            />
-          </n-form-item-gi>
-          <n-form-item-gi :span="12" label="状态" path="state">
-            <n-switch
-              v-model:value="model.state"
-              :checked-value="1"
-              :unchecked-value="0"
-            />
+            /> -->
+            <div
+              class="border border-opacity-50 border-solid border-gray-400 w-1/1 max-h-210px overflow-auto box"
+            >
+              <NTree
+                cascade
+                checkable
+                label-field="title"
+                key-field="id"
+                v-model:value="model.permissionList"
+                placeholder="Select"
+                :data="bindMenuList"
+                value-field="id"
+                multiple
+              />
+            </div>
           </n-form-item-gi>
         </n-grid>
       </n-form>
@@ -207,3 +222,8 @@ watch(
   },
 )
 </script>
+<style lang="less" scoped>
+.box {
+  border-radius: var(--n-border-radius);
+}
+</style>
