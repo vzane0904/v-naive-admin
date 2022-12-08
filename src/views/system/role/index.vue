@@ -1,7 +1,7 @@
 <!-- eslint-disable no-use-before-define -->
 <template>
   <Content>
-    <template v-slot:header> 角色管理{{ modelType }} </template>
+    <template v-slot:header> 角色管理</template>
     <BasicTable @register="register">
       <!-- <template v-slot:title>
         <div>title插槽</div>
