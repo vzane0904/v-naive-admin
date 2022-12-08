@@ -98,17 +98,25 @@ const columns: DataTableColumns<IUserList> = [
       )
     },
   },
-
   {
     title: '状态',
     key: 'state',
     width: 100,
     render(row) {
       return (
-        <NTag bordered={false} type={row.state === 1 ? 'success' : 'error'}>
-          {row.state === 1 ? '正常' : '冻结'}
-        </NTag>
+        <NSwitch
+          value={row.state}
+          checked-value={1}
+          unchecked-value={0}
+          // eslint-disable-next-line no-use-before-define
+          onUpdateValue={(value: boolean) => checkState(row, value)}
+        />
       )
+      // return (
+      //   <NTag bordered={false} type={row.state === 1 ? 'success' : 'error'}>
+      //     {row.state === 1 ? '正常' : '冻结'}
+      //   </NTag>
+      // )
     },
   },
   {
@@ -171,7 +179,27 @@ const { register, methods } = useTable({
     bottomBordered: true,
   },
 })
-
+const checkState = async function (row: IUserList, value: boolean) {
+  // 新增角色
+  const { run, err } = useHttp({
+    Api: Api.updateUser,
+    methods: 'patch',
+    data: {
+      ...row,
+      state: value,
+    },
+  })
+  await methods!.setLoading(true)
+  await run()
+  if (!err.value) {
+    createNotification({
+      title: '成功',
+      content: '用户状态修改成功',
+    })
+    await methods.reload()
+  }
+  await methods!.setLoading(false)
+}
 onMounted(async () => {})
 </script>
 

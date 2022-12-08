@@ -156,7 +156,7 @@ const addUser = async function () {
   if (!err.value) {
     createNotification({
       title: '成功',
-      content: '新增用户成功',
+      content: '用户新增成功',
     })
     emit('update:showModal', false)
     emit('refresh')
@@ -169,7 +169,6 @@ const addUser = async function () {
 }
 // 更新角色
 const updateUser = async function () {
-  // 新增接口
   const params = {
     id: props.info!.id,
     roleIdList: model.roleIdList,
@@ -179,7 +178,6 @@ const updateUser = async function () {
     phone: model.phone,
     state: model.state,
   }
-
   const { run, err } = useHttp({
     Api: Api.updateUser,
     methods: 'patch',
@@ -194,7 +192,7 @@ const updateUser = async function () {
   if (!err.value) {
     createNotification({
       title: '成功',
-      content: '修改用户信息成功',
+      content: '用户信息修改成功',
     })
     emit('update:showModal', false)
     emit('refresh')
@@ -221,7 +219,8 @@ const handleValidateButtonClick = () => {
   })
 }
 const close = function close() {
-  Object.assign(model, initialState)
+  // Object.assign(model, initialState)
+  console.log('close')
   emit('update:showModal', false)
   emit('update:type', 'add')
 }
@@ -239,6 +238,9 @@ watch(
     }
     if (props.type === 'edit') {
       Object.assign(model, props.info)
+    }
+    if (!v) {
+      Object.assign(model, initialState)
     }
   },
 )
