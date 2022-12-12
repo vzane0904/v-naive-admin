@@ -2,7 +2,7 @@
 import { configStore } from '@/pinia/modules/config'
 import { BasicTableProps } from './type/table'
 import TableHeader from './components/TableHeader.vue'
-import lodash from 'lodash-es'
+import { merge } from 'lodash-es'
 import { useAfterFetch } from './hooks/useFetch'
 import { DataTableProps } from 'naive-ui'
 export default defineComponent({
@@ -38,7 +38,7 @@ export default defineComponent({
     const loading = computed(() => unref(propsValue)?.dataTableProps?.loading)
     const setTableProps = (optionsProps: BasicTableProps) => {
       propsValue.value = {
-        ...lodash.merge(propsValue.value, optionsProps),
+        ...merge(propsValue.value, optionsProps),
       }
       return unref(propsValue)
     }
@@ -91,7 +91,7 @@ export default defineComponent({
     }
     const mergeAttrs = computed(() => {
       if (unref(propsValue) && unref(propsValue)?.dataTableProps) {
-        return lodash.merge({}, attrs, propsValue.value?.dataTableProps)
+        return merge({}, attrs, propsValue.value?.dataTableProps)
       }
       return attrs
     })

@@ -1,12 +1,12 @@
 import { BasicTableProps } from '../type/table'
-import lodash from 'lodash-es'
+import { cloneDeep } from 'lodash-es'
 import { toType } from '@/utils/dataType'
 export const beforeFetch = function () {}
 export const useAfterFetch = async function (
   config: BasicTableProps,
   data: Record<string, any>[],
 ) {
-  const clone = lodash.cloneDeep(data)
+  const clone = cloneDeep(data)
   const res = await config.afterFetch!(clone)
   if (toType(res) === 'array') {
     return res
