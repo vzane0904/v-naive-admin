@@ -24,6 +24,7 @@ export const routeStore = defineStore({
     ],
     tabsActive: baseHome,
     role: ['admin', 'int'],
+    newMenuList: [], //新菜单权限
   }),
   actions: {
     reset(callBack: () => void = () => {}) {
@@ -49,6 +50,7 @@ export const routeStore = defineStore({
           'auth',
           // 'tabs',
           'role',
+          'newMenuList',
         ],
       },
     ],

@@ -48,7 +48,7 @@
                 checkable
                 label-field="title"
                 key-field="id"
-                v-model:value="model.permissionList"
+                v-model:checked-keys="model.permissionList"
                 placeholder="Select"
                 :data="bindMenuList"
                 value-field="id"

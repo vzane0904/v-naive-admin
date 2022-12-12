@@ -46,7 +46,12 @@ export const useNameLogin = function (formValue: IUseNameLogin) {
             .push(route.query.redirectPath as string)
             .finally(() => create())
         } else {
-          router.push(baseHome).finally(() => create())
+          router
+            .push(baseHome)
+            .catch(() => {
+              console.log('catch')
+            })
+            .finally(() => create())
         }
         loading.value = unref(httpLoading)
         return data

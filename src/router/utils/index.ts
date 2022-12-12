@@ -29,7 +29,8 @@ export const RenderComponent = (componentName: string): Component => {
     return moveRoutersMap.get(errSymbol)
     // @ts-ignore
   } else if (permissionMode === RoleEnum.BACK) {
-    return () => eval(`import("../../views/${componentName}.vue")`) // 后台返回数据
+    // console.log('componentName', componentName)
+    return () => eval(`import("../../views/${componentName}")`) // 后台返回数据
   }
   // @ts-ignore
   if (permissionMode === RoleEnum.ROLE) {
@@ -42,7 +43,7 @@ export const transformRoute = (
   const store = routeStore()
   return routeList
     .map((item: RouteType) => {
-      item.meta.orderNo = isNaN(item.meta.orderNo!) ? 99 : item.meta.orderNo
+      // item.meta.orderNo = isNaN(item.meta.orderNo!) ? 99 : item.meta.orderNo
       // 处理路由权限
       // @ts-ignore
       if (permissionMode === RoleEnum.ROLE) {
@@ -64,7 +65,7 @@ export const transformRoute = (
         }
       }
       const info = DeepCopy(item)
-      info.name = item.path
+      // info.name = item.path
       info.component = RenderComponent(item.component)
       if (item.children) {
         info.children = transformRoute(item.children)
@@ -72,7 +73,7 @@ export const transformRoute = (
       return info
     })
     .filter((i) => i)
-    .sort((a: RouteType, b: RouteType) => a.meta.orderNo! - b.meta.orderNo!)
+  // .sort((a: RouteType, b: RouteType) => a.meta.orderNo! - b.meta.orderNo!)
 }
 export const addTabs = (to: RouteLocationNormalized) => {
   const store = routeStore()

@@ -27,3 +27,5 @@ export const getUserList = (params: Record<string, Object> | undefined) =>
 // 菜单列表
 export const getMenuList = (params: Record<string, Object> | undefined) =>
   http.get(Api.APiMenuList, params)
+
+export const getBackMenu = () => http.get(Api.getBackMenu)
