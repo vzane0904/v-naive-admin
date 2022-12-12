@@ -28,6 +28,8 @@ export enum Api {
   userPhoneLogin = '/sys/login/phone',
   useRetrievePass = '/sys/retrievePass',
   permissions401 = '/err/401',
+  // 权限相关
+  getBackMenu = `${prefix}/user/permissions`,
 }
 export enum BaseApi {
   picCode = `${prefix}/base/picCode`, //获取图片验证码

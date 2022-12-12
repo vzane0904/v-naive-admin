@@ -22,7 +22,8 @@ const { t } = useI18n()
 export default defineComponent({
   name: 'MenuLeft',
   setup() {
-    const { selectMenu, originalData } = storeToRefs(routeStore())
+    // originalData
+    const { selectMenu, newMenuList } = storeToRefs(routeStore())
     const refState = refStore()
     const { menuRef } = storeToRefs(refState)
     const {
@@ -58,8 +59,7 @@ export default defineComponent({
             rel: 'noopenner noreferrer',
           },
           {
-            default: () =>
-              isI18n ? t(item.name as string) : (item.meta!.title as string),
+            default: () => (isI18n ? t(item.meta!.title) : item.meta!.title),
           },
         )
       }
@@ -67,17 +67,13 @@ export default defineComponent({
         RouterLink,
         {
           to: {
-            name: item.children
-              ? ''
-              : item.path.slice(0, 1) === '/'
-              ? item.path
-              : '/' + item.path,
+            name: item.children ? '' : item.path,
             query: item.meta!.query as LocationQueryRaw,
             params: item.meta!.params as RouteParamsRaw,
           },
         },
         {
-          default: () => (isI18n ? t(item.name as string) : item.meta!.title),
+          default: () => (isI18n ? t(item.meta!.title) : item.meta!.title),
         },
       )
     }
@@ -115,7 +111,7 @@ export default defineComponent({
         inverted={isInverted.value}
         collapsed={siderFold.value}
         value={selectMenu.value}
-        options={useData(originalData.value)}
+        options={useData(newMenuList.value)}
         collapsed-width={collapsedWidth.value}
         accordion={isAccordion.value}
         indent={16}

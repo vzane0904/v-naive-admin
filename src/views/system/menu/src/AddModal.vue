@@ -28,177 +28,140 @@
               </n-space>
             </n-radio-group>
           </n-form-item-gi>
-          <n-form-item-gi :span="24" label="上级节点" path="parentId">
+          <n-form-item-gi
+            :span="24"
+            label="上级节点"
+            path="parentId"
+            v-if="model.type !== 1"
+          >
             <NTreeSelect
               v-model:value="model.parentId"
-              label-field="name"
+              placeholder="请选择上级节点"
+              label-field="title"
               key-field="id"
               :options="bindMenuList"
               default-value=""
               clearable
             />
           </n-form-item-gi>
+          <!-- 菜单标题 -->
+          <n-form-item-gi :span="24" label="标题" path="title">
+            <NInput v-model:value="model.title" placeholder="请输入菜单名称" />
+          </n-form-item-gi>
           <!-- 唯一标识 => route.name -->
-          <n-form-item-gi
-            :span="24"
-            v-if="model.type === 1"
-            label="唯一标识"
-            path="name"
-          >
+          <!-- <n-form-item-gi :span="24" label="唯一标识" path="name">
             <n-input
               v-model:value="model.name"
               placeholder="请输入名称 route.name"
             />
-          </n-form-item-gi>
+          </n-form-item-gi> -->
           <!-- 节点名称 => route.name -->
-          <n-form-item-gi
-            v-else-if="model.type === 2"
-            :span="24"
-            label="路由名称"
-            path="name"
-          >
+          <!-- <n-form-item-gi :span="24" label="路由名称" path="name">
             <n-input
               v-model:value="model.name"
               placeholder="请输入路由名称 route.name"
             />
-          </n-form-item-gi>
-          <!-- 组件地址 -->
-          <n-form-item-gi
-            :span="24"
-            label="组件地址"
-            path="component"
-            v-if="model.type === 2"
-          >
-            <NCascader
-              filterable
-              :options="data"
-              v-model:value="model.component"
-              placeholder="请选择组件地址"
-              label-field="label"
-              default-value=""
-              clearable
-              check-strategy="child"
-              key-field="label"
-            />
-          </n-form-item-gi>
-          <!-- type:2 路由地址  -->
-          <n-form-item-gi
-            :span="24"
-            v-if="model.type === 2"
-            label="路由地址"
-            path="path"
-          >
-            <NInput
-              v-model:value="model.path"
-              placeholder="请输入路由地址 如 /test"
-            />
-          </n-form-item-gi>
-          <!-- type:3 权限标识  -->
-          <n-form-item-gi
-            :span="24"
-            v-else-if="model.type === 3"
-            label="权限标识"
-            path="path"
-          >
-            <NInput v-model:value="model.path" placeholder="如/test" />
-          </n-form-item-gi>
-          <!-- 菜单标题 -->
-          <n-form-item-gi
-            :span="24"
-            label="页面标题"
-            path="title"
-            v-if="model.type !== 3"
-          >
-            <NInput
-              v-model:value="model.title"
-              placeholder="请输入页面标题 title"
-            />
-          </n-form-item-gi>
-          <!-- 权限名称 -->
-          <n-form-item-gi :span="24" label="权限名称" path="title" v-else>
+          </n-form-item-gi> -->
+          <!-- 组件路径 -->
+          <template v-if="model.type !== 3">
+            <n-form-item-gi :span="24" label="组件路径" path="component">
+              <NCascader
+                filterable
+                :options="data"
+                v-model:value="model.component"
+                placeholder="请选择组件地址"
+                label-field="label"
+                default-value=""
+                clearable
+                check-strategy="child"
+                key-field="label"
+              />
+            </n-form-item-gi>
+            <!-- type:2 路由地址  -->
+            <n-form-item-gi :span="24" label="路由地址" path="path">
+              <NInput
+                v-model:value="model.path"
+                placeholder="请输入路由地址 如 /test"
+              />
+            </n-form-item-gi>
+            <!-- type:3 权限标识  -->
+            <n-form-item-gi :span="24" label="路由重定向" path="redirect">
+              <NInput
+                v-model:value="model.redirect"
+                placeholder="router.redirect"
+              />
+            </n-form-item-gi>
+            <!-- 权限名称 -->
+            <!-- <n-form-item-gi :span="24" label="权限名称" path="title">
             <NInput
               v-model:value="model.title"
               placeholder="请输入权限名称 title"
             />
-          </n-form-item-gi>
-          <!-- 重定向 -->
-          <n-form-item-gi
-            :span="24"
-            label="重定向"
-            path="redirect"
-            v-if="model.type === 2"
-          >
+          </n-form-item-gi> -->
+            <!-- 重定向 -->
+            <!-- <n-form-item-gi :span="24" label="重定向" path="redirect">
             <NInput
               v-model:value="model.redirect"
               placeholder="请输入重定向地址"
             />
-          </n-form-item-gi>
-          <!-- 图标 -->
-          <n-form-item-gi
-            :span="24"
-            label="图标"
-            path="icon"
-            v-if="!model.parentId"
-          >
-            <NPopover trigger="click" placement="bottom">
-              <template v-slot:trigger>
-                <NInput v-model:value="model.icon" placeholder="请输入icon" />
-              </template>
-              <div class="flex flex-wrap">
-                <div
-                  v-for="item in glyphs"
-                  @click="model.icon = item.font_class"
-                  :key="item.name"
-                  :class="[
-                    'w-34px h-34px border-1px border-solid mt-4px mr-4px cursor-pointer flex items-center justify-center iconItem',
-                    model.icon === item.font_class ? 'active' : '',
-                  ]"
-                >
-                  <!-- {{ item.name }} -->
-                  <Icon :name="item.font_class" :size="20" />
+          </n-form-item-gi> -->
+            <!-- 图标 -->
+            <n-form-item-gi :span="24" label="图标" path="icon">
+              <NPopover trigger="click" placement="bottom">
+                <template v-slot:trigger>
+                  <NInput v-model:value="model.icon" placeholder="请输入icon" />
+                </template>
+                <div class="flex flex-wrap">
+                  <div
+                    v-for="item in glyphs"
+                    @click="model.icon = item.font_class"
+                    :key="item.name"
+                    :class="[
+                      'w-34px h-34px border-1px border-solid mt-4px mr-4px cursor-pointer flex items-center justify-center iconItem',
+                      model.icon === item.font_class ? 'active' : '',
+                    ]"
+                  >
+                    <!-- {{ item.name }} -->
+                    <Icon :name="item.font_class" :size="20" />
+                  </div>
                 </div>
-              </div>
-            </NPopover>
-          </n-form-item-gi>
-          <!-- 路由缓存 -->
-          <n-form-item-gi
-            :span="6"
-            label="路由缓存"
-            path="keepAlive"
-            v-if="model.type === 2"
-          >
-            <n-radio-group
-              v-model:value="model.keepAlive"
-              name="keepAlive"
-              disabled
-            >
-              <n-space>
-                <n-radio :value="1">开启 </n-radio>
-                <n-radio :value="0">关闭 </n-radio>
-              </n-space>
-            </n-radio-group>
-          </n-form-item-gi>
-          <n-form-item-gi :span="6" label="排序" path="orderNo">
-            <NInputNumber
-              v-model:value="model.orderNo"
-              placeholder="排序号"
-              :min="0"
-              :max="9999"
-            />
-          </n-form-item-gi>
-          <!-- 激活菜单时隐藏tab -->
-          <n-form-item-gi
-            :span="6"
-            label="激活菜单时隐藏tab"
-            path="hideTab"
-            v-if="model.type === 2"
-          >
-            <n-switch
-              v-model:value="model.hideTab"
-              :checked-value="true"
-              :unchecked-value="false"
-            />
-          </n-form-item-gi>
+              </NPopover>
+            </n-form-item-gi>
+            <!-- 路由缓存 -->
+            <n-form-item-gi :span="6" label="路由缓存" path="keepAlive">
+              <n-radio-group
+                v-model:value="model.keepAlive"
+                name="keepAlive"
+                disabled
+              >
+                <n-space>
+                  <n-radio :value="1">开启 </n-radio>
+                  <n-radio :value="0">关闭 </n-radio>
+                </n-space>
+              </n-radio-group>
+            </n-form-item-gi>
+            <n-form-item-gi :span="6" label="排序" path="orderNo">
+              <NInputNumber
+                v-model:value="model.orderNo"
+                placeholder="排序号"
+                :min="0"
+                :max="9999"
+              />
+            </n-form-item-gi>
+            <!-- 激活菜单时隐藏tab -->
+            <n-form-item-gi :span="6" label="激活菜单时隐藏tab" path="hideTab">
+              <n-switch
+                v-model:value="model.hideTab"
+                :checked-value="true"
+                :unchecked-value="false"
+              />
+            </n-form-item-gi>
+          </template>
+          <template v-else>
+            <n-form-item-gi :span="24" label="权限标识" path="path">
+              <NInput v-model:value="model.path" placeholder="请输入权限标识" />
+            </n-form-item-gi>
+          </template>
           <n-form-item-gi :span="6" label="是否显示" path="state">
             <n-switch
               v-model:value="model.state"
@@ -206,32 +169,24 @@
               :unchecked-value="0"
             />
           </n-form-item-gi>
-          <!-- query参数 -->
-          <n-form-item-gi
-            :span="12"
-            label="query参数"
-            path="query"
-            v-if="model.type === 2"
-          >
-            <!-- <NInput
+          <template v-if="model.type !== 3">
+            <!-- query参数 -->
+            <n-form-item-gi :span="12" label="query参数" path="query">
+              <!-- <NInput
               type="textarea"
               v-model:value="model.query"
               placeholder="请输入名称"
             /> -->
-          </n-form-item-gi>
-          <!-- params参数 -->
-          <n-form-item-gi
-            :span="12"
-            label="params参数"
-            path="params"
-            v-if="model.type === 2"
-          >
-            <!-- <NInput
+            </n-form-item-gi>
+            <!-- params参数 -->
+            <n-form-item-gi :span="12" label="params参数" path="params">
+              <!-- <NInput
               type="textarea"
               v-model:value="model.params"
               placeholder="请输入名称"
             /> -->
-          </n-form-item-gi>
+            </n-form-item-gi>
+          </template>
         </n-grid>
       </n-form>
     </div>
@@ -269,11 +224,11 @@ const bindMenuList = ref<IMenuList[]>([])
 const songs = [
   {
     value: 1,
-    label: '目录',
+    label: '一级菜单',
   },
   {
     value: 2,
-    label: '菜单',
+    label: '子菜单',
   },
   {
     value: 3,
@@ -351,7 +306,7 @@ const findFiles = function findFiles() {
     // {views,layouts/error}
     // '!**/components',
   ])
-  const list: string[] = []
+  const list: string[] = ['view']
   for (const i in files) {
     if (i.includes('/src/views')) {
       list.push(i.substring(11))
@@ -450,10 +405,7 @@ const getMenuList = async function () {
     console.log(bindMenuList.value)
   }
 }
-onMounted(() => {
-  // data.value = findFiles()
-  console.log('iconJson', glyphs)
-})
+onMounted(() => {})
 watch(
   () => props.showModal,
   (v) => {
@@ -480,6 +432,14 @@ watch(
     if (val) {
       console.log(val)
       model.parentId = val
+    }
+  },
+)
+watch(
+  () => model.parentId,
+  (val) => {
+    if (!val) {
+      model.parentId = ''
     }
   },
 )
