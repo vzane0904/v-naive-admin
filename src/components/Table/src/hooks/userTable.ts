@@ -1,8 +1,8 @@
 import { BasicTableProps, ITableExample } from '../type/table'
-import lodash from 'lodash-es'
+import { cloneDeep, merge } from 'lodash-es'
 import config from './default.config'
 const useTable = function (props: BasicTableProps) {
-  const baseConfig = lodash.merge(lodash.cloneDeep(config), props)
+  const baseConfig = merge(cloneDeep(config), props)
   if (!getCurrentInstance()) {
     throw new Error(
       'useForm() can only be used inside setup() or functional components!',

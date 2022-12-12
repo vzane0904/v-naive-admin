@@ -6,7 +6,7 @@ import {
 } from '@/config'
 import { AxiosErrorTip, ContentTypeEnum, ignoreTip } from '@/enum/axios'
 import { RequestOptions } from '@/type/http'
-import _ from 'lodash-es'
+import { merge } from 'lodash-es'
 import { VAxios } from './axios'
 export const data: RequestOptions = {
   timeout: 1000 * 10, // 10ms 超时
@@ -42,6 +42,6 @@ export const data: RequestOptions = {
   },
 }
 const createHttp = (request?: RequestOptions) => {
-  return new VAxios(_.merge(data, request))
+  return new VAxios(merge(data, request))
 }
 export const http = createHttp()
