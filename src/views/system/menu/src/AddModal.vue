@@ -306,7 +306,7 @@ const findFiles = function findFiles() {
     // {views,layouts/error}
     // '!**/components',
   ])
-  const list: string[] = ['view']
+  const list: string[] = ['view', 'iframe']
   for (const i in files) {
     if (i.includes('/src/views')) {
       list.push(i.substring(11))
@@ -318,7 +318,6 @@ const findFiles = function findFiles() {
 }
 // 数据列表
 const data = ref(findFiles())
-console.log(data.value)
 const [register, setModal] = useModal({
   title: '新增角色',
   show: props.showModal,

@@ -156,7 +156,7 @@ module.exports = defineConfig({
     'no-empty': 2, //块语句中的内容不能为空
     'no-empty-character-class': 2, //正则表达式中的[]内容不能为空
     'no-eq-null': 2, //禁止对null使用==或!=运算符
-    'no-eval': 1, //禁止使用eval
+    'no-eval': 2, //禁止使用eval
     'no-ex-assign': 2, //禁止给catch语句中的异常参数赋值
     'no-extend-native': 2, //禁止扩展native对象
     'no-extra-bind': 2, //禁止不必要的函数绑定
