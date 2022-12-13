@@ -1,18 +1,5 @@
 import { createHtmlPlugin } from 'vite-plugin-html'
 
-const getDiv = () => {
-  const divArr = []
-  for (let i = 1; i < 10; i++) {
-    divArr.push({
-      tag: 'div',
-      attrs: {
-        class: `div0${i}`,
-      },
-    })
-  }
-  return divArr
-}
-// const loadingName = ['circular', 'verticalBar', 'leftCircular', 'diamond']
 export const html = (title: string) => {
   return createHtmlPlugin({
     minify: false,
@@ -34,32 +21,7 @@ export const html = (title: string) => {
         title: title,
         injectScript: ``,
       },
-      tags: [
-        {
-          injectTo: 'body-prepend',
-          tag: 'div',
-          attrs: {
-            id: 'app',
-          },
-          children: [
-            {
-              tag: 'div',
-              attrs: {
-                id: 'rootLoading',
-              },
-              children: [
-                {
-                  tag: 'div',
-                  attrs: {
-                    class: 'diamond',
-                  },
-                  children: getDiv(),
-                },
-              ],
-            },
-          ],
-        },
-      ],
+      tags: [],
     },
   })
 }
