@@ -18,6 +18,7 @@ import PkgConfig from 'vite-plugin-package-config'
 import { autoImport } from './autoImport'
 import { naiveDts } from './generateNaiveDts'
 import { buildVisualizer } from './buildVisualizer'
+import { viteBuildInfo } from './buildInfo'
 export const autoPath = 'src/type'
 export const createPlugin = (
   viteEnv: ViteEnv,
@@ -33,7 +34,14 @@ export const createPlugin = (
   const vitePlugins: (Plugin | Plugin[])[] = [
     vue(),
     WindiCSS(),
-    viteCompression(),
+    viteCompression({
+      verbose: true, //是否在控制台输出压缩结果
+      disable: false, //是否禁用,相当于开关在这里
+      threshold: 10240, //体积大于 threshold 才会被压缩,单位 b，1b=8B, 1B=1024KB  那我们这里相当于 9kb多吧，就会压缩
+      algorithm: 'gzip', //压缩算法,可选 [ 'gzip' , 'brotliCompress' ,'deflate' , 'deflateRaw']
+      ext: '.gz', //文件后缀
+      filter: () => true,
+    }),
   ]
   // 把 naive components 声明到全局
   vitePlugins.push(naiveDts())
@@ -55,6 +63,8 @@ export const createPlugin = (
   // vitePlugins.push(restart())
   // jsx插件
   vitePlugins.push(jsx())
+  // build info
+  vitePlugins.push(viteBuildInfo())
   // setup name
   vitePlugins.push(setupName())
   // import images

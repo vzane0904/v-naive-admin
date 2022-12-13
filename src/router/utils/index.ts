@@ -29,8 +29,8 @@ export const RenderComponent = (componentName: string): Component => {
     return moveRoutersMap.get(errSymbol)
     // @ts-ignore
   } else if (permissionMode === RoleEnum.BACK) {
-    // console.log('componentName', componentName)
-    return () => eval(`import("../../views/${componentName}")`) // 后台返回数据
+    const url = `../../views/${componentName}`
+    return () => import(/* @vite-ignore */ url) // 后台返回数据
   }
   // @ts-ignore
   if (permissionMode === RoleEnum.ROLE) {

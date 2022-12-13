@@ -15,7 +15,7 @@ const getDiv = () => {
 // const loadingName = ['circular', 'verticalBar', 'leftCircular', 'diamond']
 export const html = (title: string) => {
   return createHtmlPlugin({
-    minify: true,
+    minify: false,
     /**
      * 在这里写entry后，你将不需要在`index.html`内添加 script 标签，原有标签需要删除
      * @default src/main.ts
