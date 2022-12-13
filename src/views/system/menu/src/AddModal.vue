@@ -201,7 +201,7 @@ import { deepPaths } from '@/utils'
 import { createNotification } from '@/utils/message'
 import { FormInst, FormItemRule, FormRules } from 'naive-ui'
 import { IMenuList } from '../type'
-import { glyphs } from '@/assets/icons/iconfont.json'
+import { glyphs } from '@/assets/icon.json'
 const initialState = {
   parentId: '',
   type: 1,
