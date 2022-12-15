@@ -8,10 +8,8 @@ import { useProfileStore } from './user'
 export const routeStore = defineStore({
   id: 'routeStore',
   state: () => ({
-    originalData: [] as Array<RouteType>, //原数据
     routesName: [] as Array<string>, //原数据
-    routesList: [], // back路由模式接口数据
-    menuList: [], //菜单
+    routesList: [] as Array<RouteType>, // back路由模式接口数据
     auth: [], //权限
     selectMenu: baseHome, //首页路径
     tabs: <Array<TabsType>>[
@@ -24,7 +22,6 @@ export const routeStore = defineStore({
     ],
     tabsActive: baseHome,
     role: ['admin', 'int'],
-    newMenuList: [], //新菜单权限
   }),
   actions: {
     reset(callBack: () => void = () => {}) {
@@ -46,11 +43,10 @@ export const routeStore = defineStore({
       {
         storage: localStorage,
         paths: [
-          'originalData',
           'auth',
           // 'tabs',
           'role',
-          'newMenuList',
+          'routesList',
         ],
       },
     ],

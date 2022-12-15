@@ -5,6 +5,6 @@ export const removeRoute = () => {
   store.routesName.forEach((item) => router.removeRoute(item))
   store.$patch({
     routesName: [],
-    originalData: [],
+    routesList: [],
   })
 }
