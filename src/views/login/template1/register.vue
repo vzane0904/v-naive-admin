@@ -126,7 +126,6 @@ export default defineComponent({
             e.preventDefault()
             formRef.value?.validate(async (errors) => {
               if (!errors) {
-                console.log('ok')
                 try {
                   // const { run } = useHttp({
                   //   Api: '',
@@ -141,19 +140,11 @@ export default defineComponent({
                       name: 'xx',
                     },
                   })
-                  // let { data: _a, success, msg } = await register('')
-                  // if (success) {
-                  //   console.log('注册成功')
-                  // } else {
-                  //   console.log(msg)
-                  // }
                 } catch {
                   //
                 }
-
                 // message.success('验证成功')
               } else {
-                console.log('errors')
                 // message.error('验证失败')
               }
             })
@@ -164,7 +155,6 @@ export default defineComponent({
         <NButton
           class="mt-10px w-1/1"
           onClick={() => {
-            console.log('11')
             emit('gx', 'user')
           }}
         >

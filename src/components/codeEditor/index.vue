@@ -16,8 +16,6 @@ let instance: monaco.editor.IStandaloneCodeEditor
 //@ts-ignore
 self.MonacoEnvironment = {
   getWorker(_: any, label: string) {
-    console.log(label)
-
     if (label === 'json') {
       return new jsonWorker()
     }
@@ -34,7 +32,6 @@ self.MonacoEnvironment = {
   },
 }
 onMounted(() => {
-  console.log('editor onMounted.')
   instance = monaco.editor.create(
     document.querySelector('#container') as HTMLElement,
     {
@@ -47,9 +44,9 @@ onMounted(() => {
   )
 })
 onUnmounted(() => {
-  console.log('editor onUnmounted.')
-  const modifiedVal = instance.getValue()
-  console.log('val=>', modifiedVal)
+  // console.log('editor onUnmounted.')
+  // const modifiedVal = instance.getValue()
+  // console.log('val=>', modifiedVal)
   //post the modified data to target file
   // instance.dispose();
 })

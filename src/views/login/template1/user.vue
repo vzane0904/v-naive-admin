@@ -59,17 +59,6 @@ export default defineComponent({
           </a>
         </div>
         <br />
-        {/* loading={(ElRef.value as any)?.loading} */}
-        {/* loading.value = true */}
-        {/* loading.value = false */}
-        {/* ;(ElRef.value as any).subMit(
-              () => {
-                console.log('ok')
-              },
-              () => {
-                console.log('err')
-              },
-            ) */}
         <NButton
           type="info"
           loading={loading.value}

@@ -18,7 +18,6 @@ interface IUseHttp extends Headers {
 }
 
 export const useHttp = function (configProps: IUseHttp) {
-  // console.log('xxxx', configProps.Api)
   const loading = ref(false)
   const err = ref()
   const data = ref()

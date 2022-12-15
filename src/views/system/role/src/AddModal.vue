@@ -145,7 +145,6 @@ const sunMit = function () {
         emit('refresh')
       }
       resolve(true)
-      console.log('edit', model)
     } else {
       // 新增角色
       const { run, err } = useHttp({
@@ -182,7 +181,6 @@ const handleValidateButtonClick = () => {
       })
     } else {
       console.log(errors)
-      console.log('验证失败')
     }
   })
 }
@@ -195,7 +193,6 @@ const getMenuList = async function () {
   await run()
   if (!err.value) {
     bindMenuList.value = data.value.list
-    console.log(bindMenuList.value)
   }
 }
 const close = function close() {

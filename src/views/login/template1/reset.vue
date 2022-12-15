@@ -50,7 +50,6 @@ export default defineComponent({
             e.preventDefault()
             ElRef.value?.validate(async (errors) => {
               if (!errors) {
-                console.log('ok')
                 try {
                   const { success, msg } = await retrievePass(formValue)
                   if (success) {
@@ -74,7 +73,6 @@ export default defineComponent({
         <NButton
           class="mt-10px w-1/1"
           onClick={() => {
-            console.log('11')
             emit('gx', 'user')
           }}
         >

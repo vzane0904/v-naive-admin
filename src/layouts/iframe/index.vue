@@ -6,7 +6,6 @@
 
 <script lang="ts" setup>
 const src = computed(() => useRoute().meta.iframeSrc)
-console.log(useRoute())
 </script>
 
 <style lang="less" scoped></style>

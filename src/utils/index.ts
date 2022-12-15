@@ -52,12 +52,9 @@ export const flatTree = (treeArr: Array<any>) => {
 
 // 路径转数组
 export function deepPaths(paths: string[], splitOr?: string) {
-  // console.log('paths', paths)
   const list: any[] = []
   paths.forEach((e) => {
     const arr: string[] = e.split(splitOr || '/').filter(Boolean)
-    // console.log('arr', arr)
-
     let c = list
     arr.forEach((a, i) => {
       let d = c.find((e) => e.label === a)
@@ -75,7 +72,5 @@ export function deepPaths(paths: string[], splitOr?: string) {
       }
     })
   })
-  console.log('list', list)
-
   return list
 }

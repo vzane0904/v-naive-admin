@@ -48,9 +48,7 @@ export const userNameLogin = function (formValue: IUserNameLogin) {
         } else {
           router
             .push(baseHome)
-            .catch(() => {
-              console.log('catch')
-            })
+            .catch(() => {})
             .finally(() => create())
         }
         loading.value = unref(httpLoading)

@@ -224,13 +224,11 @@ const handleValidateButtonClick = () => {
       }
     } else {
       console.log(errors)
-      console.log('验证失败')
     }
   })
 }
 const close = function close() {
   // Object.assign(model, initialState)
-  console.log('close')
   emit('update:showModal', false)
   emit('update:type', 'add')
 }

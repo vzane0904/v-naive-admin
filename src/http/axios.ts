@@ -93,7 +93,6 @@ export class VAxios {
             })
             // return response.data
             return Promise.reject(response.data)
-            // console.log('请求异常', message)
           }
           return response.data.data
         }

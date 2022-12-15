@@ -53,7 +53,6 @@ export default defineComponent({
                           console.log('ok')
                         },
                         () => {
-                          console.log('err')
                           loading.value = false
                         },
                       )
