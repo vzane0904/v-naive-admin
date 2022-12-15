@@ -5,12 +5,12 @@ import Phone from './phone.vue'
 import Reset from './reset.vue'
 import SwitchTemplate from '../src/components/switchTemplate.vue'
 import UserNameLogin from '../src/components/userNameLogin.vue'
-import { IUseNameLogin, TargetContext } from '../src/type'
+import { IUserNameLogin, TargetContext } from '../src/type'
 import { userRules } from '../src/config'
 import UserName from '../src/components/userName.vue'
 import PassWord from '../src/components/passWord.vue'
 import PictureCode from '../src/components/pictureCode.vue'
-import { useNameLogin } from '../src/hooks/loginFn'
+import { userNameLogin } from '../src/hooks/loginFn'
 export default defineComponent({
   name: 'User',
   components: {
@@ -25,13 +25,13 @@ export default defineComponent({
     const model = ref<TargetContext>('user')
     const ElRef = ref<Element>()
     const picRef = ref<Element>()
-    const formValue: IUseNameLogin = reactive({
+    const formValue: IUserNameLogin = reactive({
       userName: 'admin',
       password: 'Pass123456',
       picCode: '',
       picId: '',
     })
-    const { loading, loginGO } = useNameLogin(formValue)
+    const { loading, loginGO } = userNameLogin(formValue)
     const form = () => (
       <>
         <h1 class="mb-12px text-size-30px">

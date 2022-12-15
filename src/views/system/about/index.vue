@@ -12,17 +12,10 @@
         </h5>
       </div>
     </template>
-  </Content>
-  <Content>
     <Description @register="adminInfoRegister" />
+    <Description @register="devRegister" class="mt-10px" />
+    <Description @register="ProdRegister" class="mt-10px" />
   </Content>
-  <Content>
-    <Description @register="devRegister" />
-  </Content>
-  <Content>
-    <Description @register="ProdRegister" />
-  </Content>
-  <div></div>
 </template>
 
 <script lang="ts" setup>
@@ -50,12 +43,12 @@ const [adminInfoRegister] = useDescription({
     {
       label: '文档地址',
       field: 'docsUrl',
-      render: () => renderLink('文档地址', 'http://doc.mmxxn.cn/'),
+      render: () => renderLink('文档地址', 'http://www.doc.mmxxn.cn/'),
     },
     {
       label: '预览地址',
       field: 'previewUrl',
-      render: () => renderLink('预览地址', 'https://mmxxn.cn/'),
+      render: () => renderLink('预览地址', 'http://www.mmxxn.cn/'),
     },
     {
       label: 'Github',
@@ -68,7 +61,7 @@ const [adminInfoRegister] = useDescription({
     id: 1,
     version: version,
     lastBuildTime: lastBuildTime,
-    docsUrl: 'http://doc.mmxxn.cn/',
+    docsUrl: 'http://www.doc.mmxxn.cn/',
     previewUrl: '预览地址',
     github: 'Github',
   },

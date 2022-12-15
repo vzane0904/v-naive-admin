@@ -5,9 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-const src = computed(
-  () => (useRoute().params.path as string) || (useRoute().query.path as string),
-)
+const src = computed(() => useRoute().meta.iframeSrc)
 console.log(useRoute())
 </script>
 

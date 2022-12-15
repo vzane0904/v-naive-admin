@@ -5,11 +5,11 @@ import { mountNewData } from '@/router/utils/mountRouter'
 import { createNotification } from '@/utils/message'
 import { Fn } from '@vueuse/core'
 import { FormInst } from 'naive-ui'
-import { IUseNameLogin } from '../type'
+import { IUserNameLogin } from '../type'
 import moment from 'moment'
 import { useHttp } from '@/hooks/useHttp'
 import { Api } from '@/api/Api'
-export const useNameLogin = function (formValue: IUseNameLogin) {
+export const userNameLogin = function (formValue: IUserNameLogin) {
   const route = useRoute()
   const router = useRouter()
   const ElRef = ref<FormInst | null>(null)
@@ -31,14 +31,14 @@ export const useNameLogin = function (formValue: IUseNameLogin) {
         const useStore = useProfileStore()
         useStore.$patch({
           token: data.value.token,
-          useName: data.value.useName,
+          userName: data.value.userName,
         })
         await mountNewData()
         const create = () =>
           createNotification({
             title: '登录成功',
             description: moment().format('YYYY-MM-DD HH:mm:ss'),
-            content: `欢迎回来: ${data.value.useName}`,
+            content: `欢迎回来: ${data.value.userName}`,
             type: 'success',
           })
         if (route.query.redirectPath && route.query.redirectPath !== '/404') {

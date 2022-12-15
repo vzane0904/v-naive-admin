@@ -3,7 +3,7 @@ export const useProfileStore = defineStore({
   id: 'useProfileStore', //唯一
   state: () => ({
     token: '',
-    useName: '',
+    userName: '',
   }),
   getters: {},
   actions: {},

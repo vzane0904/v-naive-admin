@@ -61,7 +61,7 @@ export default [
     timeout: 200,
     response: () =>
       resultData(
-        { token: uuid(), useName: '超级管理员' },
+        { token: uuid(), userName: '超级管理员' },
         200,
         true,
         '用户名登录成功',

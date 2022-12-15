@@ -1,5 +1,5 @@
 import { http } from '@/http'
-import { IUseNameLogin } from '@/views/login/src/type'
+import { IUserNameLogin } from '@/views/login/src/type'
 import { Api } from './Api'
 export const baseUrl = '/api'
 export const permissions = () => http.post(`${baseUrl}${Api.permissions}`)
@@ -8,7 +8,7 @@ export const movePermissions = () =>
 // 获取手机号验证码
 export const getSms = () => http.get(`${baseUrl}${Api.smsCode}`)
 // 用户名登录
-export const userNameLogin = (params: IUseNameLogin) =>
+export const userNameLogin = (params: IUserNameLogin) =>
   http.post(`${baseUrl}${Api.userNameLogin}`, params)
 // 手机号登录
 export const userPhoneLogin = (params: any) =>

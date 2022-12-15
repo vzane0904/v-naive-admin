@@ -15,21 +15,21 @@
 </template>
 <script setup lang="ts" name="UserNameLogin">
 import { userRules } from '../config'
-import { useNameLogin } from '../hooks/loginFn'
-import { IUseNameLogin } from '../type'
+import { userNameLogin } from '../hooks/loginFn'
+import { IUserNameLogin } from '../type'
 import UserName from './userName.vue'
 import PassWord from './passWord.vue'
 import PictureCode from './pictureCode.vue'
 import { Fn } from '@vueuse/core'
-const formValue: IUseNameLogin = reactive({
+const formValue: IUserNameLogin = reactive({
   userName: 'Admin',
   password: 'A123456',
   picCode: '',
   picId: '',
 })
-const { ElRef, loginValidate, loading } = useNameLogin(formValue)
+const { ElRef, loginValidate, loading } = userNameLogin(formValue)
 const subMit = (
-  callback: (params: IUseNameLogin) => {},
+  callback: (params: IUserNameLogin) => {},
   err: Fn = () => {},
 ) => {
   loginValidate(

@@ -43,7 +43,6 @@ export const transformRoute = (
   const store = routeStore()
   return routeList
     .map((item: RouteType) => {
-      // item.meta.orderNo = isNaN(item.meta.orderNo!) ? 99 : item.meta.orderNo
       // 处理路由权限
       // @ts-ignore
       if (permissionMode === RoleEnum.ROLE) {
@@ -73,7 +72,6 @@ export const transformRoute = (
       return info
     })
     .filter((i) => i)
-  // .sort((a: RouteType, b: RouteType) => a.meta.orderNo! - b.meta.orderNo!)
 }
 export const addTabs = (to: RouteLocationNormalized) => {
   const store = routeStore()
