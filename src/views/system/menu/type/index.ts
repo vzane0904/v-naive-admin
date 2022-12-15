@@ -9,9 +9,8 @@ export interface IMenuList {
   icon: string
   path: string
   redirect: string
-  query: any
-  params: any
   component: string | null
+  iframeSrc: string
   title: string
   keepAlive: number
   hideMenu: boolean

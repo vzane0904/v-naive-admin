@@ -79,7 +79,6 @@ export default defineComponent({
     }
     const useData = (data: Array<RouteRecordRaw>, sublevel = false) => {
       const arr = data
-        .sort((a, b) => a.meta!.orderNo! - b.meta!.orderNo!)
         .map((item: RouteRecordRaw) => {
           if (item.meta!.hideMenu) {
             return false

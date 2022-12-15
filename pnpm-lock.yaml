@@ -85,6 +85,7 @@ specifiers:
   vue: ^3.2.31
   vue-global-api: ^0.4.1
   vue-i18n: ^9.1.9
+  vue-json-viewer: '3'
   vue-router: ^4.0.14
   vue-tsc: ^0.32.1
   windicss: ^3.5.1
@@ -110,6 +111,7 @@ dependencies:
   vue: 3.2.31
   vue-global-api: 0.4.1_vue@3.2.31
   vue-i18n: 9.1.9_vue@3.2.31
+  vue-json-viewer: 3.0.4_vue@3.2.31
   vue-router: 4.0.14_vue@3.2.31
   vue-tsc: 0.32.1_typescript@4.4.4
   windicss: 3.5.1
@@ -7679,6 +7681,15 @@ packages:
       '@intlify/shared': 9.1.9
       '@intlify/vue-devtools': 9.1.9
       '@vue/devtools-api': 6.1.3
+      vue: 3.2.31
+    dev: false
+
+  /vue-json-viewer/3.0.4_vue@3.2.31:
+    resolution: {integrity: sha512-pnC080rTub6YjccthVSNQod2z9Sl5IUUq46srXtn6rxwhW8QM4rlYn+CTSLFKXWfw+N3xv77Cioxw7B4XUKIbQ==}
+    peerDependencies:
+      vue: ^3.2.2
+    dependencies:
+      clipboard: 2.0.11
       vue: 3.2.31
     dev: false
 

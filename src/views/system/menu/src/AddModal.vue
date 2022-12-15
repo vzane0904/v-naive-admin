@@ -64,7 +64,7 @@
           </n-form-item-gi> -->
           <!-- 组件路径 -->
           <template v-if="model.type !== 3">
-            <n-form-item-gi :span="24" label="组件路径" path="component">
+            <n-form-item-gi :span="24" label="组件地址" path="component">
               <NCascader
                 filterable
                 :options="data"
@@ -89,6 +89,31 @@
               <NInput
                 v-model:value="model.redirect"
                 placeholder="router.redirect"
+              />
+            </n-form-item-gi>
+            <n-form-item-gi
+              :span="24"
+              label="内嵌地址"
+              path="redirect"
+              v-if="model.component === 'iframe'"
+            >
+              <template v-slot:label>
+                <NPopover trigger="hover" placement="top">
+                  <template v-slot:trigger>
+                    <div>
+                      <span class="mr-14px">内嵌地址</span>
+                      <SvgIcon name="helpEmpty" class="-ml-10px" />
+                    </div>
+                  </template>
+                  <div>
+                    1.如果页面需要内嵌展示则需要配置该内嵌地址 <br />
+                    2.如果是外链该输入框则不需要设置任何内容,只设置路由地址即可
+                  </div>
+                </NPopover>
+              </template>
+              <NInput
+                v-model:value="model.iframeSrc"
+                placeholder="请输入外链地址"
               />
             </n-form-item-gi>
             <!-- 权限名称 -->
@@ -140,14 +165,14 @@
                 </n-space>
               </n-radio-group>
             </n-form-item-gi>
-            <n-form-item-gi :span="6" label="排序" path="orderNo">
+            <!-- <n-form-item-gi :span="6" label="排序" path="orderNo">
               <NInputNumber
                 v-model:value="model.orderNo"
                 placeholder="排序号"
                 :min="0"
                 :max="9999"
               />
-            </n-form-item-gi>
+            </n-form-item-gi> -->
             <!-- 激活菜单时隐藏tab -->
             <n-form-item-gi :span="6" label="激活菜单时隐藏tab" path="hideTab">
               <n-switch
@@ -162,6 +187,14 @@
               <NInput v-model:value="model.path" placeholder="请输入权限标识" />
             </n-form-item-gi>
           </template>
+          <n-form-item-gi :span="6" label="排序" path="orderNo">
+            <NInputNumber
+              v-model:value="model.orderNo"
+              placeholder="排序号"
+              :min="0"
+              :max="9999"
+            />
+          </n-form-item-gi>
           <n-form-item-gi :span="6" label="是否显示" path="state">
             <n-switch
               v-model:value="model.state"
@@ -169,24 +202,6 @@
               :unchecked-value="0"
             />
           </n-form-item-gi>
-          <template v-if="model.type !== 3">
-            <!-- query参数 -->
-            <n-form-item-gi :span="12" label="query参数" path="query">
-              <!-- <NInput
-              type="textarea"
-              v-model:value="model.query"
-              placeholder="请输入名称"
-            /> -->
-            </n-form-item-gi>
-            <!-- params参数 -->
-            <n-form-item-gi :span="12" label="params参数" path="params">
-              <!-- <NInput
-              type="textarea"
-              v-model:value="model.params"
-              placeholder="请输入名称"
-            /> -->
-            </n-form-item-gi>
-          </template>
         </n-grid>
       </n-form>
     </div>
@@ -216,9 +231,8 @@ const initialState = {
   hideTab: false,
   orderNo: 0,
   state: 1,
-  query: {},
-  params: {},
   keepAlive: 0,
+  iframeSrc: '',
 }
 const bindMenuList = ref<IMenuList[]>([])
 const songs = [
@@ -263,11 +277,6 @@ const rules: FormRules = {
     trigger: ['blur', 'input'],
     message: '请输入页面标题',
   },
-  // path: {
-  //   required: true,
-  //   trigger: ['blur', 'input'],
-  //   message: model.type === 2 ? '请输入路由地址' : '请输入权限标识',
-  // },
   path: [
     {
       required: true,
@@ -289,14 +298,6 @@ const rules: FormRules = {
   state: {
     required: true,
     message: '请设置当前状态',
-  },
-  query: {
-    required: false,
-    message: '请选择绑定菜单',
-  },
-  params: {
-    required: false,
-    message: '请选择绑定菜单',
   },
 }
 // 扫描文件目录

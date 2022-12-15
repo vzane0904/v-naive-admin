@@ -23,8 +23,6 @@ export const createRoutes = () => {
   roInfo.forEach((item: RouteType) => {
     let routeName = item.name
     if (item.children?.length) {
-      console.log('多级', item)
-
       router.addRoute(item)
       store.routesName.push(item.name)
     } else {

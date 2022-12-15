@@ -3,7 +3,7 @@ export interface Params {
   userName: string | number
   password: string | number
 }
-export interface IUseNameLogin {
+export interface IUserNameLogin {
   userName: string
   password: string
   picCode: string

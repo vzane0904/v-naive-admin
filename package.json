@@ -45,6 +45,7 @@
     "vue": "^3.2.31",
     "vue-global-api": "^0.4.1",
     "vue-i18n": "^9.1.9",
+    "vue-json-viewer": "3",
     "vue-router": "^4.0.14",
     "vue-tsc": "^0.32.1",
     "windicss": "^3.5.1"
