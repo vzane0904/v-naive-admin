@@ -7,7 +7,6 @@ export const getBackRoutes = async function () {
     const store = routeStore()
     // const { allAuth, route } = await permissions()
     const { result, perms } = await getPermissions()
-    console.log('result', result)
     await removeRoute()
     store.$patch({
       auth: perms,

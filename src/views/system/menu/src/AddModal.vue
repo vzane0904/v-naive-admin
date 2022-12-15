@@ -353,8 +353,6 @@ const subMit = function () {
         data: model,
       })
       await run()
-      console.log('xxxxxxxxx', err.value)
-
       if (!err.value) {
         createNotification({
           title: '成功',
@@ -376,8 +374,6 @@ const handleValidateButtonClick = () => {
         },
       })
       await subMit()
-      console.log('???')
-
       setModal.setModalProps({
         props: {
           loading: false,
@@ -385,7 +381,6 @@ const handleValidateButtonClick = () => {
       })
     } else {
       console.log(errors)
-      console.log('验证失败')
     }
   })
 }
@@ -402,7 +397,6 @@ const getMenuList = async function () {
   await run()
   if (!err.value) {
     bindMenuList.value = data.value.list
-    console.log(bindMenuList.value)
   }
 }
 onMounted(() => {})
@@ -430,7 +424,6 @@ watch(
   () => props.parentId,
   (val: string | number) => {
     if (val) {
-      console.log(val)
       model.parentId = val
     }
   },

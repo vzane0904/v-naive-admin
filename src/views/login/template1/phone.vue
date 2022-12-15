@@ -48,7 +48,6 @@ export default defineComponent({
             e.preventDefault()
             ElRef.value?.validate(async (errors) => {
               if (!errors) {
-                console.log('ok')
                 try {
                   const { success, msg } = await userPhoneLogin(formValue)
                   if (success) {
@@ -59,10 +58,8 @@ export default defineComponent({
                 } catch {
                   //
                 }
-                // message.success('验证成功')
               } else {
                 console.log('errors')
-                // message.error('验证失败')
               }
             })
           }}

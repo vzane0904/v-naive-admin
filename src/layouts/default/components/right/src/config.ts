@@ -5,23 +5,6 @@ import { DropdownOption } from 'naive-ui'
 
 export const userOptions = [
   {
-    label: '切换租户',
-    key: '切换租户',
-    children: [
-      {
-        label: '租户A',
-        key: '租户A',
-        onclick: () => {
-          console.log(1)
-        },
-      },
-      {
-        label: '租户B',
-        key: '租户B',
-      },
-    ],
-  },
-  {
     label: '修改密码',
     key: '修改密码',
     fn: () => {

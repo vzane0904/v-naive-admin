@@ -56,7 +56,6 @@ const del = (row: { title?: string; length?: string; id?: any }) => {
   })
 }
 const edit = function (val: IUserList) {
-  console.log(val)
   modelType.value = 'edit'
   editInfo.value = val
   showModal.value = true
@@ -151,27 +150,8 @@ const { register, methods } = useTable({
   api: getUserList,
   immediate: true,
   additionalParams: { name: 'xxx' },
-  pageSetting: {
-    // pageIndexField: 'xx',
-    // pageSizeField: 'aa',
-  },
+  pageSetting: {},
   data: [],
-  // afterFetch: (value) => {
-  //   return new Promise((resolve) => {
-  //     setTimeout(() => {
-  //       resolve(value)
-  //     }, 2000)
-  //   })
-  // },
-  // beforeFetch: (val) => {
-  //   return new Promise((resolve) => {
-  //     console.log('val', val)
-
-  //     setTimeout(() => {
-  //       resolve({ ...val, name: '测试返回结果' })
-  //     }, 2000)
-  //   })
-  // },
   dataTableProps: {
     size: 'medium',
     loading: false,
