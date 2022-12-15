@@ -22,8 +22,7 @@ const { t } = useI18n()
 export default defineComponent({
   name: 'MenuLeft',
   setup() {
-    // originalData
-    const { selectMenu, newMenuList } = storeToRefs(routeStore())
+    const { selectMenu, routesList } = storeToRefs(routeStore())
     const refState = refStore()
     const { menuRef } = storeToRefs(refState)
     const {
@@ -110,7 +109,7 @@ export default defineComponent({
         inverted={isInverted.value}
         collapsed={siderFold.value}
         value={selectMenu.value}
-        options={useData(newMenuList.value)}
+        options={useData(routesList.value)}
         collapsed-width={collapsedWidth.value}
         accordion={isAccordion.value}
         indent={16}

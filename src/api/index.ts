@@ -2,7 +2,7 @@ import { http } from '@/http'
 import { IUserNameLogin } from '@/views/login/src/type'
 import { Api } from './Api'
 export const baseUrl = '/api'
-export const permissions = () => http.post(`${baseUrl}${Api.permissions}`)
+// export const permissions = () => http.post(`${baseUrl}${Api.permissions}`)
 export const movePermissions = () =>
   http.post(`${baseUrl}${Api.movePermissions}`)
 // 获取手机号验证码
@@ -27,5 +27,5 @@ export const getUserList = (params: Record<string, Object> | undefined) =>
 // 菜单列表
 export const getMenuList = (params: Record<string, Object> | undefined) =>
   http.get(Api.APiMenuList, params)
-
-export const getBackMenu = () => http.get(Api.getBackMenu)
+// 获取菜单权限
+export const getPermissions = () => http.get(Api.getBackMenu)

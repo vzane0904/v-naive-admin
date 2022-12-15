@@ -11,12 +11,12 @@ export const createRoutes = () => {
   const store = routeStore()
   // @ts-ignore
   if (permissionMode === RoleEnum.MOVE || permissionMode === RoleEnum.BACK) {
-    roInfo = transformRoute(store.newMenuList)
+    roInfo = transformRoute(store.routesList)
   } else {
     //角色
     const item = transformRoute(roleRoutesMap)
     if (item) {
-      roInfo = store.originalData = item
+      roInfo = store.routesList = item
     }
   }
 
@@ -34,7 +34,6 @@ export const createRoutes = () => {
         component: RenderComponent('view'),
         children: [item],
       }
-      console.log('单级', view)
       router.addRoute(view)
       store.routesName.push(view.name)
     }

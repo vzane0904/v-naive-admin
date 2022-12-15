@@ -1,19 +1,17 @@
-import { permissions } from '@/api'
-import { getBackMenu } from '@/api'
+import { getPermissions } from '@/api'
 import { routeStore } from '@/pinia/modules/routeStore'
 import { createRoutes } from '../utils/createRoutes'
 import { removeRoute } from '../utils/remove'
 export const getBackRoutes = async function () {
   try {
     const store = routeStore()
-    const { allAuth, route } = await permissions()
-    const { result } = await getBackMenu()
+    // const { allAuth, route } = await permissions()
+    const { result, perms } = await getPermissions()
     console.log('result', result)
     await removeRoute()
     store.$patch({
-      originalData: route,
-      auth: allAuth,
-      newMenuList: result,
+      auth: perms,
+      routesList: result,
     })
     createRoutes()
   } catch (error) {
