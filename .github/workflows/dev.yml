@@ -11,7 +11,7 @@ jobs:
     steps:
       # 切换分支
       - name: 切换分支 Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # pnpm
       - name: 安装 pnpm
@@ -22,7 +22,7 @@ jobs:
 
       # 使用 node:16.14.0
       - name: 切换node use Node.js 16.14.0
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3.0.0
         with:
           node-version: 16.14.0
 
