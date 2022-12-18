@@ -51,4 +51,4 @@ jobs:
          remote: ${{ secrets.SERVER_DEV_DIR }} # 放到服务器上指定文件夹
          local: ./dist/* # 构建完成后静态目录的地址
          connect_timeout: 15s
-            
+       
