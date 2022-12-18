@@ -1,7 +1,9 @@
 # main.yml
-name: devEvn to aliyun
+name: devEvn to server
 on:
   push:
+    branches: [ develop ]
+  pull_request:
     branches: [ develop ]
 jobs:
   build:
@@ -43,10 +45,10 @@ jobs:
           WELCOME: "ssh scp ssh pipelines"
           LASTSSH: "Doing something after copying"
         with:
-         host: ${{ secrets.ALY_HOST }}
-         user: ${{ secrets.ALY_USER }}
-         pass: ${{ secrets.ALY_PASS }}
-         remote: ${{ secrets.ALY_DEV_DIR }} # 放到服务器上指定文件夹
+         host: ${{ secrets.SERVER_HOST }}
+         user: ${{ secrets.SERVER_USER }}
+         pass: ${{ secrets.SERVER_PASS }}
+         remote: ${{ secrets.SERVER_DEV_DIR }} # 放到服务器上指定文件夹
          local: ./dist/* # 构建完成后静态目录的地址
          connect_timeout: 15s
             
