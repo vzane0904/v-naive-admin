@@ -2,9 +2,9 @@
 name: devEvn to server
 on:
   push:
-    branches: [ develop ]
+    branches: [develop]
   pull_request:
-    branches: [ develop ]
+    branches: [develop]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,30 +25,45 @@ jobs:
         uses: actions/setup-node@v3.0.0
         with:
           node-version: 16.14.0
-
+      #缓存依赖
+      - name: Cache nodeModules
+        uses: actions/cache@v1
+        env:
+          cache-name: cache-node-modules
+        with:
+          # 需要缓存的文件的路径
+          path: ./node_modules
+          # 对缓存的文件指定的唯一标识
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('./package.json') }}
+          # 用于没有再找目标key的缓存的backup选项
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            {{ runner.os }}-
       # 安装依赖
       - name: 安装依赖 pnpm install
-        run: pnpm run bootstrap  # 安装依赖
+        run: pnpm run bootstrap # 安装依赖
 
       # npm build
       - name: 执行打包 npm build
         env:
           NODE_OPTIONS: --max_old_space_size=4096
-        run: pnpm run build  # 执行打包 |
-        
-      # Deploy
-      # 连接到ssh，并且做一个拷贝操作的action
+        run: pnpm run build # 执行打包 |
+
+      # npm 压缩
+      - name: 压缩dist
+        run: tar -zcvf release.tgz dist
+      # 连接到服务器
       # name: rsync-deployments 是通过ssh通过rsync部署代码的GitHub操作
       - name: 发布dev环境 Deploy 🚀
         uses: cross-the-world/scp-pipeline@master
         env:
-          WELCOME: "ssh scp ssh pipelines"
-          LASTSSH: "Doing something after copying"
+          WELCOME: 'ssh scp ssh pipelines'
+          LASTSSH: 'Doing something after copying'
         with:
-         host: ${{ secrets.SERVER_HOST }}
-         user: ${{ secrets.SERVER_USER }}
-         pass: ${{ secrets.SERVER_PASS }}
-         remote: ${{ secrets.SERVER_DEV_DIR }} # 放到服务器上指定文件夹
-         local: ./dist/* # 构建完成后静态目录的地址
-         connect_timeout: 15s
-       
+          host: ${{ secrets.SERVER_HOST }}
+          user: ${{ secrets.SERVER_USER }}
+          pass: ${{ secrets.SERVER_PASS }}
+          remote: ${{ secrets.SERVER_DEV_DIR }} # 放到服务器上指定文件夹
+          local: ./release.tgz # 构建完成后静态目录的地址
+          connect_timeout: 15s
