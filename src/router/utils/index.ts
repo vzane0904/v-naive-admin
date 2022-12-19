@@ -10,7 +10,7 @@ import { errSymbol, moveRoutersMap } from '../moveRoutes'
  * @name 组件转换
  * @returns Vue Components
  * **/
-
+const files = import.meta.glob(['/src/views/**/*.vue'])
 export const RenderComponent = (componentName: string): Component => {
   if (componentName === 'view') {
     return () => import(`@/layouts/default/view.vue`)
@@ -29,8 +29,7 @@ export const RenderComponent = (componentName: string): Component => {
     return moveRoutersMap.get(errSymbol)
     // @ts-ignore
   } else if (permissionMode === RoleEnum.BACK) {
-    const url = `../../views/${componentName}`
-    return () => import(/* @vite-ignore */ url) // 后台返回数据
+    return files[`/src/views/${componentName}`] // 后台返回数据
   }
   // @ts-ignore
   if (permissionMode === RoleEnum.ROLE) {
