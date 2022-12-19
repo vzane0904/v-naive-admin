@@ -63,7 +63,6 @@ export const transformRoute = (
         }
       }
       const info = DeepCopy(item)
-      // info.name = item.path
       info.component = RenderComponent(item.component)
       if (item.children) {
         info.children = transformRoute(item.children)
