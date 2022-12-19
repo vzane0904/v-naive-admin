@@ -1,6 +1,28 @@
-## 1.1.1(2022-xx.xx)
+## 1.2.0-beta.0(2022-12.19)
 
 ### 升级说明
+
+- 去掉 mock 数据使用接口数据
+- 系统管理(用户/角色/菜单)增删改查权限控制
+- 阿里字体图标资源不再放入项目使用 CDN 方式
+
+### ✨ Features
+
+- 全局组件 Modal/table/Descriptions 开发
+- 用户头像更换
+
+### 🐛 Bug Fixes
+
+- 异步动态路由不再使用 import(`${componentName}`)方式改为 import.meta.glob 的方式加载
+- pinia 数据调整
+- github action dist 改为压缩包上传，防止传输过程丢包
+- lodash 使用方式更改
+
+## 1.1.1(2022-10.8)
+
+### 升级说明
+
+小问题不用在意
 
 ### ✨ Features
 
