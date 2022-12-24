@@ -14,7 +14,7 @@ export default defineComponent({
         <NInput
           value={props.value}
           onInput={(ev) => emit('update:value', ev)}
-          placeholder="请输入账号"
+          placeholder="默认账号 admin"
         ></NInput>
       </NFormItemRow>
     )

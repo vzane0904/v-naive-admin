@@ -14,6 +14,6 @@ export const getBackRoutes = async function () {
     })
     createRoutes()
   } catch (error) {
-    console.log('error', error)
+    console.error('error', error)
   }
 }

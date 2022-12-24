@@ -11,7 +11,6 @@ import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
 import * as monaco from 'monaco-editor'
-import { onMounted, onUnmounted } from 'vue'
 let instance: monaco.editor.IStandaloneCodeEditor
 //@ts-ignore
 self.MonacoEnvironment = {
@@ -43,14 +42,6 @@ onMounted(() => {
     },
   )
 })
-onUnmounted(() => {
-  // console.log('editor onUnmounted.')
-  // const modifiedVal = instance.getValue()
-  // console.log('val=>', modifiedVal)
-  //post the modified data to target file
-  // instance.dispose();
-})
-
 onMounted(() => {
   instance.setValue(`
     res.data

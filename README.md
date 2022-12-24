@@ -1,4 +1,4 @@
-<div align="center"> <a href="https://github.com/vzane0904/v-naive-admin"> <img alt="VNaive" style="height:240px;"  src="./src/assets/svg/logo.svg"> </a> <br> <br>
+<div align="center"> <a href="https://github.com/vzane0904/v-naive-admin"> <img alt="VNaive" style="height:240px;"  src="./src/assets/svg/logo-icon.svg"> </a> <br> <br>
 
 <p align="center">
     <a href="https://github.com/vuejs/core">

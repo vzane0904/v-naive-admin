@@ -222,8 +222,6 @@ const handleValidateButtonClick = () => {
       } else {
         updateUser()
       }
-    } else {
-      console.log(errors)
     }
   })
 }

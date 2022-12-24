@@ -21,7 +21,7 @@
 <script lang="ts" setup>
 import { IInfoSchema } from '@/components/Descriptions/src/type'
 import { Description, useDescription } from '@components/Descriptions'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { renderLink, renderTag } from './src/rednder'
 const {
   pkg: { devDependencies, dependencies, version },
@@ -38,7 +38,7 @@ const [adminInfoRegister] = useDescription({
     {
       label: '最后编译时间',
       field: 'lastBuildTime',
-      render: (val) => moment(val).format('YYYY-MM-DD HH:mm:ss'),
+      render: (val) => dayjs(val).format('YYYY-MM-DD HH:mm:ss'),
     },
     {
       label: '文档地址',

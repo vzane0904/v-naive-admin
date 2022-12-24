@@ -41,7 +41,7 @@ export default defineComponent({
               return (
                 <NTabPane
                   key={item.name}
-                  name={item.name}
+                  name={item.path}
                   v-slots={{
                     tab: () => (
                       <div

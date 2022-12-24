@@ -19,8 +19,8 @@ export default defineConfig({
     exclude: ['node_modules', '.git'],
   },
   safelist: [
-    range(30).map((i) => `text-${i}px`),
-    range(30).map((i) => `m-${i}px`),
-    range(30).map((i) => `p-${i}px`),
+    range(50).map((i) => `text-${i}px`),
+    range(50).map((i) => `m-${i}px`),
+    range(50).map((i) => `p-${i}px`),
   ],
 })

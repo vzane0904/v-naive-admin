@@ -1,4 +1,4 @@
-export type TargetContext = 'user' | 'phone' | 'reset' | 'register'
+export type TargetContext = 'user' | 'register'
 export interface Params {
   userName: string | number
   password: string | number
