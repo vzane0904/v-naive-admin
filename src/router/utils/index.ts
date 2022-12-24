@@ -29,7 +29,13 @@ export const RenderComponent = (componentName: string): Component => {
     return moveRoutersMap.get(errSymbol)
     // @ts-ignore
   } else if (permissionMode === RoleEnum.BACK) {
-    return files[`/src/views/${componentName}`] // 后台返回数据
+    const component = files[`/src/views/${componentName}`]
+    if (component) {
+      return component
+    }
+    console.warn(`文件查找错误找不到${componentName}文件`)
+
+    // return component // 后台返回数据
   }
   // @ts-ignore
   if (permissionMode === RoleEnum.ROLE) {

@@ -56,12 +56,11 @@ export default ({ command, mode }: ConfigEnv) => {
         'nprogress',
         '@vicons/ionicons5',
         '@vueuse/core',
-        'moment',
+        'dayjs',
         // 'default-passive-events',
         'lodash-es',
         'screenfull',
         'vue-i18n',
-        //
         'Clipboard',
         'monaco-editor',
         'monaco-editor ',

@@ -80,7 +80,7 @@ export default defineComponent({
         // 总条数
         pagination!.itemCount = res[pageTotalField!]
       } catch (error) {
-        console.log('请求失败', error)
+        console.warn('请求失败', error)
       }
       dataTableProps!.loading = false
     }

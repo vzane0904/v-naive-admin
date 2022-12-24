@@ -10,14 +10,15 @@
         <img :src="loginBoxBg" alt="" srcset="" class="w-368px h-190px" />
         <br />
         <br />
-        <p class="m-0 text-size-24px text-white">
+        <p class="m-0 text-size-24px text-white flex items-center">
           <SvgIcon
             name="logo-icon"
-            :size="40"
+            :size="50"
             class="relative top-6px mr-20px"
           />
-          <b>开箱即用的中后台管理系统</b>
+          <b class="mt-10px">开箱即用的中后台管理系统</b>
         </p>
+        <div class="mt-10px text-white">当前版本：{{ pkg.version }}</div>
       </div>
     </div>
     <div
@@ -32,8 +33,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import loginBoxBg from '@/assets/svg/login-box-bg.svg'
+import loginBoxBg from '@assets/svg/login-box-bg.svg'
 import User from './user.vue'
+const { pkg } = __APP_INFO__
 </script>
 <style lang="less" scoped>
 .login {

@@ -1,4 +1,4 @@
-import { emailReg, grade, phoneReg } from '@/utils/regExp'
+import { emailReg, grade } from '@/utils/regExp'
 import { FormItemRule, FormRules } from 'naive-ui'
 export const UserNameRules: FormRules = {
   userName: [
@@ -48,17 +48,6 @@ export const EmailRules: FormRules = {
     },
   ],
 }
-const SmsCode: FormRules = {
-  smsCode: [
-    {
-      required: true,
-      message: '请输入手机验证码',
-      min: 6,
-      max: 6,
-      trigger: ['input', 'blur'],
-    },
-  ],
-}
 const PictureRules: FormRules = {
   picCode: [
     {
@@ -72,27 +61,6 @@ const PictureRules: FormRules = {
       trigger: ['input', 'blur'],
     },
   ],
-}
-const phone: FormRules = {
-  phone: [
-    {
-      required: true,
-      validator(rule: FormItemRule, value: string) {
-        if (!value) {
-          return new Error('请输入手机号')
-        } else if (!phoneReg.test(value)) {
-          return new Error('手机号不正确')
-        }
-        return true
-      },
-      trigger: ['input', 'blur'],
-    },
-  ],
-}
-// 手机号登录注册
-export const PhoneRules: FormRules = {
-  ...phone,
-  ...SmsCode,
 }
 // 用户名登录
 export const userRules: FormRules = {

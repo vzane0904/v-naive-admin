@@ -379,8 +379,6 @@ const handleValidateButtonClick = () => {
           loading: false,
         },
       })
-    } else {
-      console.log(errors)
     }
   })
 }
@@ -407,16 +405,15 @@ watch(
       show: props.showModal,
     })
     if (v) {
+      if (props.type === 'edit') {
+        Object.assign(model, props.info)
+      }
       setModal.setModalProps({
         title: props.type === 'add' ? '新增角色' : '修改角色',
       })
       getMenuList()
-      // getRole()
     } else {
       Object.assign(model, initialState)
-    }
-    if (props.type === 'edit') {
-      Object.assign(model, props.info)
     }
   },
 )
@@ -425,6 +422,9 @@ watch(
   (val: string | number) => {
     if (val) {
       model.parentId = val
+      if (props.type !== 'edit') {
+        model.type = 2
+      }
     }
   },
 )

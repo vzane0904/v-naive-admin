@@ -66,7 +66,7 @@ export default defineComponent({
         RouterLink,
         {
           to: {
-            name: item.children ? '' : item.path,
+            name: item.children ? '' : item.name,
             query: item.meta!.query as LocationQueryRaw,
             params: item.meta!.params as RouteParamsRaw,
           },

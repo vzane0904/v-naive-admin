@@ -6,7 +6,7 @@
         <div>title插槽</div>
       </template> -->
       <template v-slot:toolbar>
-        <NButton type="info" @click="showModal = true">新增菜单</NButton>
+        <NButton type="info" @click="openModal()">新增菜单</NButton>
       </template>
     </BasicTable>
     <AddModal
@@ -33,6 +33,7 @@ const dialog = useDialog()
 const showModal = ref(false)
 const editInfo = ref<IMenuList | null>(null)
 const modelType = ref<'add' | 'edit'>('add')
+const parentId = ref<number>(0)
 const del = (row: { title?: string; length?: string; id?: any }) => {
   dialog.warning({
     title: '删除',
@@ -57,9 +58,12 @@ const del = (row: { title?: string; length?: string; id?: any }) => {
     onNegativeClick: () => {},
   })
 }
-const parentId = ref<number>(0)
+const openModal = function () {
+  showModal.value = true
+  parentId.value = 0
+  modelType.value = 'add'
+}
 const edit = function (val: IMenuList) {
-  console.log(val)
   modelType.value = 'edit'
   editInfo.value = val
   showModal.value = true
@@ -101,7 +105,7 @@ const columns: DataTableColumns<IMenuList> = [
     key: 'icon',
     width: 70,
     render(row) {
-      return <Icon name={row.icon} size={20} />
+      return <Icon name={row.icon || ''} size={20} />
     },
   },
   {
@@ -140,17 +144,6 @@ const columns: DataTableColumns<IMenuList> = [
     title: '文件地址',
     key: 'component',
   },
-  // {
-  //   title: '状态',
-  //   key: 'state',
-  //   render(row) {
-  //     return (
-  //       <NTag bordered={false} type={row.state === 1 ? 'success' : 'error'}>
-  //         {row.state === 1 ? '正常' : '冻结'}
-  //       </NTag>
-  //     )
-  //   },
-  // },
   {
     title: '创建时间',
     key: 'createDate',
@@ -207,8 +200,6 @@ const { register, methods } = useTable({
     bordered: true,
   },
 })
-
-onMounted(async () => {})
 </script>
 
 <style scoped></style>

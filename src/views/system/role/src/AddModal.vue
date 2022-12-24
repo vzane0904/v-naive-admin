@@ -179,8 +179,6 @@ const handleValidateButtonClick = () => {
           loading: false,
         },
       })
-    } else {
-      console.log(errors)
     }
   })
 }

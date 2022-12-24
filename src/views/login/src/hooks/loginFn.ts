@@ -6,9 +6,9 @@ import { createNotification } from '@/utils/message'
 import { Fn } from '@vueuse/core'
 import { FormInst } from 'naive-ui'
 import { IUserNameLogin } from '../type'
-import moment from 'moment'
 import { useHttp } from '@/hooks/useHttp'
 import { Api } from '@/api/Api'
+import dayjs from 'dayjs'
 export const userNameLogin = function (formValue: IUserNameLogin) {
   const route = useRoute()
   const router = useRouter()
@@ -34,22 +34,20 @@ export const userNameLogin = function (formValue: IUserNameLogin) {
           userName: data.value.userName,
         })
         await mountNewData()
-        const create = () =>
+        const next = () =>
           createNotification({
             title: '登录成功',
-            description: moment().format('YYYY-MM-DD HH:mm:ss'),
+            description: dayjs().format('YYYY-MM-DD HH:mm:ss'),
             content: `欢迎回来: ${data.value.userName}`,
             type: 'success',
           })
         if (route.query.redirectPath && route.query.redirectPath !== '/404') {
-          router
-            .push(route.query.redirectPath as string)
-            .finally(() => create())
+          router.push(route.query.redirectPath as string).finally(() => next())
         } else {
           router
             .push(baseHome)
             .catch(() => {})
-            .finally(() => create())
+            .finally(() => next())
         }
         loading.value = unref(httpLoading)
         return data
