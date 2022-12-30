@@ -47,7 +47,7 @@ export default defineComponent({
                       <div
                         onClick={() => {
                           router.push(item.path)
-                          setMenuSelect(item.path)
+                          setMenuSelect(item.name)
                         }}
                       >
                         <span>{item.title}</span>
