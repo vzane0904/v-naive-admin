@@ -20,7 +20,7 @@ export const onLoadGetPermission = true
   2. 角色控制,根据角色判断能否进入,需要在路由中配置好,可以数组形式存在 ROLE
   3. 动态路由,返回信息具体 BACK
 **/
-export const permissionMode = RoleEnum.MOVE
+export const permissionMode = RoleEnum.BACK
 // 不添加到tabs中
 export const noAddTabs = ['redirectPath', 'redirect', '404', 'login']
 /**

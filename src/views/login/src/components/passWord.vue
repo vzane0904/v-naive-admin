@@ -16,7 +16,7 @@ export default defineComponent({
           value={props.value}
           onInput={(ev) => emit('update:value', ev)}
           show-password-on="click"
-          placeholder="请输入密码"
+          placeholder="默认密码 Pass123456"
         />
       </NFormItemRow>
     )

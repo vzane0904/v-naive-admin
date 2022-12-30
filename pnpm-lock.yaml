@@ -6,6 +6,7 @@ specifiers:
   '@babel/plugin-syntax-dynamic-import': ^7.8.3
   '@commitlint/cli': ^16.2.3
   '@commitlint/config-conventional': ^16.2.1
+  '@pureadmin/utils': ^1.8.5
   '@types/js-cookie': ^3.0.1
   '@types/lodash-es': ^4.17.6
   '@types/mockjs': ^1.0.6
@@ -29,6 +30,7 @@ specifiers:
   clipboard: ^2.0.11
   cross-env: ^7.0.3
   cz-customizable: ^6.3.0
+  dayjs: ^1.11.7
   eslint: ^8.11.0
   eslint-config-prettier: ^8.5.0
   eslint-define-config: ^1.7.0
@@ -45,6 +47,7 @@ specifiers:
   mrm: ^3.0.10
   naive-ui: ^2.32.1
   nprogress: ^0.2.0
+  picocolors: ^1.0.0
   pinia: ^2.0.12
   pinia-plugin-persist: ^0.0.93
   postcss: ^8.4.12
@@ -82,6 +85,7 @@ specifiers:
   vue: ^3.2.31
   vue-global-api: ^0.4.1
   vue-i18n: ^9.1.9
+  vue-json-viewer: '3'
   vue-router: ^4.0.14
   vue-tsc: ^0.32.1
   windicss: ^3.5.1
@@ -93,18 +97,21 @@ dependencies:
   autoprefixer: 10.4.4_postcss@8.4.12
   axios: 0.26.1
   clipboard: 2.0.11
+  dayjs: 1.11.7
   lodash-es: 4.17.21
   mockjs: 1.1.0
   moment: 2.29.4
   monaco-editor: 0.33.0
   naive-ui: 2.32.1_vue@3.2.31
   nprogress: 0.2.0
+  picocolors: 1.0.0
   pinia: 2.0.12_jpct24bfpsl6w5rgcejye33wby
   pinia-plugin-persist: 0.0.93_vue@3.2.31
   vfonts: 0.0.3
   vue: 3.2.31
   vue-global-api: 0.4.1_vue@3.2.31
   vue-i18n: 9.1.9_vue@3.2.31
+  vue-json-viewer: 3.0.4_vue@3.2.31
   vue-router: 4.0.14_vue@3.2.31
   vue-tsc: 0.32.1_typescript@4.4.4
   windicss: 3.5.1
@@ -115,6 +122,7 @@ devDependencies:
   '@babel/plugin-syntax-dynamic-import': 7.8.3_@babel+core@7.17.7
   '@commitlint/cli': 16.2.3
   '@commitlint/config-conventional': 16.2.1
+  '@pureadmin/utils': 1.8.5_vue@3.2.31
   '@types/js-cookie': 3.0.1
   '@types/lodash-es': 4.17.6
   '@types/mockjs': 1.0.6
@@ -881,6 +889,20 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
+    dev: true
+
+  /@pureadmin/utils/1.8.5_vue@3.2.31:
+    resolution: {integrity: sha512-dUJUYemELZdp4rpOnlQXU5GH2YWtf22vnw3Ekdn1ksoZu3cv30C6J9TCMsFjJhYhH8ZkfYowjfCx137eByjXXw==}
+    peerDependencies:
+      echarts: '*'
+      vue: '*'
+    peerDependenciesMeta:
+      echarts:
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      vue: 3.2.31
     dev: true
 
   /@rollup/plugin-node-resolve/13.1.3_rollup@2.70.1:
@@ -2246,8 +2268,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      JSONStream: 1.3.5
       is-text-path: 1.0.1
+      JSONStream: 1.3.5
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -2440,6 +2462,10 @@ packages:
   /date-fns/2.28.0:
     resolution: {integrity: sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==}
     engines: {node: '>=0.11'}
+    dev: false
+
+  /dayjs/1.11.7:
+    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
     dev: false
 
   /debug/2.6.9:
@@ -7655,6 +7681,15 @@ packages:
       '@intlify/shared': 9.1.9
       '@intlify/vue-devtools': 9.1.9
       '@vue/devtools-api': 6.1.3
+      vue: 3.2.31
+    dev: false
+
+  /vue-json-viewer/3.0.4_vue@3.2.31:
+    resolution: {integrity: sha512-pnC080rTub6YjccthVSNQod2z9Sl5IUUq46srXtn6rxwhW8QM4rlYn+CTSLFKXWfw+N3xv77Cioxw7B4XUKIbQ==}
+    peerDependencies:
+      vue: ^3.2.2
+    dependencies:
+      clipboard: 2.0.11
       vue: 3.2.31
     dev: false
 

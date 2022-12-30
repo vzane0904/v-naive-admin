@@ -9,13 +9,12 @@ export default defineComponent({
   },
   emits: ['update:value'],
   setup(props, { emit }) {
-    console.log()
     return () => (
       <NFormItemRow path="userName">
         <NInput
           value={props.value}
           onInput={(ev) => emit('update:value', ev)}
-          placeholder="请输入账号"
+          placeholder="默认账号 admin"
         ></NInput>
       </NFormItemRow>
     )

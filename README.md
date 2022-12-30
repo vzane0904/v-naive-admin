@@ -1,4 +1,4 @@
-<div align="center"> <a href="https://github.com/zane0904/v-naive-admin"> <img alt="VNaive" style="height:240px;"  src="./src/assets/svg/logo.svg"> </a> <br> <br>
+<div align="center"> <a href="https://github.com/vzane0904/v-naive-admin"> <img alt="VNaive" style="height:240px;"  src="./src/assets/svg/logo-icon.svg"> </a> <br> <br>
 
 <p align="center">
     <a href="https://github.com/vuejs/core">
@@ -16,7 +16,7 @@
     <a href="https://github.com/nuysoft/Mock">
         <img src="https://img.shields.io/badge/mockjs-^1.1.0-brightgreen.svg">
     </a>
-  	<a href="https://github.com/zane0904/v-naive-admin/blob/master/LICENSE">
+  	<a href="https://github.com/vzane0904/v-naive-admin/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg">
     </a>
 </p>
@@ -31,9 +31,9 @@ V-Naive Admin is a free and open source middle and back office template. The lat
 
 ## security
 
-[![OSCS Status](https://www.oscs1024.com/platform/badge/zane0904/v-naive-admin.svg?size=small)](https://www.murphysec.com/dr/dplIyp3BOCug5k7RuF)
+[![OSCS Status](https://www.oscs1024.com/platform/badge/vzane0904/v-naive-admin.svg?size=small)](https://old.murphysec.com/dr/ewmhycEhuXRo4rL4mN)
 
-We have accessed [OSCS Murphy Security Scan](https://www.murphysec.com/dr/dplIyp3BOCug5k7RuF)The admin source code has not been scanned out of any risk items. More than 100% of the items are harmless to humans and animals! You can use it with confidence. Of course, if you don't trust, we recommend that you read the clone admin source code before using it. We are 100% open source, and you can see if there are risks.
+We have accessed [OSCS Murphy Security Scan](https://old.murphysec.com/dr/ewmhycEhuXRo4rL4mN)The admin source code has not been scanned out of any risk items. More than 100% of the items are harmless to humans and animals! You can use it with confidence. Of course, if you don't trust, we recommend that you read the clone admin source code before using it. We are 100% open source, and you can see if there are risks.
 
 ## characteristic
 
@@ -77,13 +77,9 @@ Test account: Admin / Pass123456!
 
 🔳 admin doc
 
-🔳 update Vite3
-
 🔳 Vue Router keepAlive
 
 🔳 Vue Router animation
-
-🔳 Visualize Vue Router configuration
 
 🔳 Encapsulate common components
 
@@ -97,7 +93,7 @@ Test account: Admin / Pass123456!
 
 Open the project in Gitpod (a free online development environment for GitHub) and start coding immediately
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/zane0904/v-naive-admin)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vzane0904/v-naive-admin)
 
 # docs
 
@@ -120,7 +116,7 @@ Open the project in Gitpod (a free online development environment for GitHub) an
 - Get project code
 
 ```bash
-git clone https://github.com/zane0904/v-naive-admin.git
+git clone https://github.com/vzane0904/v-naive-admin.git
 ```
 
 - Initialize git commitizen
@@ -156,11 +152,11 @@ pnpm build
 
 ## Project address
 
-- [VNaive-admin](https://github.com/zane0904/v-naive-admin.git) - Full version
+- [VNaive-admin](https://github.com/vzane0904/v-naive-admin.git) - Full version
 
 ## How to contribute
 
-You are very welcome to join [Mention one Issue](https://github.com/zane0904/v-naive-admin/issues/new) Or submit a Pull Request。
+You are very welcome to join [Mention one Issue](https://github.com/vzane0904/v-naive-admin/issues/new) Or submit a Pull Request。
 
 **Pull Request:**
 
@@ -224,7 +220,7 @@ If these plug-ins are helpful to you, they can be supported by a star
 
 `V-Naive-Admin` It is a completely open source and free project, which helps developers develop medium and large management systems more easily, and also provides QQ communication group usage questions. Welcome to ask questions in the group.
 
-- [GitHub discussions](https://github.com/zane0904/v-naive-admin/discussions)
+- [GitHub discussions](https://github.com/vzane0904/v-naive-admin/discussions)
 
 - QQ group `None`
 

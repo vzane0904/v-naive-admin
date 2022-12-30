@@ -7,6 +7,7 @@ import {
 import { RequestEnum } from '@/enum/axios'
 import { useGo } from '@/hooks/router'
 import { routeStore } from '@/pinia/modules/routeStore'
+import { useProfileStore } from '@/pinia/modules/user'
 import { SetOptional } from '@/type'
 import { ErrorInfo, RequestOptions, TConversion } from '@/type/http'
 import { createNotification } from '@/utils/message'
@@ -52,7 +53,7 @@ export class VAxios {
           }
         }
         if (withToken) {
-          Reflect.set(request.headers!, axiosTokenName, 'set token')
+          Reflect.set(request.headers!, axiosTokenName, useProfileStore().token)
         }
         if (ignoreRequest) {
           cancelPending(request as RequestOptions)
@@ -90,7 +91,8 @@ export class VAxios {
               content: message,
               type: 'error',
             })
-            // console.log('请求异常', message)
+            // return response.data
+            return Promise.reject(response.data)
           }
           return response.data.data
         }

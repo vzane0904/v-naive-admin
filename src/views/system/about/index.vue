@@ -1,6 +1,6 @@
 <template>
   <Content>
-    <template #header>
+    <template v-slot:header>
       <div>
         <NH2>关于</NH2>
         <h5>
@@ -12,23 +12,16 @@
         </h5>
       </div>
     </template>
-  </Content>
-  <Content>
     <Description @register="adminInfoRegister" />
+    <Description @register="devRegister" class="mt-10px" />
+    <Description @register="ProdRegister" class="mt-10px" />
   </Content>
-  <Content>
-    <Description @register="devRegister" />
-  </Content>
-  <Content>
-    <Description @register="ProdRegister" />
-  </Content>
-  <div></div>
 </template>
 
 <script lang="ts" setup>
 import { IInfoSchema } from '@/components/Descriptions/src/type'
 import { Description, useDescription } from '@components/Descriptions'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { renderLink, renderTag } from './src/rednder'
 const {
   pkg: { devDependencies, dependencies, version },
@@ -45,30 +38,30 @@ const [adminInfoRegister] = useDescription({
     {
       label: '最后编译时间',
       field: 'lastBuildTime',
-      render: (val) => moment(val).format('YYYY-MM-DD HH:mm:ss'),
+      render: (val) => dayjs(val).format('YYYY-MM-DD HH:mm:ss'),
     },
     {
       label: '文档地址',
       field: 'docsUrl',
-      render: () => renderLink('文档地址', 'http://doc.mmxxn.cn/'),
+      render: () => renderLink('文档地址', 'http://www.doc.mmxxn.cn/'),
     },
     {
       label: '预览地址',
       field: 'previewUrl',
-      render: () => renderLink('预览地址', 'https://mmxxn.cn/'),
+      render: () => renderLink('预览地址', 'http://www.mmxxn.cn/'),
     },
     {
       label: 'Github',
       field: 'github',
       render: () =>
-        renderLink('github', 'https://github.com/zane0904/v-naive-admin'),
+        renderLink('github', 'https://github.com/vzane0904/v-naive-admin'),
     },
   ],
   data: {
     id: 1,
     version: version,
     lastBuildTime: lastBuildTime,
-    docsUrl: 'http://doc.mmxxn.cn/',
+    docsUrl: 'http://www.doc.mmxxn.cn/',
     previewUrl: '预览地址',
     github: 'Github',
   },

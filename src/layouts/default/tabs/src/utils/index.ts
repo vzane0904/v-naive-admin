@@ -2,7 +2,7 @@ import { routeStore } from '@/pinia/modules/routeStore'
 import { TabsType } from '@/pinia/type/user'
 import { router } from '@/router'
 import { DropdownOption } from 'naive-ui'
-import { computed, effect, reactive } from 'vue'
+import { computed, reactive } from 'vue'
 import { renderIcon } from '../config'
 import { TabsEmnu } from '@/config'
 export default function useTabs() {
@@ -12,7 +12,7 @@ export default function useTabs() {
     closeAll: false, //关闭全部
     closeLeft: false, //关闭左侧
     closeRight: false, //关闭右侧
-    closeOther: true, //关闭其他
+    closeOther: false, //关闭其他
   })
   const options = computed(() => {
     return [
@@ -53,39 +53,17 @@ export default function useTabs() {
       },
     ]
   })
-  effect(() => {
-    tabFun.closeAll = store.tabs.filter((i) => i.isClose).length === 0
-    if (tabFun.closeAll) {
-      tabFun.closeLeft =
-        tabFun.closeRight =
-        tabFun.closeOther =
-        tabFun.closeOwn =
-          true
-    } else {
-      tabFun.closeOwn = !store.tabs.filter(
-        (i) => i.name === store.selectMenu,
-      )[0]?.isClose
-      const index = store.tabs.findIndex((i) => i.name === store.selectMenu)
-      tabFun.closeLeft =
-        store.tabs.slice(0, index).filter((i) => i.isClose).length === 0
-      tabFun.closeRight =
-        store.tabs.slice(index + 1, store.tabs.length).filter((i) => i.isClose)
-          .length === 0
-      const fileOther = store.tabs.filter(
-        (i) => i.name !== store.selectMenu && i.isClose,
-      )
-      if (fileOther.length > 0) {
-        tabFun.closeOther = false
-      }
-    }
-  })
+  // 关闭当前
   // 关闭当前
   const closeTabs = (item: TabsType) => {
+    if (!item.isClose) {
+      return false
+    }
     const index = store.tabs.findIndex(
       (i) =>
         i.name === item.name && i.path === item.path && i.title === item.title,
     )
-    if (item.name === store.selectMenu) {
+    if (item.path === store.selectMenu) {
       router.push(store.tabs[index - 1].path)
     }
     store.tabs.splice(index, 1)
@@ -94,7 +72,7 @@ export default function useTabs() {
     router.push(`/redirect${router.currentRoute.value.path}`)
   // 关闭全部 OK
   const deleteAll = () => {
-    if (store.tabs.filter((i) => i.name === store.selectMenu)[0].isClose) {
+    if (store.tabs.filter((i) => i.path === store.selectMenu)[0].isClose) {
       router.push(store.tabs[0].path)
     }
     store.tabs = store.tabs.filter((i) => !i.isClose)
@@ -102,18 +80,18 @@ export default function useTabs() {
   // 关闭其他
   const deleteOther = () => {
     store.tabs = store.tabs.filter(
-      (i) => i.name === store.selectMenu || !i.isClose,
+      (i) => i.path === store.selectMenu || !i.isClose,
     )
   }
   // 关闭左侧
   const deleteLeft = () => {
-    const index = store.tabs.findIndex((i) => i.name === store.selectMenu)
+    const index = store.tabs.findIndex((i) => i.path === store.selectMenu)
     const saveNoClose = store.tabs.slice(0, index).filter((i) => !i.isClose)
     store.tabs.splice(0, index, ...saveNoClose)
   }
   // 关闭右侧
   const deleteRight = () => {
-    const index = store.tabs.findIndex((i) => i.name === store.selectMenu)
+    const index = store.tabs.findIndex((i) => i.path === store.selectMenu)
     const saveNoClose = store.tabs
       .slice(index + 1, store.tabs.length - 1)
       .filter((i) => !i.isClose)
@@ -126,7 +104,7 @@ export default function useTabs() {
         refreshRoute()
         break
       case TabsEmnu.closeTab:
-        closeTabs(store.tabs.filter((i) => store.selectMenu === i.name)[0])
+        closeTabs(store.tabs.filter((i) => store.selectMenu === i.path)[0])
         break
       case TabsEmnu.closeLeft:
         deleteLeft()

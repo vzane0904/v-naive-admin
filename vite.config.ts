@@ -56,12 +56,11 @@ export default ({ command, mode }: ConfigEnv) => {
         'nprogress',
         '@vicons/ionicons5',
         '@vueuse/core',
-        'moment',
+        'dayjs',
         // 'default-passive-events',
         'lodash-es',
         'screenfull',
         'vue-i18n',
-        //
         'Clipboard',
         'monaco-editor',
         'monaco-editor ',
@@ -93,14 +92,27 @@ export default ({ command, mode }: ConfigEnv) => {
         },
       },
       rollupOptions: {
+        // external: ['vue', 'vuex', 'axios', 'vue-router'],
         output: {
-          manualChunks: {
-            jsonWorker: [`${prefix}/language/json/json.worker`],
-            cssWorker: [`${prefix}/language/css/css.worker`],
-            htmlWorker: [`${prefix}/language/html/html.worker`],
-            tsWorker: [`${prefix}/language/typescript/ts.worker`],
-            editorWorker: [`${prefix}/editor/editor.worker`],
+          chunkFileNames: 'static/js/[name]-[hash].js',
+          entryFileNames: 'static/js/[name]-[hash].js',
+          assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
+          manualChunks(id: string) {
+            if (id.includes('node_modules')) {
+              // @ts-ignore
+              return /node_modules\/(?!.pnpm).*/
+                .exec(id)[0]
+                .split('node_modules/')[1]
+                .split('/')[0]
+            }
           },
+          // manualChunks: {
+          //   jsonWorker: [`${prefix}/language/json/json.worker`],
+          //   cssWorker: [`${prefix}/language/css/css.worker`],
+          //   htmlWorker: [`${prefix}/language/html/html.worker`],
+          //   tsWorker: [`${prefix}/language/typescript/ts.worker`],
+          //   editorWorker: [`${prefix}/editor/editor.worker`],
+          // },
         },
       },
     },

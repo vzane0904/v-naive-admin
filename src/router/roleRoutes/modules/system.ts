@@ -214,7 +214,7 @@ const route: Array<RouteType> = [
       {
         path: '/system/account',
         name: 'account',
-        component: () => import('@/views/system/account/index.vue'),
+        component: () => import('@/views/system/user/index.vue'),
         meta: {
           icon: MenuIcon.systemAccount,
           title: '账号管理',

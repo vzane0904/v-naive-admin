@@ -7,25 +7,29 @@
   >
     <UserName v-model:value="formValue.userName" />
     <PassWord v-model:value="formValue.password" />
-    <PictureCode v-model:value="formValue.pictureCode" />
+    <PictureCode
+      v-model:value="formValue.picCode"
+      v-model:picId="formValue.picId"
+    />
   </NForm>
 </template>
 <script setup lang="ts" name="UserNameLogin">
 import { userRules } from '../config'
-import { useNameLogin } from '../hooks/loginFn'
-import { IUseNameLogin } from '../type'
+import { userNameLogin } from '../hooks/loginFn'
+import { IUserNameLogin } from '../type'
 import UserName from './userName.vue'
 import PassWord from './passWord.vue'
 import PictureCode from './pictureCode.vue'
 import { Fn } from '@vueuse/core'
-const formValue: IUseNameLogin = reactive({
+const formValue: IUserNameLogin = reactive({
   userName: 'Admin',
-  password: 'Pass123456!',
-  pictureCode: 'code',
+  password: 'A123456',
+  picCode: '',
+  picId: '',
 })
-const { ElRef, loginValidate } = useNameLogin(formValue)
+const { ElRef, loginValidate, loading } = userNameLogin(formValue)
 const subMit = (
-  callback: (params: IUseNameLogin) => {},
+  callback: (params: IUserNameLogin) => {},
   err: Fn = () => {},
 ) => {
   loginValidate(
@@ -35,5 +39,6 @@ const subMit = (
 }
 defineExpose({
   subMit,
+  loading,
 })
 </script>

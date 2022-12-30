@@ -1,0 +1,17 @@
+.@{prefixCls}-table-wrapper {
+  height: 100%;
+}
+
+.@{prefixCls}-data-table {
+  height: calc(100% - 40px);
+}
+
+.@{prefixCls}-data-table--bordered {
+  .@{prefixCls}-data-table-tbody {
+    .@{prefixCls}-data-table-tr:last-child {
+      td {
+        border-bottom: 1px solid var(--n-merged-border-color);
+      }
+    }
+  }
+}

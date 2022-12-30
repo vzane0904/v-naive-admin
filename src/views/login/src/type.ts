@@ -1,10 +1,11 @@
-export type TargetContext = 'user' | 'phone' | 'reset' | 'register'
+export type TargetContext = 'user' | 'register'
 export interface Params {
   userName: string | number
   password: string | number
 }
-export interface IUseNameLogin {
+export interface IUserNameLogin {
   userName: string
   password: string
-  pictureCode: string
+  picCode: string
+  picId: string
 }

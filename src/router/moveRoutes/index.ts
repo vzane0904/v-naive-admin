@@ -13,7 +13,7 @@ export const getMoveRoutes = async function () {
     removeRoute()
     const routeStoreValue = routeStore()
     routeStoreValue.$patch({
-      originalData: route,
+      routesList: route,
       auth: allAuth,
     })
     createRoutes()

@@ -30,7 +30,7 @@ export const DeepCopy = (source: any) => {
 /**
  * 平铺节点转换树结构
  * @parentId 父节点id
- * @id 自己的weiyiid
+ * @id 自己的唯一id
  **/
 export const flatTree = (treeArr: Array<any>) => {
   const map: Record<string, any> = []
@@ -48,4 +48,29 @@ export const flatTree = (treeArr: Array<any>) => {
     }
   }
   return arr
+}
+
+// 路径转数组
+export function deepPaths(paths: string[], splitOr?: string) {
+  const list: any[] = []
+  paths.forEach((e) => {
+    const arr: string[] = e.split(splitOr || '/').filter(Boolean)
+    let c = list
+    arr.forEach((a, i) => {
+      let d = c.find((e) => e.label === a)
+      if (!d) {
+        d = {
+          label: a,
+          // value: a,
+          value: arr.slice(0, i + 1).join('/'),
+          children: arr[i + 1] ? [] : null,
+        }
+        c.push(d)
+      }
+      if (d.children) {
+        c = d.children
+      }
+    })
+  })
+  return list
 }

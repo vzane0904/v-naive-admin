@@ -1,4 +1,4 @@
-import { grade, phoneReg } from '@/utils/regExp'
+import { emailReg, grade } from '@/utils/regExp'
 import { FormItemRule, FormRules } from 'naive-ui'
 export const UserNameRules: FormRules = {
   userName: [
@@ -23,7 +23,7 @@ export const PasswordRules: FormRules = {
       validator(rule: FormItemRule, value: string) {
         if (!value) {
           return new Error('请输入密码')
-        } else if (!grade.rour.test(value)) {
+        } else if (!grade.two.test(value)) {
           return new Error('密码必须包含：大小写字母，数字，字符($@!%*#&.)')
         }
         return true
@@ -32,19 +32,24 @@ export const PasswordRules: FormRules = {
     },
   ],
 }
-const SmsCode: FormRules = {
-  smsCode: [
+export const EmailRules: FormRules = {
+  email: [
     {
       required: true,
-      message: '请输入手机验证码',
-      min: 6,
-      max: 6,
+      validator(rule: FormItemRule, value: string) {
+        if (!value) {
+          return new Error('请输入邮箱')
+        } else if (!emailReg.test(value)) {
+          return new Error('邮箱不符合规则')
+        }
+        return true
+      },
       trigger: ['input', 'blur'],
     },
   ],
 }
 const PictureRules: FormRules = {
-  pictureCode: [
+  picCode: [
     {
       required: true,
       validator(rule: FormItemRule, value: string) {
@@ -56,27 +61,6 @@ const PictureRules: FormRules = {
       trigger: ['input', 'blur'],
     },
   ],
-}
-const phone: FormRules = {
-  phone: [
-    {
-      required: true,
-      validator(rule: FormItemRule, value: string) {
-        if (!value) {
-          return new Error('请输入手机号')
-        } else if (!phoneReg.test(value)) {
-          return new Error('手机号不正确')
-        }
-        return true
-      },
-      trigger: ['input', 'blur'],
-    },
-  ],
-}
-// 手机号登录注册
-export const PhoneRules: FormRules = {
-  ...phone,
-  ...SmsCode,
 }
 // 用户名登录
 export const userRules: FormRules = {

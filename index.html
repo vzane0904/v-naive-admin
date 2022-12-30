@@ -4,10 +4,63 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/logo-icon.svg" />
+    <link rel="icon" href="/favicon.svg" />
+    <script src="//at.alicdn.com/t/c/font_2085566_159g6sjylck.js"></script>
+    <style>
+      .loading-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 90vh;
+      }
+      .dot {
+        display: flex;
+        flex-wrap: wrap;
+        width: 36px;
+        height: 36px;
+        transform: rotate(45deg);
+        animation: ant-rotate 1.2s infinite linear;
+        user-select: none;
+      }
+      .dot i {
+        margin: 2px;
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+        background-color: #1890ff;
+        opacity: 0.3;
+        animation: ant-spin-move 1s infinite linear alternate;
+      }
+      .dot i:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .dot i:nth-child(3) {
+        animation-delay: 0.8s;
+      }
+      .dot i:nth-child(4) {
+        animation-delay: 1.2s;
+      }
+      @keyframes ant-rotate {
+        to {
+          transform: rotate(405deg);
+        }
+      }
+      @keyframes ant-spin-move {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
     <title><%- title %></title>
     <%- injectScript %>
   </head>
-
-  <body></body>
+  <body>
+    <div id="app">
+      <div class="loading-wrap">
+        <div class="dot"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -24,7 +24,6 @@ declare module 'vue-router' {
     roles?: Array<string>
     currentActiveMenu?: string // 当前激活的菜单。用于配置详情页时左侧激活的菜单路径
     hideTab?: boolean // 当前路由不再标签页显示
-    carryParam?: boolean // 如果该路由会携带参数，且需要在tab页上面显示。则需要设置为true
     transitionName?: string // 指定该路由切换的动画名
     iframeSrc?: string
     requiresAuth?: boolean

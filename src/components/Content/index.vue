@@ -20,7 +20,7 @@ const props = withDefaults(
     full?: boolean
   }>(),
   {
-    full: false,
+    full: true,
   },
 )
 </script>

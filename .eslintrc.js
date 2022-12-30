@@ -38,6 +38,14 @@ module.exports = defineConfig({
     'plugin:prettier/recommended',
   ],
   rules: {
+    'vue/v-slot-style': [
+      'error',
+      {
+        atComponent: 'v-slot',
+        default: 'v-slot',
+        named: 'longform',
+      },
+    ],
     'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
     'vue/no-multiple-template-root': 'off',
     'vue/script-setup-uses-vars': 'error',
@@ -114,7 +122,7 @@ module.exports = defineConfig({
       },
     ],
     // 一个函数的复杂性不超过 10，所有分支、循环、回调加在一起，在一个函数里不超过 10 个
-    complexity: [2, 10],
+    complexity: [2, 15],
     // 一个函数的嵌套不能超过 4 层，多个 for 循环，深层的 if-else，这些都是罪恶之源
     'max-depth': [2, 4],
     // 一个函数最多有 3 层 callback，使用 async/await
@@ -148,12 +156,12 @@ module.exports = defineConfig({
     'no-empty': 2, //块语句中的内容不能为空
     'no-empty-character-class': 2, //正则表达式中的[]内容不能为空
     'no-eq-null': 2, //禁止对null使用==或!=运算符
-    'no-eval': 1, //禁止使用eval
+    'no-eval': 2, //禁止使用eval
     'no-ex-assign': 2, //禁止给catch语句中的异常参数赋值
     'no-extend-native': 2, //禁止扩展native对象
     'no-extra-bind': 2, //禁止不必要的函数绑定
     'no-extra-boolean-cast': 2, //禁止不必要的bool转换
-    'no-extra-semi': 2, //禁止多余的冒号
+    'no-extra-semi': 1, //禁止多余的冒号
     'no-fallthrough': 1, //禁止switch穿透
     'no-floating-decimal': 2, //禁止省略浮点数中的0 .5 3.
     'no-func-assign': 2, //禁止重复的函数声明
@@ -202,7 +210,7 @@ module.exports = defineConfig({
     'no-sequences': 0, //禁止使用逗号运算符
     // 'no-shadow': 2, //外部作用域中的变量不能与它所包含的作用域中的变量或参数同名
     'no-shadow-restricted-names': 2, //严格模式中规定的限制标识符不能作为声明时的变量名使用
-    'no-spaced-func': 2, //函数调用时 函数名与()之间不能有空格
+    'no-spaced-func': 0, //函数调用时 函数名与()之间不能有空格
     'no-sparse-arrays': 2, //禁止稀疏数组， [1,,2]
     'no-sync': 0, //nodejs 禁止同步方法
     'no-ternary': 0, //禁止使用三目运算符

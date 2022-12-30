@@ -40,7 +40,7 @@ export interface RequestOptions extends AxiosRequestConfig {
       | ContentTypeEnum.FORM_URLENCODED
       | ContentTypeEnum.FORM_DATA
     [axiosTokenName]?: string
-    // [key: string]: any
+    [key: string]: any
   }
   // 配置项，下面的选项都可以在独立的接口请求中覆盖
   requestOptions: RequestCustom
