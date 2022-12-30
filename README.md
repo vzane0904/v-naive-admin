@@ -31,9 +31,9 @@ V-Naive Admin is a free and open source middle and back office template. The lat
 
 ## security
 
-[![OSCS Status](https://www.oscs1024.com/platform/badge/vzane0904/v-naive-admin.svg?size=small)](https://www.murphysec.com/dr/dplIyp3BOCug5k7RuF)
+[![OSCS Status](https://www.oscs1024.com/platform/badge/vzane0904/v-naive-admin.svg?size=small)](https://old.murphysec.com/dr/ewmhycEhuXRo4rL4mN)
 
-We have accessed [OSCS Murphy Security Scan](https://www.murphysec.com/dr/dplIyp3BOCug5k7RuF)The admin source code has not been scanned out of any risk items. More than 100% of the items are harmless to humans and animals! You can use it with confidence. Of course, if you don't trust, we recommend that you read the clone admin source code before using it. We are 100% open source, and you can see if there are risks.
+We have accessed [OSCS Murphy Security Scan](https://old.murphysec.com/dr/ewmhycEhuXRo4rL4mN)The admin source code has not been scanned out of any risk items. More than 100% of the items are harmless to humans and animals! You can use it with confidence. Of course, if you don't trust, we recommend that you read the clone admin source code before using it. We are 100% open source, and you can see if there are risks.
 
 ## characteristic
 
@@ -77,13 +77,9 @@ Test account: Admin / Pass123456!
 
 🔳 admin doc
 
-🔳 update Vite3
-
 🔳 Vue Router keepAlive
 
 🔳 Vue Router animation
-
-🔳 Visualize Vue Router configuration
 
 🔳 Encapsulate common components
 

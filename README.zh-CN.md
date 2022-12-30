@@ -31,9 +31,9 @@ V-Naive-Admin 是一个免费开源的中后台模版,使用了最新的`vue3 Vi
 
 ## 安全
 
-[![OSCS Status](https://www.oscs1024.com/platform/badge/vzane0904/v-naive-admin.svg?size=small)](https://www.murphysec.com/dr/dplIyp3BOCug5k7RuF)
+[![OSCS Status](https://www.oscs1024.com/platform/badge/vzane0904/v-naive-admin.svg?size=small)](https://old.murphysec.com/dr/ewmhycEhuXRo4rL4mN)
 
-我们已接入 [oscs 墨菲安全扫描](https://www.murphysec.com/dr/dplIyp3BOCug5k7RuF) ，admin 源码中未被扫描出任何风险项，超越 100%的项目，确保人畜无害！大家可以放心使用，当然您如果扔不放心，我们推荐您在使用前 clone admin 源码亲自阅读一番，我们是 100%开源，是否有风险您一看便知.
+我们已接入 [oscs 墨菲安全扫描](https://old.murphysec.com/dr/ewmhycEhuXRo4rL4mN) ，admin 源码中未被扫描出任何风险项，超越 100%的项目，确保人畜无害！大家可以放心使用，当然您如果扔不放心，我们推荐您在使用前 clone admin 源码亲自阅读一番，我们是 100%开源，是否有风险您一看便知.
 
 ## 特性
 
@@ -77,13 +77,9 @@ V-Naive-Admin 是一个免费开源的中后台模版,使用了最新的`vue3 Vi
 
 🔳 admin 文档
 
-🔳 update Vite3
-
 🔳 Vue Router keepAlive
 
 🔳 Vue Router 动画
-
-🔳 可视化 Vue Router 配置
 
 🔳 封装常用组件
 
